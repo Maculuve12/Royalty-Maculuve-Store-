@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Royalty | Beyond Trends</title>
 
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2652622554947365');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
   <!-- Google Fonts: Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght={400;500;600;700;800}&display=swap" rel="stylesheet"/>
 
@@ -677,6 +695,15 @@
     if (!cor)     { showToast('Por favor, escolha a cor desejada.'); return; }
     if (!tamanho) { showToast('Por favor, selecione o seu tamanho.'); return; }
 
+    // Pixel: ViewContent — cliente mostrou interesse real no produto
+    fbq('track', 'ViewContent', {
+      content_name: p.nome,
+      content_ids: [String(p.id)],
+      content_type: 'product',
+      value: p.preco,
+      currency: 'MZN'
+    });
+
     const itemExistente = carrinho.find(item => item.id === id && item.cor === cor && item.tamanho === tamanho);
 
     if (itemExistente) {
@@ -695,6 +722,15 @@
 
     atualizarCarrinhoVisual();
     showToast(`${p.nome} adicionado.`);
+
+    // Pixel: AddToCart — produto efectivamente adicionado
+    fbq('track', 'AddToCart', {
+      content_name: p.nome,
+      content_ids: [String(p.id)],
+      content_type: 'product',
+      value: p.preco,
+      currency: 'MZN'
+    });
     
     setTimeout(() => toggleCart(true), 300);
   }
@@ -767,6 +803,16 @@
     formContainer.style.display = 'flex';
     btnPagar.style.display = 'none';
     formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Pixel: InitiateCheckout — cliente clicou em Pagar
+    const subtotal = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+    fbq('track', 'InitiateCheckout', {
+      content_ids: carrinho.map(item => String(item.id)),
+      content_type: 'product',
+      num_items: carrinho.reduce((acc, item) => acc + item.qtd, 0),
+      value: subtotal,
+      currency: 'MZN'
+    });
   }
 
   function checkoutCart() {
@@ -804,6 +850,15 @@
     if (notas) {
       msg += `\n📝 *Preferências de Entrega:* "${notas}"\n`;
     }
+
+    // Pixel: Purchase — cliente finalizou e foi para o WhatsApp
+    fbq('track', 'Purchase', {
+      content_ids: carrinho.map(item => String(item.id)),
+      content_type: 'product',
+      num_items: carrinho.reduce((acc, item) => acc + item.qtd, 0),
+      value: subtotal,
+      currency: 'MZN'
+    });
 
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   }
