@@ -3,29 +3,51 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ════════════════════════════════════════
+       [TÍTULO] — Nome na aba do browser
+  ═════════════════════════════════════════ -->
   <title>Royalty | Beyond Trends</title>
-  
+
+  <!-- ════════════════════════════════════════
+       [OPEN GRAPH] — Imagem e texto ao partilhar
+       o link no WhatsApp, Facebook, LinkedIn
+       → og:title       = Título que aparece
+       → og:description = Texto abaixo do título
+       → og:image       = Link da imagem de capa
+       → og:url         = Link oficial da loja
+  ═════════════════════════════════════════ -->
   <!-- OPEN GRAPH (Facebook, WhatsApp, LinkedIn) -->
-<meta property="og:title" content="Royalty | Beyond Trends">
-<meta property="og:description" content="Camisetas exclusivas com estilo premium em Moçambique">
-<meta property="og:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://royaltymaculuvestore.xo.je">
-<meta property="og:type" content="website">
+  <meta property="og:title" content="Royalty | Beyond Trends">
+  <meta property="og:description" content="Camisetas exclusivas com estilo premium em Moçambique">
+  <meta property="og:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://royaltymaculuvestore.xo.je">
+  <meta property="og:type" content="website">
 
-<!-- TWITTER / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Royalty | Beyond Trends">
-<meta name="twitter:description" content="Camisetas exclusivas com estilo premium em Moçambique">
-<meta name="twitter:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+  <!-- ════════════════════════════════════════
+       [TWITTER/X] — Imagem ao partilhar no X
+  ═════════════════════════════════════════ -->
+  <!-- TWITTER / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Royalty | Beyond Trends">
+  <meta name="twitter:description" content="Camisetas exclusivas com estilo premium em Moçambique">
+  <meta name="twitter:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
 
-<!-- IMAGEM PADRÃO (reforço geral) -->
-<link rel="image_src" href="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+  <!-- IMAGEM PADRÃO (reforço geral) -->
+  <link rel="image_src" href="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
 
-<!-- SEO básico -->
-<meta name="description" content="Camisetas exclusivas com estilo premium em Moçambique">
+  <!-- ════════════════════════════════════════
+       [SEO] — Descrição para o Google
+  ═════════════════════════════════════════ -->
+  <!-- SEO básico -->
+  <meta name="description" content="Camisetas exclusivas com estilo premium em Moçambique">
 
+  <!-- ════════════════════════════════════════
+       [PIXEL FACEBOOK] — ID do Pixel Meta
+       → Substitui '2652622554947365' pelo teu
+         novo ID se mudares de conta Meta
+  ═════════════════════════════════════════ -->
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -270,6 +292,33 @@
     .footer-logo { font-size: 1.15rem; letter-spacing: 0.2em; color: var(--white); }
     footer small { color: var(--muted); font-size: 0.72rem; font-weight: 500; }
 
+    /* BADGES */
+    .prod-badge {
+      position: absolute; top: 12px; left: 12px; z-index: 6;
+      padding: 4px 10px; border-radius: 2px;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .badge-novo { background: var(--g2); color: #fff; }
+    .badge-promo { background: var(--gold); color: var(--g1); }
+
+    /* PREÇO RISCADO */
+    .card-price-wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .card-price-original { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: line-through; }
+    .card-price { font-size: 1rem; font-weight: 700; color: var(--g2); }
+
+    /* CUPÃO */
+    .cupao-wrap { display: flex; gap: 8px; }
+    .cupao-input { flex: 1; padding: 10px; border: 1.5px solid var(--accent); border-radius: 2px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--g1); text-transform: uppercase; outline: none; letter-spacing: 0.05em; }
+    .cupao-input:focus { border-color: var(--g3); }
+    .cupao-btn { padding: 10px 16px; background: var(--g2); color: #fff; border: none; border-radius: 2px; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; white-space: nowrap; transition: background 0.2s; }
+    .cupao-btn:hover { background: var(--g1); }
+    .cupao-msg { font-size: 0.75rem; font-weight: 600; margin-top: -4px; }
+    .cupao-msg.ok { color: #2e7d32; }
+    .cupao-msg.err { color: #bd3a3a; }
+    .cart-desconto-row { display: flex; justify-content: space-between; align-items: center; }
+    .cart-desconto-lbl { font-size: 0.82rem; font-weight: 600; color: #2e7d32; }
+    .cart-desconto-val { font-size: 0.95rem; font-weight: 700; color: #2e7d32; }
+
     /* TOAST */
     .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: var(--g1); color: #fff; padding: 12px 28px; border-radius: 3px; font-size: 0.82rem; font-weight: 600; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; letter-spacing: 0.04em; }
     .toast.show { opacity: 1; }
@@ -330,6 +379,22 @@
     </div>
 
     <div class="cart-footer">
+      <!-- CAMPO CUPÃO -->
+      <div id="cupao-section" style="display:none;">
+        <div class="lbl" style="margin-bottom:6px;">Tens um cupão?</div>
+        <div class="cupao-wrap">
+          <input type="text" class="cupao-input" id="cupao-input" placeholder="Ex: RM07" maxlength="10">
+          <button class="cupao-btn" onclick="aplicarCupao()">Aplicar</button>
+        </div>
+        <div class="cupao-msg" id="cupao-msg"></div>
+      </div>
+
+      <!-- DESCONTO APLICADO -->
+      <div class="cart-desconto-row" id="cupao-desconto-row" style="display:none;">
+        <span class="cart-desconto-lbl">🎟 Cupão (A ROYALTY É NOSSA)</span>
+        <span class="cart-desconto-val" id="cupao-desconto-val">-0 MT</span>
+      </div>
+
       <div class="cart-total-row">
         <span class="cart-total-lbl">Subtotal:</span>
         <span class="cart-total-val" id="cart-total-value">0 MT</span>
@@ -480,26 +545,42 @@
     <p>Para encomendas, dúvidas sobre entregas ou qualquer questão, fala connosco directamente no WhatsApp.</p>
     
     <div class="contact-grid">
+
+      <!-- [REDE SOCIAL — WHATSAPP]
+           → href      : troca o número após wa.me/
+           → ci-value  : número visível na loja -->
       <a class="contact-item" href="https://wa.me/258879573018" target="_blank">
         <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.337-1.505A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.36-.213-3.76.893.948-3.657-.234-.376A9.818 9.818 0 1112 21.818z"/></svg></div>
         <div class="ci-info"><div class="ci-label">WhatsApp</div><div class="ci-value">879573018</div></div>
       </a>
 
+      <!-- [REDE SOCIAL — INSTAGRAM]
+           → href      : link do perfil Instagram
+           → ci-value  : username visível na loja -->
       <a class="contact-item" href="https://www.instagram.com/royalty.maculuve?igsh=ZWE3eDNraWFlbzgz" target="_blank">
         <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
         <div class="ci-info"><div class="ci-label">Instagram</div><div class="ci-value">royalty.maculuve</div></div>
       </a>
 
+      <!-- [REDE SOCIAL — TIKTOK]
+           → href      : link do perfil TikTok
+           → ci-value  : username visível na loja -->
       <a class="contact-item" href="https://www.tiktok.com/@royalty.maculuve?_r=1&_t=ZS-97Su2oY4f93" target="_blank">
         <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M12.53 0h3.57a8.25 8.25 0 0 0 .11 1.44 5.37 5.37 0 0 0 1.5 2.86 5.43 5.43 0 0 0 2.82 1.44V9.3a8.81 8.81 0 0 1-4.42-1.32v7.7A6.68 6.68 0 0 1 9.4 22.37a6.76 6.76 0 0 1-6.76-6.76A6.68 6.68 0 0 1 9 9a6.6 6.6 0 0 1 3.53 1v3.74A2.94 2.94 0 0 0 9 12.63a3 3 0 1 0 3 3V0z"/></svg></div>
         <div class="ci-info"><div class="ci-label">TikTok</div><div class="ci-value">royalty.maculuve</div></div>
       </a>
 
+      <!-- [REDE SOCIAL — FACEBOOK]
+           → href      : link da página Facebook
+           → ci-value  : nome visível na loja -->
       <a class="contact-item" href="https://www.facebook.com/share/1JUc2ENeVd/" target="_blank">
         <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></div>
         <div class="ci-info"><div class="ci-label">Facebook</div><div class="ci-value">Royalty Maculuve</div></div>
       </a>
 
+      <!-- [CONTACTO — EMAIL]
+           → href      : troca o email após mailto:
+           → ci-value  : email visível na loja -->
       <a class="contact-item" href="mailto:royaltyoficialstore@gmail.com" target="_blank">
         <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
         <div class="ci-info"><div class="ci-label">Email</div><div class="ci-value">royaltyoficialstore@gmail.com</div></div>
@@ -511,14 +592,44 @@
 <div class="toast" id="toast"></div>
 
 <script>
+  // ════════════════════════════════════════
+  // [WHATSAPP] — Número de contacto da loja
+  // → Substitui pelo novo número com código do país
+  // ════════════════════════════════════════
   const WA_NUMBER = '258879573018';
 
+  // ════════════════════════════════════════
+  // [PRODUTOS] — Lista de todos os produtos da loja
+  // Para adicionar um produto novo: copia um bloco
+  // completo { id:... } e cola antes do ]; final,
+  // mudando o id para o próximo número disponível.
+  // Para remover: apaga o bloco inteiro { ... },
+  // ════════════════════════════════════════
   const produtos = [
+
+    // ────────────────────────────────────────
+    // [PRODUTO 1] — Camiseta RAM 30
+    // → nome        : Nome exibido na loja
+    // → desc        : Descrição do produto
+    // → preco       : Preço promocional actual
+    // → precoOriginal: Preço riscado (remove esta
+    //                  linha se não houver desconto)
+    // → badge       : Bandeira — 'Novo' (verde)
+    //                 Remove a linha para sem bandeira
+    // → cores       : Lista de cores disponíveis
+    //                 nome = nome exibido
+    //                 hex  = código da cor
+    // → tamanhos    : Tamanhos disponíveis
+    // → imgs        : Links das fotos (carrossel
+    //                 automático com quantas quiser)
+    // ────────────────────────────────────────
     {
       id: 1,
       nome: 'Camiseta RAM 30',
       desc: 'A Camiseta RAM 30 da Royalty combina style urbano com identidade forte e minimalista. Desenvolvida para quem valoriza conforto e presença, possui um design moderno ideal para uso diário.',
       preco: 850,
+      precoOriginal: 1000,
+      badge: 'Novo',
       cores: [
         { nome: 'Verde Escuro', hex: '#1e3322' }, 
         { nome: 'Castanha', hex: '#59402f' }, 
@@ -531,11 +642,16 @@
         'https://i.ibb.co/vCW8YVvG/20251101-215941.jpg'
       ]
     },
+
+    // ────────────────────────────────────────
+    // [PRODUTO 2] — Camiseta RHM 23
+    // ────────────────────────────────────────
     {
       id: 2,
       nome: 'Camiseta RHM 23',
       desc: 'A Camiseta RHM 23 traz um concept mais contemporâneo e urbano, com foco em simplicidade e impacto visual. É uma peça pensada para quem gosta de moda discreta, mas com personalidade.',
       preco: 850,
+      precoOriginal: 1000,
       cores: [
         { nome: 'Branca', hex: '#ffffff' },
         { nome: 'Verde Escuro', hex: '#1e3322' },
@@ -548,11 +664,16 @@
         'https://i.ibb.co/JRzkLB22/20251101-213826.jpg'
       ]
     },
+
+    // ────────────────────────────────────────
+    // [PRODUTO 3] — Camiseta RFB 12
+    // ────────────────────────────────────────
     {
       id: 3,
       nome: 'Camiseta RFB 12',
       desc: 'A Camiseta RFB 12 destaca-se pelo equilíbrio entre design clássico e style atual. É uma peça leve, confortável e resistente, ideal para transmitir autenticidade sem exageros.',
       preco: 850,
+      precoOriginal: 1000,
       cores: [
         { nome: 'Creme', hex: '#fdf6e2' },
         { nome: 'Verde Escuro', hex: '#1e3322' },
@@ -569,11 +690,16 @@
         'https://i.ibb.co/Y7cTvzC3/20260501-095324.png'
       ]
     },
+
+    // ────────────────────────────────────────
+    // [PRODUTO 4] — Camiseta RPB 07
+    // ────────────────────────────────────────
     {
       id: 4,
       nome: 'Camiseta RPB 07',
       desc: 'A Camiseta RPB 07 apresenta um style mais arrojado dentro da coleção Royalty. Foi desenvolvida para quem procura destacar-se com simplicidade, elegância e uma identidade visual forte.',
       preco: 850,
+      precoOriginal: 1000,
       cores: [
         { nome: 'Creme', hex: '#fdf6e2' },
         { nome: 'Preta', hex: '#111111' },
@@ -607,6 +733,11 @@
       return `
       <div class="card">
         <div class="prod-galeria" id="galeria-${p.id}">
+          ${p.badge || p.precoOriginal ? `
+            <div class="prod-badge ${p.badge === 'Novo' ? 'badge-novo' : p.precoOriginal ? 'badge-promo' : ''}">
+              ${p.badge === 'Novo' ? 'Novo' : p.precoOriginal ? `-${Math.round((1 - p.preco / p.precoOriginal) * 100)}%` : ''}
+            </div>
+          ` : ''}
           <div class="prod-track" id="track-${p.id}">
             ${temImagens 
               ? p.imgs.map(img => `<div class="prod-slide"><img src="${img}" alt="${p.nome}" loading="lazy"/></div>`).join('')
@@ -626,7 +757,10 @@
         <div class="card-body">
           <div class="card-name">${p.nome}</div>
           <div class="card-desc">${p.desc}</div>
-          <div class="card-price">${p.preco} MT</div>
+          <div class="card-price-wrap">
+            ${p.precoOriginal ? `<span class="card-price-original">${p.precoOriginal} MT</span>` : ''}
+            <span class="card-price">${p.preco} MT</span>
+          </div>
           <div>
             <div class="lbl">Cor</div>
             <div class="cores" id="cores-${p.id}">
@@ -770,6 +904,34 @@
     atualizarCarrinhoVisual();
   }
 
+  // ════════════════════════════════════════
+  // [CUPÃO DE DESCONTO]
+  // → Código do cupão : 'RM07'  (linha abaixo)
+  // → Desconto por peça: 50 MT  (linha com * 50)
+  // → Nome do cupão   : 'A ROYALTY É NOSSA'
+  //   (aparece 2x abaixo — altera as duas)
+  // ════════════════════════════════════════
+  let cupaoAplicado = false;
+
+  function aplicarCupao() {
+    const input = document.getElementById('cupao-input');
+    const msg = document.getElementById('cupao-msg');
+    const codigo = input.value.trim().toUpperCase();
+
+    if (codigo === 'RM07') {
+      cupaoAplicado = true;
+      input.disabled = true;
+      msg.textContent = '✓ Cupão aplicado com sucesso!';
+      msg.className = 'cupao-msg ok';
+      atualizarCarrinhoVisual();
+    } else {
+      cupaoAplicado = false;
+      msg.textContent = '✗ Código inválido. Tente novamente.';
+      msg.className = 'cupao-msg err';
+      atualizarCarrinhoVisual();
+    }
+  }
+
   function atualizarCarrinhoVisual() {
     const container = document.getElementById('cart-items-container');
     const badge = document.getElementById('cart-badge');
@@ -782,6 +944,9 @@
 
     const btnPagar = document.getElementById('btn-pagar');
     const formContainer = document.getElementById('cart-form-container');
+    const cupaoSection = document.getElementById('cupao-section');
+    const descontoRow = document.getElementById('cupao-desconto-row');
+    const descontoVal = document.getElementById('cupao-desconto-val');
 
     if (carrinho.length === 0) {
       container.innerHTML = `
@@ -793,6 +958,9 @@
       totalVal.textContent = '0 MT';
       btnPagar.style.display = 'none';
       formContainer.style.display = 'none';
+      cupaoSection.style.display = 'none';
+      descontoRow.style.display = 'none';
+      cupaoAplicado = false;
       return;
     }
 
@@ -813,8 +981,21 @@
       </div>
     `).join('');
 
+    const totalPecas = carrinho.reduce((acc, item) => acc + item.qtd, 0);
     const subtotal = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
-    totalVal.textContent = `${subtotal} MT`;
+    const desconto = cupaoAplicado ? totalPecas * 50 : 0;
+    const total = subtotal - desconto;
+
+    // Mostrar/ocultar desconto
+    if (cupaoAplicado) {
+      descontoRow.style.display = 'flex';
+      descontoVal.textContent = `-${desconto} MT`;
+    } else {
+      descontoRow.style.display = 'none';
+    }
+
+    totalVal.textContent = `${total} MT`;
+    cupaoSection.style.display = 'block';
     btnPagar.style.display = 'block';
   }
 
@@ -864,20 +1045,30 @@
       msg += `   🔢 Qtd: ${item.qtd}x | 💰 Preço: ${item.preco * item.qtd} MT\n\n`;
     });
 
+    const totalPecas = carrinho.reduce((acc, item) => acc + item.qtd, 0);
     const subtotal = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+    const desconto = cupaoAplicado ? totalPecas * 50 : 0;
+    const total = subtotal - desconto;
+
     msg += `─────────────────────\n`;
-    msg += `💳 *Subtotal Geral:* ${subtotal} MT\n`;
+    msg += `💳 *Subtotal:* ${subtotal} MT\n`;
+    if (cupaoAplicado) {
+      msg += `🎟 *Cupão (A ROYALTY É NOSSA):* -${desconto} MT\n`;
+      msg += `✅ *Total Final:* ${total} MT\n`;
+    } else {
+      msg += `✅ *Total:* ${total} MT\n`;
+    }
 
     if (notas) {
       msg += `\n📝 *Preferências de Entrega:* "${notas}"\n`;
     }
 
-    // Pixel: Purchase — cliente finalizou e foi para o WhatsApp
+    // Pixel: Purchase — valor final com desconto
     fbq('track', 'Purchase', {
       content_ids: carrinho.map(item => String(item.id)),
       content_type: 'product',
-      num_items: carrinho.reduce((acc, item) => acc + item.qtd, 0),
-      value: subtotal,
+      num_items: totalPecas,
+      value: total,
       currency: 'MZN'
     });
 
