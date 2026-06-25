@@ -300,6 +300,7 @@
     }
     .badge-novo { background: var(--g2); color: #fff; }
     .badge-promo { background: var(--gold); color: var(--g1); }
+    .badge-mais-vendido { background: #c0392b; color: #fff; }
 
     /* PREÇO RISCADO */
     .card-price-wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -589,14 +590,101 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <div class="toast" id="toast"></div>
 
 <script>
+  // ════════════════════════════════════════
+  // [SUPABASE — BANCO DE DADOS]
+  // → SUPABASE_URL : URL do projeto Supabase
+  // → SUPABASE_KEY : Chave publicável (anon public)
+  // ════════════════════════════════════════
+  const SUPABASE_URL = 'https://zrcnwkrvfkykqnhwoklh.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_PX2HcOTmRmbHLDOT5YuKjg_KBNB6aZc';
+  const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
   // ════════════════════════════════════════
   // [WHATSAPP] — Número de contacto da loja
   // → Substitui pelo novo número com código do país
   // ════════════════════════════════════════
   const WA_NUMBER = '258879573018';
+
+  // ════════════════════════════════════════
+  // [SUPABASE — FUNÇÕES DE REGISTO]
+  // Estas funções enviam dados para o banco
+  // de dados automaticamente
+  // ════════════════════════════════════════
+
+  async function registarEvento(tipo, produto, extras = {}) {
+    try {
+      await db.from('eventos').insert({
+        tipo,
+        produto_id: produto?.id || null,
+        produto_nome: produto?.nome || null,
+        cor: extras.cor || null,
+        tamanho: extras.tamanho || null,
+        quantidade: extras.quantidade || 1,
+        preco: produto?.preco || null
+      });
+    } catch (e) { /* silencioso para não afectar a loja */ }
+  }
+
+  async function atualizarEstatisticas(produtoId, campo) {
+    try {
+      const { data } = await db
+        .from('estatisticas_produtos')
+        .select(campo)
+        .eq('produto_id', produtoId)
+        .single();
+      if (data) {
+        await db.from('estatisticas_produtos')
+          .update({ 
+            [campo]: (data[campo] || 0) + 1,
+            atualizado_em: new Date().toISOString()
+          })
+          .eq('produto_id', produtoId);
+      }
+    } catch (e) { /* silencioso */ }
+  }
+
+  async function registarPedido(cliente, itens, subtotal, desconto, total, cupao) {
+    try {
+      await db.from('pedidos').insert({
+        cliente_nome: cliente.nome,
+        cliente_telefone: cliente.telefone,
+        cliente_localizacao: cliente.localizacao,
+        notas: cliente.notas,
+        itens: itens,
+        subtotal,
+        desconto,
+        total,
+        cupao_usado: cupao || null
+      });
+      // Actualizar estatísticas de venda por produto
+      for (const item of itens) {
+        await atualizarEstatisticas(item.id, 'total_vendas');
+        await db.from('estatisticas_produtos')
+          .update({ 
+            total_unidades_vendidas: db.rpc('increment', { row_id: item.id, amount: item.qtd })
+          })
+          .eq('produto_id', item.id);
+      }
+    } catch (e) { /* silencioso */ }
+  }
+
+  async function carregarBadgesAutomaticos() {
+    try {
+      const { data } = await db
+        .from('estatisticas_produtos')
+        .select('produto_id, total_vendas')
+        .order('total_vendas', { ascending: false })
+        .limit(1);
+      if (data && data.length > 0 && data[0].total_vendas > 0) {
+        window.maisCampradoId = data[0].produto_id;
+      }
+    } catch (e) { /* silencioso */ }
+  }
 
   // ════════════════════════════════════════
   // [PRODUTOS] — Lista de todos os produtos da loja
@@ -632,7 +720,7 @@
       badge: 'Novo',
       cores: [
         { nome: 'Verde Escuro', hex: '#1e3322' }, 
-        { nome: 'Creme', hex: '#fdf6e2' },
+        { nome: 'Castanha', hex: '#59402f' }, 
         { nome: 'Branca', hex: '#ffffff' }
       ],
       tamanhos: ['M', 'L', 'XL'],
@@ -733,9 +821,15 @@
       return `
       <div class="card">
         <div class="prod-galeria" id="galeria-${p.id}">
-          ${p.badge || p.precoOriginal ? `
-            <div class="prod-badge ${p.badge === 'Novo' ? 'badge-novo' : p.precoOriginal ? 'badge-promo' : ''}">
-              ${p.badge === 'Novo' ? 'Novo' : p.precoOriginal ? `-${Math.round((1 - p.preco / p.precoOriginal) * 100)}%` : ''}
+          ${(p.badge || p.precoOriginal || window.maisCampradoId === p.id) ? `
+            <div class="prod-badge ${
+              p.badge === 'Novo' ? 'badge-novo' : 
+              window.maisCampradoId === p.id ? 'badge-mais-vendido' :
+              p.precoOriginal ? 'badge-promo' : ''
+            }">
+              ${p.badge === 'Novo' ? 'Novo' : 
+                window.maisCampradoId === p.id ? '🔥 Mais Comprado' :
+                p.precoOriginal ? `-${Math.round((1 - p.preco / p.precoOriginal) * 100)}%` : ''}
             </div>
           ` : ''}
           <div class="prod-track" id="track-${p.id}">
@@ -878,7 +972,7 @@
     atualizarCarrinhoVisual();
     showToast(`${p.nome} adicionado.`);
 
-    // Pixel: AddToCart — produto efectivamente adicionado
+    // Pixel: AddToCart
     fbq('track', 'AddToCart', {
       content_name: p.nome,
       content_ids: [String(p.id)],
@@ -886,7 +980,11 @@
       value: p.preco,
       currency: 'MZN'
     });
-    
+
+    // Supabase: registar AddToCart
+    registarEvento('adicionar_carrinho', p, { cor, tamanho });
+    atualizarEstatisticas(p.id, 'total_carrinho');
+
     setTimeout(() => toggleCart(true), 300);
   }
 
@@ -1006,7 +1104,7 @@
     btnPagar.style.display = 'none';
     formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    // Pixel: InitiateCheckout — cliente clicou em Pagar
+    // Pixel: InitiateCheckout
     const subtotal = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
     fbq('track', 'InitiateCheckout', {
       content_ids: carrinho.map(item => String(item.id)),
@@ -1015,6 +1113,9 @@
       value: subtotal,
       currency: 'MZN'
     });
+
+    // Supabase: registar início de pagamento
+    registarEvento('iniciar_pagamento', null, { quantidade: carrinho.reduce((a,i) => a + i.qtd, 0) });
   }
 
   function checkoutCart() {
@@ -1063,7 +1164,7 @@
       msg += `\n📝 *Preferências de Entrega:* "${notas}"\n`;
     }
 
-    // Pixel: Purchase — valor final com desconto
+    // Pixel: Purchase
     fbq('track', 'Purchase', {
       content_ids: carrinho.map(item => String(item.id)),
       content_type: 'product',
@@ -1071,6 +1172,14 @@
       value: total,
       currency: 'MZN'
     });
+
+    // Supabase: registar pedido completo
+    registarPedido(
+      { nome, telefone, localizacao, notas },
+      carrinho.map(i => ({ id: i.id, nome: i.nome, cor: i.cor, tamanho: i.tamanho, qtd: i.qtd, preco: i.preco })),
+      subtotal, desconto, total,
+      cupaoAplicado ? 'RM07' : null
+    );
 
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   }
@@ -1090,7 +1199,8 @@
     setTimeout(() => t.classList.remove('show'), 2800);
   }
 
-  renderProdutos();
+  // Inicializar loja — carrega badges automáticos do Supabase antes de renderizar
+  carregarBadgesAutomaticos().then(() => renderProdutos());
   atualizarCarrinhoVisual();
 </script>
 </body>
