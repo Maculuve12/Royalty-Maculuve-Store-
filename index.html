@@ -250,8 +250,13 @@
     .tam-btn:hover { border-color: var(--g3); color: var(--g3); }
     .tam-btn.selected { background: var(--g1); color: #fff; border-color: var(--g1); }
     
-    .btn-comprar { margin-top: auto; width: 100%; padding: 13px; background: var(--g2); color: #fff; border: none; border-radius: 2px; cursor: pointer; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; }
+    .card-acoes { display: flex; gap: 8px; margin-top: auto; }
+    .btn-comprar { flex: 1; padding: 13px; background: var(--g2); color: #fff; border: none; border-radius: 2px; cursor: pointer; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; }
     .btn-comprar:hover { background: var(--g1); }
+    .btn-partilhar { width: 46px; height: 46px; background: transparent; border: 1.5px solid var(--accent); border-radius: 2px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+    .btn-partilhar:hover { background: var(--g1); border-color: var(--g1); }
+    .btn-partilhar:hover svg { fill: #fff; }
+    .btn-partilhar svg { width: 18px; height: 18px; fill: var(--g2); transition: fill 0.2s; }
 
     /* ─── SMART CART (GAVETA LATERAL) ─── */
     .cart-overlay {
@@ -386,8 +391,32 @@
     .cart-desconto-lbl { font-size: 0.82rem; font-weight: 600; color: #2e7d32; }
     .cart-desconto-val { font-size: 0.95rem; font-weight: 700; color: #2e7d32; }
 
-    /* ─── BANNERS ─── */
-    .banners-sec { width:100%; background:var(--g1); overflow:hidden; margin-top: 24px; }
+    /* ─── AVALIAÇÕES ─── */
+    .aval-sec { padding: 60px 40px; background: var(--off); }
+    .aval-sec .sec-hdr { margin-bottom: 36px; }
+    .aval-grid { display: flex; flex-direction: column; gap: 24px; max-width: 1200px; margin: 0 auto; }
+    .aval-produto-blk { background: var(--white); border-radius: 4px; border: 1px solid rgba(0,0,0,0.06); overflow: hidden; }
+    .aval-produto-header { padding: 16px 20px; background: var(--g1); display: flex; align-items: center; justify-content: space-between; }
+    .aval-produto-nome { font-size: 0.85rem; font-weight: 800; color: var(--white); text-transform: uppercase; letter-spacing: 0.06em; }
+    .aval-media { display: flex; align-items: center; gap: 8px; }
+    .aval-estrelas-media { color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
+    .aval-nota { font-size: 0.88rem; font-weight: 800; color: var(--white); }
+    .aval-total { font-size: 0.72rem; color: rgba(255,255,255,0.5); font-weight: 500; }
+    .aval-lista { padding: 0 20px; }
+    .aval-item { padding: 16px 0; border-bottom: 1px solid var(--off); display: flex; flex-direction: column; gap: 6px; }
+    .aval-item:last-child { border-bottom: none; }
+    .aval-item-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .aval-item-nome { font-size: 0.82rem; font-weight: 700; color: var(--g1); }
+    .aval-item-data { font-size: 0.68rem; color: var(--muted); font-weight: 500; }
+    .aval-item-estrelas { color: var(--gold); font-size: 0.85rem; letter-spacing: 1px; }
+    .aval-item-comentario { font-size: 0.8rem; color: var(--muted); font-weight: 500; font-style: italic; line-height: 1.5; }
+    .aval-vazio { padding: 20px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+
+    /* Estrelas no card */
+    .card-aval { display: flex; align-items: center; gap: 6px; margin-top: -4px; }
+    .card-aval-estrelas { color: var(--gold); font-size: 0.78rem; }
+    .card-aval-info { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
+    .banners-sec { width:100%; background:var(--g1); overflow:hidden; }
     .banner-carousel { position:relative; width:100%; overflow:hidden; }
     .banner-track { display:flex; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); will-change:transform; }
     .banner-slide { min-width:100%; position:relative; cursor:pointer; }
@@ -395,6 +424,24 @@
     .banner-dots { position:absolute; bottom:12px; left:0; right:0; display:flex; justify-content:center; gap:7px; z-index:5; }
     .b-dot { width:8px; height:8px; background:rgba(255,255,255,0.4); border-radius:50%; transition:all 0.25s; cursor:pointer; }
     .b-dot.active { background:#fff; transform:scale(1.2); }
+
+    /* ─── GALERIA ─── */
+    .galeria-page { padding: 20px 16px; max-width: 680px; margin: 0 auto; }
+    .galeria-post { background: var(--white); border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); margin-bottom: 20px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .galeria-post-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
+    .galeria-post-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--g1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .galeria-post-avatar svg { width: 22px; height: 22px; fill: var(--gold); }
+    .galeria-post-info { flex: 1; }
+    .galeria-post-nome { font-size: 0.85rem; font-weight: 800; color: var(--g1); letter-spacing: 0.06em; }
+    .galeria-post-data { font-size: 0.68rem; color: var(--muted); font-weight: 500; margin-top: 1px; }
+    .galeria-post-img { width: 100%; display: block; object-fit: contain; background: #f0f0f0; }
+    .galeria-post-desc { padding: 14px 16px; font-size: 0.84rem; color: #111; font-weight: 500; line-height: 1.6; }
+    .galeria-vazio { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.85rem; }
+
+    /* ─── STOCK BADGES ─── */
+    .badge-esgotado { background: #c0392b; color: #fff; }
+    .tam-btn.esgotado { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+    .cor-btn.esgotado { opacity: 0.3; cursor: not-allowed; }
 
     /* ─── TOAST */
     .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: var(--g1); color: #fff; padding: 12px 28px; border-radius: 3px; font-size: 0.82rem; font-weight: 600; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; letter-spacing: 0.04em; }
@@ -430,6 +477,9 @@
     <div class="drawer-links">
       <div class="drawer-link active" id="dl-loja" onclick="showPage('loja'); fecharDrawer();">
         🛍️ &nbsp; Loja
+      </div>
+      <div class="drawer-link" id="dl-galeria" onclick="showPage('galeria'); fecharDrawer();">
+        📸 &nbsp; Galeria
       </div>
       <div class="drawer-link" id="dl-marca" onclick="showPage('marca'); fecharDrawer();">
         ✦ &nbsp; Sobre a Marca
@@ -561,6 +611,15 @@
     <div class="grid" id="grid-produtos"></div>
   </section>
 
+  <!-- AVALIAÇÕES -->
+  <section class="aval-sec" id="avaliacoes" style="display:none;">
+    <div class="sec-hdr">
+      <div class="eyebrow">Experiências Reais</div>
+      <h2>O que os nossos clientes dizem</h2>
+    </div>
+    <div class="aval-grid" id="aval-grid"></div>
+  </section>
+
   <!-- CONTACTO -->
   <section class="contacto-sec" id="contacto">
     <div class="eyebrow">Fala Connosco</div>
@@ -609,6 +668,19 @@
     <div class="baba footer-logo">ROYALTY</div>
     <small>© 2026 Royalty. Inhambane, Moçambique. Beyond Trends.</small>
   </footer>
+</div>
+
+<!-- ══════════ PAGE: GALERIA ══════════ -->
+<div class="page" id="page-galeria">
+  <div style="padding-top: var(--nav-h);">
+    <div style="background: var(--g1); padding: 24px 20px; text-align:center;">
+      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">Royalty Maculuve</div>
+      <div style="font-size:1.2rem;font-weight:800;color:#fff;letter-spacing:0.08em;">GALERIA</div>
+    </div>
+    <div class="galeria-page" id="galeria-feed">
+      <div class="galeria-vazio">A carregar publicações...</div>
+    </div>
+  </div>
 </div>
 
 <!-- ══════════ PAGE: MARCA ══════════ -->
@@ -709,6 +781,7 @@
   // ════════════════════════════════════════
   const SB_URL = 'https://zrcnwkrvfkykqnhwoklh.supabase.co';
   const SB_KEY = 'sb_publishable_PX2HcOTmRmbHLDOT5YuKjg_KBNB6aZc';
+  let LOGO_GALERIA_URL = '';
 
   let produtos = [];
   let maisCampradoId = null;
@@ -849,8 +922,12 @@
       };
     });
     iniciarEstados();
-    carregarMaisVendido();
     atualizarCarrinhoVisual();
+    // Carregar stock, avaliações e mais vendido em paralelo
+    Promise.all([carregarStock(), carregarAvaliacoes()]).then(function() {
+      carregarMaisVendido();
+      if (!verificarLinkAvaliacao()) verificarLinkProduto();
+    });
   })
   .catch(function() { console.error('Erro ao carregar produtos'); });
 
@@ -860,11 +937,11 @@
       const temImagens = p.imgs && p.imgs.length > 0;
       
       return `
-      <div class="card">
+      <div class="card" data-produto-id="${p.id}">
         <div class="prod-galeria" id="galeria-${p.id}">
-          ${(p.badge || p.precoOriginal || maisCampradoId === p.id) ? `
-            <div class="prod-badge ${maisCampradoId === p.id ? 'badge-mais-vendido' : p.badge === 'Novo' ? 'badge-novo' : 'badge-promo'}">
-              ${maisCampradoId === p.id ? '🔥 Mais Vendido' : p.badge === 'Novo' ? 'Novo' : `-${Math.round((1 - p.preco / p.precoOriginal) * 100)}%`}
+          ${(p.badge || p.precoOriginal || maisCampradoId === p.id || produtoEsgotado(p)) ? `
+            <div class="prod-badge ${produtoEsgotado(p) ? 'badge-esgotado' : maisCampradoId === p.id ? 'badge-mais-vendido' : p.badge === 'Novo' ? 'badge-novo' : 'badge-promo'}">
+              ${produtoEsgotado(p) ? 'Esgotado' : maisCampradoId === p.id ? '🔥 Mais Vendido' : p.badge === 'Novo' ? 'Novo' : `-${Math.round((1 - p.preco / p.precoOriginal) * 100)}%`}
             </div>
           ` : ''}
           <div class="prod-track" id="track-${p.id}">
@@ -886,6 +963,12 @@
         <div class="card-body">
           <div class="card-name">${p.nome}</div>
           <div class="card-desc">${p.desc}</div>
+          ${avaliacoesPorProduto[p.id] ? `
+            <div class="card-aval">
+              <span class="card-aval-estrelas">${renderEstrelas(avaliacoesPorProduto[p.id].media)}</span>
+              <span class="card-aval-info">${avaliacoesPorProduto[p.id].media.toFixed(1)} (${avaliacoesPorProduto[p.id].total} aval.)</span>
+            </div>
+          ` : ''}
           <div class="card-price-wrap">
             ${p.precoOriginal ? `<span class="card-price-original">${p.precoOriginal} MT</span>` : ''}
             <span class="card-price">${p.preco} MT</span>
@@ -893,22 +976,36 @@
           <div>
             <div class="lbl">Cor</div>
             <div class="cores" id="cores-${p.id}">
-              ${p.cores.map(c => `
-                <button class="cor-btn" style="background:${c.hex}; ${c.hex==='#ffffff'?'border:1px solid #ccc;':''} ${c.hex==='#fdf6e2'?'border:1px solid #e0d9c5;':''}" title="${c.nome}" onclick="selecionarCor(${p.id},'${c.nome}',this)"></button>
-              `).join('')}
+              ${p.cores.map(c => {
+                const corEsgotada = !temStockPorCor(p.id, c.nome, p.tamanhos);
+                return `<button class="cor-btn ${corEsgotada ? 'esgotado' : ''}" 
+                  style="background:${c.hex}; ${c.hex==='#ffffff'?'border:1px solid #ccc;':''} ${c.hex==='#fdf6e2'?'border:1px solid #e0d9c5;':''}" 
+                  title="${c.nome}${corEsgotada ? ' (Esgotado)' : ''}" 
+                  onclick="${corEsgotada ? '' : `selecionarCor(${p.id},'${c.nome}',this)`}"
+                  ${corEsgotada ? 'disabled' : ''}></button>`;
+              }).join('')}
             </div>
           </div>
           <div>
             <div class="lbl">Tamanho</div>
             <div class="tamanhos" id="tam-${p.id}">
-              ${p.tamanhos.map(t => `
-                <button class="tam-btn" onclick="selecionarTam(${p.id},'${t}',this)">${t}</button>
-              `).join('')}
+              ${p.tamanhos.map(t => {
+                const corActual = estados[p.id]?.cor;
+                const tamEsgotado = corActual ? !temStockPorTamanho(p.id, corActual, t) : false;
+                return `<button class="tam-btn ${tamEsgotado ? 'esgotado' : ''}" 
+                  onclick="${tamEsgotado ? '' : `selecionarTam(${p.id},'${t}',this)`}"
+                  ${tamEsgotado ? 'disabled' : ''}>${t}</button>`;
+              }).join('')}
             </div>
           </div>
-          <button class="btn-comprar" onclick="adicionarAoCarrinho(${p.id})">
-            Adicionar ao Carrinho
-          </button>
+          <div class="card-acoes">
+            <button class="btn-comprar" onclick="adicionarAoCarrinho(${p.id})">
+              Adicionar ao Carrinho
+            </button>
+            <button class="btn-partilhar" onclick="partilharProduto(${p.id},'${p.nome.replace(/'/g, "\\'")}')" title="Partilhar produto">
+              <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     `}).join('');
@@ -947,6 +1044,18 @@
     document.querySelectorAll(`#cores-${id} .cor-btn`).forEach(b => b.classList.remove('selected'));
     el.classList.add('selected');
     estados[id].cor = cor;
+    estados[id].tamanho = null;
+    // Actualizar tamanhos com stock da cor seleccionada
+    const p = produtos.find(prod => prod.id === id);
+    if (p) {
+      const tamContainer = document.getElementById(`tam-${id}`);
+      tamContainer.innerHTML = p.tamanhos.map(t => {
+        const tamEsgotado = !temStockPorTamanho(id, cor, t);
+        return `<button class="tam-btn ${tamEsgotado ? 'esgotado' : ''}"
+          onclick="${tamEsgotado ? '' : `selecionarTam(${id},'${t}',this)`}"
+          ${tamEsgotado ? 'disabled' : ''}>${t}</button>`;
+      }).join('');
+    }
   }
 
   function selecionarTam(id, tam, el) {
@@ -978,6 +1087,13 @@
 
     if (!cor)     { showToast('Por favor, escolha a cor desejada.'); return; }
     if (!tamanho) { showToast('Por favor, selecione o seu tamanho.'); return; }
+
+    // Verificar stock
+    const stockDisponivel = getStock(p.id, cor, tamanho);
+    if (stockDisponivel !== null && stockDisponivel <= 0) {
+      showToast('Esta variante está esgotada. Escolha outra cor ou tamanho.');
+      return;
+    }
 
     // Pixel: ViewContent — cliente mostrou interesse real no produto
     fbq('track', 'ViewContent', {
@@ -1248,8 +1364,289 @@
   }
 
   // ════════════════════════════════════════
-  // [DRAWER MENU]
+  // [GALERIA] — Feed estilo Facebook
   // ════════════════════════════════════════
+  async function carregarGaleria() {
+    const feed = document.getElementById('galeria-feed');
+    const [data, cfg] = await Promise.all([
+      fetch(`${SB_URL}/rest/v1/galeria?activo=eq.true&order=criado_em.desc&select=*`, {
+        headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+      }).then(r => r.json()).catch(() => []),
+      fetch(`${SB_URL}/rest/v1/configuracoes?chave=eq.logo_galeria&select=valor`, {
+        headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+      }).then(r => r.json()).catch(() => [])
+    ]);
+    if (cfg && cfg[0] && cfg[0].valor) LOGO_GALERIA_URL = cfg[0].valor;
+
+    if (!data || data.length === 0) {
+      feed.innerHTML = '<div class="galeria-vazio">Sem publicações ainda.</div>';
+      return;
+    }
+
+    feed.innerHTML = data.map(p => `
+      <div class="galeria-post">
+        <div class="galeria-post-header">
+          <div class="galeria-post-avatar">
+            ${LOGO_GALERIA_URL ? `<img src="${LOGO_GALERIA_URL}" alt="Royalty Maculuve" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.parentElement.innerHTML='<svg viewBox=\\'0 0 24 24\\'><path d=\\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z\\'/><path d=\\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\\'/></svg>'">` : `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>`}
+          </div>
+          <div class="galeria-post-info">
+            <div class="galeria-post-nome">Royalty Maculuve</div>
+            <div class="galeria-post-data">${formatarDataGaleria(p.criado_em)}</div>
+          </div>
+        </div>
+        <img class="galeria-post-img" src="${p.imagem_url}" alt="Royalty" loading="lazy"/>
+        ${p.descricao ? `<div class="galeria-post-desc"><strong>royalty.maculuve</strong> ${p.descricao}</div>` : ''}
+      </div>
+    `).join('');
+  }
+
+  function formatarDataGaleria(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    const agora = new Date();
+    const diff = Math.floor((agora - d) / 1000);
+    if (diff < 60) return 'Agora mesmo';
+    if (diff < 3600) return `${Math.floor(diff/60)} min`;
+    if (diff < 86400) return `${Math.floor(diff/3600)}h`;
+    if (diff < 604800) return `${Math.floor(diff/86400)}d`;
+    return d.toLocaleDateString('pt-PT');
+  }
+
+  // ════════════════════════════════════════
+  // [STOCK] — Verificar stock ao renderizar
+  // ════════════════════════════════════════
+  let stockDados = {};
+
+  async function carregarStock() {
+    const data = await fetch(`${SB_URL}/rest/v1/stock?select=*`, {
+      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+    }).then(r => r.json()).catch(() => []);
+
+    stockDados = {};
+    (data || []).forEach(s => {
+      const key = `${s.produto_id}_${s.cor}_${s.tamanho}`;
+      stockDados[key] = s.quantidade;
+    });
+  }
+
+  function getStock(produtoId, cor, tamanho) {
+    const key = `${produtoId}_${cor}_${tamanho}`;
+    return stockDados[key] !== undefined ? stockDados[key] : null;
+  }
+
+  function temStockPorCor(produtoId, corNome, tamanhos) {
+    return tamanhos.some(t => {
+      const s = getStock(produtoId, corNome, t);
+      return s === null || s > 0;
+    });
+  }
+
+  function temStockPorTamanho(produtoId, corNome, tamanho) {
+    const s = getStock(produtoId, corNome, tamanho);
+    return s === null || s > 0;
+  }
+
+  function produtoEsgotado(p) {
+    if (Object.keys(stockDados).length === 0) return false;
+    return p.cores.every(c =>
+      p.tamanhos.every(t => {
+        const s = getStock(p.id, c.nome, t);
+        return s !== null && s <= 0;
+      })
+    );
+  }
+  let avaliacoesPorProduto = {};
+
+  function renderEstrelas(nota) {
+    const cheia = Math.round(nota);
+    return '★'.repeat(cheia) + '☆'.repeat(5 - cheia);
+  }
+
+  async function carregarAvaliacoes() {
+    const data = await fetch(`${SB_URL}/rest/v1/avaliacoes?aprovada=eq.true&select=*&order=criado_em.desc`, {
+      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+    }).then(r => r.json()).catch(() => []);
+
+    if (!data || data.length === 0) return;
+
+    // Agrupar por produto e calcular média
+    const agrupadas = {};
+    data.forEach(a => {
+      if (!agrupadas[a.produto_id]) {
+        agrupadas[a.produto_id] = { nome: a.produto_nome, avaliacoes: [], total: 0, soma: 0 };
+      }
+      agrupadas[a.produto_id].avaliacoes.push(a);
+      agrupadas[a.produto_id].soma += a.estrelas;
+      agrupadas[a.produto_id].total++;
+    });
+
+    Object.keys(agrupadas).forEach(id => {
+      agrupadas[id].media = agrupadas[id].soma / agrupadas[id].total;
+    });
+
+    avaliacoesPorProduto = agrupadas;
+
+    // Renderizar secção de avaliações abaixo dos produtos
+    const grid = document.getElementById('aval-grid');
+    const sec = document.getElementById('avaliacoes');
+    if (!grid || !sec) return;
+
+    grid.innerHTML = Object.entries(agrupadas).map(([id, grupo]) => `
+      <div class="aval-produto-blk">
+        <div class="aval-produto-header">
+          <div class="aval-produto-nome">${grupo.nome}</div>
+          <div class="aval-media">
+            <span class="aval-estrelas-media">${renderEstrelas(grupo.media)}</span>
+            <span class="aval-nota">${grupo.media.toFixed(1)}</span>
+            <span class="aval-total">(${grupo.total} aval.)</span>
+          </div>
+        </div>
+        <div class="aval-lista">
+          ${grupo.avaliacoes.map(a => `
+            <div class="aval-item">
+              <div class="aval-item-top">
+                <span class="aval-item-nome">${a.cliente_nome}</span>
+                <span class="aval-item-data">${new Date(a.criado_em).toLocaleDateString('pt-PT')}</span>
+              </div>
+              <div class="aval-item-estrelas">${renderEstrelas(a.estrelas)} ${a.estrelas}/5</div>
+              ${a.comentario ? `<div class="aval-item-comentario">"${a.comentario}"</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+
+    sec.style.display = 'block';
+  }
+
+  // Página de avaliação (quando cliente abre link ?avaliar=ID)
+  function verificarLinkAvaliacao() {
+    const params = new URLSearchParams(window.location.search);
+    const produtoId = params.get('avaliar');
+    if (!produtoId) return false;
+
+    // Buscar nome do produto do Supabase
+    fetch(`${SB_URL}/rest/v1/produtos?id=eq.${produtoId}&select=id,nome`, {
+      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+    })
+    .then(r => r.json())
+    .then(data => {
+      const nomeProduto = (data && data[0]) ? data[0].nome : 'Produto';
+      mostrarFormAvaliacao(produtoId, nomeProduto);
+    })
+    .catch(() => mostrarFormAvaliacao(produtoId, 'Produto'));
+
+    return true;
+  }
+
+  function mostrarFormAvaliacao(produtoId, nomeProduto) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-loja').classList.add('active');
+
+    const overlay = document.createElement('div');
+    overlay.id = 'aval-overlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:600;display:flex;align-items:center;justify-content:center;padding:20px;';
+    overlay.innerHTML = `
+      <div style="background:#fff;border-radius:8px;padding:32px;width:100%;max-width:400px;font-family:Montserrat,sans-serif;">
+        <div style="text-align:center;margin-bottom:24px;">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.2em;color:#c8a060;text-transform:uppercase;margin-bottom:8px;">ROYALTY</div>
+          <div style="font-size:1.1rem;font-weight:800;color:#142D29;">Como foi a sua experiência?</div>
+          <div style="font-size:0.78rem;color:#5a7570;margin-top:6px;font-weight:600;">${nomeProduto}</div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5a7570;margin-bottom:6px;">O seu nome *</div>
+          <input id="aval-nome" style="width:100%;padding:10px;border:1px solid #ccddd9;border-radius:3px;font-family:Montserrat,sans-serif;font-size:0.82rem;outline:none;" placeholder="Ex: João Silva">
+        </div>
+        <div style="margin-bottom:16px;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5a7570;margin-bottom:8px;">Avaliação *</div>
+          <div id="aval-estrelas-input" style="display:flex;gap:8px;">
+            ${[1,2,3,4,5].map(n=>`<span onclick="selecionarEstrela(${n})" style="font-size:2rem;cursor:pointer;color:#ccc;transition:color 0.2s;" data-star="${n}">★</span>`).join('')}
+          </div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5a7570;margin-bottom:6px;">Comentário (opcional)</div>
+          <textarea id="aval-comentario" style="width:100%;padding:10px;border:1px solid #ccddd9;border-radius:3px;font-family:Montserrat,sans-serif;font-size:0.82rem;height:80px;resize:none;outline:none;" placeholder="Partilha a tua experiência..."></textarea>
+        </div>
+        <button onclick="enviarAvaliacao(${produtoId},'${nomeProduto}')" style="width:100%;padding:14px;background:#142D29;color:#fff;border:none;border-radius:3px;font-family:Montserrat,sans-serif;font-size:0.82rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;">Enviar Avaliação</button>
+        <div id="aval-msg" style="text-align:center;margin-top:12px;font-size:0.78rem;font-weight:600;"></div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+  }
+
+  let estrelaSelecionada = 0;
+
+  function selecionarEstrela(n) {
+    estrelaSelecionada = n;
+    document.querySelectorAll('#aval-estrelas-input span').forEach((s, i) => {
+      s.style.color = i < n ? '#c8a060' : '#ccc';
+    });
+  }
+
+  async function enviarAvaliacao(produtoId, nomeProduto) {
+    const nome = document.getElementById('aval-nome').value.trim();
+    const comentario = document.getElementById('aval-comentario').value.trim();
+    const msg = document.getElementById('aval-msg');
+
+    if (!nome) { msg.style.color='#c0392b'; msg.textContent='Por favor introduza o seu nome.'; return; }
+    if (!estrelaSelecionada) { msg.style.color='#c0392b'; msg.textContent='Por favor seleccione uma avaliação.'; return; }
+
+    msg.style.color='#5a7570'; msg.textContent='A enviar...';
+
+    await fetch(`${SB_URL}/rest/v1/avaliacoes`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Prefer': 'return=minimal' },
+      body: JSON.stringify({
+        produto_id: parseInt(produtoId),
+        produto_nome: nomeProduto || 'Produto',
+        cliente_nome: nome,
+        estrelas: estrelaSelecionada,
+        comentario: comentario || null,
+        aprovada: false
+      })
+    }).catch(() => {});
+
+    msg.style.color='#2e7d32';
+    msg.textContent='✅ Obrigado pela sua avaliação!';
+    setTimeout(() => {
+      const overlay = document.getElementById('aval-overlay');
+      if (overlay) document.body.removeChild(overlay);
+    }, 2000);
+  }
+  function partilharProduto(id, nome) {
+    const url = `${window.location.origin}${window.location.pathname}?produto=${id}`;
+    if (navigator.share) {
+      navigator.share({
+        title: `Royalty — ${nome}`,
+        text: `Confere este produto da Royalty: ${nome}`,
+        url: url
+      }).catch(function(){});
+    } else {
+      navigator.clipboard.writeText(url).then(function() {
+        showToast('Link copiado! Partilha com quem quiseres 😊');
+      }).catch(function() {
+        showToast('Link: ' + url);
+      });
+    }
+  }
+
+  function verificarLinkProduto() {
+    const params = new URLSearchParams(window.location.search);
+    const produtoId = params.get('produto');
+    if (!produtoId) return;
+    // Aguardar produtos carregarem e fazer scroll
+    const tentarScroll = function() {
+      const card = document.querySelector(`[data-produto-id="${produtoId}"]`);
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.boxShadow = '0 0 0 3px var(--gold)';
+        setTimeout(() => card.style.boxShadow = '', 3000);
+      } else {
+        setTimeout(tentarScroll, 300);
+      }
+    };
+    setTimeout(tentarScroll, 800);
+  }
   function abrirDrawer() {
     document.getElementById('drawer-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1295,10 +1692,10 @@
   function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
-    // Actualizar drawer links
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     const dl = document.getElementById('dl-' + page);
     if (dl) dl.classList.add('active');
+    if (page === 'galeria') carregarGaleria();
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
