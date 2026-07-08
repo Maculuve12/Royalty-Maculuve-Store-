@@ -407,7 +407,11 @@
       <div class="form-card" id="form-galeria" style="display:none;">
         <div class="form-titulo" id="form-gal-titulo">📸 Adicionar Publicação</div>
         <div class="form-grid">
-          <div class="form-grupo full"><label class="form-label">Link da Imagem *</label><input class="form-input" id="fg-url" placeholder="https://i.ibb.co/..."></div>
+          <div class="form-grupo full"><label class="form-label">Links das Imagens (um por linha) *</label><textarea class="form-input" id="fg-imgs" rows="4" placeholder="https://i.ibb.co/...&#10;https://i.ibb.co/..." oninput="atualizarPreviewGaleria()"></textarea></div>
+          <div class="form-grupo full" id="fg-preview-wrap" style="display:none;">
+            <label class="form-label">Pré-visualização (1ª imagem)</label>
+            <img id="fg-preview" src="" alt="Pré-visualização" style="max-width:180px;max-height:180px;border-radius:8px;border:1px solid #ddd;display:block;object-fit:cover;" onerror="this.style.display='none'" onload="this.style.display='block'">
+          </div>
           <div class="form-grupo full"><label class="form-label">Descrição</label><textarea class="form-input" id="fg-desc" rows="3" placeholder="Legenda da publicação..."></textarea></div>
         </div>
         <div class="form-acoes">
@@ -587,7 +591,7 @@
     const itens = (pedido.itens || []).map(i=>`• ${i.qtd}x ${i.nome} (${i.cor}, ${i.tamanho})`).join('\n');
     const primeiroProdutoId = (pedido.itens || [])[0]?.id;
     const linkAvaliacao = primeiroProdutoId
-      ? `https://maculuve12.github.io/Testes/?avaliar=${primeiroProdutoId}`
+      ? `https://maculuve12.github.io/Royalty-Maculuve-Store-/?avaliar=${primeiroProdutoId}`
       : '';
     const msg =
 `Olá ${nome}! 👋
@@ -721,7 +725,7 @@ _Inhambane, Moçambique_`;
       return true;
     });
 
-    const linkProduto = `https://maculuve12.github.io/Testes/?produto=${produto.id}`;
+    const linkProduto = `https://maculuve12.github.io/Royalty-Maculuve-Store-/?produto=${produto.id}`;
     const msg =
 `Olá! 👋
 
@@ -1047,10 +1051,10 @@ ${linkProduto}
     const data=await sbGet('galeria','order=criado_em.desc');
     const c=document.getElementById('galeria-admin-lista');
     if(!data.length){c.innerHTML='<div class="vazio">Sem publicações. Adiciona a primeira!</div>';return;}
-    c.innerHTML=data.map(g=>`<div class="produto-card ${!g.activo?'inactivo':''}">
-      <img class="produto-img" src="${g.imagem_url||''}" alt="Publicação" onerror="this.style.display='none'">
+    c.innerHTML=data.map(g=>{const imgs=(g.imagens&&g.imagens.length)?g.imagens:(g.imagem_url?[g.imagem_url]:[]);return `<div class="produto-card ${!g.activo?'inactivo':''}">
+      <img class="produto-img" src="${imgs[0]||''}" alt="Publicação" onerror="this.style.display='none'">
       <div class="produto-info">
-        <div class="produto-nome">${g.activo?'':'<span class=\"tag inactivo\">Inactivo</span> '}${new Date(g.criado_em).toLocaleDateString('pt-PT')}</div>
+        <div class="produto-nome">${g.activo?'':'<span class=\"tag inactivo\">Inactivo</span> '}${new Date(g.criado_em).toLocaleDateString('pt-PT')}${imgs.length>1?` <span class="tag">${imgs.length} fotos</span>`:''}</div>
         <div class="produto-meta">${g.descricao||'<em>Sem descrição</em>'}</div>
       </div>
       <div class="produto-acoes">
@@ -1058,27 +1062,37 @@ ${linkProduto}
         ${g.activo?`<button class="btn-sm cinza" onclick="toggleGaleria(${g.id},false)">Desactivar</button>`:`<button class="btn-sm activar" onclick="toggleGaleria(${g.id},true)">Activar</button>`}
         <button class="btn-sm vermelho" onclick="eliminarGaleria(${g.id})">Eliminar</button>
       </div>
-    </div>`).join('');
+    </div>`;}).join('');
   }
 
-  function abrirFormGaleria(){galEditandoId=null;document.getElementById('form-gal-titulo').textContent='📸 Adicionar Publicação';document.getElementById('fg-url').value='';document.getElementById('fg-desc').value='';document.getElementById('fg-msg').textContent='';document.getElementById('form-galeria').style.display='block';document.getElementById('form-galeria').scrollIntoView({behavior:'smooth'});}
+  function abrirFormGaleria(){galEditandoId=null;document.getElementById('form-gal-titulo').textContent='📸 Adicionar Publicação';document.getElementById('fg-imgs').value='';document.getElementById('fg-desc').value='';document.getElementById('fg-msg').textContent='';atualizarPreviewGaleria();document.getElementById('form-galeria').style.display='block';document.getElementById('form-galeria').scrollIntoView({behavior:'smooth'});}
 
   async function editarGaleria(id){
     const data=await sbGet('galeria',`id=eq.${id}`);if(!data.length)return;const g=data[0];galEditandoId=id;
     document.getElementById('form-gal-titulo').textContent='✏️ Editar Publicação';
-    document.getElementById('fg-url').value=g.imagem_url||'';document.getElementById('fg-desc').value=g.descricao||'';
+    const imgs=(g.imagens&&g.imagens.length)?g.imagens:(g.imagem_url?[g.imagem_url]:[]);
+    document.getElementById('fg-imgs').value=imgs.join('\n');document.getElementById('fg-desc').value=g.descricao||'';
     document.getElementById('fg-msg').textContent='';
+    atualizarPreviewGaleria();
     document.getElementById('form-galeria').style.display='block';document.getElementById('form-galeria').scrollIntoView({behavior:'smooth'});
   }
 
   function fecharFormGaleria(){document.getElementById('form-galeria').style.display='none';galEditandoId=null;}
 
+  function atualizarPreviewGaleria(){
+    const linhas=document.getElementById('fg-imgs').value.trim();
+    const primeira=linhas?linhas.split('\n').map(l=>l.trim()).filter(Boolean)[0]:null;
+    const wrap=document.getElementById('fg-preview-wrap');const img=document.getElementById('fg-preview');
+    if(primeira){img.src=primeira;wrap.style.display='block';}else{img.src='';wrap.style.display='none';}
+  }
+
   async function guardarGaleria(){
-    const url=document.getElementById('fg-url').value.trim();
+    const imgsRaw=document.getElementById('fg-imgs').value.trim();
+    const imagens=imgsRaw?imgsRaw.split('\n').map(l=>l.trim()).filter(Boolean):[];
     const desc=document.getElementById('fg-desc').value.trim();
     const msgEl=document.getElementById('fg-msg');
-    if(!url){msgEl.className='msg-err';msgEl.textContent='Link da imagem é obrigatório.';return;}
-    const dados={imagem_url:url,descricao:desc||null};
+    if(!imagens.length){msgEl.className='msg-err';msgEl.textContent='Pelo menos um link de imagem é obrigatório.';return;}
+    const dados={imagens,imagem_url:imagens[0],descricao:desc||null};
     msgEl.className='';msgEl.textContent='A guardar...';
     const ok=galEditandoId?await sbPatch('galeria',`id=eq.${galEditandoId}`,dados):await sbPost('galeria',{...dados,activo:true});
     if(ok){msgEl.className='msg-ok';msgEl.textContent=galEditandoId?'✅ Actualizado!':'✅ Publicado!';registrarLog(galEditandoId?'Editar publicação':'Criar publicação','Galeria');setTimeout(()=>{fecharFormGaleria();carregarGaleriaAdmin();},1200);}
