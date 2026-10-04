@@ -1,0 +1,2867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loja | Royalty</title>
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+<meta property="og:title" content="Royalty | Beyond Trends">
+<meta property="og:description" content="Camisetas exclusivas com estilo premium em Moçambique">
+<meta property="og:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://royaltymaculuvestore.xo.je/loja.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Royalty | Beyond Trends">
+<meta name="twitter:description" content="Camisetas exclusivas com estilo premium em Moçambique">
+<meta name="twitter:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+<link rel="image_src" href="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+
+<!-- SEO -->
+<meta name="description" content="Camisetas exclusivas com estilo premium em Moçambique">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2652622554947365');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
+/></noscript>
+<style>
+  :root{
+    --white:#FFFFFF;
+    --green:#142D29;
+    --gold:#C8A060;
+    --border:#E4E4E4;
+    --placeholder-bg:#FAFAFA;
+    /* tons de apoio, para suavizar e variar sem sair da identidade */
+    --green-mid:#2A5049;
+    --green-soft:#3D7068;
+    --teal-muted:#5A7570;
+    --sage:#CCDDD9;
+    --off-white:#F8FAF9;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background:var(--white);
+    color:var(--green);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* ===== HEADER ===== */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 5%;
+    border-bottom:1px solid var(--border);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  nav.main-nav ul{
+    display:flex;
+    list-style:none;
+    gap:28px;
+  }
+
+  nav.main-nav a{
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--green);
+    padding-bottom:4px;
+    border-bottom:2px solid transparent;
+  }
+
+  nav.main-nav a.active{
+    border-bottom-color:var(--gold);
+  }
+
+  .header-row2{
+    display:flex;
+    align-items:center;
+    gap:24px;
+  }
+
+  .logo{
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:var(--green);
+  }
+
+  .header-icons{
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+
+  .header-icons .icon{
+    width:20px;
+    height:20px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Desktop: keep original visual order (Buscar, Conta, Carrinho) by letting
+     the mobile-only grouping wrapper act as if its children were direct
+     flex items of .header-icons */
+  .icon-right-group{
+    display:contents;
+  }
+
+  .icon-search{order:1;}
+  .icon-account{order:2;}
+  .cart-count{order:3;}
+
+  @media (max-width:600px){
+    header{padding:16px 4%;gap:10px;}
+    nav.main-nav{width:100%;}
+    nav.main-nav ul{gap:20px;width:100%;justify-content:center;}
+    nav.main-nav a{font-size:7px;letter-spacing:0.2px;padding-bottom:5px;}
+    .header-row2{
+      position:relative;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo{
+      font-size:16px;
+      letter-spacing:2px;
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+    }
+    .header-icons{display:contents;}
+    .icon-account{order:1;}
+    .icon-right-group{display:flex;align-items:center;gap:14px;order:2;}
+  }
+
+  .cart-count{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    font-weight:700;
+  }
+
+  .cart-count .badge{
+    background:var(--gold);
+    color:var(--white);
+    font-size:10px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .2s ease;
+  }
+
+  /* ===== BANNER (kept intentionally empty - no copy per brief) ===== */
+  .banner{
+    width:100%;
+    aspect-ratio: 1296 / 544;
+    background:var(--placeholder-bg);
+    border:1px dashed var(--border);
+    border-left:none;
+    border-right:none;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .banner-track{
+    display:flex;
+    width:100%;
+    height:100%;
+    transition:transform .5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  .banner-slide{
+    min-width:100%;
+    height:100%;
+    flex-shrink:0;
+    cursor:default;
+  }
+
+  .banner-slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .banner-dots{
+    position:absolute;
+    bottom:14px;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:center;
+    gap:7px;
+    z-index:2;
+  }
+
+  .b-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.6);
+    cursor:pointer;
+    transition:all .25s;
+  }
+
+  .b-dot.active{
+    background:var(--gold);
+    transform:scale(1.25);
+  }
+
+  @media (max-width:700px){
+  }
+
+  /* ===== SHOP SECTION ===== */
+  .shop-section{
+    padding:60px 5% 40px;
+    max-width:1400px;
+    margin:0 auto;
+  }
+
+  .tabs{
+    display:flex;
+    justify-content:center;
+    gap:36px;
+    margin-bottom:44px;
+    border-bottom:1px solid var(--border);
+    padding-bottom:18px;
+    flex-wrap:wrap;
+  }
+
+  .tabs .tab{
+    font-size:13px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--teal-muted);
+    padding-bottom:16px;
+    position:relative;
+    cursor:pointer;
+  }
+
+  @media (max-width:600px){
+    .tabs{gap:12px;margin-bottom:32px;padding-bottom:12px;}
+    .tabs .tab{font-size:8px;letter-spacing:0.3px;padding-bottom:8px;}
+  }
+
+  .tabs .tab.active{
+    color:var(--green);
+  }
+
+  .tabs .tab.active::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    height:2px;
+    background:var(--gold);
+  }
+
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:22px 14px;
+  }
+
+  @media (max-width:1100px){
+    .product-grid{grid-template-columns:repeat(4, 1fr);}
+  }
+  @media (max-width:640px){
+    .product-grid{grid-template-columns:repeat(1, 1fr);}
+  }
+
+  .product-card{
+    text-align:left;
+    background:transparent;
+    border:none;
+    border-radius:0;
+    padding:0;
+    box-shadow:none;
+  }
+
+  .product-rating{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-bottom:6px;
+  }
+
+  .product-rating .stars{
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:1px;
+  }
+
+  .product-rating .rating-note{
+    font-size:10px;
+    color:#9a9a9a;
+  }
+
+  .product-options-panel{
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    margin-top:10px;
+    padding-top:10px;
+  }
+
+  .product-options-panel.open{
+    display:flex;
+  }
+
+  .btn-continuar{
+    margin-top:10px;
+    width:100%;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.3px;
+    text-transform:uppercase;
+    padding:12px 24px;
+    border-radius:0;
+    background:var(--gold);
+    color:var(--green);
+    border:1px solid var(--gold);
+    cursor:default;
+  }
+
+  .product-image{
+    position:relative;
+    width:100%;
+    aspect-ratio: 1 / 1;
+    background:var(--placeholder-bg);
+    border:none;
+    border-radius:0;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+
+  .product-tag{
+    position:absolute;
+    top:10px;
+    left:10px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:var(--white);
+    background:var(--green-mid);
+    padding:4px 8px;
+  }
+
+  .product-tag.gold{
+    background:var(--gold);
+  }
+
+  .product-tag.mais-vendido{
+    background:var(--gold);
+    color:var(--green);
+  }
+
+  .product-tag.esgotado{
+    background:#8c8c8c;
+  }
+
+  .product-card.esgotado .product-image{
+    opacity:0.5;
+  }
+
+  .product-actions button:disabled{
+    opacity:0.4;
+    cursor:not-allowed;
+  }
+
+  .product-name{
+    font-size:14px;
+    font-weight:600;
+    color:var(--green);
+    margin-bottom:6px;
+  }
+
+  .product-desc{
+    font-size:10.5px;
+    line-height:1.4;
+    color:var(--teal-muted);
+    margin-bottom:6px;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    cursor:pointer;
+  }
+
+  .product-desc.expanded{
+    display:block;
+    -webkit-line-clamp:unset;
+    overflow:visible;
+  }
+
+  .product-price{
+    font-size:14px;
+    color:var(--gold);
+    font-weight:700;
+  }
+
+  .product-price-wrap{
+    display:flex;
+    align-items:baseline;
+    justify-content:flex-start;
+    gap:6px;
+  }
+
+  .product-price-original{
+    font-size:12px;
+    color:#9a9a9a;
+    text-decoration:line-through;
+  }
+
+  .product-actions{
+    display:flex;
+    justify-content:flex-start;
+    margin-top:10px;
+  }
+
+  .product-actions button{
+    flex:1;
+    width:100%;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.3px;
+    text-transform:uppercase;
+    padding:12px 20px;
+    border-radius:0;
+    cursor:default;
+  }
+
+  .btn-add-cart{
+    background:var(--green);
+    color:var(--white);
+    border:1px solid var(--green);
+  }
+
+  .load-more-wrap{
+    display:flex;
+    justify-content:center;
+    margin-top:48px;
+  }
+
+  .load-more{
+    background:var(--green);
+    color:var(--white);
+    border:none;
+    padding:16px 44px;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:700;
+    cursor:default;
+  }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter{
+    background:var(--green);
+    color:var(--white);
+    text-align:center;
+    padding:70px 5%;
+    margin-top:60px;
+  }
+
+  .newsletter h2{
+    font-size:24px;
+    font-weight:400;
+    letter-spacing:1px;
+    margin-bottom:12px;
+  }
+
+  .newsletter p{
+    font-size:13px;
+    color:#cfd8d6;
+    margin-bottom:30px;
+  }
+
+  .newsletter-form{
+    display:flex;
+    max-width:460px;
+    margin:0 auto;
+    border-bottom:1px solid rgba(255,255,255,0.4);
+    padding-bottom:14px;
+  }
+
+  .newsletter-form input{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:var(--white);
+    font-size:13px;
+  }
+
+  .newsletter-form input::placeholder{
+    color:#a9b8b5;
+  }
+
+  .newsletter-form button{
+    background:none;
+    border:none;
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  .newsletter-msg{
+    text-align:center;
+    font-size:12px;
+    font-weight:600;
+    margin-top:12px;
+    color:var(--gold);
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:32px 5% 24px;
+  }
+
+  .footer-top{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    margin-bottom:28px;
+  }
+
+  .footer-link{
+    font-size:12px;
+    color:var(--teal-muted);
+  }
+
+  .social-icons{
+    display:flex;
+    gap:10px;
+  }
+
+  .social-icon{
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    background:var(--green-mid);
+  }
+
+  .social-icon svg{
+    width:12px;
+    height:12px;
+  }
+
+  .copyright{
+    text-align:center;
+    font-size:12px;
+    color:var(--teal-muted);
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+
+  /* ===== PRODUTOS REAIS (imagem, cor, tamanho) ===== */
+  .product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    flex-shrink:0;
+  }
+
+  .slider-track{
+    display:flex;
+    width:100%;
+    height:100%;
+    transition:transform .3s ease;
+  }
+
+  .slider-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.85);
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    line-height:1;
+    color:var(--green);
+    cursor:pointer;
+    padding:0;
+    z-index:2;
+  }
+
+  .slider-arrow.prev{left:6px;}
+  .slider-arrow.next{right:6px;}
+
+  .slider-dots{
+    position:absolute;
+    bottom:8px;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:center;
+    gap:4px;
+    z-index:2;
+  }
+
+  .slider-dot{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.75);
+  }
+
+  .slider-dot.active{
+    background:var(--gold);
+  }
+
+  .product-image.has-img{
+    border:none;
+    background:none;
+  }
+
+  .product-options{
+    margin:8px 0 2px;
+  }
+
+  .color-row{
+    display:flex;
+    gap:8px;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+
+  .escolha-hint{
+    background:none;
+    color:var(--green);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.3px;
+    text-transform:uppercase;
+    text-align:left;
+    margin-bottom:10px;
+    width:100%;
+  }
+
+  .color-dot{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    cursor:pointer;
+    padding:0;
+  }
+
+  .color-dot.selected{
+    outline:2px solid var(--gold);
+    outline-offset:2px;
+  }
+
+  .color-dot:disabled{
+    opacity:0.25;
+    cursor:not-allowed;
+  }
+
+  .size-row{
+    display:flex;
+    gap:5px;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+  }
+
+  .size-btn{
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--green);
+    background:var(--white);
+    color:var(--green);
+    border-radius:0;
+    cursor:pointer;
+  }
+
+  .size-btn.selected{
+    background:var(--green);
+    color:var(--white);
+  }
+
+  .size-btn:disabled{
+    opacity:0.25;
+    cursor:not-allowed;
+  }
+
+  .product-empty-msg{
+    grid-column:1/-1;
+    text-align:center;
+    color:#8c8c8c;
+    font-size:13px;
+    padding:40px 0;
+  }
+
+  /* ===== BANNER COM IMAGEM REAL ===== */
+  .banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  /* ===== PESQUISA ===== */
+  .search-overlay{
+    position:fixed;
+    top:0;left:0;right:0;
+    background:var(--white);
+    display:none;
+    align-items:center;
+    gap:12px;
+    padding:16px 5%;
+    z-index:600;
+    border-bottom:1px solid var(--border);
+  }
+
+  .search-overlay.open{display:flex;}
+
+  .search-input{
+    flex:1;
+    border:none;
+    outline:none;
+    font-size:14px;
+    color:var(--green);
+  }
+
+  .search-close{
+    background:none;
+    border:none;
+    font-size:22px;
+    line-height:1;
+    cursor:pointer;
+    color:var(--green);
+  }
+
+  /* ===== CARRINHO (drawer) ===== */
+  .cart-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,45,41,0.5);
+    display:none;
+    z-index:800;
+  }
+
+  .cart-overlay.open{display:block;}
+
+  .cart-drawer{
+    position:fixed;
+    top:0;right:0;
+    width:380px;
+    max-width:90vw;
+    height:100%;
+    background:var(--white);
+    display:flex;
+    flex-direction:column;
+    transform:translateX(100%);
+    transition:transform .3s ease;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .cart-overlay.open .cart-drawer{transform:translateX(0);}
+
+  @media (max-width:600px){
+    .cart-drawer{width:100vw;max-width:100vw;}
+  }
+
+  .cart-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    background:var(--white);
+    z-index:2;
+    flex-shrink:0;
+  }
+
+  .cart-header h3{
+    font-size:16px;
+    color:var(--green);
+    font-weight:700;
+  }
+
+  .cart-close{
+    background:none;
+    border:none;
+    font-size:26px;
+    line-height:1;
+    cursor:pointer;
+    color:var(--green);
+  }
+
+  .cart-body{
+    padding:12px 20px;
+  }
+
+  .cart-empty{
+    text-align:center;
+    color:#8c8c8c;
+    font-size:13px;
+    padding:50px 10px;
+  }
+
+  .cart-item-row{
+    display:flex;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+  }
+
+  .cart-item-img{
+    width:56px;
+    height:56px;
+    object-fit:cover;
+    background:var(--placeholder-bg);
+    flex-shrink:0;
+  }
+
+  .cart-item-details{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    font-size:12px;
+  }
+
+  .cart-item-title{font-weight:600;color:var(--green);}
+  .cart-item-meta{color:#8c8c8c;font-size:11px;}
+  .cart-item-price{color:var(--gold);font-weight:700;}
+
+  .cart-qty-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:4px;
+  }
+
+  .cart-qty-btn{
+    width:20px;height:20px;
+    border:1px solid var(--green);
+    background:var(--white);
+    color:var(--green);
+    border-radius:50%;
+    font-size:12px;
+    line-height:1;
+    cursor:pointer;
+  }
+
+  .cart-item-remove{
+    align-self:flex-start;
+    background:none;
+    border:none;
+    color:#b04a4a;
+    font-size:10px;
+    text-decoration:underline;
+    cursor:pointer;
+  }
+
+  .cart-footer{
+    padding:16px 20px 20px;
+    border-top:1px solid var(--border);
+  }
+
+  .cupao-wrap{
+    display:flex;
+    gap:8px;
+    margin-bottom:8px;
+  }
+
+  .cupao-input{
+    flex:1;
+    border:1px solid var(--border);
+    padding:8px 10px;
+    font-size:12px;
+  }
+
+  .cupao-btn{
+    background:var(--green);
+    color:var(--white);
+    border:none;
+    padding:8px 14px;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    cursor:pointer;
+  }
+
+  .cupao-msg{font-size:11px;margin-bottom:8px;}
+  .msg-erro{font-size:11px;margin-bottom:8px;color:#B3261E;}
+  .msg-ok{font-size:11px;margin-bottom:8px;color:var(--green);}
+
+  .perfil-linha{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:8px 0;
+    border-bottom:1px solid var(--border);
+    font-size:12.5px;
+  }
+  .perfil-linha .perfil-label{
+    color:var(--teal-muted);
+    font-weight:600;
+  }
+  .perfil-linha span:last-child{
+    color:var(--green);
+    font-weight:600;
+    text-align:right;
+  }
+  .cupao-msg.ok{color:var(--green);}
+  .cupao-msg.err{color:#b04a4a;}
+
+  .cart-desconto-row{
+    display:flex;
+    justify-content:space-between;
+    color:var(--gold);
+    font-size:12px;
+    margin-bottom:6px;
+  }
+
+  .cart-total-row{
+    display:flex;
+    justify-content:space-between;
+    font-weight:700;
+    color:var(--green);
+    font-size:14px;
+    margin:10px 0 16px;
+  }
+
+  .cart-checkout-btn{
+    width:100%;
+    background:var(--green);
+    color:var(--white);
+    border:none;
+    padding:14px;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-weight:700;
+    border-radius:20px;
+    cursor:pointer;
+  }
+
+  .btn-continuar-comprar{
+    width:100%;
+    background:var(--white);
+    color:var(--green);
+    border:1px solid var(--green);
+    padding:12px;
+    font-size:11px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    font-weight:700;
+    border-radius:20px;
+    cursor:pointer;
+    margin-bottom:10px;
+  }
+
+  .form-group{margin-bottom:10px;}
+  .form-label{
+    display:block;
+    font-size:11px;
+    margin-bottom:4px;
+    color:var(--green);
+    font-weight:600;
+  }
+  .form-input{
+    width:100%;
+    border:1px solid var(--border);
+    padding:9px 10px;
+    font-size:12px;
+    font-family:inherit;
+  }
+
+  /* ===== Cartão de Conta (login/registo) ===== */
+  .conta-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    box-shadow:0 8px 28px rgba(20,45,41,0.08);
+    padding:32px 22px 26px;
+    text-align:center;
+  }
+
+  .conta-logo-mark{
+    width:64px;height:64px;
+    margin:0 auto 10px;
+    border-radius:50%;
+    border:1px dashed var(--border);
+    background-color:var(--off-white);
+    background-size:cover;
+    background-position:center;
+  }
+
+  .conta-marca{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:4px;
+    color:var(--green);
+    margin-bottom:18px;
+  }
+
+  .conta-saudacao{
+    font-size:17px;
+    font-weight:700;
+    color:var(--green);
+    margin-bottom:22px;
+  }
+
+  .conta-card .form-group{ text-align:left; }
+
+  .conta-input{
+    border:1px solid var(--border);
+    padding:11px 12px;
+    border-radius:8px;
+    background:var(--off-white);
+  }
+
+  .conta-input:focus{
+    outline:none;
+    border-color:var(--gold);
+  }
+
+  .conta-btn-principal{
+    width:100%;
+    background:linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
+    color:var(--white);
+    border:none;
+    padding:14px;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-weight:700;
+    border-radius:24px;
+    cursor:pointer;
+    box-shadow:0 6px 16px rgba(20,45,41,0.25);
+  }
+
+  /* ===== TOAST ===== */
+  .toast{
+    position:fixed;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--green);
+    color:var(--white);
+    padding:12px 22px;
+    border-radius:20px;
+    font-size:12px;
+    opacity:0;
+    pointer-events:none;
+    transition:all .3s ease;
+    z-index:900;
+    text-align:center;
+    max-width:90vw;
+  }
+
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+
+  /* ===== AVALIAÇÕES ===== */
+  .aval-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,45,41,0.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:950;
+  }
+
+  .aval-modal{
+    background:var(--white);
+    border-radius:14px;
+    padding:28px 24px;
+    width:100%;
+    max-width:380px;
+  }
+
+  .aval-modal-eyebrow{
+    text-align:center;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+
+  .aval-modal-title{
+    text-align:center;
+    font-size:16px;
+    font-weight:700;
+    color:var(--green);
+  }
+
+  .aval-modal-produto{
+    text-align:center;
+    font-size:11px;
+    color:var(--teal-muted);
+    font-weight:600;
+    margin-bottom:18px;
+  }
+
+  .aval-estrelas-input{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+  }
+
+  .aval-estrelas-input span{
+    font-size:28px;
+    line-height:1;
+    color:#d8d8d8;
+    cursor:pointer;
+  }
+
+  .aval-estrelas-input span.active{
+    color:var(--gold);
+  }
+
+  .aval-msg{
+    text-align:center;
+    font-size:11px;
+    font-weight:600;
+    margin-top:10px;
+    color:var(--teal-muted);
+  }
+
+  .aval-msg.ok{ color:var(--green-mid); }
+  .aval-msg.err{ color:#b04a4a; }
+
+  .avaliacoes-section{
+    display:none;
+    max-width:900px;
+    margin:0 auto;
+    padding:0 5% 70px;
+  }
+
+  .avaliacoes-section h2{
+    text-align:center;
+    font-size:20px;
+    font-weight:400;
+    margin-bottom:32px;
+  }
+
+  .avaliacoes-grid{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .aval-produto-blk{
+    background:var(--off-white);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px 20px;
+  }
+
+  .aval-produto-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:12px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--border);
+  }
+
+  .aval-produto-nome{
+    font-size:13px;
+    font-weight:700;
+    color:var(--green);
+  }
+
+  .aval-media{
+    font-size:11px;
+    font-weight:600;
+    color:var(--teal-muted);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  .aval-media .stars{
+    color:var(--gold);
+    font-size:13px;
+  }
+
+  .aval-lista{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .aval-item-top{
+    display:flex;
+    justify-content:space-between;
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--green);
+  }
+
+  .aval-item-data{
+    font-weight:400;
+    color:var(--teal-muted);
+  }
+
+  .aval-item-estrelas{
+    color:var(--gold);
+    font-size:11px;
+    margin:2px 0;
+  }
+
+  .aval-item-comentario{
+    font-size:11.5px;
+    font-style:italic;
+    color:var(--teal-muted);
+  }
+
+</style>
+</head>
+<body data-page="loja">
+
+<header>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html" data-page="inicio">Início</a></li>
+      <li><a href="loja.html" data-page="loja">Loja</a></li>
+      <li><a href="colecoes.html" data-page="colecoes">Coleções</a></li>
+      <li><a href="blog.html" data-page="blog">Blog</a></li>
+      <li><a href="sobrenos.html" data-page="sobrenos">Sobre Nós</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-row2">
+  <div class="logo">ROYALTY</div>
+
+  <div class="header-icons">
+    <span class="icon icon-account" title="Conta" onclick="toggleConta(true)" id="icon-account" style="cursor:pointer;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
+      </svg>
+    </span>
+    <div class="icon-right-group">
+      <span class="icon icon-search" title="Buscar" onclick="abrirPesquisa()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span>
+      <span class="cart-count" onclick="toggleCart(true)" style="cursor:pointer;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
+          <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"></path>
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="18" cy="21" r="1"></circle>
+        </svg>
+        <span class="badge" id="cart-badge">0</span>
+      </span>
+    </div>
+  </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="search-overlay">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  <input class="search-input" id="search-input" placeholder="Pesquisar produtos..." oninput="pesquisarProdutos(this.value)">
+  <button class="search-close" onclick="fecharPesquisa()">&times;</button>
+</div>
+
+<!-- BANNER: fica vazio até haver banners activos no Supabase -->
+<div class="banner" id="banner-box"></div>
+
+<!-- CATEGORIAS: círculos vindos do ADM -->
+<div class="categorias-row" id="categorias-row"></div>
+
+<section class="shop-section">
+  <div class="tabs">
+    <div class="tab active" data-aba="todos" onclick="mudarAba('todos', this)">Todos os Produtos</div>
+    <div class="tab" data-aba="mais-vendidos" onclick="mudarAba('mais-vendidos', this)">Mais Vendidos</div>
+    <div class="tab" data-aba="novidades" onclick="mudarAba('novidades', this)">Novidades</div>
+    <div class="tab" data-aba="promocoes" onclick="mudarAba('promocoes', this)">Promoções</div>
+  </div>
+
+  <div class="product-grid" id="grid-produtos">
+    <p class="product-empty-msg">A carregar produtos...</p>
+  </div>
+
+  <div class="load-more-wrap" id="load-more-wrap">
+    <button class="load-more">Carregar Mais</button>
+  </div>
+</section>
+
+<div class="avaliacoes-section" id="avaliacoes-section">
+  <h2>Avaliações dos Clientes</h2>
+  <div class="avaliacoes-grid" id="avaliacoes-grid"></div>
+</div>
+
+<div class="newsletter">
+  <h2>Newsletter</h2>
+  <p>Receba atualizações dos seus produtos favoritos</p>
+  <form class="newsletter-form" onsubmit="return inscreverNewsletter(event)">
+    <input type="email" id="newsletter-email" placeholder="Digite seu e-mail" required>
+    <button type="submit">Inscrever</button>
+  </form>
+  <div class="newsletter-msg" id="newsletter-msg"></div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <a href="contactos.html" class="footer-link">Contato</a>
+    <div class="social-icons">
+      <a href="https://wa.me/258879573018" target="_blank" rel="noopener" class="social-icon whatsapp" id="footer-whatsapp" aria-label="WhatsApp">
+        <svg viewBox="0 0 448 512" fill="#FFFFFF"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/royalty.maculuve?igsh=ZWE3eDNraWFlbzgz" target="_blank" rel="noopener" class="social-icon instagram" id="footer-instagram" aria-label="Instagram">
+        <svg viewBox="0 0 448 512" fill="#FFFFFF"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1JUc2ENeVd/" target="_blank" rel="noopener" class="social-icon facebook" id="footer-facebook" aria-label="Facebook">
+        <svg viewBox="0 0 320 512" fill="#FFFFFF"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@royalty.maculuve?_r=1&_t=ZS-97Su2oY4f93" target="_blank" rel="noopener" class="social-icon tiktok" id="footer-tiktok" aria-label="TikTok">
+        <svg viewBox="0 0 448 512" fill="#FFFFFF"><path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/></svg>
+      </a>
+      <a href="mailto:royaltyoficialstore@gmail.com" class="social-icon email" id="footer-email" aria-label="E-mail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 6l10 7 10-7"></path></svg>
+      </a>
+    </div>
+    <a href="#" class="footer-link">Perguntas Frequentes</a>
+    <a href="blog.html" class="footer-link">Blog</a>
+  </div>
+  <p class="copyright">©2026 Royalty</p>
+</footer>
+
+<div class="cart-overlay" id="cart-overlay" onclick="handleOverlayClick(event)">
+  <div class="cart-drawer">
+    <div class="cart-header">
+      <h3>Carrinho</h3>
+      <button class="cart-close" onclick="toggleCart(false)">&times;</button>
+    </div>
+
+    <div class="cart-body" id="cart-items-container"></div>
+
+    <div class="cart-footer">
+      <button class="btn-continuar-comprar" onclick="toggleCart(false)">Adicionar mais produtos</button>
+
+      <div class="cart-total-row">
+        <span>Subtotal:</span>
+        <span id="cart-total-value">0 MT</span>
+      </div>
+
+      <button class="cart-checkout-btn" id="btn-pagar" onclick="mostrarFormulario()" style="display:none;">Comprar</button>
+
+      <div id="cart-form-container" style="display:none; flex-direction:column; gap:0;">
+        <div id="cupao-section" style="display:none;">
+          <div class="form-label">Tens um cupão?</div>
+          <div class="cupao-wrap">
+            <input type="text" class="cupao-input" id="cupao-input" placeholder="Ex: RM07" maxlength="10">
+            <button class="cupao-btn" onclick="aplicarCupao()">Aplicar</button>
+          </div>
+          <div class="cupao-msg" id="cupao-msg"></div>
+        </div>
+
+        <div class="cart-desconto-row" id="cupao-desconto-row" style="display:none;">
+          <span>Cupão</span>
+          <span id="cupao-desconto-val">-0 MT</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client-name">Nome Completo *</label>
+          <input type="text" class="form-input" id="client-name" placeholder="Ex: João Silva">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="client-phone">Número de Celular *</label>
+          <input type="tel" class="form-input" id="client-phone" placeholder="Ex: 841234567">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="client-pais">País *</label>
+          <input type="text" class="form-input" id="client-pais" value="Moçambique">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="client-provincia">Província *</label>
+          <input type="text" class="form-input" id="client-provincia" placeholder="Ex: Inhambane">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="client-distrito">Distrito *</label>
+          <input type="text" class="form-input" id="client-distrito" placeholder="Ex: Zavala">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="client-bairro">Bairro *</label>
+          <input type="text" class="form-input" id="client-bairro" placeholder="Ex: Ndzili">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cart-order-notes">Observações</label>
+          <textarea class="form-input" id="cart-order-notes" style="height:54px; resize:none;" placeholder="Ex: Ligar antes de entregar..."></textarea>
+        </div>
+        <button class="cart-checkout-btn" onclick="checkoutCart()">Finalizar no WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="cart-overlay" id="conta-overlay" onclick="if(event.target===this)toggleConta(false)">
+  <div class="cart-drawer">
+    <div class="cart-header">
+      <h3 id="conta-titulo">A Minha Conta</h3>
+      <button class="cart-close" onclick="toggleConta(false)">&times;</button>
+    </div>
+
+    <div class="cart-body" id="conta-body" style="padding:20px;">
+
+      <!-- Logado -->
+      <div id="conta-logado" style="display:none;">
+        <p style="font-size:14px;color:var(--green);margin-bottom:18px;">Olá, <strong id="conta-nome-logado"></strong>!</p>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--teal-muted);">Os Meus Dados</div>
+          <span onclick="mostrarEdicaoPerfil(true)" style="font-size:11px;font-weight:700;color:var(--gold);cursor:pointer;">✏️ Editar</span>
+        </div>
+
+        <!-- Vista (dados guardados) -->
+        <div id="perfil-vista" style="border:1px solid var(--border);padding:14px;margin-bottom:20px;">
+          <div class="perfil-linha"><span class="perfil-label">Nome</span><span id="perfil-vista-nome"></span></div>
+          <div class="perfil-linha"><span class="perfil-label">Contacto</span><span id="perfil-vista-telefone"></span></div>
+          <div class="perfil-linha"><span class="perfil-label">País</span><span id="perfil-vista-pais"></span></div>
+          <div class="perfil-linha"><span class="perfil-label">Província</span><span id="perfil-vista-provincia"></span></div>
+          <div class="perfil-linha"><span class="perfil-label">Distrito</span><span id="perfil-vista-distrito"></span></div>
+          <div class="perfil-linha" style="border-bottom:none;"><span class="perfil-label">Bairro</span><span id="perfil-vista-bairro"></span></div>
+        </div>
+
+        <!-- Edição -->
+        <div id="perfil-edicao" style="display:none;">
+          <div class="form-group">
+            <label class="form-label">Nome Completo</label>
+            <input type="text" class="form-input" id="perfil-nome">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Número de Celular</label>
+            <input type="tel" class="form-input" id="perfil-telefone">
+          </div>
+          <div class="form-group">
+            <label class="form-label">País</label>
+            <input type="text" class="form-input" id="perfil-pais" value="Moçambique">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Província</label>
+            <input type="text" class="form-input" id="perfil-provincia" placeholder="Ex: Inhambane">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Distrito</label>
+            <input type="text" class="form-input" id="perfil-distrito" placeholder="Ex: Zavala">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bairro</label>
+            <input type="text" class="form-input" id="perfil-bairro" placeholder="Ex: Ndzili">
+          </div>
+          <div class="cupao-msg" id="perfil-msg" style="margin-bottom:10px;"></div>
+          <button class="btn-continuar-comprar" onclick="guardarDadosCliente()">Guardar Dados</button>
+        </div>
+
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--teal-muted);margin:26px 0 10px;">O Meu Carrinho</div>
+        <div id="carrinho-conta-lista">
+          <p style="font-size:12px;color:var(--teal-muted);">O teu carrinho está vazio.</p>
+        </div>
+
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--teal-muted);margin:26px 0 10px;">Os Meus Pedidos</div>
+        <div id="pedidos-cliente-lista">
+          <p style="font-size:12px;color:var(--teal-muted);">A carregar...</p>
+        </div>
+
+        <button class="cart-checkout-btn" style="margin-top:22px;" onclick="sairConta()">Sair da Conta</button>
+      </div>
+
+      <!-- Entrar -->
+      <div id="conta-form-entrar">
+        <div class="conta-card">
+          <div class="conta-logo-mark"></div>
+          <div class="conta-marca">ROYALTY</div>
+          <h4 class="conta-saudacao">Bem-vindo(a) de volta</h4>
+
+          <div class="form-group">
+            <label class="form-label">Endereço de Email</label>
+            <input type="email" class="form-input conta-input" id="entrar-email" placeholder="teu@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Palavra-passe</label>
+            <input type="password" class="form-input conta-input" id="entrar-senha" placeholder="••••••••">
+          </div>
+          <p style="text-align:right;margin:-4px 0 14px;">
+            <a href="#" onclick="recuperarPassword();return false;" style="font-size:11px;color:var(--teal-muted);">Esqueceste-te da password?</a>
+          </p>
+          <div class="cupao-msg" id="entrar-msg" style="margin-bottom:10px;"></div>
+          <button class="conta-btn-principal" onclick="entrarConta()">Entrar</button>
+          <p style="font-size:12px;text-align:center;margin-top:16px;color:var(--teal-muted);">
+            Ainda não és membro? <a href="#" onclick="mostrarFormConta('criar');return false;" style="color:var(--gold);font-weight:700;">Criar Conta</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Criar Conta -->
+      <div id="conta-form-criar" style="display:none;">
+        <div class="conta-card">
+          <div class="conta-logo-mark"></div>
+          <div class="conta-marca">ROYALTY</div>
+          <h4 class="conta-saudacao">Cria a Tua Conta</h4>
+
+          <div class="form-group">
+            <label class="form-label">Nome Completo</label>
+            <input type="text" class="form-input conta-input" id="criar-nome" placeholder="Ex: João Silva">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Endereço de Email</label>
+            <input type="email" class="form-input conta-input" id="criar-email" placeholder="teu@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Número de Celular</label>
+            <input type="tel" class="form-input conta-input" id="criar-telefone" placeholder="Ex: 841234567">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Palavra-passe</label>
+            <input type="password" class="form-input conta-input" id="criar-senha" placeholder="Mínimo 6 caracteres">
+          </div>
+          <div class="cupao-msg" id="criar-msg" style="margin-bottom:10px;"></div>
+          <button class="conta-btn-principal" onclick="criarConta()">Criar Conta</button>
+          <p style="font-size:12px;text-align:center;margin-top:16px;color:var(--teal-muted);">
+            Já és membro? <a href="#" onclick="mostrarFormConta('entrar');return false;" style="color:var(--gold);font-weight:700;">Entrar</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ════════════════════════════════════════
+  // [FUNÇÕES REAIS DA LOJA] — Adaptadas da loja.html
+  // oficial para o layout deste mockup. Mesma base
+  // de dados (Supabase), mesma lógica de carrinho,
+  // cupão e checkout via WhatsApp.
+  // ════════════════════════════════════════
+  let WA_NUMBER = '258879573018';
+  const SB_URL = 'https://zrcnwkrvfkykqnhwoklh.supabase.co';
+  const SB_KEY = 'sb_publishable_PX2HcOTmRmbHLDOT5YuKjg_KBNB6aZc';
+  const supa = window.supabase.createClient(SB_URL, SB_KEY);
+
+  let produtos = [];
+  const estados = {};
+  let carrinho = [];
+  let stockDados = {};
+  let avaliacoesPorProduto = {};
+  let maisCampradoId = null;
+  let vendasPorProduto = {};
+  let abaAtiva = 'todos';
+
+  // ─── Carrinho (localStorage) ───
+  function carregarCarrinhoLS(){
+    try{ const g = localStorage.getItem('royalty_carrinho'); if(g) carrinho = JSON.parse(g); }catch(e){ carrinho = []; }
+  }
+  function salvarCarrinhoLS(){
+    try{ localStorage.setItem('royalty_carrinho', JSON.stringify(carrinho)); }catch(e){}
+  }
+
+  function iniciarEstados(){
+    produtos.forEach(p => { if(!estados[p.id]) estados[p.id] = { cor:null, tamanho:null, slideIdx:0 }; });
+  }
+
+  // ─── Supabase helpers ───
+  function sbPost(tabela, dados){
+    fetch(`${SB_URL}/rest/v1/${tabela}`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
+      body:JSON.stringify(dados)
+    }).catch(function(){});
+  }
+
+  async function sbGuardarPedido(cliente, itens, subtotal, desconto, total, cupao){
+    let token = SB_KEY;
+    let uid = null;
+    try{
+      const { data } = await supa.auth.getSession();
+      if(data && data.session){ token = data.session.access_token; uid = data.session.user.id; }
+    }catch(e){}
+    try{
+      const r = await fetch(`${SB_URL}/rest/v1/pedidos`, {
+        method:'POST',
+        headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+token,'Prefer':'return=minimal'},
+        body:JSON.stringify({
+          cliente_nome:cliente.nome, cliente_telefone:cliente.telefone,
+          cliente_localizacao:cliente.localizacao,
+          cliente_pais:cliente.pais||null, cliente_provincia:cliente.provincia||null,
+          cliente_distrito:cliente.distrito||null, cliente_bairro:cliente.bairro||null,
+          notas:cliente.notas||'',
+          itens:itens, subtotal:subtotal, desconto:desconto, total:total, cupao_usado:cupao||null,
+          user_id:uid
+        })
+      });
+      if(!r.ok){
+        const corpo = await r.text().catch(()=>'');
+        console.error('Falha ao gravar o pedido:', r.status, corpo);
+      }
+    }catch(e){
+      console.error('Erro de rede ao gravar o pedido:', e);
+    }
+  }
+
+  function sbCarrinho(produto, cor, tamanho){
+    sbPost('eventos', {
+      tipo:'adicionar_carrinho', produto_id:produto.id, produto_nome:produto.nome,
+      cor:cor, tamanho:tamanho, quantidade:1, preco:produto.preco
+    });
+  }
+
+  // ─── Banner (carrossel com autoplay) ───
+  let bannerIdx = 0;
+  let bannerTotal = 0;
+  let bannerTimer = null;
+  let bannerDados = [];
+
+  function carregarBanners(){
+    const box = document.getElementById('banner-box');
+    if(!box) return;
+    fetch(`${SB_URL}/rest/v1/banners?activo=eq.true&pagina=eq.loja&order=ordem.asc&select=*`, {
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    })
+    .then(r => r.json())
+    .then(data => {
+      if(!data || !data.length) return;
+      bannerDados = data;
+      bannerTotal = data.length;
+
+      box.innerHTML = `
+        <div class="banner-track" id="banner-track">
+          ${data.map(b => `
+            <div class="banner-slide" ${b.link_destino ? `onclick="window.open('${b.link_destino}','_blank')" style="cursor:pointer;"` : ''}>
+              <img src="${b.imagem_url}" alt="Banner Royalty" loading="lazy">
+            </div>
+          `).join('')}
+        </div>
+        ${bannerTotal > 1 ? `
+          <div class="banner-dots" id="banner-dots">
+            ${data.map((_, i) => `<span class="b-dot ${i === 0 ? 'active' : ''}" onclick="irBanner(${i})"></span>`).join('')}
+          </div>
+        ` : ''}
+      `;
+
+      if(bannerTotal > 1){
+        iniciarBannerTouch();
+        iniciarBannerAutoplay();
+      }
+    })
+    .catch(function(){});
+  }
+
+  function irBanner(idx){
+    bannerIdx = idx;
+    const track = document.getElementById('banner-track');
+    if(track) track.style.transform = `translateX(-${idx * 100}%)`;
+    document.querySelectorAll('.b-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  function proximoBanner(){
+    bannerIdx = (bannerIdx + 1) % bannerTotal;
+    irBanner(bannerIdx);
+  }
+
+  function iniciarBannerAutoplay(){
+    if(bannerTimer) clearInterval(bannerTimer);
+    bannerTimer = setInterval(proximoBanner, 8000);
+  }
+
+  function iniciarBannerTouch(){
+    const track = document.getElementById('banner-track');
+    if(!track) return;
+    let startX = 0, isDragging = false;
+    track.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      clearInterval(bannerTimer);
+    }, { passive:true });
+    track.addEventListener('touchend', e => {
+      if(!isDragging) return;
+      const diff = startX - e.changedTouches[0].clientX;
+      if(Math.abs(diff) > 40){
+        bannerIdx = diff > 0 ? (bannerIdx + 1) % bannerTotal : (bannerIdx - 1 + bannerTotal) % bannerTotal;
+        irBanner(bannerIdx);
+      }
+      isDragging = false;
+      iniciarBannerAutoplay();
+    }, { passive:true });
+  }
+
+  // ─── Stock (para o badge "Esgotado") ───
+  async function carregarStock(){
+    const data = await fetch(`${SB_URL}/rest/v1/stock?select=*`, {
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    }).then(r => r.json()).catch(() => []);
+
+    stockDados = {};
+    (data||[]).forEach(s => {
+      stockDados[`${s.produto_id}_${s.cor}_${s.tamanho}`] = s.quantidade;
+    });
+  }
+
+  function getStock(produtoId, cor, tamanho){
+    const key = `${produtoId}_${cor}_${tamanho}`;
+    return stockDados[key] !== undefined ? stockDados[key] : null;
+  }
+
+  function produtoEsgotado(p){
+    if(Object.keys(stockDados).length === 0) return false;
+    if(!p.cores.length || !p.tamanhos.length) return false;
+    return p.cores.every(c => p.tamanhos.every(t => {
+      const s = getStock(p.id, c.nome, t);
+      return s !== null && s <= 0;
+    }));
+  }
+
+  function temStockPorCor(produtoId, corNome, tamanhos){
+    return tamanhos.some(t => {
+      const s = getStock(produtoId, corNome, t);
+      return s === null || s > 0;
+    });
+  }
+
+  function temStockPorTamanho(produtoId, corNome, tamanho){
+    const s = getStock(produtoId, corNome, tamanho);
+    return s === null || s > 0;
+  }
+
+  // ─── Vendas (para o badge 🔥 e para a aba "Mais Vendidos") ───
+  function carregarVendas(){
+    return fetch(`${SB_URL}/rest/v1/estatisticas_produtos?order=total_vendas.desc&select=produto_id,total_vendas`, {
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    })
+    .then(r => r.json())
+    .then(data => {
+      vendasPorProduto = {};
+      (data||[]).forEach(d => { vendasPorProduto[d.produto_id] = d.total_vendas; });
+      if(data && data.length && data[0].total_vendas > 0) maisCampradoId = data[0].produto_id;
+    })
+    .catch(() => {});
+  }
+
+  // ─── Avaliações ───
+  function renderEstrelas(nota){
+    const cheia = Math.round(nota);
+    return '★'.repeat(cheia) + '☆'.repeat(5 - cheia);
+  }
+
+  function carregarAvaliacoes(){
+    return fetch(`${SB_URL}/rest/v1/avaliacoes?aprovada=eq.true&select=*&order=criado_em.desc`, {
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    })
+    .then(r => r.json())
+    .then(data => {
+      const agrupadas = {};
+      (data||[]).forEach(a => {
+        if(!agrupadas[a.produto_id]) agrupadas[a.produto_id] = { nome:a.produto_nome, avaliacoes:[], total:0, soma:0 };
+        agrupadas[a.produto_id].avaliacoes.push(a);
+        agrupadas[a.produto_id].soma += a.estrelas;
+        agrupadas[a.produto_id].total++;
+      });
+      Object.keys(agrupadas).forEach(id => { agrupadas[id].media = agrupadas[id].soma / agrupadas[id].total; });
+      avaliacoesPorProduto = agrupadas;
+      renderSecaoAvaliacoes();
+    })
+    .catch(() => {});
+  }
+
+  function renderSecaoAvaliacoes(){
+    const sec = document.getElementById('avaliacoes-section');
+    const grid = document.getElementById('avaliacoes-grid');
+    if(!sec || !grid) return;
+
+    const grupos = Object.entries(avaliacoesPorProduto);
+    if(!grupos.length){ sec.style.display = 'none'; return; }
+
+    grid.innerHTML = grupos.map(([id, grupo]) => `
+      <div class="aval-produto-blk">
+        <div class="aval-produto-header">
+          <span class="aval-produto-nome">${grupo.nome}</span>
+          <span class="aval-media">
+            <span class="stars">${renderEstrelas(grupo.media)}</span>
+            ${grupo.media.toFixed(1)} (${grupo.total} aval.)
+          </span>
+        </div>
+        <div class="aval-lista">
+          ${grupo.avaliacoes.map(a => `
+            <div class="aval-item">
+              <div class="aval-item-top">
+                <span class="aval-item-nome">${a.cliente_nome}</span>
+                <span class="aval-item-data">${new Date(a.criado_em).toLocaleDateString('pt-PT')}</span>
+              </div>
+              <div class="aval-item-estrelas">${renderEstrelas(a.estrelas)} ${a.estrelas}/5</div>
+              ${a.comentario ? `<div class="aval-item-comentario">"${a.comentario}"</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+
+    sec.style.display = 'block';
+  }
+
+  let estrelaSelecionada = 0;
+
+  function abrirFormAvaliacao(produtoId, nomeProduto){
+    estrelaSelecionada = 0;
+    const overlay = document.createElement('div');
+    overlay.id = 'aval-overlay';
+    overlay.className = 'aval-overlay';
+    overlay.onclick = (e) => { if(e.target === overlay) fecharFormAvaliacao(); };
+    overlay.innerHTML = `
+      <div class="aval-modal">
+        <div class="aval-modal-eyebrow">ROYALTY</div>
+        <div class="aval-modal-title">Como foi a sua experiência?</div>
+        <div class="aval-modal-produto">${nomeProduto}</div>
+
+        <div class="form-group">
+          <label class="form-label">O seu nome *</label>
+          <input type="text" class="form-input" id="aval-nome" placeholder="Ex: João Silva">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Avaliação *</label>
+          <div id="aval-estrelas-input" class="aval-estrelas-input">
+            ${[1,2,3,4,5].map(n => `<span onclick="selecionarEstrela(${n})" data-star="${n}">★</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Comentário (opcional)</label>
+          <textarea class="form-input" id="aval-comentario" style="height:70px;resize:none;" placeholder="Partilha a tua experiência..."></textarea>
+        </div>
+
+        <button class="cart-checkout-btn" onclick="enviarAvaliacao(${produtoId}, '${nomeProduto.replace(/'/g, "\\'")}')">Enviar Avaliação</button>
+        <div id="aval-msg" class="aval-msg"></div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+  }
+
+  function fecharFormAvaliacao(){
+    const overlay = document.getElementById('aval-overlay');
+    if(overlay) overlay.remove();
+  }
+
+  // ─── Link de avaliação vindo do WhatsApp (?avaliar=ID) ───
+  // Só quem recebe este link do admin (após confirmar a compra) consegue avaliar.
+  function verificarLinkAvaliacao(){
+    const params = new URLSearchParams(window.location.search);
+    const produtoId = params.get('avaliar');
+    if(!produtoId) return;
+
+    fetch(`${SB_URL}/rest/v1/produtos?id=eq.${produtoId}&select=id,nome`, {
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    })
+    .then(r => r.json())
+    .then(data => {
+      const nomeProduto = (data && data[0]) ? data[0].nome : 'Produto';
+      abrirFormAvaliacao(produtoId, nomeProduto);
+    })
+    .catch(() => abrirFormAvaliacao(produtoId, 'Produto'));
+  }
+
+  // ─── Abrir a loja já num produto específico (?produto=ID) ───
+  function verificarLinkProduto(){
+    const params = new URLSearchParams(window.location.search);
+    const produtoId = params.get('produto');
+    if(!produtoId) return;
+
+    const tentarScroll = () => {
+      const card = document.querySelector(`[data-produto-id="${produtoId}"]`);
+      if(card){
+        card.scrollIntoView({ behavior:'smooth', block:'center' });
+        card.style.boxShadow = '0 0 0 3px var(--gold)';
+        setTimeout(() => { card.style.boxShadow = ''; }, 3000);
+      } else {
+        setTimeout(tentarScroll, 300);
+      }
+    };
+    setTimeout(tentarScroll, 800);
+  }
+
+  function selecionarEstrela(n){
+    estrelaSelecionada = n;
+    document.querySelectorAll('#aval-estrelas-input span').forEach((s, i) => {
+      s.classList.toggle('active', i < n);
+    });
+  }
+
+  function enviarAvaliacao(produtoId, nomeProduto){
+    const nome = document.getElementById('aval-nome').value.trim();
+    const comentario = document.getElementById('aval-comentario').value.trim();
+    const msg = document.getElementById('aval-msg');
+
+    if(!nome){ msg.className = 'aval-msg err'; msg.textContent = 'Por favor introduza o seu nome.'; return; }
+    if(!estrelaSelecionada){ msg.className = 'aval-msg err'; msg.textContent = 'Por favor seleccione uma avaliação.'; return; }
+
+    msg.className = 'aval-msg'; msg.textContent = 'A enviar...';
+
+    fetch(`${SB_URL}/rest/v1/avaliacoes`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
+      body:JSON.stringify({
+        produto_id:parseInt(produtoId), produto_nome:nomeProduto || 'Produto',
+        cliente_nome:nome, estrelas:estrelaSelecionada, comentario:comentario || null, aprovada:false
+      })
+    })
+    .then(() => {
+      msg.className = 'aval-msg ok';
+      msg.textContent = '✅ Obrigado pela sua avaliação! Fica visível assim que for aprovada.';
+      setTimeout(fecharFormAvaliacao, 2400);
+    })
+    .catch(() => { msg.className = 'aval-msg err'; msg.textContent = 'Não foi possível enviar. Tenta novamente.'; });
+  }
+
+  // ─── Produtos ───
+  function carregarProdutosLoja(){
+    const grid = document.getElementById('grid-produtos');
+    if(!grid) return;
+    fetch(`${SB_URL}/rest/v1/produtos?activo=eq.true&order=ordem.asc&select=*`, {
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    })
+    .then(r => r.json())
+    .then(data => {
+      produtos = (data||[]).map(p => ({
+        id:p.id, nome:p.nome, desc:p.descricao, preco:p.preco, precoOriginal:p.preco_original,
+        badge:p.badge, cores:p.cores||[], tamanhos:p.tamanhos||[], imgs:p.imagens||[], categoria:p.categoria||null
+      }));
+      iniciarEstados();
+      atualizarCarrinhoVisual();
+      Promise.all([carregarStock(), carregarVendas(), carregarAvaliacoes()]).then(() => { renderProdutos(); aplicarFiltroAba(); });
+    })
+    .catch(() => { grid.innerHTML = '<p class="product-empty-msg">Não foi possível carregar os produtos.</p>'; });
+  }
+
+  function renderProdutos(){
+    const grid = document.getElementById('grid-produtos');
+    if(!produtos.length){ grid.innerHTML = '<p class="product-empty-msg">Nenhum produto disponível.</p>'; return; }
+
+    grid.innerHTML = produtos.map(p => {
+      const esgotado = produtoEsgotado(p);
+
+      let tag = '';
+      if(esgotado){
+        tag = '<span class="product-tag esgotado">Esgotado</span>';
+      } else if(maisCampradoId === p.id){
+        tag = '<span class="product-tag mais-vendido">🔥 Mais Vendido</span>';
+      } else if(p.badge === 'Novo'){
+        tag = '<span class="product-tag">Novo</span>';
+      } else if(p.precoOriginal){
+        tag = `<span class="product-tag gold">-${Math.round((1 - p.preco / p.precoOriginal) * 100)}%</span>`;
+      }
+
+      const cores = (p.cores||[]).map(c => {
+        const corEsgotada = !temStockPorCor(p.id, c.nome, p.tamanhos||[]);
+        return `<button type="button" class="color-dot ${corEsgotada ? 'esgotado' : ''}" style="background:${c.hex};" title="${c.nome}${corEsgotada ? ' (Esgotado)' : ''}" ${corEsgotada ? 'disabled' : `onclick="selecionarCor(${p.id},'${c.nome.replace(/'/g,"\\'")}',this)"`}></button>`;
+      }).join('');
+
+      const tamanhos = (p.tamanhos||[]).map(t =>
+        `<button type="button" class="size-btn" onclick="selecionarTam(${p.id},'${t.replace(/'/g,"\\'")}',this)">${t}</button>`
+      ).join('');
+
+      const imgs = p.imgs || [];
+      const temImagens = imgs.length > 0;
+      const slider = temImagens ? `
+          <div class="slider-track" id="track-${p.id}">
+            ${imgs.map(im => `<img src="${im}" alt="${p.nome}" loading="lazy">`).join('')}
+          </div>
+          ${imgs.length > 1 ? `
+            <button type="button" class="slider-arrow prev" onclick="event.stopPropagation(); prodPrev(${p.id})">&#8249;</button>
+            <button type="button" class="slider-arrow next" onclick="event.stopPropagation(); prodNext(${p.id})">&#8250;</button>
+            <div class="slider-dots" id="dots-${p.id}">
+              ${imgs.map((_, i) => `<span class="slider-dot ${i === 0 ? 'active' : ''}"></span>`).join('')}
+            </div>
+          ` : ''}` : '';
+
+      return `
+      <div class="product-card ${esgotado ? 'esgotado' : ''}" data-produto-id="${p.id}">
+        <div class="product-image ${temImagens ? 'has-img' : ''}" id="galeria-${p.id}">
+          ${tag}
+          ${slider}
+        </div>
+        <div class="product-name">${p.nome}</div>
+        <div class="product-price-wrap">
+          ${p.precoOriginal ? `<span class="product-price-original">${p.precoOriginal} MT</span>` : ''}
+          <span class="product-price">${p.preco} MT</span>
+        </div>
+        <div class="product-rating" id="rating-${p.id}">
+          ${avaliacoesPorProduto[p.id] ? `
+            <span class="stars">${renderEstrelas(avaliacoesPorProduto[p.id].media)}</span>
+            <span class="rating-note">${avaliacoesPorProduto[p.id].media.toFixed(1)} (${avaliacoesPorProduto[p.id].total} aval.)</span>
+          ` : `
+            <span class="stars">☆☆☆☆☆</span>
+            <span class="rating-note">Sem avaliações ainda</span>
+          `}
+        </div>
+        <div class="product-actions">
+          <button class="btn-add-cart" ${esgotado ? 'disabled' : ''} onclick="abrirOpcoes(${p.id})">Comprar</button>
+        </div>
+        <div class="product-options-panel" id="opcoes-${p.id}">
+          ${p.desc ? `<div class="product-desc" onclick="this.classList.toggle('expanded')">${p.desc}</div>` : ''}
+          ${(cores || tamanhos) ? `<div class="escolha-hint">Escolha a cor e tamanho para adicionar ao carrinho</div>` : ''}
+          ${cores ? `<div class="color-row">${cores}</div>` : ''}
+          ${tamanhos ? `<div class="size-row">${tamanhos}</div>` : ''}
+          <button class="btn-continuar" onclick="adicionarAoCarrinho(${p.id})">Adicionar ao Carrinho</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    // Suporte a swipe (touch) no carrossel de cada produto
+    produtos.forEach(p => {
+      const galeria = document.getElementById(`galeria-${p.id}`);
+      if(!galeria || !p.imgs || p.imgs.length <= 1) return;
+      let startX = 0;
+      galeria.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive:true });
+      galeria.addEventListener('touchend', e => {
+        const diff = e.changedTouches[0].clientX - startX;
+        if(Math.abs(diff) > 40){ diff < 0 ? prodNext(p.id) : prodPrev(p.id); }
+      }, { passive:true });
+    });
+  }
+
+  function moverProdSlide(id, idx){
+    const p = produtos.find(prod => prod.id === id);
+    if(!p || !p.imgs || p.imgs.length <= 1) return;
+    if(idx >= p.imgs.length) idx = 0;
+    if(idx < 0) idx = p.imgs.length - 1;
+    estados[id].slideIdx = idx;
+    const track = document.getElementById(`track-${id}`);
+    if(track) track.style.transform = `translateX(-${idx * 100}%)`;
+    document.querySelectorAll(`#dots-${id} .slider-dot`).forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  function prodNext(id){ moverProdSlide(id, (estados[id]?.slideIdx || 0) + 1); }
+  function prodPrev(id){ moverProdSlide(id, (estados[id]?.slideIdx || 0) - 1); }
+
+  function selecionarCor(id, cor, el){
+    document.querySelectorAll(`[data-produto-id="${id}"] .color-dot`).forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    estados[id].cor = cor;
+    estados[id].tamanho = null;
+
+    const p = produtos.find(prod => prod.id === id);
+    if(p){
+      const tamContainer = document.querySelector(`[data-produto-id="${id}"] .size-row`);
+      if(tamContainer){
+        tamContainer.innerHTML = (p.tamanhos||[]).map(t => {
+          const tamEsgotado = !temStockPorTamanho(id, cor, t);
+          return `<button type="button" class="size-btn ${tamEsgotado ? 'esgotado' : ''}" ${tamEsgotado ? 'disabled' : `onclick="selecionarTam(${id},'${t.replace(/'/g,"\\'")}',this)"`}>${t}</button>`;
+        }).join('');
+      }
+    }
+  }
+
+  function selecionarTam(id, tam, el){
+    document.querySelectorAll(`[data-produto-id="${id}"] .size-btn`).forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    estados[id].tamanho = tam;
+  }
+
+  function abrirOpcoes(id){
+    const painel = document.getElementById(`opcoes-${id}`);
+    if(!painel) return;
+    painel.classList.add('open');
+    const card = document.querySelector(`[data-produto-id="${id}"]`);
+    const botaoInicial = card ? card.querySelector('.product-actions .btn-add-cart') : null;
+    if(botaoInicial) botaoInicial.style.display = 'none';
+  }
+
+  // ─── Carrinho: abrir/fechar ───
+  let formularioVisivel = false;
+
+  function toggleCart(abrir){
+    const overlay = document.getElementById('cart-overlay');
+    if(abrir){ overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+    else{
+      overlay.classList.remove('open'); document.body.style.overflow='';
+      formularioVisivel = false;
+      atualizarCarrinhoVisual();
+    }
+  }
+
+  function handleOverlayClick(e){
+    if(e.target.id === 'cart-overlay') toggleCart(false);
+  }
+
+  // ════════════════════════════════════════
+  // CONTA DE CLIENTE (login/registo)
+  // ════════════════════════════════════════
+  function toggleConta(abrir){
+    const overlay = document.getElementById('conta-overlay');
+    if(abrir){ overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+    else{ overlay.classList.remove('open'); document.body.style.overflow=''; }
+  }
+
+  function mostrarFormConta(qual){
+    document.getElementById('conta-form-entrar').style.display = qual==='entrar' ? 'block' : 'none';
+    document.getElementById('conta-form-criar').style.display = qual==='criar' ? 'block' : 'none';
+    document.getElementById('entrar-msg').textContent = '';
+    document.getElementById('criar-msg').textContent = '';
+  }
+
+  async function recuperarPassword(){
+    const email = document.getElementById('entrar-email').value.trim();
+    const msgEl = document.getElementById('entrar-msg');
+    if(!email){ msgEl.className='msg-erro'; msgEl.textContent='Escreve o teu email no campo acima primeiro.'; return; }
+    msgEl.className=''; msgEl.textContent='A enviar...';
+    const { error } = await supa.auth.resetPasswordForEmail(email);
+    if(error){ msgEl.className='msg-erro'; msgEl.textContent='Não foi possível enviar o email de recuperação.'; return; }
+    msgEl.className='msg-ok'; msgEl.textContent='Email de recuperação enviado! Verifica a tua caixa de entrada.';
+  }
+
+  async function entrarConta(){
+    const email = document.getElementById('entrar-email').value.trim();
+    const senha = document.getElementById('entrar-senha').value;
+    const msgEl = document.getElementById('entrar-msg');
+    if(!email || !senha){ msgEl.className='msg-erro'; msgEl.textContent='Preenche o email e a palavra-passe.'; return; }
+    msgEl.className=''; msgEl.textContent='A entrar...';
+    const { data, error } = await supa.auth.signInWithPassword({ email, password: senha });
+    if(error){ msgEl.className='msg-erro'; msgEl.textContent = 'Email ou palavra-passe incorrectos.'; return; }
+    await aplicarSessaoCliente(data.user);
+    toggleConta(false);
+    showToast('Sessão iniciada. Bem-vindo(a)!');
+  }
+
+  async function criarConta(){
+    const nome = document.getElementById('criar-nome').value.trim();
+    const email = document.getElementById('criar-email').value.trim();
+    const telefone = document.getElementById('criar-telefone').value.trim();
+    const senha = document.getElementById('criar-senha').value;
+    const msgEl = document.getElementById('criar-msg');
+    if(!nome || !email || !senha){ msgEl.className='msg-erro'; msgEl.textContent='Preenche pelo menos nome, email e palavra-passe.'; return; }
+    if(senha.length < 6){ msgEl.className='msg-erro'; msgEl.textContent='A palavra-passe precisa de pelo menos 6 caracteres.'; return; }
+    msgEl.className=''; msgEl.textContent='A criar conta...';
+    const { data, error } = await supa.auth.signUp({
+      email, password: senha,
+      options:{ data:{ nome } }
+    });
+    if(error){
+      msgEl.className='msg-erro';
+      console.error('Erro ao criar conta:', error);
+      if(error.message && error.message.toLowerCase().includes('already')) msgEl.textContent = 'Já existe uma conta com este email.';
+      else if(error.message && error.message.toLowerCase().includes('rate limit')) msgEl.textContent = 'Foram feitos demasiados pedidos seguidos. Espera um pouco e tenta de novo.';
+      else msgEl.textContent = 'Não foi possível criar a conta: ' + (error.message || 'erro desconhecido');
+      return;
+    }
+    if(!data.session){
+      msgEl.className='msg-ok';
+      msgEl.textContent = 'Conta criada! Verifica o teu email para confirmar antes de entrares.';
+      return;
+    }
+    await supa.from('clientes').upsert({ user_id: data.user.id, nome, telefone: telefone || null });
+    await aplicarSessaoCliente(data.user);
+    toggleConta(false);
+    showToast('Conta criada com sucesso!');
+  }
+
+  async function sairConta(){
+    await supa.auth.signOut();
+    document.getElementById('conta-logado').style.display = 'none';
+    document.getElementById('conta-form-entrar').style.display = 'block';
+    document.getElementById('conta-titulo').textContent = 'A Minha Conta';
+    mostrarFormConta('entrar');
+  }
+
+  async function aplicarSessaoCliente(user){
+    const { data: cliente } = await supa.from('clientes').select('nome,telefone,pais,provincia,distrito,bairro').eq('user_id', user.id).maybeSingle();
+    const nome = (cliente && cliente.nome) || (user.user_metadata && user.user_metadata.nome) || user.email;
+    document.getElementById('conta-nome-logado').textContent = nome;
+    document.getElementById('conta-titulo').textContent = 'A Minha Conta';
+    document.getElementById('conta-logado').style.display = 'block';
+    document.getElementById('conta-form-entrar').style.display = 'none';
+    document.getElementById('conta-form-criar').style.display = 'none';
+
+    document.getElementById('perfil-nome').value = (cliente && cliente.nome) || (user.user_metadata && user.user_metadata.nome) || '';
+    document.getElementById('perfil-telefone').value = (cliente && cliente.telefone) || '';
+    document.getElementById('perfil-pais').value = (cliente && cliente.pais) || 'Moçambique';
+    document.getElementById('perfil-provincia').value = (cliente && cliente.provincia) || '';
+    document.getElementById('perfil-distrito').value = (cliente && cliente.distrito) || '';
+    document.getElementById('perfil-bairro').value = (cliente && cliente.bairro) || '';
+
+    atualizarVistaPerfil();
+    // Se já tem dados guardados, mostra a vista; senão, abre logo a edição
+    mostrarEdicaoPerfil(!(cliente && cliente.nome));
+
+    carregarPedidosCliente(user.id);
+    carregarCarrinhoConta(user.id);
+  }
+
+  function atualizarVistaPerfil(){
+    document.getElementById('perfil-vista-nome').textContent = document.getElementById('perfil-nome').value || '—';
+    document.getElementById('perfil-vista-telefone').textContent = document.getElementById('perfil-telefone').value || '—';
+    document.getElementById('perfil-vista-pais').textContent = document.getElementById('perfil-pais').value || '—';
+    document.getElementById('perfil-vista-provincia').textContent = document.getElementById('perfil-provincia').value || '—';
+    document.getElementById('perfil-vista-distrito').textContent = document.getElementById('perfil-distrito').value || '—';
+    document.getElementById('perfil-vista-bairro').textContent = document.getElementById('perfil-bairro').value || '—';
+  }
+
+  function mostrarEdicaoPerfil(mostrar){
+    document.getElementById('perfil-edicao').style.display = mostrar ? 'block' : 'none';
+    document.getElementById('perfil-vista').style.display = mostrar ? 'none' : 'block';
+  }
+
+  async function guardarDadosCliente(){
+    const { data: sessao } = await supa.auth.getSession();
+    if(!sessao || !sessao.session) return;
+    const nome = document.getElementById('perfil-nome').value.trim();
+    const telefone = document.getElementById('perfil-telefone').value.trim();
+    const pais = document.getElementById('perfil-pais').value.trim();
+    const provincia = document.getElementById('perfil-provincia').value.trim();
+    const distrito = document.getElementById('perfil-distrito').value.trim();
+    const bairro = document.getElementById('perfil-bairro').value.trim();
+    const msgEl = document.getElementById('perfil-msg');
+    if(!nome){ msgEl.className='msg-erro'; msgEl.textContent='O nome não pode ficar vazio.'; return; }
+    msgEl.className=''; msgEl.textContent='A guardar...';
+    const { error } = await supa.from('clientes').upsert({ user_id: sessao.session.user.id, nome, telefone: telefone||null, pais: pais||null, provincia: provincia||null, distrito: distrito||null, bairro: bairro||null });
+    if(error){ msgEl.className='msg-erro'; msgEl.textContent='Não foi possível guardar.'; return; }
+    document.getElementById('conta-nome-logado').textContent = nome;
+    atualizarVistaPerfil();
+    msgEl.className='msg-ok'; msgEl.textContent='✅ Dados guardados!';
+    setTimeout(()=>{ msgEl.textContent=''; mostrarEdicaoPerfil(false); }, 900);
+  }
+
+  let sincronizandoCarrinho = false;
+  function sincronizarCarrinhoConta(){
+    if(sincronizandoCarrinho) return;
+    supa.auth.getSession().then(({data}) => {
+      if(!data || !data.session) return;
+      supa.from('carrinhos').upsert({ user_id:data.session.user.id, itens:carrinho, actualizado_em:new Date().toISOString() }).then(()=>{});
+    }).catch(()=>{});
+  }
+
+  async function carregarCarrinhoConta(userId){
+    sincronizandoCarrinho = true;
+    try{
+      const { data } = await supa.from('carrinhos').select('itens').eq('user_id', userId).maybeSingle();
+      const itensConta = (data && data.itens) || [];
+      itensConta.forEach(itemConta => {
+        const existente = carrinho.find(i => i.id===itemConta.id && i.cor===itemConta.cor && i.tamanho===itemConta.tamanho);
+        if(existente) existente.qtd = Math.max(existente.qtd, itemConta.qtd);
+        else carrinho.push(itemConta);
+      });
+      atualizarCarrinhoVisual();
+    }catch(e){}
+    sincronizandoCarrinho = false;
+    sincronizarCarrinhoConta();
+  }
+
+  function renderizarCarrinhoConta(){
+    const box = document.getElementById('carrinho-conta-lista');
+    if(!box) return;
+    if(!carrinho.length){ box.innerHTML = '<p style="font-size:12px;color:var(--teal-muted);">O teu carrinho está vazio.</p>'; return; }
+    box.innerHTML = carrinho.map(i => `
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:44px;height:44px;flex-shrink:0;background:var(--placeholder-bg);overflow:hidden;">
+          ${i.img ? `<img src="${i.img}" alt="${i.nome}" style="width:100%;height:100%;object-fit:cover;display:block;">` : ''}
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:12px;color:var(--green);">${i.nome}</div>
+          <div style="font-size:10.5px;color:var(--teal-muted);">${i.cor?`${i.cor} `:''}${i.tamanho?`· ${i.tamanho} `:''}· ${i.qtd}x</div>
+        </div>
+        <div style="font-size:12px;font-weight:700;color:var(--gold);">${i.preco*i.qtd} MT</div>
+      </div>
+    `).join('') + `<button class="conta-btn-principal" style="margin-top:10px;" onclick="continuarCompraDaConta()">Continuar a Compra</button>`;
+  }
+
+  function continuarCompraDaConta(){
+    toggleConta(false);
+    toggleCart(true);
+  }
+
+  function estadoCor(estado){
+    if(estado === 'Entregue') return '#1E7B34';
+    if(estado === 'Enviado') return 'var(--gold)';
+    return 'var(--teal-muted)';
+  }
+
+  async function carregarPedidosCliente(userId){
+    const box = document.getElementById('pedidos-cliente-lista');
+    box.innerHTML = '<p style="font-size:12px;color:var(--teal-muted);">A carregar...</p>';
+    const { data: sessao } = await supa.auth.getSession();
+    const token = sessao && sessao.session ? sessao.session.access_token : SB_KEY;
+    try{
+      const r = await fetch(`${SB_URL}/rest/v1/pedidos?user_id=eq.${userId}&order=criado_em.desc&select=id,itens,total,estado,criado_em`, {
+        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+token}
+      });
+      if(!r.ok){
+        const corpo = await r.text().catch(()=>'');
+        console.error('Falha ao carregar pedidos:', r.status, corpo);
+        box.innerHTML = '<p style="font-size:12px;color:var(--teal-muted);">Não foi possível carregar os pedidos.</p>';
+        return;
+      }
+      const data = await r.json();
+      if(!Array.isArray(data) || !data.length){ box.innerHTML = '<p style="font-size:12px;color:var(--teal-muted);">Ainda não tens pedidos.</p>'; return; }
+
+      let imagemPorId = {};
+      try{
+        const idsProdutos = [...new Set(data.flatMap(p => (Array.isArray(p.itens)?p.itens:[]).map(i => i && i.id)).filter(Boolean))];
+        if(idsProdutos.length){
+          const rImg = await fetch(`${SB_URL}/rest/v1/produtos?id=in.(${idsProdutos.join(',')})&select=id,imagens`, {
+            headers:{'apikey':SB_KEY,'Authorization':'Bearer '+token}
+          });
+          const produtosImg = rImg.ok ? await rImg.json().catch(() => []) : [];
+          (produtosImg||[]).forEach(pr => { imagemPorId[pr.id] = (pr.imagens && pr.imagens[0]) || ''; });
+        }
+      }catch(eImg){
+        console.error('Não foi possível carregar as fotos dos pedidos (a lista continua):', eImg);
+      }
+
+      box.innerHTML = data.map((p,idx) => {
+        const dataFmt = p.criado_em ? new Date(p.criado_em).toLocaleDateString('pt-PT', {day:'2-digit',month:'short',year:'numeric'}) : '';
+        const itensSeguros = Array.isArray(p.itens) ? p.itens : [];
+        const itensHtml = itensSeguros.map(i => `
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <div style="width:44px;height:44px;flex-shrink:0;background:var(--placeholder-bg);overflow:hidden;">
+              ${i && imagemPorId[i.id] ? `<img src="${imagemPorId[i.id]}" alt="${i.nome}" style="width:100%;height:100%;object-fit:cover;display:block;">` : ''}
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:12px;color:var(--green);">${i ? i.nome : ''}</div>
+              <div style="font-size:10.5px;color:var(--teal-muted);">${i && i.cor?`${i.cor} `:''}${i && i.tamanho?`· ${i.tamanho} `:''}· ${i ? i.qtd : 0}x</div>
+            </div>
+          </div>
+        `).join('');
+        return `
+          <div class="pedido-item" style="border:1px solid var(--border);padding:12px;margin-bottom:10px;${idx>=3?'display:none;':''}">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <span style="font-size:11px;color:var(--teal-muted);">${dataFmt}</span>
+              <span style="font-size:9px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase;color:${estadoCor(p.estado)};">${p.estado || 'Pendente'}</span>
+            </div>
+            ${itensHtml}
+            <div style="font-size:14px;font-weight:700;color:var(--gold);text-align:right;margin-top:4px;">${p.total} MT</div>
+          </div>
+        `;
+      }).join('') + (data.length > 3 ? `<button class="conta-btn-principal" style="background:transparent;color:var(--green);border:1px solid var(--border);box-shadow:none;" onclick="document.querySelectorAll('#pedidos-cliente-lista .pedido-item').forEach(el=>el.style.display='block');this.remove();">Ver Mais (${data.length-3})</button>` : '');
+    }catch(e){
+      console.error('Erro inesperado ao carregar pedidos:', e);
+      box.innerHTML = '<p style="font-size:12px;color:var(--teal-muted);">Não foi possível carregar os pedidos.</p>';
+    }
+  }
+
+  async function verificarSessaoCliente(){
+    const { data } = await supa.auth.getSession();
+    if(data && data.session && data.session.user){
+      await aplicarSessaoCliente(data.session.user);
+    }
+  }
+
+  async function carregarLogoLogin(){
+    try{
+      const r = await fetch(`${SB_URL}/rest/v1/configuracoes?chave=eq.logo_login&select=valor`, {
+        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+      });
+      const data = await r.json();
+      const url = data && data[0] && data[0].valor;
+      if(url){
+        document.querySelectorAll('.conta-logo-mark').forEach(el => {
+          el.style.backgroundImage = `url('${url}')`;
+          el.style.border = 'none';
+        });
+      }
+    }catch(e){}
+  }
+
+  function adicionarAoCarrinho(id){
+    const p = produtos.find(prod => prod.id === id);
+    if(!p) return;
+    const est = estados[id] || {};
+
+    if(p.cores && p.cores.length && !est.cor){ showToast('Por favor, escolha a cor desejada.'); return; }
+    if(p.tamanhos && p.tamanhos.length && !est.tamanho){ showToast('Por favor, selecione o seu tamanho.'); return; }
+
+    fbq('track', 'ViewContent', {
+      content_name:p.nome, content_ids:[String(p.id)], content_type:'product', value:p.preco, currency:'MZN'
+    });
+
+    const cor = est.cor || null, tamanho = est.tamanho || null;
+    const existente = carrinho.find(item => item.id === id && item.cor === cor && item.tamanho === tamanho);
+    if(existente){ existente.qtd += 1; }
+    else{
+      carrinho.push({ id:p.id, nome:p.nome, preco:p.preco, cor:cor, tamanho:tamanho, img:(p.imgs&&p.imgs[0])||'', qtd:1 });
+    }
+
+    atualizarCarrinhoVisual();
+    sbCarrinho(p, cor, tamanho);
+    showToast(`${p.nome} adicionado.`);
+
+    fbq('track', 'AddToCart', {
+      content_name:p.nome, content_ids:[String(p.id)], content_type:'product', value:p.preco, currency:'MZN'
+    });
+
+    toggleCart(true);
+  }
+
+  function alterarQtd(idx, delta){
+    carrinho[idx].qtd += delta;
+    if(carrinho[idx].qtd <= 0){ removerDoCarrinho(idx); return; }
+    atualizarCarrinhoVisual();
+  }
+
+  function removerDoCarrinho(idx){
+    carrinho.splice(idx, 1);
+    atualizarCarrinhoVisual();
+  }
+
+  // ─── Cupão ───
+  let cupaoAplicado = false;
+  let cupaoInfo = null;
+
+  function aplicarCupao(){
+    const input = document.getElementById('cupao-input');
+    const msg = document.getElementById('cupao-msg');
+    const codigo = input.value.trim().toUpperCase();
+    if(!codigo) return;
+    msg.className = 'cupao-msg'; msg.textContent = 'A verificar...';
+
+    fetch(`${SB_URL}/rest/v1/cupoes?codigo=eq.${codigo}&activo=eq.true&select=*`, {
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    })
+    .then(r => r.json())
+    .then(data => {
+      if(!data || !data.length){
+        cupaoAplicado=false; cupaoInfo=null;
+        msg.className='cupao-msg err'; msg.textContent='✗ Código inválido ou inactivo.';
+        atualizarCarrinhoVisual(); return;
+      }
+      const c = data[0];
+      if(c.expira_em && new Date(c.expira_em) < new Date()){
+        cupaoAplicado=false; cupaoInfo=null;
+        msg.className='cupao-msg err'; msg.textContent='✗ Este cupão expirou.';
+        atualizarCarrinhoVisual(); return;
+      }
+      if(c.limite_usos !== null && c.total_usos >= c.limite_usos){
+        cupaoAplicado=false; cupaoInfo=null;
+        msg.className='cupao-msg err'; msg.textContent='✗ Cupão atingiu o limite de utilizações.';
+        atualizarCarrinhoVisual(); return;
+      }
+      cupaoAplicado=true; cupaoInfo=c; input.disabled=true;
+      msg.className='cupao-msg ok'; msg.textContent=`✓ Cupão "${c.nome}" aplicado!`;
+      atualizarCarrinhoVisual();
+    })
+    .catch(() => { msg.className='cupao-msg err'; msg.textContent='✗ Erro ao verificar cupão.'; });
+  }
+
+  function calcularDesconto(subtotal, totalPecas){
+    if(!cupaoAplicado || !cupaoInfo) return 0;
+    if(cupaoInfo.tipo === 'percentagem') return Math.round(subtotal * cupaoInfo.valor / 100);
+    return totalPecas * cupaoInfo.valor;
+  }
+
+  // ─── Actualizar visual do carrinho ───
+  function atualizarCarrinhoVisual(){
+    salvarCarrinhoLS();
+    sincronizarCarrinhoConta();
+    renderizarCarrinhoConta();
+    const container = document.getElementById('cart-items-container');
+    const badge = document.getElementById('cart-badge');
+    const totalVal = document.getElementById('cart-total-value');
+    if(!container || !badge || !totalVal) return;
+
+    const totalItens = carrinho.reduce((acc,i) => acc+i.qtd, 0);
+    badge.textContent = totalItens;
+    badge.style.transform = 'scale(1.2)';
+    setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
+
+    const btnPagar = document.getElementById('btn-pagar');
+    const formContainer = document.getElementById('cart-form-container');
+    const cupaoSection = document.getElementById('cupao-section');
+    const descontoRow = document.getElementById('cupao-desconto-row');
+    const descontoVal = document.getElementById('cupao-desconto-val');
+
+    if(carrinho.length === 0){
+      container.innerHTML = `<div class="cart-empty">O seu carrinho está vazio.<br>Escolha os seus produtos na loja.</div>`;
+      totalVal.textContent = '0 MT';
+      btnPagar.style.display='none'; formContainer.style.display='none';
+      cupaoSection.style.display='none'; descontoRow.style.display='none';
+      cupaoAplicado = false;
+      return;
+    }
+
+    container.innerHTML = carrinho.map((item, idx) => `
+      <div class="cart-item-row">
+        <img src="${item.img}" class="cart-item-img" alt="${item.nome}">
+        <div class="cart-item-details">
+          <span class="cart-item-title">${item.nome}</span>
+          ${(item.cor || item.tamanho) ? `<span class="cart-item-meta">${item.cor?`Cor: ${item.cor}`:''}${item.cor&&item.tamanho?' | ':''}${item.tamanho?`Tam: ${item.tamanho}`:''}</span>` : ''}
+          <span class="cart-item-price">${item.preco} MT</span>
+          <div class="cart-qty-box">
+            <button class="cart-qty-btn" onclick="alterarQtd(${idx},-1)">-</button>
+            <div>${item.qtd}</div>
+            <button class="cart-qty-btn" onclick="alterarQtd(${idx},1)">+</button>
+          </div>
+        </div>
+        <button class="cart-item-remove" onclick="removerDoCarrinho(${idx})">Remover</button>
+      </div>
+    `).join('');
+
+    const totalPecas = carrinho.reduce((acc,i) => acc+i.qtd, 0);
+    const subtotal = carrinho.reduce((acc,i) => acc+(i.preco*i.qtd), 0);
+    const desconto = calcularDesconto(subtotal, totalPecas);
+    const total = subtotal - desconto;
+
+    if(cupaoAplicado && desconto > 0){
+      descontoRow.style.display='flex'; descontoVal.textContent = `-${desconto} MT`;
+    } else { descontoRow.style.display='none'; }
+
+    totalVal.textContent = `${total} MT`;
+    cupaoSection.style.display='block';
+
+    if(formularioVisivel){
+      btnPagar.style.display='none';
+      formContainer.style.display='flex';
+    } else {
+      btnPagar.style.display='block';
+      formContainer.style.display='none';
+    }
+  }
+
+  async function mostrarFormulario(){
+    formularioVisivel = true;
+    document.getElementById('cart-form-container').style.display='flex';
+    document.getElementById('btn-pagar').style.display='none';
+
+    try{
+      const { data } = await supa.auth.getSession();
+      if(data && data.session){
+        const { data: cliente } = await supa.from('clientes').select('nome,telefone,pais,provincia,distrito,bairro').eq('user_id', data.session.user.id).maybeSingle();
+        if(cliente){
+          const campoNome = document.getElementById('client-name');
+          const campoTel = document.getElementById('client-phone');
+          const campoPais = document.getElementById('client-pais');
+          const campoProvincia = document.getElementById('client-provincia');
+          const campoDistrito = document.getElementById('client-distrito');
+          const campoBairro = document.getElementById('client-bairro');
+          if(cliente.nome && !campoNome.value) campoNome.value = cliente.nome;
+          if(cliente.telefone && !campoTel.value) campoTel.value = cliente.telefone;
+          if(cliente.pais && campoPais) campoPais.value = cliente.pais;
+          if(cliente.provincia && !campoProvincia.value) campoProvincia.value = cliente.provincia;
+          if(cliente.distrito && !campoDistrito.value) campoDistrito.value = cliente.distrito;
+          if(cliente.bairro && !campoBairro.value) campoBairro.value = cliente.bairro;
+        }
+      }
+    }catch(e){}
+
+    const subtotal = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+    fbq('track', 'InitiateCheckout', {
+      content_ids:carrinho.map(item => String(item.id)), content_type:'product',
+      num_items:carrinho.reduce((acc, item) => acc + item.qtd, 0), value:subtotal, currency:'MZN'
+    });
+  }
+
+  function checkoutCart(){
+    if(carrinho.length === 0){ showToast('O seu carrinho está vazio.'); return; }
+    const nome = document.getElementById('client-name').value.trim();
+    const celular = document.getElementById('client-phone').value.trim();
+    const pais = document.getElementById('client-pais').value.trim();
+    const provincia = document.getElementById('client-provincia').value.trim();
+    const distrito = document.getElementById('client-distrito').value.trim();
+    const bairro = document.getElementById('client-bairro').value.trim();
+    const notas = document.getElementById('cart-order-notes').value.trim();
+
+    if(!nome){ showToast('Por favor, introduza o seu Nome Completo.'); return; }
+    if(!celular){ showToast('Por favor, introduza o seu Número de Celular.'); return; }
+    if(!pais || !provincia || !distrito || !bairro){ showToast('Por favor, preencha País, Província, Distrito e Bairro.'); return; }
+
+    const localizacao = `${bairro}, ${distrito}, ${provincia}, ${pais}`;
+
+    supa.auth.getSession().then(({data}) => {
+      if(data && data.session){
+        supa.from('clientes').upsert({ user_id:data.session.user.id, nome, telefone:celular, pais, provincia, distrito, bairro }).then(()=>{});
+      }
+    }).catch(()=>{});
+
+    const itensTexto = carrinho.map((item,i) => {
+      let linha = `${i+1}. ${item.nome}\n`;
+      if(item.cor || item.tamanho) linha += `   ${item.cor?`Cor: ${item.cor} `:''}${item.tamanho?`| Tamanho: ${item.tamanho}`:''}\n`;
+      linha += `   Qtd: ${item.qtd}x | Preço: ${item.preco*item.qtd} MT\n`;
+      return linha;
+    }).join('\n');
+
+    const totalPecas = carrinho.reduce((acc,i) => acc+i.qtd, 0);
+    const subtotal = carrinho.reduce((acc,i) => acc+(i.preco*i.qtd), 0);
+    const desconto = calcularDesconto(subtotal, totalPecas);
+    const total = subtotal - desconto;
+
+    const descontoLinha = (cupaoAplicado && cupaoInfo && desconto > 0) ? `🎟 Cupão (${cupaoInfo.nome}): -${desconto} MT\n` : '';
+    const notasLinha = notas ? `\nObservações: "${notas}"\n` : '';
+
+    const msg = templatePedidoCache
+      .replaceAll('{{nome}}', nome)
+      .replaceAll('{{celular}}', celular)
+      .replaceAll('{{pais}}', pais)
+      .replaceAll('{{provincia}}', provincia)
+      .replaceAll('{{distrito}}', distrito)
+      .replaceAll('{{bairro}}', bairro)
+      .replaceAll('{{itens}}', itensTexto)
+      .replaceAll('{{subtotal}}', subtotal)
+      .replaceAll('{{desconto_linha}}', descontoLinha)
+      .replaceAll('{{total}}', total)
+      .replaceAll('{{notas_linha}}', notasLinha);
+
+    fbq('track', 'Purchase', {
+      content_ids:carrinho.map(i => String(i.id)), content_type:'product',
+      num_items:totalPecas, value:total, currency:'MZN'
+    });
+
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+
+    sbGuardarPedido(
+      { nome, telefone:celular, localizacao, pais, provincia, distrito, bairro, notas },
+      carrinho.map(i => ({ id:i.id, nome:i.nome, cor:i.cor, tamanho:i.tamanho, qtd:i.qtd, preco:i.preco })),
+      subtotal, desconto, total, cupaoAplicado && cupaoInfo ? cupaoInfo.codigo : null
+    );
+
+    if(cupaoAplicado && cupaoInfo){
+      fetch(`${SB_URL}/rest/v1/cupoes?id=eq.${cupaoInfo.id}`, {
+        method:'PATCH',
+        headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
+        body:JSON.stringify({ total_usos:(cupaoInfo.total_usos||0)+1 })
+      }).catch(function(){});
+    }
+
+    carrinho = [];
+    cupaoAplicado = false;
+    cupaoInfo = null;
+    formularioVisivel = false;
+    atualizarCarrinhoVisual();
+    toggleCart(false);
+  }
+
+  // ─── Abas (Todos / Mais Vendidos / Novidades / Promoções) ───
+  let termoPesquisa = '';
+
+  function mudarAba(tipo, el){
+    abaAtiva = tipo;
+    document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    aplicarFiltros();
+  }
+
+  function aplicarFiltroAba(){ aplicarFiltros(); }
+
+  let categoriaFiltro = null;
+
+  function aplicarFiltros(){
+    let visiveis = 0;
+    document.querySelectorAll('.product-card').forEach(card => {
+      const id = Number(card.dataset.produtoId);
+      const p = produtos.find(prod => prod.id === id);
+      if(!p) return;
+
+      let passaAba = true;
+      if(abaAtiva === 'novidades') passaAba = p.badge === 'Novo';
+      else if(abaAtiva === 'promocoes') passaAba = !!p.precoOriginal;
+      else if(abaAtiva === 'mais-vendidos') passaAba = (vendasPorProduto[p.id] || 0) > 0;
+
+      const passaCategoria = !categoriaFiltro || p.categoria === categoriaFiltro;
+
+      const alvo = (p.nome + ' ' + (p.desc||'')).toLowerCase();
+      const passaPesquisa = !termoPesquisa || alvo.includes(termoPesquisa);
+
+      const visivel = passaAba && passaCategoria && passaPesquisa;
+      card.style.display = visivel ? '' : 'none';
+      if(visivel) visiveis++;
+    });
+
+    const loadMoreWrap = document.getElementById('load-more-wrap');
+    if(loadMoreWrap) loadMoreWrap.style.display = visiveis > 4 ? 'flex' : 'none';
+  }
+
+  // ─── Filtro por categoria vindo da página de Coleções (?categoria=) ───
+  function verificarFiltroCategoria(){
+    const params = new URLSearchParams(window.location.search);
+    const categoria = params.get('categoria');
+    if(!categoria) return;
+    categoriaFiltro = categoria;
+    aplicarFiltros();
+  }
+
+  // ─── Pesquisa ───
+  function abrirPesquisa(){
+    document.getElementById('search-overlay').classList.add('open');
+    setTimeout(() => document.getElementById('search-input').focus(), 100);
+  }
+  function fecharPesquisa(){
+    document.getElementById('search-overlay').classList.remove('open');
+    document.getElementById('search-input').value = '';
+    pesquisarProdutos('');
+  }
+  function pesquisarProdutos(termo){
+    termoPesquisa = termo.toLowerCase().trim();
+    aplicarFiltros();
+  }
+
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  // ─── Navegação: destaca sempre o link da página actual ───
+  function marcarLinkActivo(){
+    const pagina = document.body.dataset.page || '';
+    document.querySelectorAll('.main-nav a').forEach(a => {
+      a.classList.toggle('active', a.dataset.page === pagina);
+    });
+  }
+
+  // ─── Newsletter ───
+  function inscreverNewsletter(e){
+    e.preventDefault();
+    const input = document.getElementById('newsletter-email');
+    const msg = document.getElementById('newsletter-msg');
+    const email = input.value.trim();
+    if(!email) return false;
+
+    msg.textContent = 'A inscrever...';
+    fetch(`${SB_URL}/rest/v1/newsletter_inscricoes`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
+      body:JSON.stringify({ email })
+    })
+    .then(r => {
+      if(r.ok || r.status === 201){ msg.textContent = '✅ Inscrito! Vais receber as novidades da Royalty.'; input.value = ''; }
+      else{ msg.textContent = 'Este e-mail já está inscrito.'; }
+    })
+    .catch(() => { msg.textContent = 'Não foi possível inscrever. Tenta novamente.'; });
+
+    return false;
+  }
+
+  // ─── Contactos dinâmicos (vindos do admin) ───
+  function carregarContactosDinamicos(){
+    fetch(`${SB_URL}/rest/v1/configuracoes?chave=in.(contacto_whatsapp,contacto_email,contacto_instagram,contacto_facebook,contacto_tiktok)&select=chave,valor`, {
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    })
+    .then(r => r.json())
+    .then(data => {
+      const cfg = {};
+      (data||[]).forEach(d => { if(d.valor) cfg[d.chave] = d.valor; });
+
+      if(cfg.contacto_whatsapp){
+        WA_NUMBER = cfg.contacto_whatsapp;
+        const wa = document.getElementById('footer-whatsapp'); if(wa) wa.href = `https://wa.me/${cfg.contacto_whatsapp}`;
+      }
+      if(cfg.contacto_instagram){ const ig = document.getElementById('footer-instagram'); if(ig) ig.href = cfg.contacto_instagram; }
+      if(cfg.contacto_facebook){ const fb = document.getElementById('footer-facebook'); if(fb) fb.href = cfg.contacto_facebook; }
+      if(cfg.contacto_tiktok){ const tt = document.getElementById('footer-tiktok'); if(tt) tt.href = cfg.contacto_tiktok; }
+      if(cfg.contacto_email){ const em = document.getElementById('footer-email'); if(em) em.href = `mailto:${cfg.contacto_email}`; }
+    })
+    .catch(() => {});
+  }
+
+  // ─── Inicialização ───
+  marcarLinkActivo();
+  carregarCarrinhoLS();
+  atualizarCarrinhoVisual();
+  carregarProdutosLoja();
+  const MSG_PEDIDO_DEFAULT = `Olá Royalty Maculuve,
+
+Gostaria de confirmar o seguinte pedido.
+
+DADOS DO CLIENTE
+Nome: {{nome}}
+Celular: {{celular}}
+País: {{pais}}
+Província: {{provincia}}
+Distrito: {{distrito}}
+Bairro: {{bairro}}
+
+DETALHES DO PEDIDO
+{{itens}}
+─────────────────────
+Subtotal: {{subtotal}} MT
+{{desconto_linha}}Total: {{total}} MT
+{{notas_linha}}`;
+
+  let templatePedidoCache = MSG_PEDIDO_DEFAULT;
+  async function carregarTemplatePedido(){
+    try{
+      const r = await fetch(`${SB_URL}/rest/v1/configuracoes?chave=eq.msg_pedido&select=valor`, {
+        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+      });
+      const data = await r.json();
+      if(data && data[0] && data[0].valor) templatePedidoCache = data[0].valor;
+    }catch(e){}
+  }
+
+  carregarBanners();
+  verificarSessaoCliente();
+  carregarLogoLogin();
+  carregarTemplatePedido();
+
+  if(new URLSearchParams(window.location.search).get('conta') === '1'){
+    toggleConta(true);
+  }
+  verificarLinkAvaliacao();
+  verificarLinkProduto();
+  verificarFiltroCategoria();
+  carregarContactosDinamicos();
+</script>
+
+</body>
+</html>

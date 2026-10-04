@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coleção | Royalty</title>
+<style>
+  :root{
+    --white:#FFFFFF;
+    --green:#142D29;
+    --gold:#C8A060;
+    --border:#E4E4E4;
+    --placeholder-bg:#FAFAFA;
+    --green-mid:#2A5049;
+    --green-soft:#3D7068;
+    --teal-muted:#5A7570;
+    --sage:#CCDDD9;
+    --off-white:#F8FAF9;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background:var(--white);
+    color:var(--green);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* ===== HEADER (mesma identidade da loja) ===== */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 5%;
+    border-bottom:1px solid var(--border);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  nav.main-nav ul{
+    display:flex;
+    list-style:none;
+    gap:28px;
+  }
+
+  nav.main-nav a{
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--green);
+    padding-bottom:4px;
+    border-bottom:2px solid transparent;
+  }
+
+  nav.main-nav a.active{
+    border-bottom-color:var(--gold);
+  }
+
+  .header-row2{
+    display:flex;
+    align-items:center;
+    gap:24px;
+  }
+
+  .logo{
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:var(--green);
+  }
+
+  .header-icons{
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+
+  .header-icons .icon{
+    width:20px;
+    height:20px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+  }
+
+  .icon-right-group{
+    display:contents;
+  }
+
+  .icon-search{order:1;}
+  .icon-account{order:2;}
+  .cart-count{order:3;}
+
+  .cart-count{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  .cart-count .badge{
+    background:var(--gold);
+    color:var(--white);
+    font-size:10px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  @media (max-width:600px){
+    header{padding:16px 4%;gap:10px;}
+    nav.main-nav{width:100%;}
+    nav.main-nav ul{gap:20px;width:100%;justify-content:center;}
+    nav.main-nav a{font-size:7px;letter-spacing:0.2px;padding-bottom:5px;}
+    .header-row2{
+      position:relative;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo{
+      font-size:16px;
+      letter-spacing:2px;
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+    }
+    .header-icons{display:contents;}
+    .icon-account{order:1;}
+    .icon-right-group{display:flex;align-items:center;gap:14px;order:2;}
+  }
+
+  /* ===== HERO DA COLEÇÃO ===== */
+  .colecao-hero{
+    text-align:center;
+    padding:48px 6% 36px;
+    background:var(--sage);
+  }
+
+  .eyebrow{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+
+  .colecao-hero h1{
+    font-size:26px;
+    font-weight:400;
+    color:var(--green);
+    margin-bottom:14px;
+  }
+
+  .colecao-hero p{
+    font-size:13px;
+    line-height:1.8;
+    color:var(--teal-muted);
+    max-width:520px;
+    margin:0 auto;
+  }
+
+  /* ===== PEÇAS ===== */
+  .pecas-lista{
+    max-width:560px;
+    margin:0 auto;
+    padding:36px 5% 70px;
+    display:flex;
+    flex-direction:column;
+    gap:48px;
+  }
+
+  .peca-vazio, .peca-erro{
+    text-align:center;
+    color:var(--teal-muted);
+    font-size:13px;
+    padding:60px 0;
+  }
+
+  .peca-bloco{ display:flex; flex-direction:column; }
+
+  .peca-intro{
+    font-size:14px;
+    line-height:1.8;
+    color:var(--green);
+    font-style:italic;
+    margin-bottom:16px;
+  }
+
+  .peca-media{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    background:var(--placeholder-bg);
+    overflow:hidden;
+  }
+
+  .peca-track{
+    display:flex;
+    width:100%;
+    height:100%;
+    transition:transform .3s ease;
+  }
+
+  .peca-slide{
+    width:100%;
+    height:100%;
+    flex-shrink:0;
+  }
+
+  .peca-slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .peca-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.85);
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:16px;
+    line-height:1;
+    color:var(--green);
+    cursor:pointer;
+    padding:0;
+    z-index:2;
+  }
+
+  .peca-arrow.prev{left:10px;}
+  .peca-arrow.next{right:10px;}
+
+  .peca-dots{
+    position:absolute;
+    bottom:12px;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:center;
+    gap:5px;
+    z-index:2;
+  }
+
+  .peca-dot{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.75);
+  }
+
+  .peca-dot.active{
+    background:var(--gold);
+  }
+
+  .peca-desc{
+    padding:16px 2px;
+    font-size:13px;
+    line-height:1.8;
+    color:var(--teal-muted);
+    white-space:pre-line;
+  }
+
+  .peca-btn{
+    display:inline-block;
+    align-self:flex-start;
+    padding:13px 30px;
+    background:var(--green);
+    color:var(--white);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-top:4px;
+  }
+
+  /* ===== FOOTER (mesma identidade da loja) ===== */
+  footer{
+    padding:32px 5% 24px;
+    border-top:1px solid var(--border);
+  }
+
+  .footer-top{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    margin-bottom:28px;
+  }
+
+  .footer-link{
+    font-size:12px;
+    color:var(--teal-muted);
+  }
+
+  .social-icons{
+    display:flex;
+    gap:10px;
+  }
+
+  .social-icon{
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    background:var(--green-mid);
+  }
+
+  .social-icon svg{
+    width:12px;
+    height:12px;
+  }
+
+  .copyright{
+    text-align:center;
+    font-size:12px;
+    color:var(--teal-muted);
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+
+</style>
+</head>
+<body data-page="colecoes">
+
+<header>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html" data-page="inicio">Início</a></li>
+      <li><a href="loja.html" data-page="loja">Loja</a></li>
+      <li><a href="colecoes.html" data-page="colecoes">Coleções</a></li>
+      <li><a href="blog.html" data-page="blog">Blog</a></li>
+      <li><a href="sobrenos.html" data-page="sobrenos">Sobre Nós</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-row2">
+  <div class="logo">ROYALTY</div>
+
+  <div class="header-icons">
+    <span class="icon icon-account" title="Conta" onclick="location.href='loja.html?conta=1'" style="cursor:pointer;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
+      </svg>
+    </span>
+    <div class="icon-right-group">
+      <span class="icon icon-search" title="Buscar" onclick="window.location.href='loja.html'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span>
+      <span class="cart-count" title="Carrinho" onclick="window.location.href='loja.html'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
+          <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"></path>
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="18" cy="21" r="1"></circle>
+        </svg>
+        <span class="badge" id="cart-badge">0</span>
+      </span>
+    </div>
+  </div>
+  </div>
+</header>
+
+<div class="colecao-hero" id="colecao-hero">
+  <div class="eyebrow">Coleção</div>
+  <h1 id="colecao-nome">A carregar...</h1>
+  <p id="colecao-intro"></p>
+</div>
+
+<div class="pecas-lista" id="pecas-lista">
+  <p class="peca-vazio">A carregar peças...</p>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <a href="contactos.html" class="footer-link">Contato</a>
+    <div class="social-icons">
+      <a href="https://wa.me/258879573018" target="_blank" rel="noopener" class="social-icon whatsapp" aria-label="WhatsApp">
+        <svg viewBox="0 0 448 512" fill="#FFFFFF"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/royalty.maculuve?igsh=ZWE3eDNraWFlbzgz" target="_blank" rel="noopener" class="social-icon instagram" aria-label="Instagram">
+        <svg viewBox="0 0 448 512" fill="#FFFFFF"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1JUc2ENeVd/" target="_blank" rel="noopener" class="social-icon facebook" aria-label="Facebook">
+        <svg viewBox="0 0 320 512" fill="#FFFFFF"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@royalty.maculuve?_r=1&_t=ZS-97Su2oY4f93" target="_blank" rel="noopener" class="social-icon tiktok" aria-label="TikTok">
+        <svg viewBox="0 0 448 512" fill="#FFFFFF"><path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/></svg>
+      </a>
+      <a href="mailto:royaltyoficialstore@gmail.com" class="social-icon email" aria-label="E-mail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 6l10 7 10-7"></path></svg>
+      </a>
+    </div>
+    <a href="#" class="footer-link">Perguntas Frequentes</a>
+    <a href="blog.html" class="footer-link">Blog</a>
+  </div>
+  <p class="copyright">©2026 Royalty</p>
+</footer>
+
+<script>
+  const SB_URL = 'https://zrcnwkrvfkykqnhwoklh.supabase.co';
+  const SB_KEY = 'sb_publishable_PX2HcOTmRmbHLDOT5YuKjg_KBNB6aZc';
+
+  const pecaImgs = {};
+
+  async function carregarColecao(){
+    const id = new URLSearchParams(window.location.search).get('id');
+    const listaEl = document.getElementById('pecas-lista');
+    if(!id){
+      document.getElementById('colecao-nome').textContent = 'Coleção não encontrada';
+      listaEl.innerHTML = '<p class="peca-erro">Falta indicar qual coleção mostrar.</p>';
+      return;
+    }
+
+    try{
+      const colData = await fetch(`${SB_URL}/rest/v1/colecoes?id=eq.${id}&select=id,nome,descricao`, {
+        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+      }).then(r => r.json());
+
+      if(!colData || !colData.length){
+        document.getElementById('colecao-nome').textContent = 'Coleção não encontrada';
+        listaEl.innerHTML = '<p class="peca-erro">Esta coleção já não está disponível.</p>';
+        return;
+      }
+      const colecao = colData[0];
+      document.title = `${colecao.nome} | Royalty`;
+      document.getElementById('colecao-nome').textContent = colecao.nome;
+      document.getElementById('colecao-intro').textContent = colecao.descricao || '';
+
+      const pecas = await fetch(`${SB_URL}/rest/v1/colecoes_pecas?colecao_id=eq.${id}&order=ordem.asc&select=id,intro,imagens,descricao,produto_id`, {
+        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+      }).then(r => r.json());
+
+      if(!pecas || !pecas.length){
+        listaEl.innerHTML = '<p class="peca-vazio">Ainda não há peças nesta coleção.</p>';
+        return;
+      }
+
+      const idsProdutos = [...new Set(pecas.map(p => p.produto_id).filter(Boolean))];
+      let produtosPorId = {};
+      if(idsProdutos.length){
+        const prods = await fetch(`${SB_URL}/rest/v1/produtos?id=in.(${idsProdutos.join(',')})&select=id,nome,preco`, {
+          headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+        }).then(r => r.json()).catch(() => []);
+        (prods||[]).forEach(p => { produtosPorId[p.id] = p; });
+      }
+
+      listaEl.innerHTML = pecas.map(peca => {
+        const imgs = Array.isArray(peca.imagens) ? peca.imagens : [];
+        pecaImgs[peca.id] = imgs;
+        const produto = produtosPorId[peca.produto_id];
+        const label = produto ? `Comprar — ${produto.nome}` : 'Comprar';
+        const link = peca.produto_id ? `loja.html?produto=${peca.produto_id}` : 'loja.html';
+        return `
+          <div class="peca-bloco">
+            ${peca.intro ? `<p class="peca-intro">${peca.intro}</p>` : ''}
+            <div class="peca-media" id="peca-media-${peca.id}">
+              <div class="peca-track" id="peca-track-${peca.id}">
+                ${imgs.map(img => `<div class="peca-slide"><img src="${img}" alt="${produto ? produto.nome : 'Peça da coleção'}" loading="lazy"></div>`).join('')}
+              </div>
+              ${imgs.length > 1 ? `
+                <button class="peca-arrow prev" onclick="pecaPrev(${peca.id})">&#8249;</button>
+                <button class="peca-arrow next" onclick="pecaNext(${peca.id})">&#8250;</button>
+                <div class="peca-dots" id="peca-dots-${peca.id}">
+                  ${imgs.map((_, i) => `<span class="peca-dot ${i === 0 ? 'active' : ''}"></span>`).join('')}
+                </div>
+              ` : ''}
+            </div>
+            ${peca.descricao ? `<div class="peca-desc">${peca.descricao}</div>` : ''}
+            <a class="peca-btn" href="${link}">${label}</a>
+          </div>
+        `;
+      }).join('');
+
+      pecas.forEach(peca => {
+        const media = document.getElementById(`peca-media-${peca.id}`);
+        if(!media || !pecaImgs[peca.id] || pecaImgs[peca.id].length <= 1) return;
+        let startX = 0;
+        media.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive:true });
+        media.addEventListener('touchend', e => {
+          const diff = e.changedTouches[0].clientX - startX;
+          if(Math.abs(diff) > 40){ diff < 0 ? pecaNext(peca.id) : pecaPrev(peca.id); }
+        }, { passive:true });
+      });
+    }catch(e){
+      console.error('Erro ao carregar a coleção:', e);
+      listaEl.innerHTML = '<p class="peca-erro">Não foi possível carregar esta coleção.</p>';
+    }
+  }
+
+  function moverPecaSlide(id, idx){
+    const imgs = pecaImgs[id];
+    if(!imgs || imgs.length <= 1) return;
+    if(idx >= imgs.length) idx = 0;
+    if(idx < 0) idx = imgs.length - 1;
+    const track = document.getElementById(`peca-track-${id}`);
+    if(track) track.style.transform = `translateX(-${idx * 100}%)`;
+    document.querySelectorAll(`#peca-dots-${id} .peca-dot`).forEach((d, i) => d.classList.toggle('active', i === idx));
+    if(track) track.dataset.idx = idx;
+  }
+
+  function pecaNext(id){
+    const track = document.getElementById(`peca-track-${id}`);
+    const atual = track ? Number(track.dataset.idx || 0) : 0;
+    moverPecaSlide(id, atual + 1);
+  }
+  function pecaPrev(id){
+    const track = document.getElementById(`peca-track-${id}`);
+    const atual = track ? Number(track.dataset.idx || 0) : 0;
+    moverPecaSlide(id, atual - 1);
+  }
+
+  function marcarLinkActivo(){
+    const pagina = document.body.dataset.page || '';
+    document.querySelectorAll('.main-nav a').forEach(a => {
+      a.classList.toggle('active', a.dataset.page === pagina);
+    });
+  }
+
+  marcarLinkActivo();
+  carregarColecao();
+</script>
+
+</body>
+</html>

@@ -12,53 +12,53 @@
     :root{--g1:#1d2a20;--g2:#2e4031;--g3:#435c47;--white:#fff;--off:#f5f7f5;--muted:#6b7c70;--accent:#d1ded4;--gold:#c8a060;--red:#c0392b;--green:#2e7d32;}
     body{font-family:'Montserrat',sans-serif;background:var(--off);color:#111c16;min-height:100vh;}
     .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--g1);}
-    .login-box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:48px 40px;width:100%;max-width:380px;text-align:center;}
+    .login-box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:48px 40px;width:100%;max-width:380px;text-align:center;}
     .login-logo{font-size:2rem;font-weight:800;color:var(--white);letter-spacing:0.2em;margin-bottom:6px;}
     .login-sub{font-size:0.7rem;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:36px;}
-    .login-input{width:100%;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:0.9rem;text-align:center;letter-spacing:0.15em;outline:none;margin-bottom:14px;}
+    .login-input{width:100%;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:0.9rem;text-align:center;letter-spacing:0.05em;outline:none;margin-bottom:14px;}
     .login-input:focus{border-color:var(--gold);}
     .login-input::placeholder{color:rgba(255,255,255,0.3);}
-    .login-btn{width:100%;padding:14px;background:var(--gold);color:var(--g1);border:none;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.82rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;}
+    .login-btn{width:100%;padding:14px;background:var(--gold);color:var(--g1);border:none;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;}
     .login-erro{color:#e74c3c;font-size:0.78rem;font-weight:600;margin-top:12px;}
     .painel{display:none;}
     .topo{background:var(--g1);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-    .topo-marca{font-size:1rem;font-weight:800;color:var(--white);letter-spacing:0.15em;}
-    .topo-sub{font-size:0.62rem;font-weight:600;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;}
+    .topo-marca{font-size:1.05rem;font-weight:800;color:var(--white);letter-spacing:0.1em;}
+    .topo-sub{font-size:0.65rem;font-weight:600;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;}
     .topo-acoes{display:flex;gap:8px;}
-    .btn-topo{padding:8px 14px;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;cursor:pointer;border:none;letter-spacing:0.06em;white-space:nowrap;}
+    .btn-topo{padding:9px 16px;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.76rem;font-weight:600;cursor:pointer;border:none;white-space:nowrap;}
     .btn-topo.cinza{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:var(--white);}
     .btn-topo.sair{background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--muted);}
     .tabs{display:flex;background:var(--white);border-bottom:2px solid var(--accent);padding:0 20px;overflow-x:auto;}
-    .tab{padding:12px 14px;font-size:0.66rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;white-space:nowrap;}
+    .tab{padding:14px 16px;font-size:0.74rem;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;white-space:nowrap;}
     .tab.active{color:var(--g2);border-bottom-color:var(--g2);}
-    .conteudo{padding:20px;max-width:1200px;margin:0 auto;}
+    .conteudo{padding:24px;max-width:1200px;margin:0 auto;}
     .tab-content{display:none;}
     .tab-content.active{display:block;}
-    .resumo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin-bottom:24px;}
-    .resumo-card{background:var(--white);border-radius:4px;padding:18px 20px;border:1px solid rgba(0,0,0,0.06);}
-    .resumo-label{font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+    .resumo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:16px;margin-bottom:28px;}
+    .resumo-card{background:var(--white);border-radius:10px;padding:20px 22px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+    .resumo-label{font-size:0.72rem;font-weight:600;color:var(--muted);margin-bottom:8px;}
     .resumo-valor{font-size:1.5rem;font-weight:800;color:var(--g1);line-height:1;}
     .resumo-valor.verde{color:var(--green);}
     .resumo-valor.dourado{color:var(--gold);}
     .resumo-valor.vermelho{color:var(--red);}
-    .sec-titulo{font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--g3);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
-    .ranking-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:24px;}
-    .ranking-card{background:var(--white);border-radius:4px;padding:16px 18px;border:1px solid rgba(0,0,0,0.06);position:relative;}
+    .sec-titulo{font-size:0.78rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--g3);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--accent);}
+    .ranking-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:28px;}
+    .ranking-card{background:var(--white);border-radius:10px;padding:18px 20px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;}
     .ranking-card.primeiro::before{content:'🏆';position:absolute;top:10px;right:12px;font-size:1.1rem;}
-    .ranking-nome{font-size:0.8rem;font-weight:700;color:var(--g1);text-transform:uppercase;margin-bottom:12px;}
-    .ranking-stat{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--off);font-size:0.72rem;}
+    .ranking-nome{font-size:0.85rem;font-weight:700;color:var(--g1);margin-bottom:12px;}
+    .ranking-stat{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--off);font-size:0.78rem;}
     .ranking-stat:last-child{border-bottom:none;}
     .ranking-stat-lbl{color:var(--muted);font-weight:600;}
     .ranking-stat-val{font-weight:800;color:var(--g2);}
     .barra-wrap{margin-top:10px;}
     .barra-bg{height:4px;background:var(--accent);border-radius:10px;overflow:hidden;}
     .barra-fill{height:100%;background:var(--g2);border-radius:10px;}
-    .wrap-tabela{background:var(--white);border-radius:4px;border:1px solid rgba(0,0,0,0.06);overflow:hidden;margin-bottom:24px;overflow-x:auto;}
-    .tabela{width:100%;border-collapse:collapse;font-size:0.77rem;}
-    .tabela th{background:var(--g1);color:var(--accent);padding:10px 14px;text-align:left;font-size:0.59rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;}
-    .tabela td{padding:12px 14px;border-bottom:1px solid var(--off);color:var(--g1);font-weight:500;vertical-align:top;}
+    .wrap-tabela{background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);overflow:hidden;margin-bottom:28px;overflow-x:auto;}
+    .tabela{width:100%;border-collapse:collapse;font-size:0.82rem;}
+    .tabela th{background:var(--g1);color:var(--accent);padding:12px 16px;text-align:left;font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;}
+    .tabela td{padding:13px 16px;border-bottom:1px solid var(--off);color:var(--g1);font-weight:500;vertical-align:top;}
     .tabela tr:hover td{background:var(--off);}
-    .tag{display:inline-block;padding:2px 8px;border-radius:2px;font-size:0.64rem;font-weight:700;}
+    .tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:700;}
     .tag.cupao{background:#e8f5e9;color:var(--green);}
     .tag.pendente{background:#fff3e0;color:#e65100;}
     .tag.enviado{background:#e3f2fd;color:#1565c0;}
@@ -66,73 +66,77 @@
     .tag.activo{background:#e8f5e9;color:var(--green);}
     .tag.inactivo{background:#f5f5f5;color:#999;}
     .total-dest{font-weight:800;color:var(--g2);}
-    .itens-lista{font-size:0.69rem;color:var(--muted);line-height:1.7;}
-    .select-estado{padding:4px 8px;border:1px solid var(--accent);border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.71rem;font-weight:600;color:var(--g1);background:var(--white);cursor:pointer;}
-    .filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
-    .filtro-input{padding:8px 11px;border:1px solid var(--accent);border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.76rem;color:var(--g1);outline:none;}
+    .itens-lista{font-size:0.75rem;color:var(--muted);line-height:1.7;}
+    .select-estado{padding:6px 10px;border:1px solid var(--accent);border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:600;color:var(--g1);background:var(--white);cursor:pointer;}
+    .filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center;}
+    .filtro-input{padding:9px 12px;border:1px solid var(--accent);border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.82rem;color:var(--g1);outline:none;}
     .filtro-input:focus{border-color:var(--g3);}
-    .btn-filtrar{padding:8px 16px;background:var(--g2);color:#fff;border:none;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.74rem;font-weight:700;cursor:pointer;}
-    .periodo-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
-    .btn-periodo{padding:7px 14px;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;cursor:pointer;border:1.5px solid var(--accent);background:var(--white);color:var(--muted);transition:all 0.15s;}
+    .btn-filtrar{padding:9px 18px;background:var(--g2);color:#fff;border:none;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;}
+    .periodo-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+    .btn-periodo{padding:8px 16px;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.76rem;font-weight:700;cursor:pointer;border:1.5px solid var(--accent);background:var(--white);color:var(--muted);transition:all 0.15s;}
     .btn-periodo.active{background:var(--g2);color:#fff;border-color:var(--g2);}
-    .periodo-custom{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
-    .grafico-wrap{background:var(--white);border-radius:4px;border:1px solid rgba(0,0,0,0.06);padding:20px;margin-bottom:24px;}
-    .grafico-titulo{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--g3);margin-bottom:14px;}
-    .graficos-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
-    .form-card{background:var(--white);border-radius:4px;border:1px solid rgba(0,0,0,0.06);padding:22px;margin-bottom:20px;}
-    .form-titulo{font-size:0.78rem;font-weight:800;color:var(--g1);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:18px;}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-    .form-grupo{display:flex;flex-direction:column;gap:4px;}
+    .periodo-custom{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:18px;}
+    .grafico-wrap{background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:22px;margin-bottom:28px;}
+    .grafico-titulo{font-size:0.78rem;font-weight:700;color:var(--g3);margin-bottom:16px;}
+    .graficos-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;}
+    .form-card{background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:24px;margin-bottom:24px;}
+    .form-titulo{font-size:0.88rem;font-weight:800;color:var(--g1);margin-bottom:18px;}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .form-grupo{display:flex;flex-direction:column;gap:5px;}
     .form-grupo.full{grid-column:1/-1;}
-    .form-label{font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--g3);}
-    .form-input{padding:9px 11px;border:1px solid var(--accent);border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.79rem;font-weight:500;color:var(--g1);outline:none;width:100%;}
+    .form-label{font-size:0.74rem;font-weight:600;color:var(--g3);}
+    .form-input{padding:10px 12px;border:1px solid var(--accent);border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:500;color:var(--g1);outline:none;width:100%;}
     .form-input:focus{border-color:var(--g3);}
-    .form-dica{font-size:0.62rem;color:var(--muted);margin-top:2px;}
-    .form-acoes{display:flex;gap:10px;margin-top:16px;}
-    .btn-guardar{padding:10px 24px;background:var(--g2);color:#fff;border:none;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;}
-    .btn-cancelar{padding:10px 16px;background:transparent;border:1px solid var(--accent);color:var(--muted);border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;}
-    .btn-sm{padding:6px 12px;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.67rem;font-weight:700;cursor:pointer;border:none;}
+    .form-dica{font-size:0.7rem;color:var(--muted);margin-top:2px;}
+    .form-acoes{display:flex;gap:10px;margin-top:18px;}
+    .btn-guardar{padding:11px 26px;background:var(--g2);color:#fff;border:none;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;}
+    .btn-cancelar{padding:11px 18px;background:transparent;border:1px solid var(--accent);color:var(--muted);border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;}
+    .btn-sm{padding:7px 14px;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:0.74rem;font-weight:700;cursor:pointer;border:none;}
     .btn-sm.verde{background:var(--g2);color:#fff;}
     .btn-sm.cinza{background:transparent;border:1px solid var(--accent);color:var(--muted);}
-    .btn-sm.activar{background:var(--green);color:#fff;}
+    .btn-sm.activar{background:var(--g2);color:#fff;}
     .btn-sm.vermelho{background:transparent;border:1px solid #e74c3c;color:#e74c3c;}
-    .btn-sm.gold{background:var(--gold);color:var(--g1);}
-    .msg-ok{color:var(--green);font-size:0.74rem;font-weight:600;margin-top:10px;}
-    .msg-err{color:var(--red);font-size:0.74rem;font-weight:600;margin-top:10px;}
-    .vazio{text-align:center;padding:40px 20px;color:var(--muted);font-size:0.82rem;}
-    .loading{text-align:center;padding:40px;color:var(--muted);font-size:0.77rem;font-weight:600;}
-    .ultima-at{font-size:0.65rem;color:var(--muted);text-align:right;margin-bottom:16px;}
-    .produtos-lista{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
-    .produto-card{background:var(--white);border-radius:4px;border:1px solid rgba(0,0,0,0.06);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;}
+    .upload-status{font-size:0.72rem;color:var(--muted);font-weight:600;}
+    .upload-status.ok{color:var(--green);}
+    .upload-status.erro{color:var(--red);}
+    .upload-linha{display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap;}
+    .btn-sm.gold{background:transparent;border:1px solid var(--gold);color:#8a6a2f;}
+    .msg-ok{color:var(--green);font-size:0.8rem;font-weight:600;margin-top:10px;}
+    .msg-err{color:var(--red);font-size:0.8rem;font-weight:600;margin-top:10px;}
+    .vazio{text-align:center;padding:40px 20px;color:var(--muted);font-size:0.88rem;}
+    .loading{text-align:center;padding:40px;color:var(--muted);font-size:0.82rem;font-weight:600;}
+    .ultima-at{font-size:0.72rem;color:var(--muted);text-align:right;margin-bottom:18px;}
+    .produtos-lista{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
+    .produto-card{background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;}
     .produto-card.inactivo{opacity:0.5;}
-    .produto-img{width:60px;height:75px;object-fit:cover;border-radius:3px;flex-shrink:0;background:var(--off);}
+    .produto-img{width:60px;height:75px;object-fit:cover;border-radius:8px;flex-shrink:0;background:var(--off);}
     .produto-info{flex:1;}
-    .produto-nome{font-size:0.86rem;font-weight:800;color:var(--g1);text-transform:uppercase;margin-bottom:3px;}
-    .produto-preco{font-size:0.79rem;font-weight:700;color:var(--g2);margin-bottom:5px;}
-    .produto-meta{font-size:0.69rem;color:var(--muted);font-weight:500;}
+    .produto-nome{font-size:0.92rem;font-weight:700;color:var(--g1);margin-bottom:3px;}
+    .produto-preco{font-size:0.85rem;font-weight:700;color:var(--g2);margin-bottom:5px;}
+    .produto-meta{font-size:0.76rem;color:var(--muted);font-weight:500;}
     .produto-acoes{display:flex;flex-direction:column;gap:6px;flex-shrink:0;}
-    .clientes-lista{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
-    .cliente-card{background:var(--white);border-radius:4px;border:1px solid rgba(0,0,0,0.06);padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
-    .cliente-nome{font-size:0.86rem;font-weight:800;color:var(--g1);margin-bottom:3px;}
-    .cliente-tel{font-size:0.73rem;color:var(--muted);font-weight:500;}
+    .clientes-lista{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+    .cliente-card{background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+    .cliente-nome{font-size:0.9rem;font-weight:700;color:var(--g1);margin-bottom:3px;}
+    .cliente-tel{font-size:0.78rem;color:var(--muted);font-weight:500;}
     .cliente-stats{text-align:right;}
     .cliente-total{font-size:1rem;font-weight:800;color:var(--g2);}
-    .cliente-pedidos{font-size:0.69rem;color:var(--muted);font-weight:500;}
-    .cupoes-lista{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
-    .cupao-card{background:var(--white);border-radius:4px;border:1px solid rgba(0,0,0,0.06);padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
-    .cupao-codigo{font-size:1rem;font-weight:800;color:var(--g1);letter-spacing:0.1em;}
-    .cupao-nome{font-size:0.73rem;color:var(--muted);font-weight:500;}
-    .cupao-info{font-size:0.73rem;color:var(--g3);font-weight:600;}
+    .cliente-pedidos{font-size:0.76rem;color:var(--muted);font-weight:500;}
+    .cupoes-lista{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+    .cupao-card{background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+    .cupao-codigo{font-size:1rem;font-weight:800;color:var(--g1);letter-spacing:0.06em;}
+    .cupao-nome{font-size:0.78rem;color:var(--muted);font-weight:500;}
+    .cupao-info{font-size:0.78rem;color:var(--g3);font-weight:600;}
     .cupao-acoes{display:flex;gap:8px;}
-    .banners-lista{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
-    .banner-card{background:var(--white);border-radius:4px;border:1px solid rgba(0,0,0,0.06);padding:14px 16px;display:flex;gap:14px;align-items:center;}
+    .banners-lista{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
+    .banner-card{background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:16px 18px;display:flex;gap:14px;align-items:center;}
     .banner-card.inactivo{opacity:0.5;}
-    .banner-prev{width:96px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0;background:var(--off);}
+    .banner-prev{width:96px;height:40px;object-fit:cover;border-radius:8px;flex-shrink:0;background:var(--off);}
     .banner-info{flex:1;}
-    .banner-ordem{font-size:0.7rem;color:var(--muted);font-weight:600;}
+    .banner-ordem{font-size:0.76rem;color:var(--muted);font-weight:600;}
     .banner-link{font-size:0.72rem;color:var(--g3);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px;}
     .banner-acoes{display:flex;gap:6px;flex-shrink:0;}
-    @media(max-width:600px){.conteudo{padding:14px;}.form-grid{grid-template-columns:1fr;}.graficos-grid{grid-template-columns:1fr;}.produto-card{flex-wrap:wrap;}.produto-acoes{flex-direction:row;flex-wrap:wrap;}.banner-card{flex-wrap:wrap;}.banner-acoes{flex-wrap:wrap;}}
+    @media(max-width:600px){.conteudo{padding:14px;}.form-grid{grid-template-columns:1fr;}.graficos-grid{grid-template-columns:1fr;}.produto-card{flex-wrap:wrap;}.produto-acoes{flex-direction:row;flex-wrap:wrap;display:grid;grid-template-columns:1fr 1fr;gap:6px;width:100%;}.produto-acoes button{width:100%;}.banner-card{flex-wrap:wrap;}.banner-acoes{flex-wrap:wrap;}}
   </style>
 </head>
 <body>
@@ -141,7 +145,8 @@
   <div class="login-box">
     <div class="login-logo">ROYALTY</div>
     <div class="login-sub">Painel de Administração</div>
-    <input type="password" class="login-input" id="login-senha" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter') entrar()"/>
+    <input type="email" class="login-input" id="login-email" placeholder="Email" autocomplete="username" onkeydown="if(event.key==='Enter') entrar()"/>
+    <input type="password" class="login-input" id="login-senha" placeholder="Senha de acesso" autocomplete="current-password" onkeydown="if(event.key==='Enter') entrar()"/>
     <button class="login-btn" onclick="entrar()">Entrar</button>
     <div class="login-erro" id="login-erro"></div>
   </div>
@@ -159,16 +164,25 @@
 
   <div class="tabs">
     <div class="tab active" onclick="mudarTab('dashboard',this)">📊 Dashboard</div>
+    <div class="tab" onclick="mudarTab('actividade',this)">📜 Actividade</div>
+    <div class="tab" onclick="mudarTab('administradores',this)">🔑 Administradores</div>
+    <div class="tab" onclick="mudarTab('avaliacoes',this)">⭐ Avaliações</div>
+    <div class="tab" onclick="mudarTab('banners',this)">🖼️ Banners</div>
+    <div class="tab" onclick="mudarTab('caixa',this)">💰 Caixa</div>
+    <div class="tab" onclick="mudarTab('categorias',this)">🗂️ Categorias</div>
+    <div class="tab" onclick="mudarTab('clientes',this)">👥 Clientes</div>
+    <div class="tab" onclick="mudarTab('colecoes',this)">🗂️ Coleções</div>
+    <div class="tab" onclick="mudarTab('contactos',this)">📞 Contactos</div>
+    <div class="tab" onclick="mudarTab('cupoes',this)">🎟️ Cupões</div>
+    <div class="tab" onclick="mudarTab('galeria',this)">📸 Galeria</div>
+    <div class="tab" onclick="mudarTab('loginloja',this)">🔐 Login da Loja</div>
+    <div class="tab" onclick="mudarTab('mensagens',this)">✉️ Mensagens</div>
+    <div class="tab" onclick="mudarTab('newsletter',this)">📬 Newsletter</div>
     <div class="tab" onclick="mudarTab('pedidos',this)">📦 Pedidos</div>
     <div class="tab" onclick="mudarTab('produtos',this)">🛍️ Produtos</div>
-    <div class="tab" onclick="mudarTab('banners',this)">🖼️ Banners</div>
-    <div class="tab" onclick="mudarTab('cupoes',this)">🎟️ Cupões</div>
-    <div class="tab" onclick="mudarTab('clientes',this)">👥 Clientes</div>
-    <div class="tab" onclick="mudarTab('avaliacoes',this)">⭐ Avaliações</div>
-    <div class="tab" onclick="mudarTab('caixa',this)">💰 Caixa</div>
+    <div class="tab" onclick="mudarTab('stock',this)">📋 Stock</div>
     <div class="tab" onclick="mudarTab('relatorios',this)">📈 Relatórios</div>
-    <div class="tab" onclick="mudarTab('galeria',this)">📸 Galeria</div>
-    <div class="tab" onclick="mudarTab('actividade',this)">📜 Actividade</div>
+    <div class="tab" onclick="mudarTab('sobrenos',this)">📖 Sobre Nós</div>
   </div>
 
   <div class="conteudo">
@@ -194,16 +208,18 @@
     <!-- PEDIDOS -->
     <div class="tab-content" id="tab-pedidos">
       <div class="filtros">
-        <input class="filtro-input" id="f-data-ini" type="date">
-        <input class="filtro-input" id="f-data-fim" type="date">
-        <input class="filtro-input" id="f-cliente" placeholder="Nome ou telefone">
-        <select class="filtro-input" id="f-estado">
-          <option value="">Todos os estados</option>
-          <option value="Pendente">Pendente</option>
-          <option value="Enviado">Enviado</option>
-          <option value="Entregue">Entregue</option>
-        </select>
-        <button class="btn-filtrar" onclick="carregarPedidos()">Filtrar</button>
+        <div class="form-grupo"><label class="form-label">Data início</label><input class="filtro-input" id="f-data-ini" type="date"></div>
+        <div class="form-grupo"><label class="form-label">Data fim</label><input class="filtro-input" id="f-data-fim" type="date"></div>
+        <div class="form-grupo"><label class="form-label">Nome ou telefone</label><input class="filtro-input" id="f-cliente" placeholder="Nome ou telefone"></div>
+        <div class="form-grupo"><label class="form-label">Estado</label>
+          <select class="filtro-input" id="f-estado">
+            <option value="">Todos os estados</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Enviado">Enviado</option>
+            <option value="Entregue">Entregue</option>
+          </select>
+        </div>
+        <button class="btn-filtrar" onclick="carregarPedidos()" style="align-self:flex-end;">Filtrar</button>
       </div>
       <div class="wrap-tabela"><div id="pedidos-conteudo"><div class="loading">A carregar...</div></div></div>
     </div>
@@ -217,13 +233,28 @@
           <div class="form-grupo"><label class="form-label">Badge</label>
             <select class="form-input" id="fp-badge"><option value="">Sem badge</option><option value="Novo">Novo</option></select>
           </div>
+          <div class="form-grupo"><label class="form-label">Categoria</label>
+            <div style="display:flex;gap:6px;">
+              <select class="form-input" id="fp-categoria" style="flex:1;"><option value="">Sem categoria</option></select>
+              <button type="button" class="btn-sm cinza" onclick="novaCategoria()" title="Criar nova categoria">+</button>
+            </div>
+          </div>
+          <div class="form-grupo"><label class="form-label">Coleção</label>
+            <div style="display:flex;gap:6px;">
+              <select class="form-input" id="fp-colecao" style="flex:1;"><option value="">Sem coleção</option></select>
+              <button type="button" class="btn-sm cinza" onclick="novaColecaoProduto()" title="Criar nova coleção">+</button>
+            </div>
+          </div>
           <div class="form-grupo"><label class="form-label">Preço Promo (MT) *</label><input class="form-input" id="fp-preco" type="number" placeholder="850"></div>
           <div class="form-grupo"><label class="form-label">Preço Original (MT)</label><input class="form-input" id="fp-preco-orig" type="number" placeholder="1000"><span class="form-dica">Vazio = sem desconto</span></div>
           <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fp-desc" rows="3"></textarea></div>
           <div class="form-grupo full"><label class="form-label">Cores (uma por linha: Nome|#hex)</label><textarea class="form-input" id="fp-cores" rows="4" placeholder="Verde Escuro|#1e3322&#10;Branca|#ffffff"></textarea></div>
           <div class="form-grupo"><label class="form-label">Tamanhos (vírgula)</label><input class="form-input" id="fp-tamanhos" placeholder="M,L,XL"></div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fp-ordem" type="number" placeholder="1"></div>
-          <div class="form-grupo full"><label class="form-label">Links das Imagens (um por linha)</label><textarea class="form-input" id="fp-imgs" rows="4" placeholder="https://..."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Links das Imagens (um por linha) — 1000×1000px (quadrado) recomendado</label><textarea class="form-input" id="fp-imgs" rows="4" placeholder="https://..." oninput="atualizarPreviewMultipla(this.value,'fp-preview-wrap')"></textarea>
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaTextarea(this,'fp-imgs','fp-imgs-status');atualizarPreviewMultipla(document.getElementById('fp-imgs').value,'fp-preview-wrap');"></label><span class="upload-status" id="fp-imgs-status"></span></div>
+            <div id="fp-preview-wrap" style="display:none;flex-wrap:wrap;gap:8px;margin-top:8px;"></div>
+          </div>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;margin-bottom:10px;">
           <label class="form-label" style="margin:0;">📦 Stock por Cor e Tamanho</label>
@@ -244,12 +275,56 @@
       <div class="produtos-lista" id="produtos-lista"><div class="loading">A carregar...</div></div>
     </div>
 
+    <!-- STOCK -->
+    <div class="tab-content" id="tab-stock">
+      <div class="sec-titulo">📋 Stock</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:14px;">Edita a quantidade de cada cor/tamanho directamente aqui. Grava sozinho assim que sais do campo.</div>
+      <div id="stock-tab-lista"><div class="loading">A carregar...</div></div>
+    </div>
+
+    <!-- CATEGORIAS -->
+    <div class="tab-content" id="tab-categorias">
+      <div class="form-card" id="form-categoria" style="display:none;">
+        <div class="form-titulo" id="form-categoria-titulo">➕ Adicionar Categoria</div>
+        <div class="form-grid">
+          <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fcat-nome" placeholder="Ex: Homem"></div>
+          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fcat-ordem" type="number" placeholder="1"></div>
+          <div class="form-grupo full"><label class="form-label">Link da Imagem (círculo) — 400×400px (quadrado) recomendado</label><input class="form-input" id="fcat-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fcat-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fcat-img','fcat-img-status');atualizarPreviewSimples(document.getElementById('fcat-img').value,'fcat-preview');"></label><span class="upload-status" id="fcat-img-status"></span></div>
+            <div id="fcat-preview-wrap" style="display:none;margin-top:8px;"><img id="fcat-preview" src="" alt="Pré-visualização" style="width:80px;height:80px;object-fit:cover;border-radius:50%;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+        </div>
+        <div class="form-acoes">
+          <button class="btn-guardar" onclick="guardarCategoriaAdm()">Guardar</button>
+          <button class="btn-cancelar" onclick="fecharFormCategoria()">Cancelar</button>
+        </div>
+        <div class="form-msg" id="fcat-msg"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <div class="sec-titulo" style="margin:0;border:none;padding:0;">🗂️ Categorias</div>
+        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormCategoriaAdm()">+ Adicionar</button>
+      </div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:14px;">A imagem é usada como o círculo da categoria. Só é possível eliminar uma categoria sem produtos associados.</div>
+      <div class="produtos-lista" id="categorias-lista"><div class="loading">A carregar...</div></div>
+
+      <div id="categoria-produtos-box" style="display:none;margin-top:28px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <div class="sec-titulo" style="margin:0;border:none;padding:0;" id="categoria-produtos-titulo">Produtos</div>
+          <button class="btn-sm cinza" onclick="fecharProdutosCategoria()">✕ Fechar</button>
+        </div>
+        <div class="produtos-lista" id="categoria-produtos-lista"></div>
+      </div>
+    </div>
+
     <!-- BANNERS -->
     <div class="tab-content" id="tab-banners">
       <div class="form-card" id="form-banner" style="display:none;">
         <div class="form-titulo" id="form-ban-titulo">🖼️ Adicionar Banner</div>
         <div class="form-grid">
-          <div class="form-grupo full"><label class="form-label">Link da Imagem * (1296×544px recomendado)</label><input class="form-input" id="fb-url" placeholder="https://i.ibb.co/..."></div>
+          <div class="form-grupo full"><label class="form-label">Link da Imagem * (1296×544px recomendado)</label><input class="form-input" id="fb-url" placeholder="https://i.ibb.co/..." oninput="atualizarPreviewSimples(this.value,'fb-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fb-url','fb-url-status');atualizarPreviewSimples(document.getElementById('fb-url').value,'fb-preview');"></label><span class="upload-status" id="fb-url-status"></span></div>
+            <div id="fb-preview-wrap" style="display:none;margin-top:8px;"><img id="fb-preview" src="" alt="Pré-visualização" style="width:100%;max-width:280px;aspect-ratio:1296/544;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
           <div class="form-grupo full"><label class="form-label">Link de Destino (opcional)</label><input class="form-input" id="fb-link" placeholder="https://... (ao clicar no banner vai para este link)"></div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fb-ordem" type="number" placeholder="1"></div>
         </div>
@@ -397,7 +472,10 @@
       <div class="form-card">
         <div class="form-titulo">🖼️ Foto de Perfil (aparece em cada publicação na loja)</div>
         <div class="form-grid">
-          <div class="form-grupo full"><label class="form-label">Link da Foto</label><input class="form-input" id="cfg-logo-url" placeholder="https://i.ibb.co/..."></div>
+          <div class="form-grupo full"><label class="form-label">Link da Foto — 400×400px (quadrado, aparece em círculo)</label><input class="form-input" id="cfg-logo-url" placeholder="https://i.ibb.co/..." oninput="atualizarPreviewSimples(this.value,'cfglogo-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'cfg-logo-url','cfg-logo-url-status');atualizarPreviewSimples(document.getElementById('cfg-logo-url').value,'cfglogo-preview');"></label><span class="upload-status" id="cfg-logo-url-status"></span></div>
+            <div id="cfglogo-preview-wrap" style="display:none;margin-top:8px;"><img id="cfglogo-preview" src="" alt="Pré-visualização" style="width:64px;height:64px;object-fit:cover;border-radius:50%;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
         </div>
         <div class="form-acoes">
           <button class="btn-guardar" onclick="guardarLogoGaleria()">Guardar Foto</button>
@@ -407,11 +485,10 @@
       <div class="form-card" id="form-galeria" style="display:none;">
         <div class="form-titulo" id="form-gal-titulo">📸 Adicionar Publicação</div>
         <div class="form-grid">
-          <div class="form-grupo full"><label class="form-label">Links das Imagens (um por linha) *</label><textarea class="form-input" id="fg-imgs" rows="4" placeholder="https://i.ibb.co/...&#10;https://i.ibb.co/..." oninput="atualizarPreviewGaleria()"></textarea></div>
-          <div class="form-grupo full" id="fg-preview-wrap" style="display:none;">
-            <label class="form-label">Pré-visualização (1ª imagem)</label>
-            <img id="fg-preview" src="" alt="Pré-visualização" style="max-width:180px;max-height:180px;border-radius:8px;border:1px solid #ddd;display:block;object-fit:cover;" onerror="this.style.display='none'" onload="this.style.display='block'">
+          <div class="form-grupo full"><label class="form-label">Links das Imagens (um por linha) * — 1080×1080px (quadrado, estilo Instagram) recomendado</label><textarea class="form-input" id="fg-imgs" rows="4" placeholder="https://i.ibb.co/...&#10;https://i.ibb.co/..." oninput="atualizarPreviewGaleria()"></textarea>
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaTextarea(this,'fg-imgs','fg-imgs-status');atualizarPreviewGaleria();"></label><span class="upload-status" id="fg-imgs-status"></span></div>
           </div>
+          <div class="form-grupo full" id="fg-preview-wrap" style="display:none;flex-wrap:wrap;gap:8px;"></div>
           <div class="form-grupo full"><label class="form-label">Descrição</label><textarea class="form-input" id="fg-desc" rows="3" placeholder="Legenda da publicação..."></textarea></div>
         </div>
         <div class="form-acoes">
@@ -428,6 +505,267 @@
     </div>
 
 
+    <!-- COLEÇÕES -->
+    <div class="tab-content" id="tab-colecoes">
+      <div class="sec-titulo">🗂️ Coleções de Produtos (páginas de lançamento)</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:14px;">Cada coleção pode ter várias "peças" — cada uma com introdução, várias imagens, descrição livre e um produto real ligado ao botão de compra.</div>
+      <div class="form-card" id="form-colprod" style="display:none;">
+        <div class="form-titulo" id="form-colprod-titulo">➕ Adicionar Coleção</div>
+        <div class="form-grid">
+          <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fcp-nome" placeholder="Ex: Verão 2026"></div>
+          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fcp-ordem" type="number" placeholder="1"></div>
+          <div class="form-grupo full"><label class="form-label">Introdução da Coleção *</label><textarea class="form-input" id="fcp-desc" rows="3" placeholder="Motivo, inspiração, história desta coleção..."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Imagem de Capa — 1080×1080px (quadrado) recomendado</label><input class="form-input" id="fcp-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fcp-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fcp-img','fcp-img-status');atualizarPreviewSimples(document.getElementById('fcp-img').value,'fcp-preview');"></label><span class="upload-status" id="fcp-img-status"></span></div>
+            <div id="fcp-preview-wrap" style="display:none;margin-top:8px;"><img id="fcp-preview" src="" alt="Pré-visualização" style="width:110px;height:110px;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+        </div>
+        <div class="form-acoes">
+          <button class="btn-guardar" onclick="guardarColecaoProdutos()">Guardar</button>
+          <button class="btn-cancelar" onclick="fecharFormColecaoProdutos()">Cancelar</button>
+        </div>
+        <div class="form-msg" id="fcp-msg"></div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormColecaoProdutos()">+ Adicionar Coleção</button>
+      </div>
+      <div class="produtos-lista" id="colprod-lista"><div class="loading">A carregar...</div></div>
+
+      <!-- Gestão das Peças de uma coleção -->
+      <div id="colprod-pecas-box" style="display:none;margin-top:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <div class="sec-titulo" style="margin:0;border:none;padding:0;" id="colprod-pecas-titulo">Peças</div>
+          <button class="btn-sm cinza" onclick="fecharPecasColecao()">✕ Fechar</button>
+        </div>
+
+        <div class="form-card" id="form-peca" style="display:none;">
+          <div class="form-titulo" id="form-peca-titulo">➕ Adicionar Peça</div>
+          <div class="form-grid">
+            <div class="form-grupo full"><label class="form-label">Introdução da Peça (motivo/inspiração)</label><textarea class="form-input" id="fpc-intro" rows="2" placeholder="Porque foi criada esta peça..."></textarea></div>
+            <div class="form-grupo full"><label class="form-label">Links das Imagens (um por linha) — 1000×1000px (quadrado) recomendado</label><textarea class="form-input" id="fpc-imgs" rows="3" placeholder="https://..." oninput="atualizarPreviewMultipla(this.value,'fpc-preview-wrap')"></textarea>
+              <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaTextarea(this,'fpc-imgs','fpc-imgs-status');atualizarPreviewMultipla(document.getElementById('fpc-imgs').value,'fpc-preview-wrap');"></label><span class="upload-status" id="fpc-imgs-status"></span></div>
+              <div id="fpc-preview-wrap" style="display:none;flex-wrap:wrap;gap:8px;margin-top:8px;"></div>
+            </div>
+            <div class="form-grupo full"><label class="form-label">Descrição da Peça (cores, tamanhos, quantidades, etc.)</label><textarea class="form-input" id="fpc-desc" rows="3" placeholder="Texto livre..."></textarea></div>
+            <div class="form-grupo"><label class="form-label">Produto ligado ao botão de compra *</label><select class="form-input" id="fpc-produto"><option value="">Escolhe um produto...</option></select></div>
+            <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fpc-ordem" type="number" placeholder="1"></div>
+          </div>
+          <div class="form-acoes">
+            <button class="btn-guardar" onclick="guardarPeca()">Guardar</button>
+            <button class="btn-cancelar" onclick="fecharFormPeca()">Cancelar</button>
+          </div>
+          <div class="form-msg" id="fpc-msg"></div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormPeca()">+ Adicionar Peça</button>
+        </div>
+        <div class="produtos-lista" id="pecas-lista"></div>
+      </div>
+
+      <div class="sec-titulo" style="margin-top:32px;">🏆 Coleções Mais Marcantes</div>
+      <div class="form-card" id="form-marcante" style="display:none;">
+        <div class="form-titulo" id="form-marcante-titulo">➕ Adicionar Coleção</div>
+        <div class="form-grid">
+          <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fm-nome" placeholder="Ex: Royalty Black"></div>
+          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fm-ordem" type="number" placeholder="1"></div>
+          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fm-desc" rows="2" placeholder="Ex: Uma coleção construída em torno do preto."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Link da Imagem — 900×1200px (proporção 3:4) recomendado</label><input class="form-input" id="fm-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fm-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fm-img','fm-img-status');atualizarPreviewSimples(document.getElementById('fm-img').value,'fm-preview');"></label><span class="upload-status" id="fm-img-status"></span></div>
+            <div id="fm-preview-wrap" style="display:none;margin-top:8px;"><img id="fm-preview" src="" alt="Pré-visualização" style="width:105px;aspect-ratio:3/4;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+        </div>
+        <div class="form-acoes">
+          <button class="btn-guardar" onclick="guardarMarcante()">Guardar</button>
+          <button class="btn-cancelar" onclick="fecharFormMarcante()">Cancelar</button>
+        </div>
+        <div class="form-msg" id="fm-msg"></div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormMarcante()">+ Adicionar Coleção</button>
+      </div>
+      <div class="produtos-lista" id="marcantes-lista"><div class="loading">A carregar...</div></div>
+
+      <div class="sec-titulo" style="margin-top:32px;">🆕 Novas Coleções</div>
+      <div class="form-card" id="form-nova-colecao" style="display:none;">
+        <div class="form-titulo" id="form-nova-colecao-titulo">➕ Adicionar Nova Coleção</div>
+        <div class="form-grid">
+          <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fn-nome" placeholder="Ex: Royalty Street 26"></div>
+          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fn-ordem" type="number" placeholder="1"></div>
+          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fn-desc" rows="2" placeholder="Ex: Uma nova expressão da marca."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Link da Imagem — 900×1200px (proporção 3:4) recomendado</label><input class="form-input" id="fn-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fn-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fn-img','fn-img-status');atualizarPreviewSimples(document.getElementById('fn-img').value,'fn-preview');"></label><span class="upload-status" id="fn-img-status"></span></div>
+            <div id="fn-preview-wrap" style="display:none;margin-top:8px;"><img id="fn-preview" src="" alt="Pré-visualização" style="width:105px;aspect-ratio:3/4;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+        </div>
+        <div class="form-acoes">
+          <button class="btn-guardar" onclick="guardarNovaColecao()">Guardar</button>
+          <button class="btn-cancelar" onclick="fecharFormNovaColecao()">Cancelar</button>
+        </div>
+        <div class="form-msg" id="fn-msg"></div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormNovaColecao()">+ Adicionar Coleção</button>
+      </div>
+      <div class="produtos-lista" id="novas-colecoes-lista"><div class="loading">A carregar...</div></div>
+
+      <div class="sec-titulo" style="margin-top:32px;">🔮 Lançamento Futuro</div>
+      <div class="form-dica" style="margin-bottom:10px;">Só um lançamento fica activo de cada vez — aparece na página de Coleções assim que activares.</div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="form-grupo"><label class="form-label">Nome do Lançamento</label><input class="form-input" id="fl-nome" placeholder="Ex: Royalty Winter 26"></div>
+          <div class="form-grupo"><label class="form-label">Data Prevista</label><input class="form-input" id="fl-data" type="date"></div>
+          <div class="form-grupo full"><label class="form-label">Texto</label><textarea class="form-input" id="fl-texto" rows="2" placeholder="Ex: Uma nova colecção está a chegar."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Link da Imagem Teaser — 800×1000px (proporção 4:5) recomendado</label><input class="form-input" id="fl-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fl-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fl-img','fl-img-status');atualizarPreviewSimples(document.getElementById('fl-img').value,'fl-preview');"></label><span class="upload-status" id="fl-img-status"></span></div>
+            <div id="fl-preview-wrap" style="display:none;margin-top:8px;"><img id="fl-preview" src="" alt="Pré-visualização" style="width:100px;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+        </div>
+        <div class="form-acoes">
+          <button class="btn-guardar" onclick="guardarLancamento()">Guardar</button>
+          <label style="display:flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:600;color:var(--muted);margin-left:auto;">
+            <input type="checkbox" id="fl-activo"> Activo (visível na loja)
+          </label>
+        </div>
+        <div class="form-msg" id="fl-msg"></div>
+      </div>
+
+      <div class="sec-titulo" style="margin-top:32px;">🖼️ Banners da Página Coleções</div>
+      <div class="form-card" id="form-banner-col" style="display:none;">
+        <div class="form-titulo" id="form-ban-col-titulo">🖼️ Adicionar Banner</div>
+        <div class="form-grid">
+          <div class="form-grupo full"><label class="form-label">Link da Imagem * — 1080×1080px (quadrado) recomendado</label><input class="form-input" id="fbc-url" placeholder="https://i.ibb.co/..." oninput="atualizarPreviewSimples(this.value,'fbc-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fbc-url','fbc-url-status');atualizarPreviewSimples(document.getElementById('fbc-url').value,'fbc-preview');"></label><span class="upload-status" id="fbc-url-status"></span></div>
+            <div id="fbc-preview-wrap" style="display:none;margin-top:8px;"><img id="fbc-preview" src="" alt="Pré-visualização" style="width:140px;height:140px;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+          <div class="form-grupo full"><label class="form-label">Link de Destino (opcional)</label><input class="form-input" id="fbc-link" placeholder="https://... (ao clicar no banner vai para este link)"></div>
+          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fbc-ordem" type="number" placeholder="1"></div>
+        </div>
+        <div class="form-acoes">
+          <button class="btn-guardar" onclick="guardarBannerColecoes()">Guardar</button>
+          <button class="btn-cancelar" onclick="fecharFormBannerColecoes()">Cancelar</button>
+        </div>
+        <div id="fbc-msg"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <div class="sec-titulo" style="margin:0;border:none;padding:0;">🖼️ Banners (só nesta página)</div>
+        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormBannerColecoes()">+ Adicionar</button>
+      </div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:14px;">Estes banners aparecem só na página Coleções (independentes dos banners da Loja). Dimensão recomendada: <strong>1080×1080px (quadrado)</strong>.</div>
+      <div class="banners-lista" id="banners-col-lista"><div class="loading">A carregar...</div></div>
+    </div>
+
+    <!-- SITE -->
+    <div class="tab-content" id="tab-mensagens">
+      <div class="sec-titulo">✉️ Mensagens (WhatsApp)</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:14px;">Usa os marcadores entre chavetas duplas — são substituídos automaticamente pelos dados reais ao enviar.</div>
+
+      <div class="form-card">
+        <div class="form-titulo">Mensagem do Pedido (enviada pelo cliente no checkout)</div>
+        <div style="font-size:0.68rem;color:var(--muted);margin-bottom:8px;">Marcadores: {{nome}} {{celular}} {{pais}} {{provincia}} {{distrito}} {{bairro}} {{itens}} {{subtotal}} {{desconto_linha}} {{total}} {{notas_linha}}</div>
+        <textarea class="form-input" id="msg-pedido" rows="10"></textarea>
+        <div class="form-acoes"><button class="btn-guardar" onclick="guardarMensagem('msg_pedido','msg-pedido','msg-pedido-msg')">Guardar</button></div>
+        <div class="form-msg" id="msg-pedido-msg"></div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-titulo">Mensagem de Agradecimento (enviada ao marcares "Entregue")</div>
+        <div style="font-size:0.68rem;color:var(--muted);margin-bottom:8px;">Marcadores: {{nome}} {{itens}} {{link_avaliacao}}</div>
+        <textarea class="form-input" id="msg-agradecimento" rows="10"></textarea>
+        <div class="form-acoes"><button class="btn-guardar" onclick="guardarMensagem('msg_agradecimento','msg-agradecimento','msg-agradecimento-msg')">Guardar</button></div>
+        <div class="form-msg" id="msg-agradecimento-msg"></div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-titulo">Mensagem de Novidade (enviada ao notificar novo produto)</div>
+        <div style="font-size:0.68rem;color:var(--muted);margin-bottom:8px;">Marcadores: {{produto}} {{preco}} {{preco_original_linha}} {{link_produto}}</div>
+        <textarea class="form-input" id="msg-novidade" rows="8"></textarea>
+        <div class="form-acoes"><button class="btn-guardar" onclick="guardarMensagem('msg_novidade','msg-novidade','msg-novidade-msg')">Guardar</button></div>
+        <div class="form-msg" id="msg-novidade-msg"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-administradores">
+      <div class="sec-titulo">🔑 Administradores</div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="form-grupo full"><label class="form-label">Email da conta a tornar admin (a conta já tem de existir)</label><input class="form-input" id="novo-admin-email" placeholder="alguem@exemplo.com"></div>
+          <div class="form-grupo full"><label class="form-label">Nível de acesso</label>
+            <select class="form-input" id="novo-admin-nivel">
+              <option value="admin">Admin completo — acesso a tudo</option>
+              <option value="funcionario">Funcionário — só Pedidos e Stock</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-acoes"><button class="btn-guardar" onclick="adicionarAdmin()">+ Tornar Admin</button></div>
+        <div class="form-msg" id="admins-msg"></div>
+        <div id="admins-lista" style="margin-top:14px;"><div class="loading">A carregar...</div></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-loginloja">
+      <div class="sec-titulo">🔐 Login da Loja</div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="form-grupo full"><label class="form-label">Imagem/Logo do círculo (aparece no painel de login/registo da loja) — 400×400px (quadrado) recomendado</label><input class="form-input" id="cfg-logo-login" placeholder="https://i.ibb.co/..." oninput="atualizarPreviewSimples(this.value,'cfglogin-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'cfg-logo-login','cfg-logo-login-status');atualizarPreviewSimples(document.getElementById('cfg-logo-login').value,'cfglogin-preview');"></label><span class="upload-status" id="cfg-logo-login-status"></span></div>
+            <div id="cfglogin-preview-wrap" style="display:none;margin-top:8px;"><img id="cfglogin-preview" src="" alt="Pré-visualização" style="width:64px;height:64px;object-fit:cover;border-radius:50%;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+        </div>
+        <div class="form-acoes"><button class="btn-guardar" onclick="guardarLogoLogin()">Guardar</button></div>
+        <div class="form-msg" id="cfg-logo-login-msg"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-sobrenos">
+      <div class="sec-titulo">📖 Texto "Sobre Nós"</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:14px;">Cada bloco aparece na página na ordem definida. Em parágrafos, usa <strong>**palavra**</strong> para pôr algo a negrito.</div>
+
+      <div class="form-card" id="form-bloco" style="display:none;">
+        <div class="form-titulo" id="form-bloco-titulo">➕ Adicionar Bloco</div>
+        <div class="form-grid">
+          <div class="form-grupo"><label class="form-label">Tipo *</label>
+            <select class="form-input" id="fsb-tipo" onchange="mudarTipoBloco()">
+              <option value="paragrafo">Parágrafo (texto)</option>
+              <option value="citacao">Citação</option>
+            </select>
+          </div>
+          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fsb-ordem" type="number" placeholder="1"></div>
+          <div class="form-grupo full" id="fsb-titulo-grupo"><label class="form-label">Título (aparece como cabeçalho na página)</label><input class="form-input" id="fsb-titulo" placeholder="Ex: O Começo"></div>
+          <div class="form-grupo full"><label class="form-label" id="fsb-texto-label">Texto *</label><textarea class="form-input" id="fsb-texto" rows="4" placeholder="Podes usar **negrito** dentro do texto"></textarea></div>
+          <div class="form-grupo full" id="fsb-autor-grupo" style="display:none;"><label class="form-label">Autor da Citação</label><input class="form-input" id="fsb-autor" placeholder="Odêncio Maculuve"></div>
+        </div>
+        <div class="form-acoes">
+          <button class="btn-guardar" onclick="guardarBlocoSobreNos()">Guardar</button>
+          <button class="btn-cancelar" onclick="fecharFormBlocoSobreNos()">Cancelar</button>
+        </div>
+        <div class="form-msg" id="fsb-msg"></div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormBlocoSobreNos()">+ Adicionar Bloco</button>
+      </div>
+      <div class="produtos-lista" id="sobrenos-blocos-lista"><div class="loading">A carregar...</div></div>
+    </div>
+
+    <div class="tab-content" id="tab-contactos">
+      <div class="sec-titulo">📞 Contactos</div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="form-grupo"><label class="form-label">WhatsApp (só número)</label><input class="form-input" id="cfg-whatsapp" placeholder="258879573018"></div>
+          <div class="form-grupo"><label class="form-label">Email</label><input class="form-input" id="cfg-email" placeholder="royaltyoficialstore@gmail.com"></div>
+          <div class="form-grupo"><label class="form-label">Instagram (link completo)</label><input class="form-input" id="cfg-instagram" placeholder="https://instagram.com/..."></div>
+          <div class="form-grupo"><label class="form-label">Facebook (link completo)</label><input class="form-input" id="cfg-facebook" placeholder="https://facebook.com/..."></div>
+          <div class="form-grupo"><label class="form-label">TikTok (link completo)</label><input class="form-input" id="cfg-tiktok" placeholder="https://tiktok.com/@..."></div>
+        </div>
+        <div class="form-acoes"><button class="btn-guardar" onclick="guardarContactos()">Guardar</button></div>
+        <div class="form-msg" id="cfg-contactos-msg"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-newsletter">
+      <div class="sec-titulo">📬 Inscrições na Newsletter</div>
+      <div class="wrap-tabela"><div id="newsletter-lista"><div class="loading">A carregar...</div></div></div>
+    </div>
+
     <!-- ACTIVIDADE -->
     <div class="tab-content" id="tab-actividade">
       <div class="sec-titulo">📜 Log de Actividade</div>
@@ -437,25 +775,137 @@
   </div>
 </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const SENHA_ADMIN = 'royalty2024';
   const SB_URL = 'https://zrcnwkrvfkykqnhwoklh.supabase.co';
   const SB_KEY = 'sb_publishable_PX2HcOTmRmbHLDOT5YuKjg_KBNB6aZc';
+  const supa = window.supabase.createClient(SB_URL, SB_KEY);
   let prodEditandoId=null, cupEditandoId=null, banEditandoId=null, galEditandoId=null;
   let graficoVendas=null, graficoProdutos=null;
   let periodoIni=null, periodoFim=null;
 
-  async function sbGet(tab,q=''){const r=await fetch(`${SB_URL}/rest/v1/${tab}?${q}&select=*`,{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});if(!r.ok)return[];return await r.json();}
-  async function sbPost(tab,d){const r=await fetch(`${SB_URL}/rest/v1/${tab}`,{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},body:JSON.stringify(d)});return r.ok;}
-  async function sbPatch(tab,q,d){const r=await fetch(`${SB_URL}/rest/v1/${tab}?${q}`,{method:'PATCH',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},body:JSON.stringify(d)});return r.ok;}
-  async function sbDelete(tab,q){const r=await fetch(`${SB_URL}/rest/v1/${tab}?${q}`,{method:'DELETE',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});return r.ok;}
-  async function sbPostReturning(tab,d){const r=await fetch(`${SB_URL}/rest/v1/${tab}`,{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=representation'},body:JSON.stringify(d)});if(!r.ok)return null;const j=await r.json();return j&&j[0]?j[0]:null;}
+  async function authHeader(){
+    try{
+      const {data}=await supa.auth.getSession();
+      return (data && data.session && data.session.access_token) ? data.session.access_token : SB_KEY;
+    }catch(e){ return SB_KEY; }
+  }
+
+  async function sbGet(tab,q=''){const tok=await authHeader();const r=await fetch(`${SB_URL}/rest/v1/${tab}?${q}&select=*`,{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+tok}});if(!r.ok)return[];return await r.json();}
+  async function sbPost(tab,d){const tok=await authHeader();const r=await fetch(`${SB_URL}/rest/v1/${tab}`,{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=minimal'},body:JSON.stringify(d)});return r.ok;}
+  async function sbPatch(tab,q,d){const tok=await authHeader();const r=await fetch(`${SB_URL}/rest/v1/${tab}?${q}`,{method:'PATCH',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=minimal'},body:JSON.stringify(d)});return r.ok;}
+  async function sbDelete(tab,q){const tok=await authHeader();const r=await fetch(`${SB_URL}/rest/v1/${tab}?${q}`,{method:'DELETE',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+tok}});return r.ok;}
+  async function sbPostReturning(tab,d){const tok=await authHeader();const r=await fetch(`${SB_URL}/rest/v1/${tab}`,{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=representation'},body:JSON.stringify(d)});if(!r.ok)return null;const j=await r.json();return j&&j[0]?j[0]:null;}
 
   // ── Log de Actividade ──
   async function registrarLog(accao,detalhes){ try{ await sbPost('actividade',{accao,detalhes}); }catch(e){} }
 
-  function entrar(){const s=document.getElementById('login-senha').value;if(s===SENHA_ADMIN){document.getElementById('login-screen').style.display='none';document.getElementById('painel').style.display='block';carregarTudo();}else{document.getElementById('login-erro').textContent='Senha incorrecta.';document.getElementById('login-senha').value='';}}
-  function sair(){document.getElementById('login-screen').style.display='flex';document.getElementById('painel').style.display='none';}
+  async function entrar(){
+    const email=document.getElementById('login-email').value.trim();
+    const senha=document.getElementById('login-senha').value;
+    const erroEl=document.getElementById('login-erro');
+    erroEl.textContent='';
+    if(!email||!senha){erroEl.textContent='Preenche o email e a senha.';return;}
+    try{
+      const {data,error}=await supa.auth.signInWithPassword({email,password:senha});
+      if(error) throw error;
+      entrarPainel();
+    }catch(err){
+      if(err.message && err.message.toLowerCase().includes('fetch')){
+        erroEl.textContent='Não foi possível ligar ao Supabase. Verifica a ligação à internet.';
+      } else {
+        erroEl.textContent=err.message||'Email ou senha incorrectos.';
+      }
+      document.getElementById('login-senha').value='';
+    }
+  }
+
+  async function entrarPainel(){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('painel').style.display='block';
+    await aplicarNivelAcesso();
+    carregarTudo();
+  }
+
+  async function aplicarNivelAcesso(){
+    let nivel = 'admin';
+    try{
+      const { data, error } = await supa.rpc('meu_nivel_admin');
+      if(!error && data) nivel = data;
+    }catch(e){ /* se falhar, o RLS continua a proteger na mesma */ }
+
+    if(nivel === 'funcionario'){
+      const permitidas = ['pedidos','stock'];
+      document.querySelectorAll('.tab').forEach(t=>{
+        const m = t.getAttribute('onclick').match(/mudarTab\('([a-z]+)'/);
+        const nomeTab = m ? m[1] : '';
+        t.style.display = permitidas.includes(nomeTab) ? '' : 'none';
+      });
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+      const tabPedidos = Array.from(document.querySelectorAll('.tab')).find(t=>t.getAttribute('onclick').includes("mudarTab('pedidos'"));
+      if(tabPedidos){ tabPedidos.classList.add('active'); mudarTab('pedidos', tabPedidos); }
+    }
+  }
+
+  async function verificarSessao(){
+    try{
+      const {data}=await supa.auth.getSession();
+      if(data && data.session) entrarPainel();
+    }catch(e){ /* sem ligação — mantém o ecrã de login */ }
+  }
+
+  async function sair(){
+    await supa.auth.signOut();
+    document.getElementById('login-screen').style.display='flex';
+    document.getElementById('painel').style.display='none';
+    document.getElementById('login-email').value='';
+    document.getElementById('login-senha').value='';
+  }
+
+  // ── Upload de imagens (Supabase Storage, bucket "imagens") ──
+  async function uploadImagemStorage(file){
+    const ext=(file.name.split('.').pop()||'jpg').toLowerCase();
+    const nome=`${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
+    const {error}=await supa.storage.from('imagens').upload(nome,file,{cacheControl:'3600',upsert:false});
+    if(error) throw error;
+    const {data}=supa.storage.from('imagens').getPublicUrl(nome);
+    return data.publicUrl;
+  }
+
+  async function uploadParaInput(fileInputEl, targetInputId, statusElId){
+    const file=fileInputEl.files[0];if(!file)return;
+    const statusEl=statusElId?document.getElementById(statusElId):null;
+    if(statusEl){statusEl.textContent='A enviar...';statusEl.className='upload-status';}
+    try{
+      const url=await uploadImagemStorage(file);
+      const input=document.getElementById(targetInputId);
+      input.value=url;
+      input.dispatchEvent(new Event('input'));
+      if(statusEl){statusEl.textContent='✅ Enviado!';statusEl.className='upload-status ok';}
+    }catch(err){
+      if(statusEl){statusEl.textContent='Erro: '+(err.message||'falha no envio');statusEl.className='upload-status erro';}
+    }finally{
+      fileInputEl.value='';
+    }
+  }
+
+  async function uploadParaTextarea(fileInputEl, targetTextareaId, statusElId){
+    const file=fileInputEl.files[0];if(!file)return;
+    const statusEl=statusElId?document.getElementById(statusElId):null;
+    if(statusEl){statusEl.textContent='A enviar...';statusEl.className='upload-status';}
+    try{
+      const url=await uploadImagemStorage(file);
+      const ta=document.getElementById(targetTextareaId);
+      ta.value=ta.value.trim()?ta.value.trim()+'\n'+url:url;
+      ta.dispatchEvent(new Event('input'));
+      if(statusEl){statusEl.textContent='✅ Enviado!';statusEl.className='upload-status ok';}
+    }catch(err){
+      if(statusEl){statusEl.textContent='Erro: '+(err.message||'falha no envio');statusEl.className='upload-status erro';}
+    }finally{
+      fileInputEl.value='';
+    }
+  }
 
   function mudarTab(tab,el){
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -464,6 +914,8 @@
     document.getElementById('tab-'+tab).classList.add('active');
     if(tab==='pedidos') carregarPedidos();
     if(tab==='produtos') carregarProdutos();
+    if(tab==='stock') carregarStockTab();
+    if(tab==='categorias') carregarCategoriasAdm();
     if(tab==='banners') carregarBanners();
     if(tab==='cupoes') carregarCupoes();
     if(tab==='clientes') carregarClientes();
@@ -471,7 +923,19 @@
     if(tab==='caixa') carregarCaixa();
     if(tab==='relatorios') carregarRelatorios(7);
     if(tab==='galeria'){ carregarGaleriaAdmin(); carregarLogoGaleriaConfig(); }
+    if(tab==='colecoes'){ carregarColecoesProdutos(); carregarMarcantes(); carregarNovasColecoes(); carregarLancamento(); carregarBannersColecoes(); }
+    if(tab==='mensagens'){ carregarMensagens(); }
+    if(tab==='administradores'){ carregarAdmins(); }
+    if(tab==='loginloja'){ carregarLogoLogin(); }
+    if(tab==='sobrenos'){ carregarSobreNos(); }
+    if(tab==='contactos'){ carregarContactosConfig(); }
+    if(tab==='newsletter'){ carregarNewsletter(); }
     if(tab==='actividade') carregarActividade();
+  }
+
+  function irParaTab(tab){
+    const el=[...document.querySelectorAll('.tab')].find(t=>(t.getAttribute('onclick')||'').includes(`'${tab}'`));
+    if(el) mudarTab(tab, el);
   }
 
   async function carregarTudo(){
@@ -585,7 +1049,7 @@
     registrarLog('Desconto de stock', `Stock actualizado pelo pedido de ${pedido.cliente_nome||'—'}`);
   }
 
-  function enviarAgradecimento(pedido) {
+  async function enviarAgradecimento(pedido) {
     const nome = pedido.cliente_nome || 'Cliente';
     const tel = (pedido.cliente_telefone || '').replace(/\s/g,'');
     const itens = (pedido.itens || []).map(i=>`• ${i.qtd}x ${i.nome} (${i.cor}, ${i.tamanho})`).join('\n');
@@ -593,23 +1057,13 @@
     const linkAvaliacao = primeiroProdutoId
       ? `https://maculuve12.github.io/Royalty-Maculuve-Store-/?avaliar=${primeiroProdutoId}`
       : '';
-    const msg =
-`Olá ${nome}! 👋
 
-A *Royalty Maculuve* vem agradecer a sua confiança e preferência! 🙏
-
-✅ O seu pedido foi entregue com sucesso:
-${itens}
-
-Esperamos que adore as suas peças! 😊
-
-⭐ *Deixe a sua avaliação:*
-${linkAvaliacao}
-
-A sua opinião é muito importante para nós e ajuda outros clientes!
-
-👑 *ROYALTY — Beyond Trends*
-_Inhambane, Moçambique_`;
+    const dataCfg = await sbGet('configuracoes','chave=eq.msg_agradecimento');
+    let modelo = (dataCfg[0] && dataCfg[0].valor) || MSG_AGRADECIMENTO_DEFAULT;
+    const msg = modelo
+      .replaceAll('{{nome}}', nome)
+      .replaceAll('{{itens}}', itens)
+      .replaceAll('{{link_avaliacao}}', linkAvaliacao);
 
     const numero = tel.startsWith('258') ? tel : `258${tel}`;
     window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -620,23 +1074,164 @@ _Inhambane, Moçambique_`;
     const data=await sbGet('produtos','order=ordem.asc');
     const c=document.getElementById('produtos-lista');
     if(!data.length){c.innerHTML='<div class="vazio">Sem produtos.</div>';return;}
-    c.innerHTML=data.map(p=>`<div class="produto-card ${!p.activo?'inactivo':''}">
-      <img class="produto-img" src="${(p.imagens||[])[0]||''}" alt="${p.nome}" onerror="this.style.display='none'">
-      <div class="produto-info">
-        <div class="produto-nome">${p.nome}${p.badge?` <span class="tag activo">${p.badge}</span>`:''} ${!p.activo?'<span class="tag inactivo">Inactivo</span>':''}</div>
-        <div class="produto-preco">${p.preco_original?`<span style="text-decoration:line-through;color:var(--muted);font-size:0.7rem;">${p.preco_original} MT</span> `:''} ${p.preco} MT</div>
-        <div class="produto-meta">${(p.cores||[]).map(c=>c.nome).join(', ')} | ${(p.tamanhos||[]).join(', ')}</div>
+    c.innerHTML=data.map(p=>`<div class="produto-card ${!p.activo?'inactivo':''}" style="flex-direction:column;align-items:stretch;">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <img class="produto-img" src="${(p.imagens||[])[0]||''}" alt="${p.nome}" onerror="this.style.display='none'">
+        <div class="produto-info">
+          <div class="produto-nome">${p.nome}${p.badge?` <span class="tag activo">${p.badge}</span>`:''} ${!p.activo?'<span class="tag inactivo">Inactivo</span>':''}</div>
+          <div class="produto-preco">${p.preco_original?`<span style="text-decoration:line-through;color:var(--muted);font-size:0.7rem;">${p.preco_original} MT</span> `:''} ${p.preco} MT</div>
+          <div class="produto-meta">${(p.cores||[]).map(c=>c.nome).join(', ')} | ${(p.tamanhos||[]).join(', ')}</div>
+        </div>
       </div>
-      <div class="produto-acoes">
+      <div class="produto-acoes" style="flex-direction:row;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--off);">
         <button class="btn-sm verde" onclick="editarProduto(${p.id})">✏️ Editar</button>
         ${p.activo?`<button class="btn-sm cinza" onclick="toggleProduto(${p.id},false)">Desactivar</button>`:`<button class="btn-sm activar" onclick="toggleProduto(${p.id},true)">Activar</button>`}
-        <button class="btn-sm gold" onclick="notificarClientes(${JSON.stringify(p).replace(/"/g,'&quot;')})">📢 Notificar</button>
+        <button class="btn-sm cinza" onclick="notificarClientes(${JSON.stringify(p).replace(/"/g,'&quot;')})">📢 Notificar</button>
         <button class="btn-sm vermelho" onclick="eliminarProduto(${p.id},'${p.nome}')">Eliminar</button>
       </div>
     </div>`).join('');
   }
 
-  function abrirFormProduto(){prodEditandoId=null;document.getElementById('form-prod-titulo').textContent='➕ Adicionar Produto';['fp-nome','fp-desc','fp-preco','fp-preco-orig','fp-cores','fp-tamanhos','fp-imgs','fp-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fp-badge').value='';document.getElementById('fp-msg').textContent='';document.getElementById('fp-stock-grid').innerHTML='';document.getElementById('form-produto').style.display='block';document.getElementById('form-produto').scrollIntoView({behavior:'smooth'});}
+  function abrirFormProduto(){prodEditandoId=null;document.getElementById('form-prod-titulo').textContent='➕ Adicionar Produto';['fp-nome','fp-desc','fp-preco','fp-preco-orig','fp-cores','fp-tamanhos','fp-imgs','fp-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fp-badge').value='';document.getElementById('fp-msg').textContent='';document.getElementById('fp-stock-grid').innerHTML='';atualizarPreviewMultipla('','fp-preview-wrap');carregarCategoriasSelect('');carregarColecoesSelect('');document.getElementById('form-produto').style.display='block';document.getElementById('form-produto').scrollIntoView({behavior:'smooth'});}
+
+  // ── Categorias e Coleções (dinâmicas, criadas a partir do form de produto) ──
+  async function carregarCategoriasSelect(seleccionado){
+    const data=await sbGet('categorias','order=nome.asc');
+    const sel=document.getElementById('fp-categoria');
+    sel.innerHTML='<option value="">Sem categoria</option>'+data.map(c=>`<option value="${c.nome}">${c.nome}</option>`).join('');
+    if(seleccionado) sel.value=seleccionado;
+  }
+  async function novaCategoria(){
+    const nome=prompt('Nome da nova categoria:');
+    if(!nome||!nome.trim())return;
+    const nomeF=nome.trim();
+    const existente=await sbGet('categorias',`nome=eq.${encodeURIComponent(nomeF)}`);
+    if(!existente.length){ await sbPost('categorias',{nome:nomeF}); registrarLog('Nova categoria criada',nomeF); }
+    await carregarCategoriasSelect(nomeF);
+  }
+  async function carregarColecoesSelect(seleccionado){
+    const data=await sbGet('colecoes','order=nome.asc');
+    const sel=document.getElementById('fp-colecao');
+    sel.innerHTML='<option value="">Sem coleção</option>'+data.map(c=>`<option value="${c.nome}">${c.nome}</option>`).join('');
+    if(seleccionado) sel.value=seleccionado;
+  }
+  async function novaColecaoProduto(){
+    const nome=prompt('Nome da nova coleção:');
+    if(!nome||!nome.trim())return;
+    const nomeF=nome.trim();
+    const existente=await sbGet('colecoes',`nome=eq.${encodeURIComponent(nomeF)}`);
+    if(!existente.length){ await sbPost('colecoes',{nome:nomeF}); registrarLog('Nova coleção criada',nomeF); }
+    await carregarColecoesSelect(nomeF);
+  }
+
+  // ── Categorias (página própria no ADM) ──
+  let categoriaAdmEditandoId=null;
+
+  async function carregarCategoriasAdm(){
+    document.getElementById('categoria-produtos-box').style.display='none';
+    const [cats, produtos] = await Promise.all([sbGet('categorias','order=ordem.asc'), sbGet('produtos','select=id,categoria')]);
+    const cont={};
+    produtos.forEach(p=>{ if(p.categoria) cont[p.categoria]=(cont[p.categoria]||0)+1; });
+    const c=document.getElementById('categorias-lista');
+    if(!cats.length){c.innerHTML='<div class="vazio">Sem categorias. Adiciona a primeira!</div>';return;}
+    c.innerHTML=cats.map(cat=>{
+      const n=cont[cat.nome]||0;
+      return `<div class="produto-card">
+        <div class="produto-img" style="border-radius:50%;width:60px;height:60px;flex-shrink:0;background-color:var(--off);background-image:url('${(cat.imagem_url||'').replace(/'/g,"\\'")}');background-size:cover;background-position:center;"></div>
+        <div class="produto-info">
+          <div class="produto-nome">${cat.nome}</div>
+          <div class="produto-meta">${n} produto${n===1?'':'s'} &nbsp;·&nbsp; Ordem: ${cat.ordem||''}</div>
+        </div>
+        <div class="produto-acoes">
+          <button class="btn-sm cinza" onclick="verProdutosCategoria('${cat.nome}')">👁️ Ver Produtos</button>
+          <button class="btn-sm verde" onclick="editarCategoriaAdm(${cat.id})">✏️ Editar</button>
+          <button class="btn-sm vermelho" onclick="eliminarCategoriaAdm(${cat.id},'${cat.nome}',${n})">Eliminar</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function abrirFormCategoriaAdm(){categoriaAdmEditandoId=null;document.getElementById('form-categoria-titulo').textContent='➕ Adicionar Categoria';['fcat-nome','fcat-ordem','fcat-img'].forEach(id=>document.getElementById(id).value='');document.getElementById('fcat-msg').textContent='';atualizarPreviewSimples('','fcat-preview');document.getElementById('form-categoria').style.display='block';document.getElementById('form-categoria').scrollIntoView({behavior:'smooth'});}
+
+  async function editarCategoriaAdm(id){
+    const data=await sbGet('categorias',`id=eq.${id}`);if(!data.length)return;const cat=data[0];categoriaAdmEditandoId=id;
+    document.getElementById('form-categoria-titulo').textContent='✏️ Editar Categoria';
+    document.getElementById('fcat-nome').value=cat.nome||'';
+    document.getElementById('fcat-ordem').value=cat.ordem||'';
+    document.getElementById('fcat-img').value=cat.imagem_url||'';
+    atualizarPreviewSimples(cat.imagem_url||'','fcat-preview');
+    document.getElementById('fcat-msg').textContent='';
+    document.getElementById('form-categoria').style.display='block';document.getElementById('form-categoria').scrollIntoView({behavior:'smooth'});
+  }
+
+  function fecharFormCategoria(){document.getElementById('form-categoria').style.display='none';categoriaAdmEditandoId=null;}
+
+  async function guardarCategoriaAdm(){
+    const nome=document.getElementById('fcat-nome').value.trim();
+    const ordem=parseInt(document.getElementById('fcat-ordem').value)||99;
+    const img=document.getElementById('fcat-img').value.trim();
+    const msgEl=document.getElementById('fcat-msg');
+    if(!nome){msgEl.className='msg-err';msgEl.textContent='Nome é obrigatório.';return;}
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const dados={nome,ordem,imagem_url:img||null};
+    let ok;
+    if(categoriaAdmEditandoId){
+      const actual=await sbGet('categorias',`id=eq.${categoriaAdmEditandoId}`);
+      const nomeAntigo=actual[0]?actual[0].nome:null;
+      ok=await sbPatch('categorias',`id=eq.${categoriaAdmEditandoId}`,dados);
+      if(ok && nomeAntigo && nomeAntigo!==nome){
+        await sbPatch('produtos',`categoria=eq.${encodeURIComponent(nomeAntigo)}`,{categoria:nome});
+      }
+    } else {
+      const existente=await sbGet('categorias',`nome=eq.${encodeURIComponent(nome)}`);
+      if(existente.length){msgEl.className='msg-err';msgEl.textContent='Já existe uma categoria com esse nome.';return;}
+      ok=await sbPost('categorias',dados);
+    }
+    if(ok){
+      msgEl.className='msg-ok';msgEl.textContent='✅ Guardado!';
+      registrarLog(categoriaAdmEditandoId?'Editar categoria':'Criar categoria',nome);
+      setTimeout(()=>{fecharFormCategoria();carregarCategoriasAdm();},900);
+    } else {
+      msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.';
+    }
+  }
+
+  async function eliminarCategoriaAdm(id,nome,totalProdutos){
+    if(totalProdutos>0){alert(`Esta categoria tem ${totalProdutos} produto(s). Muda a categoria desses produtos antes de eliminar.`);return;}
+    if(!confirm(`Eliminar a categoria "${nome}"?`))return;
+    await sbDelete('categorias',`id=eq.${id}`);
+    registrarLog('Eliminar categoria',nome);
+    carregarCategoriasAdm();
+  }
+
+  async function verProdutosCategoria(nome){
+    const box=document.getElementById('categoria-produtos-box');
+    const titulo=document.getElementById('categoria-produtos-titulo');
+    const lista=document.getElementById('categoria-produtos-lista');
+    titulo.textContent=`🛍️ Produtos em "${nome}"`;
+    lista.innerHTML='<div class="loading">A carregar...</div>';
+    box.style.display='block';
+    box.scrollIntoView({behavior:'smooth'});
+    const data=await sbGet('produtos',`categoria=eq.${encodeURIComponent(nome)}&order=ordem.asc`);
+    if(!data.length){lista.innerHTML='<div class="vazio">Sem produtos nesta categoria.</div>';return;}
+    lista.innerHTML=data.map(p=>`<div class="produto-card ${!p.activo?'inactivo':''}">
+      <img class="produto-img" src="${(p.imagens&&p.imagens[0])||''}" alt="${p.nome}" onerror="this.style.display='none'">
+      <div class="produto-info">
+        <div class="produto-nome">${p.activo?'':'<span class=\\"tag inactivo\\">Inactivo</span> '}${p.nome}</div>
+        <div class="produto-meta">${p.preco} MT</div>
+      </div>
+      <div class="produto-acoes">
+        <button class="btn-sm verde" onclick="editarProdutoDeCategoria(${p.id})">✏️ Editar</button>
+      </div>
+    </div>`).join('');
+  }
+
+  function fecharProdutosCategoria(){document.getElementById('categoria-produtos-box').style.display='none';}
+
+  function editarProdutoDeCategoria(id){
+    irParaTab('produtos');
+    editarProduto(id);
+  }
 
   async function editarProduto(id){
     const data=await sbGet('produtos',`id=eq.${id}`);if(!data.length)return;const p=data[0];prodEditandoId=id;
@@ -644,9 +1239,12 @@ _Inhambane, Moçambique_`;
     document.getElementById('fp-nome').value=p.nome||'';document.getElementById('fp-desc').value=p.descricao||'';
     document.getElementById('fp-preco').value=p.preco||'';document.getElementById('fp-preco-orig').value=p.preco_original||'';
     document.getElementById('fp-badge').value=p.badge||'';
+    await carregarCategoriasSelect(p.categoria||'');
+    await carregarColecoesSelect(p.colecao||'');
     document.getElementById('fp-cores').value=(p.cores||[]).map(c=>`${c.nome}|${c.hex}`).join('\n');
     document.getElementById('fp-tamanhos').value=(p.tamanhos||[]).join(',');
     document.getElementById('fp-imgs').value=(p.imagens||[]).join('\n');
+    atualizarPreviewMultipla((p.imagens||[]).join('\n'),'fp-preview-wrap');
     document.getElementById('fp-ordem').value=p.ordem||'';
     document.getElementById('fp-msg').textContent='';
     const stockRows=await sbGet('stock',`produto_id=eq.${id}`);
@@ -714,6 +1312,56 @@ _Inhambane, Moçambique_`;
     }
   }
 
+  // ── Aba Stock (independente do formulário de Produtos) ──
+  async function carregarStockTab(){
+    const box=document.getElementById('stock-tab-lista');
+    box.innerHTML='<div class="loading">A carregar...</div>';
+    const [produtos, stockTudo] = await Promise.all([
+      sbGet('produtos','activo=eq.true&order=ordem.asc&select=id,nome,imagens,cores,tamanhos'),
+      sbGet('stock','select=*')
+    ]);
+    const comVariantes = produtos.filter(p=>(p.cores||[]).length && (p.tamanhos||[]).length);
+    if(!comVariantes.length){ box.innerHTML='<div class="vazio">Nenhum produto com cores e tamanhos definidos.</div>'; return; }
+
+    box.innerHTML = comVariantes.map(p=>{
+      const cores = (p.cores||[]).map(c=>c.nome||c);
+      const tamanhos = p.tamanhos||[];
+      const stockDoProduto = stockTudo.filter(s=>s.produto_id===p.id);
+      let tabela = `<div style="overflow-x:auto;"><table class="tabela"><thead><tr><th>Cor \\ Tamanho</th>${tamanhos.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>`;
+      cores.forEach(cor=>{
+        tabela += `<tr><td><strong>${cor}</strong></td>`;
+        tamanhos.forEach(tam=>{
+          const existente = stockDoProduto.find(s=>s.cor===cor && s.tamanho===tam);
+          const val = existente ? (existente.quantidade||0) : 0;
+          tabela += `<td><input type="number" min="0" class="form-input" style="width:64px;padding:6px 8px;" value="${val}" onchange="guardarStockCelula(${p.id},'${p.nome.replace(/'/g,"\\'")}','${cor.replace(/'/g,"\\'")}','${tam.replace(/'/g,"\\'")}',this)"></td>`;
+        });
+        tabela += '</tr>';
+      });
+      tabela += '</tbody></table></div>';
+
+      return `<div class="produto-card" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <img class="produto-img" src="${(p.imagens&&p.imagens[0])||''}" alt="${p.nome}" onerror="this.style.display='none'">
+          <div class="produto-nome">${p.nome}</div>
+        </div>
+        ${tabela}
+      </div>`;
+    }).join('');
+  }
+
+  async function guardarStockCelula(produtoId, produtoNome, cor, tamanho, inputEl){
+    const quantidade = parseInt(inputEl.value)||0;
+    const existentes = await sbGet('stock', `produto_id=eq.${produtoId}&cor=eq.${encodeURIComponent(cor)}&tamanho=eq.${encodeURIComponent(tamanho)}`);
+    if(existentes.length){
+      await sbPatch('stock',`id=eq.${existentes[0].id}`,{quantidade,produto_nome:produtoNome,atualizado_em:new Date().toISOString()});
+    } else {
+      await sbPost('stock',{produto_id:produtoId,produto_nome:produtoNome,cor,tamanho,quantidade,quantidade_minima:3});
+    }
+    inputEl.style.borderColor='var(--green)';
+    setTimeout(()=>{inputEl.style.borderColor='';},600);
+    registrarLog('Stock actualizado',`${produtoNome} — ${cor}/${tamanho}: ${quantidade}`);
+  }
+
   async function notificarClientes(produto) {
     // Buscar todos os clientes únicos
     const pedidos = await sbGet('pedidos','select=cliente_nome,cliente_telefone&order=criado_em.desc');
@@ -726,19 +1374,15 @@ _Inhambane, Moçambique_`;
     });
 
     const linkProduto = `https://maculuve12.github.io/Royalty-Maculuve-Store-/?produto=${produto.id}`;
-    const msg =
-`Olá! 👋
+    const precoOriginalLinha = produto.preco_original ? ` (de ${produto.preco_original} MT)` : '';
 
-A *Royalty Maculuve* tem novidades para si! 🎉
-
-✨ Novo produto disponível:
-*${produto.nome}*
-💰 Preço: ${produto.preco} MT${produto.preco_original ? ` ~~${produto.preco_original} MT~~` : ''}
-
-👉 Ver e comprar agora:
-${linkProduto}
-
-👑 *ROYALTY — Beyond Trends*`;
+    const dataCfg = await sbGet('configuracoes','chave=eq.msg_novidade');
+    let modelo = (dataCfg[0] && dataCfg[0].valor) || MSG_NOVIDADE_DEFAULT;
+    const msg = modelo
+      .replaceAll('{{produto}}', produto.nome)
+      .replaceAll('{{preco}}', produto.preco)
+      .replaceAll('{{preco_original_linha}}', precoOriginalLinha)
+      .replaceAll('{{link_produto}}', linkProduto);
 
     if (clientes.length === 0) {
       alert('Sem clientes registados ainda.');
@@ -769,6 +1413,8 @@ ${linkProduto}
   async function guardarProduto(){
     const nome=document.getElementById('fp-nome').value.trim();const desc=document.getElementById('fp-desc').value.trim();const preco=parseInt(document.getElementById('fp-preco').value);
     const precoOrig=document.getElementById('fp-preco-orig').value;const badge=document.getElementById('fp-badge').value;
+    const categoria=document.getElementById('fp-categoria').value;
+    const colecao=document.getElementById('fp-colecao').value;
     const coresRaw=document.getElementById('fp-cores').value.trim();const tamRaw=document.getElementById('fp-tamanhos').value.trim();
     const imgsRaw=document.getElementById('fp-imgs').value.trim();const ordem=parseInt(document.getElementById('fp-ordem').value)||99;
     const msgEl=document.getElementById('fp-msg');
@@ -776,7 +1422,7 @@ ${linkProduto}
     const cores=coresRaw?coresRaw.split('\n').filter(l=>l.includes('|')).map(l=>{const[n,h]=l.split('|');return{nome:n.trim(),hex:h.trim()};}):[];
     const tamanhos=tamRaw?tamRaw.split(',').map(t=>t.trim()).filter(Boolean):[];
     const imagens=imgsRaw?imgsRaw.split('\n').map(l=>l.trim()).filter(Boolean):[];
-    const dados={nome,descricao:desc,preco,preco_original:precoOrig?parseInt(precoOrig):null,badge:badge||null,cores,tamanhos,imagens,ordem};
+    const dados={nome,descricao:desc,preco,preco_original:precoOrig?parseInt(precoOrig):null,badge:badge||null,categoria:categoria||null,colecao:colecao||null,cores,tamanhos,imagens,ordem};
     msgEl.className='';msgEl.textContent='A guardar...';
     let produtoId = prodEditandoId;
     let ok;
@@ -807,7 +1453,7 @@ ${linkProduto}
 
   // ── Banners ──
   async function carregarBanners(){
-    const data=await sbGet('banners','order=ordem.asc');
+    const data=await sbGet('banners','pagina=eq.loja&order=ordem.asc');
     const c=document.getElementById('banners-lista');
     if(!data.length){c.innerHTML='<div class="vazio">Sem banners. Adiciona o primeiro!</div>';return;}
     c.innerHTML=data.map(b=>`<div class="banner-card ${!b.activo?'inactivo':''}">
@@ -824,12 +1470,13 @@ ${linkProduto}
     </div>`).join('');
   }
 
-  function abrirFormBanner(){banEditandoId=null;document.getElementById('form-ban-titulo').textContent='🖼️ Adicionar Banner';['fb-url','fb-link','fb-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fb-msg').textContent='';document.getElementById('form-banner').style.display='block';document.getElementById('form-banner').scrollIntoView({behavior:'smooth'});}
+  function abrirFormBanner(){banEditandoId=null;document.getElementById('form-ban-titulo').textContent='🖼️ Adicionar Banner';['fb-url','fb-link','fb-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fb-msg').textContent='';atualizarPreviewSimples('','fb-preview');document.getElementById('form-banner').style.display='block';document.getElementById('form-banner').scrollIntoView({behavior:'smooth'});}
 
   async function editarBanner(id){
     const data=await sbGet('banners',`id=eq.${id}`);if(!data.length)return;const b=data[0];banEditandoId=id;
     document.getElementById('form-ban-titulo').textContent='✏️ Editar Banner';
     document.getElementById('fb-url').value=b.imagem_url||'';document.getElementById('fb-link').value=b.link_destino||'';document.getElementById('fb-ordem').value=b.ordem||'';
+    atualizarPreviewSimples(b.imagem_url||'','fb-preview');
     document.getElementById('fb-msg').textContent='';document.getElementById('form-banner').style.display='block';document.getElementById('form-banner').scrollIntoView({behavior:'smooth'});
   }
 
@@ -839,7 +1486,7 @@ ${linkProduto}
     const url=document.getElementById('fb-url').value.trim();const link=document.getElementById('fb-link').value.trim();const ordem=parseInt(document.getElementById('fb-ordem').value)||99;
     const msgEl=document.getElementById('fb-msg');
     if(!url){msgEl.className='msg-err';msgEl.textContent='Link da imagem é obrigatório.';return;}
-    const dados={imagem_url:url,link_destino:link||null,ordem};
+    const dados={imagem_url:url,link_destino:link||null,ordem,pagina:'loja'};
     msgEl.className='';msgEl.textContent='A guardar...';
     const ok=banEditandoId?await sbPatch('banners',`id=eq.${banEditandoId}`,dados):await sbPost('banners',{...dados,activo:true});
     if(ok){msgEl.className='msg-ok';msgEl.textContent=banEditandoId?'✅ Actualizado!':'✅ Adicionado!';registrarLog(banEditandoId?'Editar banner':'Criar banner',url);setTimeout(()=>{fecharFormBanner();carregarBanners();},1200);}
@@ -848,6 +1495,52 @@ ${linkProduto}
 
   async function toggleBanner(id,activo){await sbPatch('banners',`id=eq.${id}`,{activo});registrarLog(activo?'Activar banner':'Desactivar banner',`ID ${id}`);carregarBanners();}
   async function eliminarBanner(id){if(!confirm('Eliminar este banner?'))return;await sbDelete('banners',`id=eq.${id}`);registrarLog('Eliminar banner',`ID ${id}`);carregarBanners();}
+
+  // ── Banners da Página Coleções (tabela partilhada 'banners', filtrado por pagina='colecoes') ──
+  let banColEditandoId=null;
+  async function carregarBannersColecoes(){
+    const data=await sbGet('banners','pagina=eq.colecoes&order=ordem.asc');
+    const c=document.getElementById('banners-col-lista');
+    if(!data.length){c.innerHTML='<div class="vazio">Sem banners. Adiciona o primeiro!</div>';return;}
+    c.innerHTML=data.map(b=>`<div class="banner-card ${!b.activo?'inactivo':''}">
+      <img class="banner-prev" style="width:70px;height:70px;object-fit:contain;background:var(--off);" src="${b.imagem_url}" alt="Banner" onerror="this.style.display='none'">
+      <div class="banner-info">
+        <div class="banner-ordem">Ordem: ${b.ordem} &nbsp; <span class="tag ${b.activo?'activo':'inactivo'}">${b.activo?'Activo':'Inactivo'}</span></div>
+        ${b.link_destino?`<div class="banner-link">🔗 ${b.link_destino}</div>`:'<div class="banner-link" style="color:var(--muted)">Sem link</div>'}
+      </div>
+      <div class="banner-acoes">
+        <button class="btn-sm verde" onclick="editarBannerColecoes(${b.id})">✏️</button>
+        ${b.activo?`<button class="btn-sm cinza" onclick="toggleBannerColecoes(${b.id},false)">Off</button>`:`<button class="btn-sm activar" onclick="toggleBannerColecoes(${b.id},true)">On</button>`}
+        <button class="btn-sm vermelho" onclick="eliminarBannerColecoes(${b.id})">🗑️</button>
+      </div>
+    </div>`).join('');
+  }
+
+  function abrirFormBannerColecoes(){banColEditandoId=null;document.getElementById('form-ban-col-titulo').textContent='🖼️ Adicionar Banner';['fbc-url','fbc-link','fbc-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fbc-msg').textContent='';atualizarPreviewSimples('','fbc-preview');document.getElementById('form-banner-col').style.display='block';document.getElementById('form-banner-col').scrollIntoView({behavior:'smooth'});}
+
+  async function editarBannerColecoes(id){
+    const data=await sbGet('banners',`id=eq.${id}`);if(!data.length)return;const b=data[0];banColEditandoId=id;
+    document.getElementById('form-ban-col-titulo').textContent='✏️ Editar Banner';
+    document.getElementById('fbc-url').value=b.imagem_url||'';document.getElementById('fbc-link').value=b.link_destino||'';document.getElementById('fbc-ordem').value=b.ordem||'';
+    atualizarPreviewSimples(b.imagem_url||'','fbc-preview');
+    document.getElementById('fbc-msg').textContent='';document.getElementById('form-banner-col').style.display='block';document.getElementById('form-banner-col').scrollIntoView({behavior:'smooth'});
+  }
+
+  function fecharFormBannerColecoes(){document.getElementById('form-banner-col').style.display='none';banColEditandoId=null;}
+
+  async function guardarBannerColecoes(){
+    const url=document.getElementById('fbc-url').value.trim();const link=document.getElementById('fbc-link').value.trim();const ordem=parseInt(document.getElementById('fbc-ordem').value)||99;
+    const msgEl=document.getElementById('fbc-msg');
+    if(!url){msgEl.className='msg-err';msgEl.textContent='Link da imagem é obrigatório.';return;}
+    const dados={imagem_url:url,link_destino:link||null,ordem,pagina:'colecoes'};
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const ok=banColEditandoId?await sbPatch('banners',`id=eq.${banColEditandoId}`,dados):await sbPost('banners',{...dados,activo:true});
+    if(ok){msgEl.className='msg-ok';msgEl.textContent=banColEditandoId?'✅ Actualizado!':'✅ Adicionado!';registrarLog(banColEditandoId?'Editar banner (Coleções)':'Criar banner (Coleções)',url);setTimeout(()=>{fecharFormBannerColecoes();carregarBannersColecoes();},1200);}
+    else{msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.';}
+  }
+
+  async function toggleBannerColecoes(id,activo){await sbPatch('banners',`id=eq.${id}`,{activo});registrarLog(activo?'Activar banner (Coleções)':'Desactivar banner (Coleções)',`ID ${id}`);carregarBannersColecoes();}
+  async function eliminarBannerColecoes(id){if(!confirm('Eliminar este banner?'))return;await sbDelete('banners',`id=eq.${id}`);registrarLog('Eliminar banner (Coleções)',`ID ${id}`);carregarBannersColecoes();}
 
   // ── Cupões ──
   async function carregarCupoes(){
@@ -989,22 +1682,20 @@ ${linkProduto}
     if (!data.length) { c.innerHTML='<div class="vazio">Sem avaliações ainda.</div>'; return; }
     c.innerHTML = `<div style="display:flex;flex-direction:column;gap:12px;">
       ${data.map(a=>`
-        <div style="background:var(--white);border-radius:4px;border:1px solid rgba(0,0,0,0.06);padding:16px 18px;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
-            <div>
-              <div style="font-size:0.75rem;font-weight:700;color:var(--g3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">${a.produto_nome||'—'}</div>
-              <div style="font-size:0.88rem;font-weight:800;color:var(--g1);">${a.cliente_nome}</div>
-              <div style="color:var(--gold);font-size:1rem;margin:4px 0;">${renderStars(a.estrelas)} <span style="font-size:0.75rem;color:var(--muted);font-weight:600;">${a.estrelas}/5</span></div>
-              ${a.comentario?`<div style="font-size:0.8rem;color:var(--muted);font-style:italic;">"${a.comentario}"</div>`:''}
-              <div style="font-size:0.65rem;color:var(--muted);margin-top:6px;">${new Date(a.criado_em).toLocaleDateString('pt-PT')}</div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
-              <span class="tag ${a.aprovada?'activo':'inactivo'}">${a.aprovada?'✅ Aprovada':'⏳ Pendente'}</span>
-              ${!a.aprovada
-                ?`<button class="btn-sm activar" onclick="aprovarAvaliacao(${a.id})">Aprovar</button>`
-                :`<button class="btn-sm cinza" onclick="rejeitarAvaliacao(${a.id})">Retirar</button>`}
-              <button class="btn-sm vermelho" onclick="eliminarAvaliacao(${a.id})">🗑️</button>
-            </div>
+        <div style="background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;">
+            <div style="font-size:0.8rem;font-weight:700;color:var(--g3);">${a.produto_nome||'—'}</div>
+            <span class="tag ${a.aprovada?'activo':'inactivo'}">${a.aprovada?'✅ Aprovada':'⏳ Pendente'}</span>
+          </div>
+          <div style="font-size:0.88rem;font-weight:800;color:var(--g1);">${a.cliente_nome}</div>
+          <div style="color:var(--gold);font-size:1rem;margin:4px 0;">${renderStars(a.estrelas)} <span style="font-size:0.75rem;color:var(--muted);font-weight:600;">${a.estrelas}/5</span></div>
+          ${a.comentario?`<div style="font-size:0.8rem;color:var(--muted);font-style:italic;">"${a.comentario}"</div>`:''}
+          <div style="font-size:0.65rem;color:var(--muted);margin-top:6px;">${new Date(a.criado_em).toLocaleDateString('pt-PT')}</div>
+          <div style="display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--off);">
+            ${!a.aprovada
+              ?`<button class="btn-sm activar" onclick="aprovarAvaliacao(${a.id})">Aprovar</button>`
+              :`<button class="btn-sm cinza" onclick="rejeitarAvaliacao(${a.id})">Retirar</button>`}
+            <button class="btn-sm vermelho" onclick="eliminarAvaliacao(${a.id})">🗑️ Eliminar</button>
           </div>
         </div>
       `).join('')}
@@ -1031,6 +1722,7 @@ ${linkProduto}
   async function carregarLogoGaleriaConfig(){
     const data=await sbGet('configuracoes',`chave=eq.logo_galeria`);
     document.getElementById('cfg-logo-url').value=(data[0]&&data[0].valor)||'';
+    atualizarPreviewSimples((data[0]&&data[0].valor)||'','cfglogo-preview');
   }
 
   async function guardarLogoGaleria(){
@@ -1079,11 +1771,26 @@ ${linkProduto}
 
   function fecharFormGaleria(){document.getElementById('form-galeria').style.display='none';galEditandoId=null;}
 
+  function atualizarPreviewMultipla(valor, wrapId){
+    const wrap=document.getElementById(wrapId);
+    if(!wrap) return;
+    const linhas=(valor||'').split('\n').map(l=>l.trim()).filter(Boolean);
+    if(!linhas.length){ wrap.innerHTML=''; wrap.style.display='none'; return; }
+    wrap.style.display='flex';
+    wrap.innerHTML=linhas.map(url=>`<img src="${url}" alt="Pré-visualização" style="width:70px;height:70px;object-fit:cover;border-radius:8px;border:1px solid #ddd;flex-shrink:0;" onerror="this.style.display='none'">`).join('');
+  }
+
+  function atualizarPreviewSimples(valor, previewId){
+    const wrap=document.getElementById(previewId+'-wrap');
+    const img=document.getElementById(previewId);
+    if(!wrap||!img) return;
+    const url=(valor||'').trim();
+    if(url){ img.src=url; wrap.style.display='block'; }
+    else { img.src=''; wrap.style.display='none'; }
+  }
+
   function atualizarPreviewGaleria(){
-    const linhas=document.getElementById('fg-imgs').value.trim();
-    const primeira=linhas?linhas.split('\n').map(l=>l.trim()).filter(Boolean)[0]:null;
-    const wrap=document.getElementById('fg-preview-wrap');const img=document.getElementById('fg-preview');
-    if(primeira){img.src=primeira;wrap.style.display='block';}else{img.src='';wrap.style.display='none';}
+    atualizarPreviewMultipla(document.getElementById('fg-imgs').value,'fg-preview-wrap');
   }
 
   async function guardarGaleria(){
@@ -1102,6 +1809,556 @@ ${linkProduto}
   async function toggleGaleria(id,activo){await sbPatch('galeria',`id=eq.${id}`,{activo});registrarLog(activo?'Activar publicação':'Desactivar publicação',`ID ${id}`);carregarGaleriaAdmin();}
   async function eliminarGaleria(id){if(!confirm('Eliminar esta publicação?'))return;await sbDelete('galeria',`id=eq.${id}`);registrarLog('Eliminar publicação',`ID ${id}`);carregarGaleriaAdmin();}
 
+  // ── Coleções Mais Marcantes ──
+  let marcanteEditandoId=null;
+
+  // ── Coleções de Produtos (com peças) ──
+  let colProdEditandoId=null;
+  let pecaEditandoId=null;
+  let colecaoAbertaId=null;
+
+  async function carregarColecoesProdutos(){
+    document.getElementById('colprod-pecas-box').style.display='none';
+    const [cols, pecas] = await Promise.all([sbGet('colecoes','order=ordem.asc'), sbGet('colecoes_pecas','select=id,colecao_id')]);
+    const cont={};
+    pecas.forEach(p=>{ cont[p.colecao_id]=(cont[p.colecao_id]||0)+1; });
+    const c=document.getElementById('colprod-lista');
+    if(!cols.length){c.innerHTML='<div class="vazio">Sem coleções. Adiciona a primeira!</div>';return;}
+    c.innerHTML=cols.map(col=>{
+      const n=cont[col.id]||0;
+      return `<div class="produto-card">
+        <img class="produto-img" style="border-radius:8px;object-fit:cover;width:60px;height:60px;" src="${col.imagem_capa||''}" alt="${col.nome}" onerror="this.style.display='none'">
+        <div class="produto-info">
+          <div class="produto-nome">${col.nome}</div>
+          <div class="produto-meta">${n} peça${n===1?'':'s'} &nbsp;·&nbsp; Ordem: ${col.ordem||''}</div>
+        </div>
+        <div class="produto-acoes">
+          <button class="btn-sm cinza" onclick="verPecasColecao(${col.id},'${col.nome}')">🧩 Peças</button>
+          <button class="btn-sm verde" onclick="editarColecaoProdutos(${col.id})">✏️ Editar</button>
+          <button class="btn-sm vermelho" onclick="eliminarColecaoProdutos(${col.id},'${col.nome}',${n})">Eliminar</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function abrirFormColecaoProdutos(){colProdEditandoId=null;document.getElementById('form-colprod-titulo').textContent='➕ Adicionar Coleção';['fcp-nome','fcp-ordem','fcp-desc','fcp-img'].forEach(id=>document.getElementById(id).value='');atualizarPreviewSimples('','fcp-preview');document.getElementById('fcp-msg').textContent='';document.getElementById('form-colprod').style.display='block';document.getElementById('form-colprod').scrollIntoView({behavior:'smooth'});}
+
+  async function editarColecaoProdutos(id){
+    const data=await sbGet('colecoes',`id=eq.${id}`);if(!data.length)return;const col=data[0];colProdEditandoId=id;
+    document.getElementById('form-colprod-titulo').textContent='✏️ Editar Coleção';
+    document.getElementById('fcp-nome').value=col.nome||'';
+    document.getElementById('fcp-ordem').value=col.ordem||'';
+    document.getElementById('fcp-desc').value=col.descricao||'';
+    document.getElementById('fcp-img').value=col.imagem_capa||'';
+    atualizarPreviewSimples(col.imagem_capa||'','fcp-preview');
+    document.getElementById('fcp-msg').textContent='';
+    document.getElementById('form-colprod').style.display='block';document.getElementById('form-colprod').scrollIntoView({behavior:'smooth'});
+  }
+
+  function fecharFormColecaoProdutos(){document.getElementById('form-colprod').style.display='none';colProdEditandoId=null;}
+
+  async function guardarColecaoProdutos(){
+    const nome=document.getElementById('fcp-nome').value.trim();
+    const ordem=parseInt(document.getElementById('fcp-ordem').value)||99;
+    const descricao=document.getElementById('fcp-desc').value.trim();
+    const imagem_capa=document.getElementById('fcp-img').value.trim();
+    const msgEl=document.getElementById('fcp-msg');
+    if(!nome||!descricao){msgEl.className='msg-err';msgEl.textContent='Nome e introdução são obrigatórios.';return;}
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const dados={nome,ordem,descricao,imagem_capa:imagem_capa||null};
+    let ok;
+    if(colProdEditandoId){ ok=await sbPatch('colecoes',`id=eq.${colProdEditandoId}`,dados); }
+    else{
+      const existente=await sbGet('colecoes',`nome=eq.${encodeURIComponent(nome)}`);
+      if(existente.length){msgEl.className='msg-err';msgEl.textContent='Já existe uma coleção com esse nome.';return;}
+      ok=await sbPost('colecoes',dados);
+    }
+    if(ok){msgEl.className='msg-ok';msgEl.textContent='✅ Guardado!';registrarLog(colProdEditandoId?'Editar coleção':'Criar coleção',nome);setTimeout(()=>{fecharFormColecaoProdutos();carregarColecoesProdutos();},900);}
+    else{msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.';}
+  }
+
+  async function eliminarColecaoProdutos(id,nome,totalPecas){
+    if(totalPecas>0){alert(`Esta coleção tem ${totalPecas} peça(s). Elimina as peças primeiro.`);return;}
+    if(!confirm(`Eliminar a coleção "${nome}"?`))return;
+    await sbDelete('colecoes',`id=eq.${id}`);
+    registrarLog('Eliminar coleção',nome);
+    carregarColecoesProdutos();
+  }
+
+  async function verPecasColecao(id,nome){
+    colecaoAbertaId=id;
+    document.getElementById('colprod-pecas-titulo').textContent=`🧩 Peças de "${nome}"`;
+    document.getElementById('colprod-pecas-box').style.display='block';
+    document.getElementById('colprod-pecas-box').scrollIntoView({behavior:'smooth'});
+    await carregarProdutosSelectPeca();
+    await carregarPecas();
+  }
+
+  function fecharPecasColecao(){document.getElementById('colprod-pecas-box').style.display='none';colecaoAbertaId=null;}
+
+  async function carregarProdutosSelectPeca(seleccionado){
+    const data=await sbGet('produtos','order=nome.asc&select=id,nome');
+    const sel=document.getElementById('fpc-produto');
+    sel.innerHTML='<option value="">Escolhe um produto...</option>'+data.map(p=>`<option value="${p.id}">${p.nome}</option>`).join('');
+    if(seleccionado) sel.value=seleccionado;
+  }
+
+  async function carregarPecas(){
+    const data=await sbGet('colecoes_pecas',`colecao_id=eq.${colecaoAbertaId}&order=ordem.asc`);
+    const c=document.getElementById('pecas-lista');
+    if(!data.length){c.innerHTML='<div class="vazio">Sem peças ainda. Adiciona a primeira!</div>';return;}
+    c.innerHTML=data.map(p=>{
+      const primeiraImg=(Array.isArray(p.imagens)&&p.imagens[0])||'';
+      return `<div class="produto-card">
+        <img class="produto-img" src="${primeiraImg}" alt="Peça" onerror="this.style.display='none'">
+        <div class="produto-info">
+          <div class="produto-nome">${(p.intro||'').slice(0,50)||'(sem introdução)'}</div>
+          <div class="produto-meta">${(Array.isArray(p.imagens)?p.imagens.length:0)} imagem(ns) &nbsp;·&nbsp; Ordem: ${p.ordem||''}</div>
+        </div>
+        <div class="produto-acoes">
+          <button class="btn-sm verde" onclick="editarPeca(${p.id})">✏️ Editar</button>
+          <button class="btn-sm vermelho" onclick="eliminarPeca(${p.id})">Eliminar</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function abrirFormPeca(){
+    pecaEditandoId=null;
+    document.getElementById('form-peca-titulo').textContent='➕ Adicionar Peça';
+    ['fpc-intro','fpc-imgs','fpc-desc','fpc-ordem'].forEach(id=>document.getElementById(id).value='');
+    atualizarPreviewMultipla('','fpc-preview-wrap');
+    carregarProdutosSelectPeca('');
+    document.getElementById('fpc-msg').textContent='';
+    document.getElementById('form-peca').style.display='block';document.getElementById('form-peca').scrollIntoView({behavior:'smooth'});
+  }
+
+  async function editarPeca(id){
+    const data=await sbGet('colecoes_pecas',`id=eq.${id}`);if(!data.length)return;const p=data[0];pecaEditandoId=id;
+    document.getElementById('form-peca-titulo').textContent='✏️ Editar Peça';
+    document.getElementById('fpc-intro').value=p.intro||'';
+    document.getElementById('fpc-imgs').value=(Array.isArray(p.imagens)?p.imagens:[]).join('\n');
+    document.getElementById('fpc-desc').value=p.descricao||'';
+    document.getElementById('fpc-ordem').value=p.ordem||'';
+    atualizarPreviewMultipla((Array.isArray(p.imagens)?p.imagens:[]).join('\n'),'fpc-preview-wrap');
+    await carregarProdutosSelectPeca(p.produto_id||'');
+    document.getElementById('fpc-msg').textContent='';
+    document.getElementById('form-peca').style.display='block';document.getElementById('form-peca').scrollIntoView({behavior:'smooth'});
+  }
+
+  function fecharFormPeca(){document.getElementById('form-peca').style.display='none';pecaEditandoId=null;}
+
+  async function guardarPeca(){
+    const intro=document.getElementById('fpc-intro').value.trim();
+    const imgsRaw=document.getElementById('fpc-imgs').value.trim();
+    const imagens=imgsRaw?imgsRaw.split('\n').map(l=>l.trim()).filter(Boolean):[];
+    const descricao=document.getElementById('fpc-desc').value.trim();
+    const produto_id=document.getElementById('fpc-produto').value;
+    const ordem=parseInt(document.getElementById('fpc-ordem').value)||99;
+    const msgEl=document.getElementById('fpc-msg');
+    if(!produto_id){msgEl.className='msg-err';msgEl.textContent='Escolhe o produto ligado ao botão de compra.';return;}
+    if(!imagens.length){msgEl.className='msg-err';msgEl.textContent='Adiciona pelo menos uma imagem.';return;}
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const dados={colecao_id:colecaoAbertaId,produto_id:parseInt(produto_id),intro:intro||null,imagens,descricao:descricao||null,ordem};
+    let ok;
+    if(pecaEditandoId){ ok=await sbPatch('colecoes_pecas',`id=eq.${pecaEditandoId}`,dados); }
+    else{ ok=await sbPost('colecoes_pecas',dados); }
+    if(ok){msgEl.className='msg-ok';msgEl.textContent='✅ Guardado!';registrarLog(pecaEditandoId?'Editar peça':'Criar peça','Coleção #'+colecaoAbertaId);setTimeout(()=>{fecharFormPeca();carregarPecas();carregarColecoesProdutos();},900);}
+    else{msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.';}
+  }
+
+  async function eliminarPeca(id){
+    if(!confirm('Eliminar esta peça?'))return;
+    await sbDelete('colecoes_pecas',`id=eq.${id}`);
+    registrarLog('Eliminar peça','Coleção #'+colecaoAbertaId);
+    carregarPecas();
+    carregarColecoesProdutos();
+  }
+
+  async function carregarMarcantes(){
+    const data=await sbGet('colecoes_destaque','order=ordem.asc');
+    const c=document.getElementById('marcantes-lista');
+    if(!data.length){c.innerHTML='<div class="vazio">Sem coleções marcantes. Adiciona a primeira!</div>';return;}
+    c.innerHTML=data.map(m=>`<div class="produto-card ${!m.activo?'inactivo':''}">
+      <img class="produto-img" src="${m.imagem_url||''}" alt="${m.nome}" onerror="this.style.display='none'">
+      <div class="produto-info">
+        <div class="produto-nome">${m.activo?'':'<span class=\\"tag inactivo\\">Inactivo</span> '}${m.nome}</div>
+        <div class="produto-meta">${m.descricao||''}</div>
+      </div>
+      <div class="produto-acoes">
+        <button class="btn-sm verde" onclick="editarMarcante(${m.id})">✏️ Editar</button>
+        ${m.activo?`<button class="btn-sm cinza" onclick="toggleMarcante(${m.id},false)">Desactivar</button>`:`<button class="btn-sm activar" onclick="toggleMarcante(${m.id},true)">Activar</button>`}
+        <button class="btn-sm vermelho" onclick="eliminarMarcante(${m.id})">Eliminar</button>
+      </div>
+    </div>`).join('');
+  }
+
+  function abrirFormMarcante(){marcanteEditandoId=null;document.getElementById('form-marcante-titulo').textContent='➕ Adicionar Coleção';['fm-nome','fm-desc','fm-img','fm-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fm-msg').textContent='';atualizarPreviewSimples('','fm-preview');document.getElementById('form-marcante').style.display='block';document.getElementById('form-marcante').scrollIntoView({behavior:'smooth'});}
+
+  async function editarMarcante(id){
+    const data=await sbGet('colecoes_destaque',`id=eq.${id}`);if(!data.length)return;const m=data[0];marcanteEditandoId=id;
+    document.getElementById('form-marcante-titulo').textContent='✏️ Editar Coleção';
+    document.getElementById('fm-nome').value=m.nome||'';document.getElementById('fm-desc').value=m.descricao||'';
+    document.getElementById('fm-img').value=m.imagem_url||'';document.getElementById('fm-ordem').value=m.ordem||'';
+    atualizarPreviewSimples(m.imagem_url||'','fm-preview');
+    document.getElementById('fm-msg').textContent='';
+    document.getElementById('form-marcante').style.display='block';document.getElementById('form-marcante').scrollIntoView({behavior:'smooth'});
+  }
+
+  function fecharFormMarcante(){document.getElementById('form-marcante').style.display='none';marcanteEditandoId=null;}
+
+  async function guardarMarcante(){
+    const nome=document.getElementById('fm-nome').value.trim();const desc=document.getElementById('fm-desc').value.trim();
+    const img=document.getElementById('fm-img').value.trim();const ordem=parseInt(document.getElementById('fm-ordem').value)||99;
+    const msgEl=document.getElementById('fm-msg');
+    if(!nome||!desc){msgEl.className='msg-err';msgEl.textContent='Nome e descrição são obrigatórios.';return;}
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const dados={nome,descricao:desc,imagem_url:img||null,ordem};
+    let ok;
+    if(marcanteEditandoId){ ok=await sbPatch('colecoes_destaque',`id=eq.${marcanteEditandoId}`,dados); }
+    else{ ok=await sbPost('colecoes_destaque',{...dados,activo:true}); }
+    if(ok){ msgEl.className='msg-ok';msgEl.textContent='✅ Guardado!'; registrarLog('Coleção marcante guardada',nome); setTimeout(()=>{fecharFormMarcante();carregarMarcantes();},900); }
+    else{ msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.'; }
+  }
+
+  async function toggleMarcante(id,activo){ await sbPatch('colecoes_destaque',`id=eq.${id}`,{activo}); carregarMarcantes(); }
+
+  async function eliminarMarcante(id){
+    if(!confirm('Eliminar esta coleção?'))return;
+    await sbDelete('colecoes_destaque',`id=eq.${id}`);
+    carregarMarcantes();
+  }
+
+  // ── Novas Coleções ──
+  let novaColecaoEditandoId=null;
+
+  async function carregarNovasColecoes(){
+    const data=await sbGet('colecoes_novas','order=ordem.asc');
+    const c=document.getElementById('novas-colecoes-lista');
+    if(!data.length){c.innerHTML='<div class="vazio">Sem novas coleções. Adiciona a primeira!</div>';return;}
+    c.innerHTML=data.map(m=>`<div class="produto-card ${!m.activo?'inactivo':''}">
+      <img class="produto-img" src="${m.imagem_url||''}" alt="${m.nome}" onerror="this.style.display='none'">
+      <div class="produto-info">
+        <div class="produto-nome">${m.activo?'':'<span class=\\"tag inactivo\\">Inactivo</span> '}${m.nome}</div>
+        <div class="produto-meta">${m.descricao||''}</div>
+      </div>
+      <div class="produto-acoes">
+        <button class="btn-sm verde" onclick="editarNovaColecao(${m.id})">✏️ Editar</button>
+        ${m.activo?`<button class="btn-sm cinza" onclick="toggleNovaColecao(${m.id},false)">Desactivar</button>`:`<button class="btn-sm activar" onclick="toggleNovaColecao(${m.id},true)">Activar</button>`}
+        <button class="btn-sm vermelho" onclick="eliminarNovaColecao(${m.id})">Eliminar</button>
+      </div>
+    </div>`).join('');
+  }
+
+  function abrirFormNovaColecao(){novaColecaoEditandoId=null;document.getElementById('form-nova-colecao-titulo').textContent='➕ Adicionar Nova Coleção';['fn-nome','fn-desc','fn-img','fn-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fn-msg').textContent='';atualizarPreviewSimples('','fn-preview');document.getElementById('form-nova-colecao').style.display='block';document.getElementById('form-nova-colecao').scrollIntoView({behavior:'smooth'});}
+
+  async function editarNovaColecao(id){
+    const data=await sbGet('colecoes_novas',`id=eq.${id}`);if(!data.length)return;const m=data[0];novaColecaoEditandoId=id;
+    document.getElementById('form-nova-colecao-titulo').textContent='✏️ Editar Coleção';
+    document.getElementById('fn-nome').value=m.nome||'';document.getElementById('fn-desc').value=m.descricao||'';
+    document.getElementById('fn-img').value=m.imagem_url||'';document.getElementById('fn-ordem').value=m.ordem||'';
+    atualizarPreviewSimples(m.imagem_url||'','fn-preview');
+    document.getElementById('fn-msg').textContent='';
+    document.getElementById('form-nova-colecao').style.display='block';document.getElementById('form-nova-colecao').scrollIntoView({behavior:'smooth'});
+  }
+
+  function fecharFormNovaColecao(){document.getElementById('form-nova-colecao').style.display='none';novaColecaoEditandoId=null;}
+
+  async function guardarNovaColecao(){
+    const nome=document.getElementById('fn-nome').value.trim();const desc=document.getElementById('fn-desc').value.trim();
+    const img=document.getElementById('fn-img').value.trim();const ordem=parseInt(document.getElementById('fn-ordem').value)||99;
+    const msgEl=document.getElementById('fn-msg');
+    if(!nome||!desc){msgEl.className='msg-err';msgEl.textContent='Nome e descrição são obrigatórios.';return;}
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const dados={nome,descricao:desc,imagem_url:img||null,ordem};
+    let ok;
+    if(novaColecaoEditandoId){ ok=await sbPatch('colecoes_novas',`id=eq.${novaColecaoEditandoId}`,dados); }
+    else{ ok=await sbPost('colecoes_novas',{...dados,activo:true}); }
+    if(ok){ msgEl.className='msg-ok';msgEl.textContent='✅ Guardado!'; registrarLog('Nova coleção guardada',nome); setTimeout(()=>{fecharFormNovaColecao();carregarNovasColecoes();},900); }
+    else{ msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.'; }
+  }
+
+  async function toggleNovaColecao(id,activo){ await sbPatch('colecoes_novas',`id=eq.${id}`,{activo}); carregarNovasColecoes(); }
+
+  async function eliminarNovaColecao(id){
+    if(!confirm('Eliminar esta coleção?'))return;
+    await sbDelete('colecoes_novas',`id=eq.${id}`);
+    carregarNovasColecoes();
+  }
+
+  // ── Lançamento Futuro ──
+  async function carregarLancamento(){
+    const data=await sbGet('lancamentos','order=id.desc&limit=1');
+    const l=data[0]||{};
+    document.getElementById('fl-nome').value=l.nome||'';
+    document.getElementById('fl-data').value=l.data_prevista||'';
+    document.getElementById('fl-texto').value=l.texto||'';
+    document.getElementById('fl-img').value=l.imagem_url||'';
+    atualizarPreviewSimples(l.imagem_url||'','fl-preview');
+    document.getElementById('fl-activo').checked=!!l.activo;
+  }
+
+  async function guardarLancamento(){
+    const nome=document.getElementById('fl-nome').value.trim();
+    const data_prevista=document.getElementById('fl-data').value||null;
+    const texto=document.getElementById('fl-texto').value.trim();
+    const imagem_url=document.getElementById('fl-img').value.trim()||null;
+    const activo=document.getElementById('fl-activo').checked;
+    const msgEl=document.getElementById('fl-msg');
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const dados={nome,data_prevista,texto,imagem_url,activo};
+    const existente=await sbGet('lancamentos','order=id.desc&limit=1');
+    let ok;
+    if(existente.length){ ok=await sbPatch('lancamentos',`id=eq.${existente[0].id}`,dados); }
+    else{ ok=await sbPost('lancamentos',dados); }
+    if(ok){ msgEl.className='msg-ok';msgEl.textContent='✅ Guardado!'; registrarLog('Lançamento futuro actualizado',nome); }
+    else{ msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.'; }
+  }
+
+  // ── Sobre Nós ──
+  async function carregarAdmins(){
+    const box = document.getElementById('admins-lista');
+    const { data, error } = await supa.rpc('admin_listar_admins');
+    if(error || !data){ box.innerHTML = '<div class="vazio">Não foi possível carregar.</div>'; return; }
+    box.innerHTML = data.map(a => `
+      <div class="produto-card">
+        <div class="produto-info"><div class="produto-nome">${a.email} <span class="tag ${a.nivel==='admin'?'activo':'inactivo'}">${a.nivel==='admin'?'Admin completo':'Funcionário'}</span></div></div>
+        <div class="produto-acoes">
+          <button class="btn-sm vermelho" onclick="removerAdmin('${a.email}')">Remover</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  async function adicionarAdmin(){
+    const email = document.getElementById('novo-admin-email').value.trim();
+    const nivel = document.getElementById('novo-admin-nivel').value;
+    const msgEl = document.getElementById('admins-msg');
+    if(!email){ msgEl.className='msg-err'; msgEl.textContent='Escreve um email.'; return; }
+    msgEl.className=''; msgEl.textContent='A processar...';
+    const { data, error } = await supa.rpc('admin_adicionar_admin', { email_alvo: email, nivel_alvo: nivel });
+    if(error){ msgEl.className='msg-err'; msgEl.textContent='Erro: '+error.message; return; }
+    if(data==='NAO_ENCONTRADO'){ msgEl.className='msg-err'; msgEl.textContent='Não existe nenhuma conta com esse email. A pessoa tem de criar conta primeiro (na loja, ou tu no Supabase).'; return; }
+    msgEl.className='msg-ok'; msgEl.textContent='✅ Agora é admin!';
+    document.getElementById('novo-admin-email').value='';
+    registrarLog('Novo admin adicionado', email);
+    carregarAdmins();
+  }
+
+  async function removerAdmin(email){
+    if(!confirm(`Remover o acesso de admin de ${email}?`)) return;
+    const { data, error } = await supa.rpc('admin_remover_admin', { email_alvo: email });
+    if(error || data==='NAO_PODES_REMOVER_TI_PROPRIO'){ alert('Não podes remover o teu próprio acesso.'); return; }
+    registrarLog('Admin removido', email);
+    carregarAdmins();
+  }
+
+  const MSG_PEDIDO_DEFAULT = `Olá Royalty Maculuve,
+
+Gostaria de confirmar o seguinte pedido.
+
+DADOS DO CLIENTE
+Nome: {{nome}}
+Celular: {{celular}}
+País: {{pais}}
+Província: {{provincia}}
+Distrito: {{distrito}}
+Bairro: {{bairro}}
+
+DETALHES DO PEDIDO
+{{itens}}
+─────────────────────
+Subtotal: {{subtotal}} MT
+{{desconto_linha}}Total: {{total}} MT
+{{notas_linha}}`;
+
+  const MSG_AGRADECIMENTO_DEFAULT = `Olá {{nome}},
+
+A Royalty Maculuve agradece a sua confiança e preferência.
+
+O seu pedido foi entregue com sucesso:
+{{itens}}
+
+Esperamos que goste das suas peças.
+
+Deixe a sua avaliação:
+{{link_avaliacao}}
+
+A sua opinião é importante para nós e ajuda outros clientes.
+
+ROYALTY — Beyond Trends
+Inhambane, Moçambique`;
+
+  const MSG_NOVIDADE_DEFAULT = `Olá,
+
+A Royalty Maculuve tem uma novidade para si.
+
+Novo produto disponível: {{produto}}
+Preço: {{preco}} MT{{preco_original_linha}}
+
+Ver e comprar:
+{{link_produto}}
+
+ROYALTY — Beyond Trends`;
+
+  async function carregarMensagens(){
+    const data = await sbGet('configuracoes',`chave=in.(msg_pedido,msg_agradecimento,msg_novidade)`);
+    const mapa = {};
+    (data||[]).forEach(c => { mapa[c.chave] = c.valor; });
+    document.getElementById('msg-pedido').value = mapa.msg_pedido || MSG_PEDIDO_DEFAULT;
+    document.getElementById('msg-agradecimento').value = mapa.msg_agradecimento || MSG_AGRADECIMENTO_DEFAULT;
+    document.getElementById('msg-novidade').value = mapa.msg_novidade || MSG_NOVIDADE_DEFAULT;
+  }
+
+  async function guardarMensagem(chave, textareaId, msgElId){
+    const texto = document.getElementById(textareaId).value;
+    const msgEl = document.getElementById(msgElId);
+    msgEl.className=''; msgEl.textContent='A guardar...';
+    const ok = await guardarConfiguracao(chave, texto);
+    if(ok){ msgEl.className='msg-ok'; msgEl.textContent='✅ Guardado!'; registrarLog('Mensagem actualizada', chave); }
+    else { msgEl.className='msg-err'; msgEl.textContent='Erro ao guardar.'; }
+  }
+
+  async function carregarLogoLogin(){
+    const data=await sbGet('configuracoes','chave=eq.logo_login');
+    document.getElementById('cfg-logo-login').value=(data[0]&&data[0].valor)||'';
+    atualizarPreviewSimples((data[0]&&data[0].valor)||'','cfglogin-preview');
+  }
+
+  async function guardarLogoLogin(){
+    const url=document.getElementById('cfg-logo-login').value.trim();
+    const msgEl=document.getElementById('cfg-logo-login-msg');
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const ok=await guardarConfiguracao('logo_login', url);
+    if(ok){msgEl.className='msg-ok';msgEl.textContent='✅ Guardado!';registrarLog('Logo do login actualizado','Site');}
+    else{msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.';}
+  }
+
+  // ── "Sobre Nós" por blocos (parágrafo / citação) ──
+  let blocoSobreNosEditandoId=null;
+
+  async function carregarSobreNos(){
+    const data=await sbGet('sobre_blocos','order=ordem.asc');
+    const c=document.getElementById('sobrenos-blocos-lista');
+    if(!data.length){c.innerHTML='<div class="vazio">Sem blocos ainda. Adiciona o primeiro!</div>';return;}
+    c.innerHTML=data.map(b=>{
+      const resumo=b.tipo==='citacao'
+        ? `"${(b.texto||'').slice(0,60)}" ${b.autor?'— '+b.autor:''}`
+        : (b.titulo?`${b.titulo}: `:'')+(b.texto||'').slice(0,60);
+      return `<div class="produto-card">
+        <div class="produto-info">
+          <div class="produto-nome">${b.tipo==='citacao'?'💬 Citação':'📄 Parágrafo'}</div>
+          <div class="produto-meta">${resumo}${(b.texto||'').length>60?'...':''} &nbsp;·&nbsp; Ordem: ${b.ordem||''}</div>
+        </div>
+        <div class="produto-acoes">
+          <button class="btn-sm verde" onclick="editarBlocoSobreNos(${b.id})">✏️ Editar</button>
+          <button class="btn-sm vermelho" onclick="eliminarBlocoSobreNos(${b.id})">Eliminar</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function mudarTipoBloco(){
+    const tipo=document.getElementById('fsb-tipo').value;
+    document.getElementById('fsb-titulo-grupo').style.display=tipo==='paragrafo'?'block':'none';
+    document.getElementById('fsb-autor-grupo').style.display=tipo==='citacao'?'block':'none';
+    document.getElementById('fsb-texto-label').textContent=tipo==='citacao'?'Texto da Citação *':'Texto *';
+  }
+
+  function abrirFormBlocoSobreNos(){
+    blocoSobreNosEditandoId=null;
+    document.getElementById('form-bloco-titulo').textContent='➕ Adicionar Bloco';
+    document.getElementById('fsb-tipo').value='paragrafo';
+    ['fsb-ordem','fsb-titulo','fsb-texto','fsb-autor'].forEach(id=>document.getElementById(id).value='');
+    mudarTipoBloco();
+    document.getElementById('fsb-msg').textContent='';
+    document.getElementById('form-bloco').style.display='block';document.getElementById('form-bloco').scrollIntoView({behavior:'smooth'});
+  }
+
+  async function editarBlocoSobreNos(id){
+    const data=await sbGet('sobre_blocos',`id=eq.${id}`);if(!data.length)return;const b=data[0];blocoSobreNosEditandoId=id;
+    document.getElementById('form-bloco-titulo').textContent='✏️ Editar Bloco';
+    document.getElementById('fsb-tipo').value=b.tipo||'paragrafo';
+    document.getElementById('fsb-ordem').value=b.ordem||'';
+    document.getElementById('fsb-titulo').value=b.titulo||'';
+    document.getElementById('fsb-texto').value=b.texto||'';
+    document.getElementById('fsb-autor').value=b.autor||'';
+    mudarTipoBloco();
+    document.getElementById('fsb-msg').textContent='';
+    document.getElementById('form-bloco').style.display='block';document.getElementById('form-bloco').scrollIntoView({behavior:'smooth'});
+  }
+
+  function fecharFormBlocoSobreNos(){document.getElementById('form-bloco').style.display='none';blocoSobreNosEditandoId=null;}
+
+  async function guardarBlocoSobreNos(){
+    const tipo=document.getElementById('fsb-tipo').value;
+    const ordem=parseInt(document.getElementById('fsb-ordem').value)||99;
+    const titulo=document.getElementById('fsb-titulo').value.trim();
+    const texto=document.getElementById('fsb-texto').value.trim();
+    const autor=document.getElementById('fsb-autor').value.trim();
+    const msgEl=document.getElementById('fsb-msg');
+    if(!texto){msgEl.className='msg-err';msgEl.textContent='O texto é obrigatório.';return;}
+    msgEl.className='';msgEl.textContent='A guardar...';
+    const dados={tipo,ordem,texto,titulo:tipo==='paragrafo'?(titulo||null):null,autor:tipo==='citacao'?(autor||null):null};
+    let ok;
+    if(blocoSobreNosEditandoId){ ok=await sbPatch('sobre_blocos',`id=eq.${blocoSobreNosEditandoId}`,dados); }
+    else{ ok=await sbPost('sobre_blocos',dados); }
+    if(ok){msgEl.className='msg-ok';msgEl.textContent='✅ Guardado!';registrarLog(blocoSobreNosEditandoId?'Editar bloco Sobre Nós':'Criar bloco Sobre Nós','Site');setTimeout(()=>{fecharFormBlocoSobreNos();carregarSobreNos();},900);}
+    else{msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.';}
+  }
+
+  async function eliminarBlocoSobreNos(id){
+    if(!confirm('Eliminar este bloco?'))return;
+    await sbDelete('sobre_blocos',`id=eq.${id}`);
+    registrarLog('Eliminar bloco Sobre Nós','Site');
+    carregarSobreNos();
+  }
+
+  async function guardarConfiguracao(chave,valor){
+    const existente=await sbGet('configuracoes',`chave=eq.${chave}`);
+    if(existente.length){ return await sbPatch('configuracoes',`chave=eq.${chave}`,{valor}); }
+    return await sbPost('configuracoes',{chave,valor});
+  }
+
+  // ── Contactos ──
+  async function carregarContactosConfig(){
+    const chaves=['contacto_whatsapp','contacto_email','contacto_instagram','contacto_facebook','contacto_tiktok'];
+    const data=await sbGet('configuracoes',`chave=in.(${chaves.join(',')})`);
+    const mapa={}; data.forEach(d=>{mapa[d.chave]=d.valor;});
+    document.getElementById('cfg-whatsapp').value=mapa.contacto_whatsapp||'';
+    document.getElementById('cfg-email').value=mapa.contacto_email||'';
+    document.getElementById('cfg-instagram').value=mapa.contacto_instagram||'';
+    document.getElementById('cfg-facebook').value=mapa.contacto_facebook||'';
+    document.getElementById('cfg-tiktok').value=mapa.contacto_tiktok||'';
+  }
+
+
+  async function guardarContactos(){
+    const msgEl=document.getElementById('cfg-contactos-msg');
+    msgEl.className='';msgEl.textContent='A guardar...';
+    try{
+      await Promise.all([
+        guardarConfiguracao('contacto_whatsapp',document.getElementById('cfg-whatsapp').value.trim()),
+        guardarConfiguracao('contacto_email',document.getElementById('cfg-email').value.trim()),
+        guardarConfiguracao('contacto_instagram',document.getElementById('cfg-instagram').value.trim()),
+        guardarConfiguracao('contacto_facebook',document.getElementById('cfg-facebook').value.trim()),
+        guardarConfiguracao('contacto_tiktok',document.getElementById('cfg-tiktok').value.trim())
+      ]);
+      msgEl.className='msg-ok';msgEl.textContent='✅ Contactos actualizados!';
+      registrarLog('Contactos actualizados','Site');
+    }catch(e){ msgEl.className='msg-err';msgEl.textContent='Erro ao guardar.'; }
+  }
+
+  // ── Newsletter ──
+  async function carregarNewsletter(){
+    const data=await sbGet('newsletter_inscricoes','order=criado_em.desc');
+    const c=document.getElementById('newsletter-lista');
+    if(!data.length){c.innerHTML='<div class="vazio">Sem inscrições ainda.</div>';return;}
+    c.innerHTML=`<table class="tabela"><thead><tr><th>Email</th><th>Data</th></tr></thead><tbody>
+      ${data.map(n=>`<tr><td>${n.email}</td><td>${new Date(n.criado_em).toLocaleDateString('pt-PT')}</td></tr>`).join('')}
+    </tbody></table>`;
+  }
+
   // ── Actividade ──
   async function carregarActividade(){
     const data=await sbGet('actividade','order=criado_em.desc&limit=200');
@@ -1115,7 +2372,7 @@ ${linkProduto}
   // ── Backup Manual ──
   async function fazerBackup(){
     if(!confirm('Gerar backup de todos os dados agora?'))return;
-    const tabelas=['produtos','pedidos','cupoes','banners','avaliacoes','caixa','galeria','stock','actividade'];
+    const tabelas=['produtos','pedidos','cupoes','banners','avaliacoes','caixa','galeria','stock','actividade','colecoes_destaque','colecoes_novas','lancamentos','categorias','colecoes'];
     const resultado={};
     for(const t of tabelas){ resultado[t]=await sbGet(t); }
     resultado._gerado_em=new Date().toISOString();
@@ -1287,6 +2544,7 @@ ${linkProduto}
 
   function fmtData(iso){if(!iso)return'—';const d=new Date(iso);return`${d.toLocaleDateString('pt-PT')}<br><span style="font-size:0.65rem;color:var(--muted)">${d.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'})}</span>`;}
 
+  verificarSessao();
   setInterval(()=>{if(document.getElementById('painel').style.display!=='none')carregarTudo();},120000);
 </script>
 </body>
