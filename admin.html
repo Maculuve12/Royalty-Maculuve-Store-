@@ -137,7 +137,19 @@
     .banner-link{font-size:0.72rem;color:var(--g3);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px;}
     .banner-acoes{display:flex;gap:6px;flex-shrink:0;}
     @media(max-width:600px){.conteudo{padding:14px;}.form-grid{grid-template-columns:1fr;}.graficos-grid{grid-template-columns:1fr;}.produto-card{flex-wrap:wrap;}.produto-acoes{flex-direction:row;flex-wrap:wrap;display:grid;grid-template-columns:1fr 1fr;gap:6px;width:100%;}.produto-acoes button{width:100%;}.banner-card{flex-wrap:wrap;}.banner-acoes{flex-wrap:wrap;}}
-  </style>
+  
+    .perm-grupo{border:1px solid #e2e2e2;border-radius:8px;padding:10px 12px;margin-bottom:8px;background:#fff;}
+    .perm-grupo-topo{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;}
+    .perm-grupo-nome{font-weight:700;font-size:0.8rem;}
+    .perm-mini{font-size:0.68rem;padding:3px 8px;border:1px solid #ccc;border-radius:6px;background:#f6f6f6;cursor:pointer;margin-left:4px;}
+    .perm-op{display:flex;align-items:center;gap:8px;font-size:0.8rem;padding:5px 0;}
+    .perm-op input{width:18px;height:18px;flex-shrink:0;}
+    .perm-global{display:flex;gap:6px;margin-bottom:8px;}
+    .perm-resumo{font-size:0.72rem;color:#777;margin-top:2px;}
+    .perm-painel{margin-top:10px;padding:12px;background:#fafafa;border:1px solid #e6e6e6;border-radius:10px;width:100%;}
+
+    #aviso-pedido{position:fixed;left:12px;right:12px;top:12px;z-index:9999;display:none;background:var(--g1,#142D29);color:#fff;border-left:4px solid var(--gold,#C8A060);border-radius:10px;padding:14px 16px;box-shadow:0 6px 24px rgba(0,0,0,.35);font-size:.85rem;line-height:1.5;cursor:pointer;}
+</style>
 </head>
 <body>
 
@@ -152,10 +164,12 @@
   </div>
 </div>
 
+<div id="aviso-pedido"></div>
 <div class="painel" id="painel">
   <div class="topo">
     <div><div class="topo-marca">ROYALTY</div><div class="topo-sub">Admin</div></div>
     <div class="topo-acoes">
+      <button class="btn-topo cinza" id="btn-avisos" onclick="alternarAvisos()" title="Avisos de pedidos novos">🔕</button>
       <button class="btn-topo cinza" onclick="carregarTudo()">↺</button>
       <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);" onclick="fazerBackup()">💾 Backup</button>
       <button class="btn-topo sair" onclick="sair()">Sair</button>
@@ -247,7 +261,7 @@
           </div>
           <div class="form-grupo"><label class="form-label">Preço Promo (MT) *</label><input class="form-input" id="fp-preco" type="number" placeholder="850"></div>
           <div class="form-grupo"><label class="form-label">Preço Original (MT)</label><input class="form-input" id="fp-preco-orig" type="number" placeholder="1000"><span class="form-dica">Vazio = sem desconto</span></div>
-          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fp-desc" rows="3"></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fp-desc" rows="5" style="resize:vertical;"></textarea></div>
           <div class="form-grupo full"><label class="form-label">Cores (uma por linha: Nome|#hex)</label><textarea class="form-input" id="fp-cores" rows="4" placeholder="Verde Escuro|#1e3322&#10;Branca|#ffffff"></textarea></div>
           <div class="form-grupo"><label class="form-label">Tamanhos (vírgula)</label><input class="form-input" id="fp-tamanhos" placeholder="M,L,XL"></div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fp-ordem" type="number" placeholder="1"></div>
@@ -489,7 +503,7 @@
             <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaTextarea(this,'fg-imgs','fg-imgs-status');atualizarPreviewGaleria();"></label><span class="upload-status" id="fg-imgs-status"></span></div>
           </div>
           <div class="form-grupo full" id="fg-preview-wrap" style="display:none;flex-wrap:wrap;gap:8px;"></div>
-          <div class="form-grupo full"><label class="form-label">Descrição</label><textarea class="form-input" id="fg-desc" rows="3" placeholder="Legenda da publicação..."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Descrição</label><textarea class="form-input" id="fg-desc" rows="5" style="resize:vertical;" placeholder="Legenda da publicação..."></textarea></div>
         </div>
         <div class="form-acoes">
           <button class="btn-guardar" onclick="guardarGaleria()">Guardar</button>
@@ -514,10 +528,14 @@
         <div class="form-grid">
           <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fcp-nome" placeholder="Ex: Verão 2026"></div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fcp-ordem" type="number" placeholder="1"></div>
-          <div class="form-grupo full"><label class="form-label">Introdução da Coleção *</label><textarea class="form-input" id="fcp-desc" rows="3" placeholder="Motivo, inspiração, história desta coleção..."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Introdução da Coleção *</label><textarea class="form-input" id="fcp-desc" rows="5" style="resize:vertical;" placeholder="Motivo, inspiração, história desta coleção..."></textarea></div>
           <div class="form-grupo full"><label class="form-label">Imagem de Capa — 1080×1080px (quadrado) recomendado</label><input class="form-input" id="fcp-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fcp-preview')">
             <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fcp-img','fcp-img-status');atualizarPreviewSimples(document.getElementById('fcp-img').value,'fcp-preview');"></label><span class="upload-status" id="fcp-img-status"></span></div>
             <div id="fcp-preview-wrap" style="display:none;margin-top:8px;"><img id="fcp-preview" src="" alt="Pré-visualização" style="width:110px;height:110px;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+          <div class="form-grupo full"><label class="form-label">Imagens Adicionais (opcional) — um link por linha</label><textarea class="form-input" id="fcp-imgs" rows="3" style="resize:vertical;" placeholder="https://..." oninput="atualizarPreviewMultipla(this.value,'fcp-imgs-preview-wrap')"></textarea>
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaTextarea(this,'fcp-imgs','fcp-imgs-status');"></label><span class="upload-status" id="fcp-imgs-status"></span></div>
+            <div id="fcp-imgs-preview-wrap" style="display:none;flex-wrap:wrap;gap:8px;margin-top:8px;"></div>
           </div>
         </div>
         <div class="form-acoes">
@@ -541,12 +559,12 @@
         <div class="form-card" id="form-peca" style="display:none;">
           <div class="form-titulo" id="form-peca-titulo">➕ Adicionar Peça</div>
           <div class="form-grid">
-            <div class="form-grupo full"><label class="form-label">Introdução da Peça (motivo/inspiração)</label><textarea class="form-input" id="fpc-intro" rows="2" placeholder="Porque foi criada esta peça..."></textarea></div>
+            <div class="form-grupo full"><label class="form-label">Introdução da Peça (motivo/inspiração)</label><textarea class="form-input" id="fpc-intro" rows="6" placeholder="Porque foi criada esta peça..."></textarea></div>
             <div class="form-grupo full"><label class="form-label">Links das Imagens (um por linha) — 1000×1000px (quadrado) recomendado</label><textarea class="form-input" id="fpc-imgs" rows="3" placeholder="https://..." oninput="atualizarPreviewMultipla(this.value,'fpc-preview-wrap')"></textarea>
               <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaTextarea(this,'fpc-imgs','fpc-imgs-status');atualizarPreviewMultipla(document.getElementById('fpc-imgs').value,'fpc-preview-wrap');"></label><span class="upload-status" id="fpc-imgs-status"></span></div>
               <div id="fpc-preview-wrap" style="display:none;flex-wrap:wrap;gap:8px;margin-top:8px;"></div>
             </div>
-            <div class="form-grupo full"><label class="form-label">Descrição da Peça (cores, tamanhos, quantidades, etc.)</label><textarea class="form-input" id="fpc-desc" rows="3" placeholder="Texto livre..."></textarea></div>
+            <div class="form-grupo full"><label class="form-label">Descrição da Peça (cores, tamanhos, quantidades, etc.)</label><textarea class="form-input" id="fpc-desc" rows="5" style="resize:vertical;" placeholder="Texto livre..."></textarea></div>
             <div class="form-grupo"><label class="form-label">Produto ligado ao botão de compra *</label><select class="form-input" id="fpc-produto"><option value="">Escolhe um produto...</option></select></div>
             <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fpc-ordem" type="number" placeholder="1"></div>
           </div>
@@ -568,7 +586,7 @@
         <div class="form-grid">
           <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fm-nome" placeholder="Ex: Royalty Black"></div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fm-ordem" type="number" placeholder="1"></div>
-          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fm-desc" rows="2" placeholder="Ex: Uma coleção construída em torno do preto."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fm-desc" rows="5" style="resize:vertical;" placeholder="Ex: Uma coleção construída em torno do preto."></textarea></div>
           <div class="form-grupo full"><label class="form-label">Link da Imagem — 900×1200px (proporção 3:4) recomendado</label><input class="form-input" id="fm-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fm-preview')">
             <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fm-img','fm-img-status');atualizarPreviewSimples(document.getElementById('fm-img').value,'fm-preview');"></label><span class="upload-status" id="fm-img-status"></span></div>
             <div id="fm-preview-wrap" style="display:none;margin-top:8px;"><img id="fm-preview" src="" alt="Pré-visualização" style="width:105px;aspect-ratio:3/4;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
@@ -591,7 +609,7 @@
         <div class="form-grid">
           <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fn-nome" placeholder="Ex: Royalty Street 26"></div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fn-ordem" type="number" placeholder="1"></div>
-          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fn-desc" rows="2" placeholder="Ex: Uma nova expressão da marca."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fn-desc" rows="5" style="resize:vertical;" placeholder="Ex: Uma nova expressão da marca."></textarea></div>
           <div class="form-grupo full"><label class="form-label">Link da Imagem — 900×1200px (proporção 3:4) recomendado</label><input class="form-input" id="fn-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fn-preview')">
             <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fn-img','fn-img-status');atualizarPreviewSimples(document.getElementById('fn-img').value,'fn-preview');"></label><span class="upload-status" id="fn-img-status"></span></div>
             <div id="fn-preview-wrap" style="display:none;margin-top:8px;"><img id="fn-preview" src="" alt="Pré-visualização" style="width:105px;aspect-ratio:3/4;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
@@ -614,7 +632,7 @@
         <div class="form-grid">
           <div class="form-grupo"><label class="form-label">Nome do Lançamento</label><input class="form-input" id="fl-nome" placeholder="Ex: Royalty Winter 26"></div>
           <div class="form-grupo"><label class="form-label">Data Prevista</label><input class="form-input" id="fl-data" type="date"></div>
-          <div class="form-grupo full"><label class="form-label">Texto</label><textarea class="form-input" id="fl-texto" rows="2" placeholder="Ex: Uma nova colecção está a chegar."></textarea></div>
+          <div class="form-grupo full"><label class="form-label">Texto</label><textarea class="form-input" id="fl-texto" rows="5" style="resize:vertical;" placeholder="Ex: Uma nova colecção está a chegar."></textarea></div>
           <div class="form-grupo full"><label class="form-label">Link da Imagem Teaser — 800×1000px (proporção 4:5) recomendado</label><input class="form-input" id="fl-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fl-preview')">
             <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fl-img','fl-img-status');atualizarPreviewSimples(document.getElementById('fl-img').value,'fl-preview');"></label><span class="upload-status" id="fl-img-status"></span></div>
             <div id="fl-preview-wrap" style="display:none;margin-top:8px;"><img id="fl-preview" src="" alt="Pré-visualização" style="width:100px;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
@@ -685,20 +703,32 @@
     </div>
 
     <div class="tab-content" id="tab-administradores">
-      <div class="sec-titulo">🔑 Administradores</div>
-      <div class="form-card">
+      <div class="sec-titulo">🔑 Administradores e Permissões</div>
+      <div style="margin-bottom:12px;"><button class="btn-guardar" id="btn-novo-admin" onclick="abrirFormAdmin()">+ Adicionar</button></div>
+
+      <div class="form-card" id="form-admin" style="display:none;">
         <div class="form-grid">
-          <div class="form-grupo full"><label class="form-label">Email da conta a tornar admin (a conta já tem de existir)</label><input class="form-input" id="novo-admin-email" placeholder="alguem@exemplo.com"></div>
-          <div class="form-grupo full"><label class="form-label">Nível de acesso</label>
-            <select class="form-input" id="novo-admin-nivel">
-              <option value="admin">Admin completo — acesso a tudo</option>
-              <option value="funcionario">Funcionário — só Pedidos e Stock</option>
+          <div class="form-grupo full"><label class="form-label">Nome</label><input class="form-input" id="novo-admin-nome" placeholder="Nome completo"></div>
+          <div class="form-grupo full"><label class="form-label">Email da conta (a conta já tem de existir)</label><input class="form-input" id="novo-admin-email" type="email" placeholder="email@exemplo.com"></div>
+          <div class="form-grupo full"><label class="form-label">Contacto</label><input class="form-input" id="novo-admin-contacto" type="tel" placeholder="+258 ..."></div>
+          <div class="form-grupo full"><label class="form-label">Função</label>
+            <select class="form-input" id="novo-admin-nivel" onchange="escolherPapel(this.value)">
+              <option value="">Escolha: Funcionário ou Gerente</option>
+              <option value="funcionario">Funcionário</option>
+              <option value="admin">Gerente</option>
             </select>
           </div>
+          <div class="form-grupo full" id="perm-novo-wrap" style="display:none;">
+            <label class="form-label">Permissões (marque o que esta pessoa pode fazer)</label>
+            <div id="perm-novo"></div>
+          </div>
         </div>
-        <div class="form-acoes"><button class="btn-guardar" onclick="adicionarAdmin()">+ Tornar Admin</button></div>
+        <div class="form-acoes"><button class="btn-guardar" onclick="adicionarAdmin()">Guardar</button> <button class="btn-sm cinza" onclick="fecharFormAdmin()">Cancelar</button></div>
         <div class="form-msg" id="admins-msg"></div>
-        <div id="admins-lista" style="margin-top:14px;"><div class="loading">A carregar...</div></div>
+      </div>
+
+      <div class="form-card">
+        <div id="admins-lista"><div class="loading">A carregar...</div></div>
       </div>
     </div>
 
@@ -731,7 +761,7 @@
           </div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fsb-ordem" type="number" placeholder="1"></div>
           <div class="form-grupo full" id="fsb-titulo-grupo"><label class="form-label">Título (aparece como cabeçalho na página)</label><input class="form-input" id="fsb-titulo" placeholder="Ex: O Começo"></div>
-          <div class="form-grupo full"><label class="form-label" id="fsb-texto-label">Texto *</label><textarea class="form-input" id="fsb-texto" rows="4" placeholder="Podes usar **negrito** dentro do texto"></textarea></div>
+          <div class="form-grupo full"><label class="form-label" id="fsb-texto-label">Texto *</label><textarea class="form-input" id="fsb-texto" rows="5" style="resize:vertical;" placeholder="Podes usar **negrito** dentro do texto"></textarea></div>
           <div class="form-grupo full" id="fsb-autor-grupo" style="display:none;"><label class="form-label">Autor da Citação</label><input class="form-input" id="fsb-autor" placeholder="Odêncio Maculuve"></div>
         </div>
         <div class="form-acoes">
@@ -769,6 +799,12 @@
     <!-- ACTIVIDADE -->
     <div class="tab-content" id="tab-actividade">
       <div class="sec-titulo">📜 Log de Actividade</div>
+      <div style="margin-bottom:10px;"><select class="form-input" id="actividade-filtro" onchange="carregarActividade()">
+        <option value="">Toda a actividade</option>
+        <option value="admin">Equipa (admin)</option>
+        <option value="cliente">Clientes com conta</option>
+        <option value="visitante">Visitantes</option>
+      </select></div>
       <div class="wrap-tabela"><div id="actividade-lista"><div class="loading">A carregar...</div></div></div>
     </div>
 
@@ -798,7 +834,24 @@
   async function sbPostReturning(tab,d){const tok=await authHeader();const r=await fetch(`${SB_URL}/rest/v1/${tab}`,{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=representation'},body:JSON.stringify(d)});if(!r.ok)return null;const j=await r.json();return j&&j[0]?j[0]:null;}
 
   // ── Log de Actividade ──
-  async function registrarLog(accao,detalhes){ try{ await sbPost('actividade',{accao,detalhes}); }catch(e){} }
+  // Alterações de dados são registadas automaticamente pela base de dados (actividade.sql).
+  // Aqui só se registam as acções que não alteram dados.
+  function esc(t){ return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+  let LOG_SERVIDOR=false;
+  const ACCOES_SO_FRONT=['Login','Logout','Backup manual','Exportar relatório PDF','Agradecimento enviado','Clientes notificados'];
+  async function detectarLogServidor(){
+    try{ const {error}=await supa.rpc('registar_actividade',{p_accao:'__sonda'}); LOG_SERVIDOR=!error; }
+    catch(e){ LOG_SERVIDOR=false; }
+  }
+  async function registrarLog(accao,detalhes){
+    try{
+      if(LOG_SERVIDOR){
+        if(ACCOES_SO_FRONT.includes(accao)) await supa.rpc('registar_actividade',{p_accao:accao,p_detalhes:detalhes||null});
+        return;
+      }
+      await sbPost('actividade',{accao,detalhes}); // modo antigo (antes de correr actividade.sql)
+    }catch(e){}
+  }
 
   async function entrar(){
     const email=document.getElementById('login-email').value.trim();
@@ -809,7 +862,7 @@
     try{
       const {data,error}=await supa.auth.signInWithPassword({email,password:senha});
       if(error) throw error;
-      entrarPainel();
+      entrarPainel(true);
     }catch(err){
       if(err.message && err.message.toLowerCase().includes('fetch')){
         erroEl.textContent='Não foi possível ligar ao Supabase. Verifica a ligação à internet.';
@@ -820,32 +873,56 @@
     }
   }
 
-  async function entrarPainel(){
+  async function entrarPainel(explicito){
     document.getElementById('login-screen').style.display='none';
     document.getElementById('painel').style.display='block';
+    await detectarLogServidor();
+    if(explicito) registrarLog('Login','Entrou no painel');
     await aplicarNivelAcesso();
-    carregarTudo();
+    if(temPerm('dashboard:ver')) carregarTudo();
+    atualizarBotaoAvisos();
+    if(avisosAtivos()) iniciarAvisos();
   }
 
   async function aplicarNivelAcesso(){
-    let nivel = 'admin';
+    let info=null;
     try{
-      const { data, error } = await supa.rpc('meu_nivel_admin');
-      if(!error && data) nivel = data;
-    }catch(e){ /* se falhar, o RLS continua a proteger na mesma */ }
+      const { data, error } = await supa.rpc('minhas_permissoes');
+      if(!error && data && data.nivel) info=data;
+    }catch(e){ /* função ainda não criada */ }
 
-    if(nivel === 'funcionario'){
-      const permitidas = ['pedidos','stock'];
-      document.querySelectorAll('.tab').forEach(t=>{
-        const m = t.getAttribute('onclick').match(/mudarTab\('([a-z]+)'/);
-        const nomeTab = m ? m[1] : '';
-        t.style.display = permitidas.includes(nomeTab) ? '' : 'none';
-      });
-      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-      const tabPedidos = Array.from(document.querySelectorAll('.tab')).find(t=>t.getAttribute('onclick').includes("mudarTab('pedidos'"));
-      if(tabPedidos){ tabPedidos.classList.add('active'); mudarTab('pedidos', tabPedidos); }
+    if(info){
+      if(info.nivel==='proprietario'){ PERMS={proprietario:true,set:new Set(TODAS_PERM)}; }
+      else{ PERMS={proprietario:false,set:new Set(info.permissoes||[])}; }
+    }else{
+      // Compatibilidade: antes de correr permissoes.sql
+      let nivel='admin';
+      try{ const { data, error } = await supa.rpc('meu_nivel_admin'); if(!error && data) nivel=data; }catch(e){}
+      if(nivel==='funcionario') PERMS={proprietario:false,set:new Set(PRESET_FUNCIONARIO)};
+      else PERMS={proprietario:true,set:new Set(TODAS_PERM)};
     }
+
+    if(PERMS.proprietario) return;
+
+    const tabs=Array.from(document.querySelectorAll('.tab'));
+    tabs.forEach(t=>{
+      const m=(t.getAttribute('onclick')||'').match(/mudarTab\('([a-z]+)'/);
+      const nome=m?m[1]:'';
+      const seccao=TAB_SECCAO[nome]||nome;
+      const visivel = nome!=='administradores' && temAlgumaPerm(seccao);
+      t.style.display=visivel?'':'none';
+    });
+    document.querySelectorAll('.btn-topo').forEach(b=>{
+      const m=(b.getAttribute('onclick')||'').match(/^\s*([a-zA-Z_]+)\s*\(/);
+      if(m && FUNC_PERM[m[1]] && !temPerm(FUNC_PERM[m[1]])) b.style.display='none';
+    });
+    ocultarBotoesSemPerm();
+    iniciarObservadorPerm();
+
+    const primeira=tabs.find(t=>t.style.display!=='none');
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+    if(primeira){ const m=primeira.getAttribute('onclick').match(/mudarTab\('([a-z]+)'/); mudarTab(m[1],primeira); }
   }
 
   async function verificarSessao(){
@@ -856,6 +933,8 @@
   }
 
   async function sair(){
+    pararAvisos();
+    await registrarLog('Logout','Saiu do painel');
     await supa.auth.signOut();
     document.getElementById('login-screen').style.display='flex';
     document.getElementById('painel').style.display='none';
@@ -951,7 +1030,7 @@
     if(!baixos.length){ c.innerHTML = '<div class="vazio">✅ Sem alertas — stock em níveis normais.</div>'; return; }
     baixos.sort((a,b)=>(a.quantidade||0)-(b.quantidade||0));
     c.innerHTML = `<table class="tabela"><thead><tr><th>Produto</th><th>Cor</th><th>Tamanho</th><th>Quantidade</th></tr></thead><tbody>${baixos.map(s=>`<tr>
-      <td><strong>${s.produto_nome||'—'}</strong></td><td>${s.cor}</td><td>${s.tamanho}</td>
+      <td><strong>${esc(s.produto_nome||'—')}</strong></td><td>${esc(s.cor)}</td><td>${esc(s.tamanho)}</td>
       <td><span class="tag ${(s.quantidade||0)<=0?'inactivo':'pendente'}" style="${(s.quantidade||0)<=0?'background:#fdecea;color:var(--red);':''}">${s.quantidade||0} un.</span></td>
     </tr>`).join('')}</tbody></table>`;
   }
@@ -978,7 +1057,7 @@
     if(!data.length){c.innerHTML='<div class="vazio">Sem dados.</div>';return;}
     const mx=Math.max(...data.map(p=>p.total_vendas||0),1);
     c.innerHTML=data.map((p,i)=>`<div class="ranking-card ${i===0&&p.total_vendas>0?'primeiro':''}">
-      <div class="ranking-nome">${nomesAtuais[p.produto_id]||p.produto_nome}</div>
+      <div class="ranking-nome">${esc(nomesAtuais[p.produto_id]||p.produto_nome)}</div>
       <div class="ranking-stat"><span class="ranking-stat-lbl">Vendas</span><span class="ranking-stat-val">${p.total_vendas||0}</span></div>
       <div class="ranking-stat"><span class="ranking-stat-lbl">Unidades</span><span class="ranking-stat-val">${p.total_unidades_vendidas||0}</span></div>
       <div class="ranking-stat"><span class="ranking-stat-lbl">Carrinho</span><span class="ranking-stat-val">${p.total_carrinho||0}</span></div>
@@ -1008,8 +1087,8 @@
   function tabelaPedidos(data,comEstado){
     if(!data.length) return '<div class="vazio">Sem pedidos.</div>';
     return`<table class="tabela"><thead><tr><th>Data</th><th>Cliente</th><th>Contacto</th><th>Localização</th><th>Produtos</th><th>Total</th>${comEstado?'<th>Estado</th>':''}</tr></thead><tbody>${data.map(p=>`<tr>
-      <td>${fmtData(p.criado_em)}</td><td><strong>${p.cliente_nome||'—'}</strong></td><td>${p.cliente_telefone||'—'}</td><td>${p.cliente_localizacao||'—'}</td>
-      <td><div class="itens-lista">${(p.itens||[]).map(i=>`${i.qtd}x ${i.nome} (${i.cor}, ${i.tamanho})`).join('<br>')}</div>${p.cupao_usado?`<span class="tag cupao">🎟 ${p.cupao_usado}</span>`:''}</td>
+      <td>${fmtData(p.criado_em)}</td><td><strong>${esc(p.cliente_nome||'—')}</strong></td><td>${esc(p.cliente_telefone||'—')}</td><td>${esc(p.cliente_localizacao||'—')}</td>
+      <td><div class="itens-lista">${(p.itens||[]).map(i=>`${esc(i.qtd)}x ${esc(i.nome)} (${esc(i.cor)}, ${esc(i.tamanho)})`).join('<br>')}</div>${p.cupao_usado?`<span class="tag cupao">🎟 ${esc(p.cupao_usado)}</span>`:''}</td>
       <td>${p.desconto>0?`<div style="font-size:0.7rem;color:var(--muted);text-decoration:line-through;">${p.subtotal} MT</div>`:''}<div class="total-dest">${p.total} MT</div>${p.desconto>0?`<div style="font-size:0.68rem;color:var(--green);">-${p.desconto} MT</div>`:''}</td>
       ${comEstado?`<td>
         <select class="select-estado" onchange="mudarEstado('${p.id}',this.value,${JSON.stringify(p).replace(/"/g,'&quot;')})">
@@ -1027,7 +1106,7 @@
     await sbPatch('pedidos',`id=eq.${id}`,{estado});
     registrarLog('Mudança de estado', `Pedido de ${pedido?.cliente_nome||'—'} → ${estado}`);
     if (estado === 'Entregue' && estadoAnterior !== 'Entregue' && pedido) {
-      await descontarStockPedido(pedido);
+      // o stock é descontado automaticamente pela base de dados (automacao.sql)
       const confirmar = confirm(`Pedido marcado como Entregue!\n\nEnviar mensagem de agradecimento a ${pedido.cliente_nome}?`);
       if (confirmar) enviarAgradecimento(pedido);
     }
@@ -1050,6 +1129,7 @@
   }
 
   async function enviarAgradecimento(pedido) {
+    registrarLog('Agradecimento enviado', pedido.cliente_nome||'—');
     const nome = pedido.cliente_nome || 'Cliente';
     const tel = (pedido.cliente_telefone || '').replace(/\s/g,'');
     const itens = (pedido.itens || []).map(i=>`• ${i.qtd}x ${i.nome} (${i.cor}, ${i.tamanho})`).join('\n');
@@ -1098,7 +1178,7 @@
   async function carregarCategoriasSelect(seleccionado){
     const data=await sbGet('categorias','order=nome.asc');
     const sel=document.getElementById('fp-categoria');
-    sel.innerHTML='<option value="">Sem categoria</option>'+data.map(c=>`<option value="${c.nome}">${c.nome}</option>`).join('');
+    sel.innerHTML='<option value="">Sem categoria</option>'+data.map(c=>`<option value="${esc(c.nome)}">${esc(c.nome)}</option>`).join('');
     if(seleccionado) sel.value=seleccionado;
   }
   async function novaCategoria(){
@@ -1112,7 +1192,7 @@
   async function carregarColecoesSelect(seleccionado){
     const data=await sbGet('colecoes','order=nome.asc');
     const sel=document.getElementById('fp-colecao');
-    sel.innerHTML='<option value="">Sem coleção</option>'+data.map(c=>`<option value="${c.nome}">${c.nome}</option>`).join('');
+    sel.innerHTML='<option value="">Sem coleção</option>'+data.map(c=>`<option value="${esc(c.nome)}">${esc(c.nome)}</option>`).join('');
     if(seleccionado) sel.value=seleccionado;
   }
   async function novaColecaoProduto(){
@@ -1363,6 +1443,7 @@
   }
 
   async function notificarClientes(produto) {
+    registrarLog('Clientes notificados', (produto&&produto.nome)||'—');
     // Buscar todos os clientes únicos
     const pedidos = await sbGet('pedidos','select=cliente_nome,cliente_telefone&order=criado_em.desc');
     const vistos = new Set();
@@ -1595,7 +1676,7 @@
     pedidos.forEach(p=>{const tel=p.cliente_telefone||'desconhecido';if(!mapa[tel])mapa[tel]={nome:p.cliente_nome,tel,pedidos:0,total:0};mapa[tel].pedidos++;mapa[tel].total+=(p.total||0);});
     const lista=Object.values(mapa).sort((a,b)=>b.total-a.total);
     c.innerHTML=lista.map(cl=>`<div class="cliente-card">
-      <div><div class="cliente-nome">${cl.nome||'—'}</div><div class="cliente-tel">📞 ${cl.tel}</div></div>
+      <div><div class="cliente-nome">${esc(cl.nome||'—')}</div><div class="cliente-tel">📞 ${esc(cl.tel)}</div></div>
       <div class="cliente-stats"><div class="cliente-total">${cl.total.toLocaleString('pt-PT')} MT</div><div class="cliente-pedidos">${cl.pedidos} pedido${cl.pedidos!==1?'s':''}</div></div>
     </div>`).join('');
   }
@@ -1670,7 +1751,7 @@
     const zonas={};
     pedidos.forEach(p=>{const zona=(p.cliente_localizacao||'Desconhecida').split(',')[0].trim();zonas[zona]=(zonas[zona]||0)+(p.total||0);});
     const zonasOrd=Object.entries(zonas).sort((a,b)=>b[1]-a[1]);
-    document.getElementById('zonas-lista').innerHTML=zonasOrd.length?zonasOrd.map(([z,v])=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--off);font-size:0.77rem;"><span style="color:var(--muted);font-weight:600;">📍 ${z}</span><span style="font-weight:800;color:var(--g2);">${v.toLocaleString('pt-PT')} MT</span></div>`).join(''):'<div class="vazio">Sem dados.</div>';
+    document.getElementById('zonas-lista').innerHTML=zonasOrd.length?zonasOrd.map(([z,v])=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--off);font-size:0.77rem;"><span style="color:var(--muted);font-weight:600;">📍 ${esc(z)}</span><span style="font-weight:800;color:var(--g2);">${v.toLocaleString('pt-PT')} MT</span></div>`).join(''):'<div class="vazio">Sem dados.</div>';
   }
 
   // ── Avaliações ──
@@ -1684,12 +1765,12 @@
       ${data.map(a=>`
         <div style="background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,0.05);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:18px 20px;">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;">
-            <div style="font-size:0.8rem;font-weight:700;color:var(--g3);">${a.produto_nome||'—'}</div>
+            <div style="font-size:0.8rem;font-weight:700;color:var(--g3);">${esc(a.produto_nome||'—')}</div>
             <span class="tag ${a.aprovada?'activo':'inactivo'}">${a.aprovada?'✅ Aprovada':'⏳ Pendente'}</span>
           </div>
-          <div style="font-size:0.88rem;font-weight:800;color:var(--g1);">${a.cliente_nome}</div>
+          <div style="font-size:0.88rem;font-weight:800;color:var(--g1);">${esc(a.cliente_nome)}</div>
           <div style="color:var(--gold);font-size:1rem;margin:4px 0;">${renderStars(a.estrelas)} <span style="font-size:0.75rem;color:var(--muted);font-weight:600;">${a.estrelas}/5</span></div>
-          ${a.comentario?`<div style="font-size:0.8rem;color:var(--muted);font-style:italic;">"${a.comentario}"</div>`:''}
+          ${a.comentario?`<div style="font-size:0.8rem;color:var(--muted);font-style:italic;">"${esc(a.comentario)}"</div>`:''}
           <div style="font-size:0.65rem;color:var(--muted);margin-top:6px;">${new Date(a.criado_em).toLocaleDateString('pt-PT')}</div>
           <div style="display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--off);">
             ${!a.aprovada
@@ -1814,6 +1895,7 @@
 
   // ── Coleções de Produtos (com peças) ──
   let colProdEditandoId=null;
+  let colProdTemColunaImagens=false;
   let pecaEditandoId=null;
   let colecaoAbertaId=null;
 
@@ -1841,7 +1923,7 @@
     }).join('');
   }
 
-  function abrirFormColecaoProdutos(){colProdEditandoId=null;document.getElementById('form-colprod-titulo').textContent='➕ Adicionar Coleção';['fcp-nome','fcp-ordem','fcp-desc','fcp-img'].forEach(id=>document.getElementById(id).value='');atualizarPreviewSimples('','fcp-preview');document.getElementById('fcp-msg').textContent='';document.getElementById('form-colprod').style.display='block';document.getElementById('form-colprod').scrollIntoView({behavior:'smooth'});}
+  function abrirFormColecaoProdutos(){colProdEditandoId=null;document.getElementById('form-colprod-titulo').textContent='➕ Adicionar Coleção';['fcp-nome','fcp-ordem','fcp-desc','fcp-img','fcp-imgs'].forEach(id=>document.getElementById(id).value='');colProdTemColunaImagens=false;atualizarPreviewMultipla('','fcp-imgs-preview-wrap');atualizarPreviewSimples('','fcp-preview');document.getElementById('fcp-msg').textContent='';document.getElementById('form-colprod').style.display='block';document.getElementById('form-colprod').scrollIntoView({behavior:'smooth'});}
 
   async function editarColecaoProdutos(id){
     const data=await sbGet('colecoes',`id=eq.${id}`);if(!data.length)return;const col=data[0];colProdEditandoId=id;
@@ -1851,6 +1933,9 @@
     document.getElementById('fcp-desc').value=col.descricao||'';
     document.getElementById('fcp-img').value=col.imagem_capa||'';
     atualizarPreviewSimples(col.imagem_capa||'','fcp-preview');
+    colProdTemColunaImagens=('imagens' in col);
+    document.getElementById('fcp-imgs').value=(Array.isArray(col.imagens)?col.imagens:[]).join('\n');
+    atualizarPreviewMultipla(document.getElementById('fcp-imgs').value,'fcp-imgs-preview-wrap');
     document.getElementById('fcp-msg').textContent='';
     document.getElementById('form-colprod').style.display='block';document.getElementById('form-colprod').scrollIntoView({behavior:'smooth'});
   }
@@ -1866,6 +1951,9 @@
     if(!nome||!descricao){msgEl.className='msg-err';msgEl.textContent='Nome e introdução são obrigatórios.';return;}
     msgEl.className='';msgEl.textContent='A guardar...';
     const dados={nome,ordem,descricao,imagem_capa:imagem_capa||null};
+    const imgsExtra=document.getElementById('fcp-imgs').value.split('\n').map(l=>l.trim()).filter(Boolean);
+    // só envia 'imagens' se houver imagens ou se a coluna já existir (evita erro antes de criar a coluna)
+    if(imgsExtra.length||colProdTemColunaImagens) dados.imagens=imgsExtra;
     let ok;
     if(colProdEditandoId){ ok=await sbPatch('colecoes',`id=eq.${colProdEditandoId}`,dados); }
     else{
@@ -1903,6 +1991,45 @@
     if(seleccionado) sel.value=seleccionado;
   }
 
+  // ===== Texto livre com **negrito** (botão B + pré-visualização) =====
+  const CAMPOS_TEXTO_LIVRE=['fpc-intro','fpc-desc','fcp-desc','fp-desc','fm-desc','fn-desc','fl-texto','fg-desc','fsb-texto'];
+  function fmtNegrito(v){
+    return String(v||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*([^*\n]+?)\*\*/g,'<strong>$1</strong>');
+  }
+  function negritoCampo(id){
+    const t=document.getElementById(id);if(!t)return;
+    const a=t.selectionStart,b=t.selectionEnd;
+    t.value=t.value.slice(0,a)+'**'+t.value.slice(a,b)+'**'+t.value.slice(b);
+    t.focus();t.selectionStart=a+2;t.selectionEnd=b+2;
+    previewCampo(id);
+  }
+  function previewCampo(id){
+    const t=document.getElementById(id),pv=document.getElementById(id+'-prev');
+    if(!t||!pv)return;
+    if(!/\*\*[^*\n]+?\*\*/.test(t.value)){pv.style.display='none';return;}
+    pv.innerHTML=fmtNegrito(t.value);pv.style.display='block';
+  }
+  function previewIntro(){previewCampo('fpc-intro');}
+  function iniciarTextoLivre(){
+    CAMPOS_TEXTO_LIVRE.forEach(id=>{
+      const t=document.getElementById(id);
+      if(!t||document.getElementById(id+'-prev'))return;
+      const bar=document.createElement('div');
+      bar.style.cssText='margin-bottom:6px;display:flex;align-items:center;gap:8px;';
+      bar.innerHTML='<button type="button" class="btn-sm" style="font-weight:800;" title="Seleciona o texto e toca aqui">B</button><span style="font-size:0.7rem;color:var(--muted);">Texto livre. Use **frase** para negrito.</span>';
+      bar.firstChild.addEventListener('click',()=>negritoCampo(id));
+      const pv=document.createElement('div');
+      pv.id=id+'-prev';
+      pv.style.cssText='display:none;margin-top:8px;padding:10px;border:1px dashed #ccc;border-radius:8px;font-size:0.85rem;line-height:1.6;white-space:pre-line;';
+      t.parentNode.insertBefore(bar,t);
+      t.parentNode.insertBefore(pv,t.nextSibling);
+      t.addEventListener('input',()=>previewCampo(id));
+    });
+    // mantém as pré-visualizações em dia quando um formulário é aberto/limpo por código
+    setInterval(()=>CAMPOS_TEXTO_LIVRE.forEach(previewCampo),600);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',iniciarTextoLivre);else iniciarTextoLivre();
+
   async function carregarPecas(){
     const data=await sbGet('colecoes_pecas',`colecao_id=eq.${colecaoAbertaId}&order=ordem.asc`);
     const c=document.getElementById('pecas-lista');
@@ -1912,7 +2039,7 @@
       return `<div class="produto-card">
         <img class="produto-img" src="${primeiraImg}" alt="Peça" onerror="this.style.display='none'">
         <div class="produto-info">
-          <div class="produto-nome">${(p.intro||'').slice(0,50)||'(sem introdução)'}</div>
+          <div class="produto-nome">${(p.intro||'').replace(/\*\*/g,'').slice(0,50)||'(sem introdução)'}</div>
           <div class="produto-meta">${(Array.isArray(p.imagens)?p.imagens.length:0)} imagem(ns) &nbsp;·&nbsp; Ordem: ${p.ordem||''}</div>
         </div>
         <div class="produto-acoes">
@@ -1927,6 +2054,7 @@
     pecaEditandoId=null;
     document.getElementById('form-peca-titulo').textContent='➕ Adicionar Peça';
     ['fpc-intro','fpc-imgs','fpc-desc','fpc-ordem'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('fpc-intro-prev').style.display='none';
     atualizarPreviewMultipla('','fpc-preview-wrap');
     carregarProdutosSelectPeca('');
     document.getElementById('fpc-msg').textContent='';
@@ -1937,6 +2065,7 @@
     const data=await sbGet('colecoes_pecas',`id=eq.${id}`);if(!data.length)return;const p=data[0];pecaEditandoId=id;
     document.getElementById('form-peca-titulo').textContent='✏️ Editar Peça';
     document.getElementById('fpc-intro').value=p.intro||'';
+    previewIntro();
     document.getElementById('fpc-imgs').value=(Array.isArray(p.imagens)?p.imagens:[]).join('\n');
     document.getElementById('fpc-desc').value=p.descricao||'';
     document.getElementById('fpc-ordem').value=p.ordem||'';
@@ -2116,41 +2245,258 @@
   }
 
   // ── Sobre Nós ──
+  // ═════════════ AVISOS DE PEDIDOS NOVOS (com o painel aberto) ═════════════
+  let _avisosTimer=null, _ultimoVisto=null, _tituloBase=document.title, _novosPedidos=0, _audioCtx=null;
+  function avisosAtivos(){ try{ return localStorage.getItem('avisos_pedidos')==='1'; }catch(e){ return false; } }
+  function atualizarBotaoAvisos(){ const b=document.getElementById('btn-avisos'); if(b){ b.textContent=avisosAtivos()?'🔔':'🔕'; b.title=avisosAtivos()?'Avisos ligados (toque para desligar)':'Ligar avisos de pedidos novos'; } }
+  function apitar(){
+    try{
+      _audioCtx=_audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+      const o=_audioCtx.createOscillator(), g=_audioCtx.createGain();
+      o.type='sine'; o.frequency.value=880; g.gain.value=0.15;
+      o.connect(g); g.connect(_audioCtx.destination); o.start(); o.stop(_audioCtx.currentTime+0.25);
+    }catch(e){}
+  }
+  async function alternarAvisos(){
+    if(avisosAtivos()){ try{localStorage.setItem('avisos_pedidos','0');}catch(e){} pararAvisos(); atualizarBotaoAvisos(); return; }
+    try{ localStorage.setItem('avisos_pedidos','1'); }catch(e){}
+    apitar();
+    try{ if('Notification' in window && Notification.permission==='default') await Notification.requestPermission(); }catch(e){}
+    iniciarAvisos(); atualizarBotaoAvisos();
+  }
+  function pararAvisos(){ if(_avisosTimer){ clearInterval(_avisosTimer); _avisosTimer=null; } }
+  async function verificarPedidosNovos(){
+    if(!temPerm('pedidos:ver')) return;
+    const r=await sbGet('pedidos','select=id,cliente_nome,total,criado_em&order=criado_em.desc&limit=5');
+    if(!r.length) return;
+    const maisRecente=r[0].criado_em;
+    if(_ultimoVisto===null){ _ultimoVisto=maisRecente; return; }
+    const novos=r.filter(p=>p.criado_em>_ultimoVisto);
+    if(!novos.length) return;
+    _ultimoVisto=maisRecente;
+    _novosPedidos+=novos.length;
+    document.title='('+_novosPedidos+') '+_tituloBase;
+    const n=novos[0];
+    const texto=novos.length>1?novos.length+' pedidos novos!':'Novo pedido de '+(n.cliente_nome||'cliente')+' — '+n.total+' MT';
+    const el=document.getElementById('aviso-pedido');
+    el.textContent='🛍️ '+texto; el.style.display='block';
+    el.onclick=()=>{ el.style.display='none'; _novosPedidos=0; document.title=_tituloBase; const t=Array.from(document.querySelectorAll('.tab')).find(x=>(x.getAttribute('onclick')||'').includes("'pedidos'")); if(t) t.click(); };
+    setTimeout(()=>{ el.style.display='none'; },12000);
+    apitar();
+    try{ if('Notification' in window && Notification.permission==='granted') new Notification('ROYALTY — '+texto); }catch(e){}
+    try{ carregarPedidos(); if(temPerm('dashboard:ver')) carregarTudo(); }catch(e){}
+  }
+  function iniciarAvisos(){
+    pararAvisos(); _ultimoVisto=null;
+    verificarPedidosNovos();
+    _avisosTimer=setInterval(verificarPedidosNovos,30000);
+  }
+
+  // ═════════════ PERMISSÕES ═════════════
+  const CATALOGO_PERM=[
+    {tab:'dashboard',grupo:'📊 Dashboard',acoes:[['ver','Ver resumo']]},
+    {tab:'pedidos',grupo:'📦 Pedidos',acoes:[['ver','Ver'],['editar','Alterar estado / agradecer'],['eliminar','Eliminar']]},
+    {tab:'produtos',grupo:'🛍️ Produtos',acoes:[['ver','Ver'],['criar','Criar'],['editar','Editar / ativar'],['eliminar','Eliminar']]},
+    {tab:'categorias',grupo:'🗂️ Categorias',acoes:[['ver','Ver'],['criar','Criar'],['editar','Editar'],['eliminar','Eliminar']]},
+    {tab:'stock',grupo:'📋 Stock',acoes:[['ver','Ver'],['criar','Criar'],['editar','Editar'],['eliminar','Eliminar']]},
+    {tab:'colecoes',grupo:'🗂️ Coleções',acoes:[['ver','Ver'],['criar','Criar'],['editar','Editar / ativar'],['eliminar','Eliminar']]},
+    {tab:'banners',grupo:'🖼️ Banners',acoes:[['ver','Ver'],['criar','Criar'],['editar','Editar / ativar'],['eliminar','Eliminar']]},
+    {tab:'galeria',grupo:'📸 Galeria',acoes:[['ver','Ver'],['criar','Publicar fotos'],['editar','Editar / ativar'],['eliminar','Eliminar']]},
+    {tab:'sobrenos',grupo:'📖 Sobre Nós',acoes:[['ver','Ver'],['criar','Criar'],['editar','Editar'],['eliminar','Eliminar']]},
+    {tab:'cupoes',grupo:'🎟️ Cupões',acoes:[['ver','Ver'],['criar','Criar'],['editar','Editar / ativar'],['eliminar','Eliminar']]},
+    {tab:'clientes',grupo:'👥 Clientes',acoes:[['ver','Ver lista'],['editar','Editar'],['eliminar','Eliminar']]},
+    {tab:'avaliacoes',grupo:'⭐ Avaliações',acoes:[['ver','Ver'],['editar','Aprovar / rejeitar'],['eliminar','Eliminar']]},
+    {tab:'newsletter',grupo:'📬 Newsletter',acoes:[['ver','Ver'],['editar','Editar'],['eliminar','Eliminar']]},
+    {tab:'caixa',grupo:'💰 Caixa',acoes:[['ver','Ver'],['criar','Registar movimento'],['editar','Editar'],['eliminar','Eliminar']]},
+    {tab:'relatorios',grupo:'📈 Relatórios',acoes:[['ver','Ver']]},
+    {tab:'actividade',grupo:'📜 Actividade',acoes:[['ver','Ver registo']]},
+    {tab:'configuracoes',grupo:'⚙️ Contactos, Mensagens e Login da Loja',acoes:[['ver','Ver'],['editar','Editar']]}
+  ];
+  const TODAS_PERM=CATALOGO_PERM.flatMap(g=>g.acoes.map(a=>g.tab+':'+a[0]));
+  const PRESET_FUNCIONARIO=['pedidos:ver','pedidos:editar','stock:ver','stock:criar','stock:editar'];
+  // separadores que partilham a mesma secção de permissões
+  const TAB_SECCAO={contactos:'configuracoes',mensagens:'configuracoes',loginloja:'configuracoes'};
+  // botões/ações → permissão necessária
+  const FUNC_PERM={
+    abrirFormProduto:'produtos:criar',editarProduto:'produtos:editar',eliminarProduto:'produtos:eliminar',toggleProduto:'produtos:editar',editarProdutoDeCategoria:'produtos:editar',
+    abrirFormCategoriaAdm:'categorias:criar',novaCategoria:'categorias:criar',editarCategoriaAdm:'categorias:editar',eliminarCategoriaAdm:'categorias:eliminar',
+    abrirFormColecaoProdutos:'colecoes:criar',novaColecaoProduto:'colecoes:criar',abrirFormNovaColecao:'colecoes:criar',abrirFormMarcante:'colecoes:criar',abrirFormPeca:'colecoes:criar',
+    editarColecaoProdutos:'colecoes:editar',editarNovaColecao:'colecoes:editar',editarMarcante:'colecoes:editar',editarPeca:'colecoes:editar',toggleNovaColecao:'colecoes:editar',toggleMarcante:'colecoes:editar',guardarLancamento:'colecoes:editar',
+    eliminarColecaoProdutos:'colecoes:eliminar',eliminarNovaColecao:'colecoes:eliminar',eliminarMarcante:'colecoes:eliminar',eliminarPeca:'colecoes:eliminar',
+    abrirFormBanner:'banners:criar',abrirFormBannerColecoes:'banners:criar',editarBanner:'banners:editar',editarBannerColecoes:'banners:editar',toggleBanner:'banners:editar',toggleBannerColecoes:'banners:editar',eliminarBanner:'banners:eliminar',eliminarBannerColecoes:'banners:eliminar',
+    abrirFormGaleria:'galeria:criar',editarGaleria:'galeria:editar',toggleGaleria:'galeria:editar',eliminarGaleria:'galeria:eliminar',
+    abrirFormBlocoSobreNos:'sobrenos:criar',editarBlocoSobreNos:'sobrenos:editar',eliminarBlocoSobreNos:'sobrenos:eliminar',
+    abrirFormCupao:'cupoes:criar',editarCupao:'cupoes:editar',toggleCupao:'cupoes:editar',eliminarCupao:'cupoes:eliminar',
+    abrirFormCaixa:'caixa:criar',
+    aprovarAvaliacao:'avaliacoes:editar',rejeitarAvaliacao:'avaliacoes:editar',eliminarAvaliacao:'avaliacoes:eliminar',
+    enviarAgradecimento:'pedidos:editar',gerarGrelhaStock:'stock:criar',
+    guardarContactos:'configuracoes:editar',guardarMensagem:'configuracoes:editar',guardarLogoLogin:'configuracoes:editar',guardarLogoGaleria:'configuracoes:editar',
+    fazerBackup:'*proprietario',notificarClientes:'*proprietario'
+  };
+  let PERMS={proprietario:true,set:new Set(TODAS_PERM)};
+  function temPerm(chave){
+    if(chave==='*proprietario') return PERMS.proprietario;
+    return PERMS.proprietario||PERMS.set.has(chave);
+  }
+  function temAlgumaPerm(seccao){
+    if(PERMS.proprietario) return true;
+    for(const k of PERMS.set){ if(k.startsWith(seccao+':')) return true; }
+    return false;
+  }
+
+  function renderChecklist(boxId,selecionadas){
+    const sel=new Set(selecionadas||[]);
+    const box=document.getElementById(boxId);
+    if(!box) return;
+    box.innerHTML=`<div class="perm-global"><button type="button" class="perm-mini" onclick="marcarTodasPerm('${boxId}',true)">Marcar tudo</button><button type="button" class="perm-mini" onclick="marcarTodasPerm('${boxId}',false)">Limpar tudo</button></div>`+
+    CATALOGO_PERM.map(g=>`
+      <div class="perm-grupo" data-grupo="${g.tab}">
+        <div class="perm-grupo-topo"><span class="perm-grupo-nome">${g.grupo}</span>
+          <span><button type="button" class="perm-mini" onclick="marcarGrupoPerm('${boxId}','${g.tab}',true)">Tudo</button><button type="button" class="perm-mini" onclick="marcarGrupoPerm('${boxId}','${g.tab}',false)">Nada</button></span></div>
+        ${g.acoes.map(a=>{const k=g.tab+':'+a[0];return `<label class="perm-op"><input type="checkbox" class="perm-cb" data-key="${k}" ${sel.has(k)?'checked':''}> ${a[1]}</label>`;}).join('')}
+      </div>`).join('');
+  }
+  function lerChecklist(boxId){
+    return Array.from(document.querySelectorAll('#'+boxId+' .perm-cb:checked')).map(c=>c.dataset.key);
+  }
+  function marcarTodasPerm(boxId,v){ document.querySelectorAll('#'+boxId+' .perm-cb').forEach(c=>c.checked=v); }
+  function marcarGrupoPerm(boxId,tab,v){ document.querySelectorAll('#'+boxId+' [data-grupo="'+tab+'"] .perm-cb').forEach(c=>c.checked=v); }
+  function aplicarPreset(boxId,nivel){ renderChecklist(boxId, nivel==='admin'?TODAS_PERM:PRESET_FUNCIONARIO); }
+
+  function abrirFormAdmin(){
+    ['novo-admin-nome','novo-admin-email','novo-admin-contacto','novo-admin-nivel'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('perm-novo-wrap').style.display='none';
+    document.getElementById('admins-msg').textContent='';
+    document.getElementById('form-admin').style.display='block';
+    document.getElementById('btn-novo-admin').style.display='none';
+    document.getElementById('form-admin').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function fecharFormAdmin(){
+    document.getElementById('form-admin').style.display='none';
+    document.getElementById('btn-novo-admin').style.display='';
+  }
+  function escolherPapel(nivel){
+    const wrap=document.getElementById('perm-novo-wrap');
+    if(!nivel){ wrap.style.display='none'; return; }
+    aplicarPreset('perm-novo',nivel);
+    wrap.style.display='block';
+  }
+
   async function carregarAdmins(){
     const box = document.getElementById('admins-lista');
     const { data, error } = await supa.rpc('admin_listar_admins');
-    if(error || !data){ box.innerHTML = '<div class="vazio">Não foi possível carregar.</div>'; return; }
-    box.innerHTML = data.map(a => `
-      <div class="produto-card">
-        <div class="produto-info"><div class="produto-nome">${a.email} <span class="tag ${a.nivel==='admin'?'activo':'inactivo'}">${a.nivel==='admin'?'Admin completo':'Funcionário'}</span></div></div>
+    if(error || !data){ box.innerHTML = '<div class="vazio">Não foi possível carregar. Já correu os ficheiros permissoes.sql e permissoes_2.sql no Supabase?</div>'; return; }
+    const { data:ud } = await supa.auth.getUser();
+    const meuEmail = ud && ud.user ? ud.user.email : '';
+    box.innerHTML = data.map((a,i) => {
+      const prop = a.nivel==='proprietario';
+      const eu = a.email===meuEmail;
+      const n = Array.isArray(a.permissoes)?a.permissoes.length:0;
+      const rotulo = prop?'Proprietário':(a.nivel==='admin'?'Gerente':'Funcionário');
+      const resumo = prop?'Acesso total e fixo':`${n} de ${TODAS_PERM.length} permissões`;
+      const titulo = a.nome ? a.nome : a.email;
+      const sub = [a.nome?a.email:'', a.contacto||''].filter(Boolean).join(' · ');
+      return `
+      <div class="produto-card" style="flex-wrap:wrap;">
+        <div class="produto-info"><div class="produto-nome">${titulo} <span class="tag ${prop||a.nivel==='admin'?'activo':'inactivo'}">${rotulo}</span></div>
+          ${sub?`<div class="perm-resumo">${sub}</div>`:''}
+          <div class="perm-resumo">${resumo}</div></div>
         <div class="produto-acoes">
-          <button class="btn-sm vermelho" onclick="removerAdmin('${a.email}')">Remover</button>
+          ${prop||eu?'':`<button class="btn-sm" onclick="abrirEditarPerm(${i})">Editar</button><button class="btn-sm vermelho" onclick="removerAdmin('${a.email}')">Remover</button>`}
         </div>
-      </div>
-    `).join('');
+        <div id="perm-painel-${i}" class="perm-painel" style="display:none;"></div>
+      </div>`;
+    }).join('');
+    window._adminsLista=data;
+  }
+
+  function abrirEditarPerm(i){
+    const a=(window._adminsLista||[])[i]; if(!a) return;
+    const painel=document.getElementById('perm-painel-'+i);
+    if(painel.style.display==='block'){ painel.style.display='none'; return; }
+    painel.style.display='block';
+    painel.innerHTML=`
+      <label class="form-label">Nome</label>
+      <input class="form-input" id="perm-nome-${i}" value="${(a.nome||'').replace(/"/g,'&quot;')}" style="margin-bottom:10px;">
+      <label class="form-label">Contacto</label>
+      <input class="form-input" id="perm-contacto-${i}" type="tel" value="${(a.contacto||'').replace(/"/g,'&quot;')}" style="margin-bottom:10px;">
+      <label class="form-label">Função</label>
+      <select class="form-input" id="perm-nivel-${i}" style="margin-bottom:10px;" onchange="aplicarPreset('perm-edit-${i}',this.value)">
+        <option value="funcionario" ${a.nivel==='funcionario'?'selected':''}>Funcionário</option>
+        <option value="admin" ${a.nivel==='admin'?'selected':''}>Gerente</option>
+      </select>
+      <div id="perm-edit-${i}"></div>
+      <div class="form-acoes"><button class="btn-guardar" onclick="guardarPermissoes(${i})">Guardar</button> <button class="btn-sm cinza" onclick="document.getElementById('perm-painel-${i}').style.display='none'">Cancelar</button></div>
+      <div class="form-msg" id="perm-msg-${i}"></div>`;
+    renderChecklist('perm-edit-'+i,a.permissoes||[]);
+  }
+
+  async function guardarPermissoes(i){
+    const a=(window._adminsLista||[])[i]; if(!a) return;
+    const msg=document.getElementById('perm-msg-'+i);
+    const nivel=document.getElementById('perm-nivel-'+i).value;
+    const perms=lerChecklist('perm-edit-'+i);
+    const nome=document.getElementById('perm-nome-'+i).value.trim();
+    const contacto=document.getElementById('perm-contacto-'+i).value.trim();
+    msg.className='';msg.textContent='A guardar...';
+    let { data, error } = await supa.rpc('admin_definir_permissoes',{email_alvo:a.email,nivel_alvo:nivel,permissoes_alvo:perms,nome_alvo:nome,contacto_alvo:contacto});
+    if(error && /schema cache|function/i.test(error.message||'')){
+      // permissoes_2.sql ainda não corrido: guarda só as permissões
+      ({ data, error } = await supa.rpc('admin_definir_permissoes',{email_alvo:a.email,nivel_alvo:nivel,permissoes_alvo:perms}));
+    }
+    if(error||data!=='OK'){ msg.className='msg-err'; msg.textContent='Erro: '+(error?error.message:data); return; }
+    msg.className='msg-ok'; msg.textContent='✅ Guardado! As permissões valem a partir da próxima vez que a pessoa entrar ou recarregar.';
+    registrarLog('Permissões alteradas',(nome||a.email)+' ('+perms.length+' permissões)');
+    setTimeout(carregarAdmins,900);
   }
 
   async function adicionarAdmin(){
+    const nome = document.getElementById('novo-admin-nome').value.trim();
     const email = document.getElementById('novo-admin-email').value.trim();
+    const contacto = document.getElementById('novo-admin-contacto').value.trim();
     const nivel = document.getElementById('novo-admin-nivel').value;
+    const perms = lerChecklist('perm-novo');
     const msgEl = document.getElementById('admins-msg');
-    if(!email){ msgEl.className='msg-err'; msgEl.textContent='Escreve um email.'; return; }
+    if(!nome){ msgEl.className='msg-err'; msgEl.textContent='Escreve o nome.'; return; }
+    if(!email){ msgEl.className='msg-err'; msgEl.textContent='Escreve o email.'; return; }
+    if(!nivel){ msgEl.className='msg-err'; msgEl.textContent='Escolhe a função: Funcionário ou Gerente.'; return; }
     msgEl.className=''; msgEl.textContent='A processar...';
-    const { data, error } = await supa.rpc('admin_adicionar_admin', { email_alvo: email, nivel_alvo: nivel });
+    let { data, error } = await supa.rpc('admin_adicionar_admin', { email_alvo: email, nivel_alvo: nivel, permissoes_alvo: perms, nome_alvo: nome, contacto_alvo: contacto });
+    if(error && /schema cache|function/i.test(error.message||'')){
+      // permissoes_2.sql ainda não corrido: adiciona sem nome/contacto
+      ({ data, error } = await supa.rpc('admin_adicionar_admin', { email_alvo: email, nivel_alvo: nivel, permissoes_alvo: perms }));
+    }
     if(error){ msgEl.className='msg-err'; msgEl.textContent='Erro: '+error.message; return; }
-    if(data==='NAO_ENCONTRADO'){ msgEl.className='msg-err'; msgEl.textContent='Não existe nenhuma conta com esse email. A pessoa tem de criar conta primeiro (na loja, ou tu no Supabase).'; return; }
-    msgEl.className='msg-ok'; msgEl.textContent='✅ Agora é admin!';
-    document.getElementById('novo-admin-email').value='';
-    registrarLog('Novo admin adicionado', email);
-    carregarAdmins();
+    const erros={NAO_ENCONTRADO:'Não existe nenhuma conta com esse email. A pessoa tem de criar conta primeiro (na loja, ou no Supabase).',SEM_PERMISSAO:'Só o proprietário pode adicionar administradores.',NAO_PODES_EDITAR_TI_PROPRIO:'Não podes alterar a tua própria conta.',ALVO_PROPRIETARIO:'Essa conta é proprietária e não pode ser alterada.'};
+    if(data!=='OK'){ msgEl.className='msg-err'; msgEl.textContent=erros[data]||('Erro: '+data); return; }
+    msgEl.className='msg-ok'; msgEl.textContent='✅ Adicionado!';
+    registrarLog('Novo admin adicionado', nome+' <'+email+'> ('+perms.length+' permissões)');
+    setTimeout(()=>{ fecharFormAdmin(); carregarAdmins(); },700);
   }
 
   async function removerAdmin(email){
-    if(!confirm(`Remover o acesso de admin de ${email}?`)) return;
+    if(!confirm(`Remover o acesso de ${email}?`)) return;
     const { data, error } = await supa.rpc('admin_remover_admin', { email_alvo: email });
-    if(error || data==='NAO_PODES_REMOVER_TI_PROPRIO'){ alert('Não podes remover o teu próprio acesso.'); return; }
+    if(error || (data && data!=='OK')){ alert(data==='NAO_PODES_REMOVER_TI_PROPRIO'?'Não podes remover o teu próprio acesso.':data==='ALVO_PROPRIETARIO'?'O proprietário não pode ser removido.':'Não foi possível remover.'); return; }
     registrarLog('Admin removido', email);
     carregarAdmins();
+  }
+
+  // ── Aplicar permissões à interface ──
+  function ocultarBotoesSemPerm(){
+    document.querySelectorAll('#painel [onclick]').forEach(el=>{
+      const m=(el.getAttribute('onclick')||'').match(/^\s*([a-zA-Z_]+)\s*\(/);
+      if(!m) return;
+      const chave=FUNC_PERM[m[1]];
+      if(chave && !temPerm(chave)) el.style.display='none';
+    });
+  }
+  let _obsPerm=null;
+  function iniciarObservadorPerm(){
+    if(PERMS.proprietario||_obsPerm) return;
+    let agendado=false;
+    _obsPerm=new MutationObserver(()=>{ if(agendado) return; agendado=true; requestAnimationFrame(()=>{agendado=false;ocultarBotoesSemPerm();}); });
+    _obsPerm.observe(document.getElementById('painel'),{childList:true,subtree:true});
   }
 
   const MSG_PEDIDO_DEFAULT = `Olá Royalty Maculuve,
@@ -2355,17 +2701,19 @@ ROYALTY — Beyond Trends`;
     const c=document.getElementById('newsletter-lista');
     if(!data.length){c.innerHTML='<div class="vazio">Sem inscrições ainda.</div>';return;}
     c.innerHTML=`<table class="tabela"><thead><tr><th>Email</th><th>Data</th></tr></thead><tbody>
-      ${data.map(n=>`<tr><td>${n.email}</td><td>${new Date(n.criado_em).toLocaleDateString('pt-PT')}</td></tr>`).join('')}
+      ${data.map(n=>`<tr><td>${esc(n.email)}</td><td>${new Date(n.criado_em).toLocaleDateString('pt-PT')}</td></tr>`).join('')}
     </tbody></table>`;
   }
 
   // ── Actividade ──
+  const escLog=esc;
   async function carregarActividade(){
-    const data=await sbGet('actividade','order=criado_em.desc&limit=200');
+    const filtro=(document.getElementById('actividade-filtro')||{}).value||'';
+    const data=await sbGet('actividade','order=criado_em.desc&limit=300'+(filtro?`&tipo=eq.${filtro}`:''));
     const c=document.getElementById('actividade-lista');
     if(!data.length){c.innerHTML='<div class="vazio">Sem actividade registada ainda.</div>';return;}
-    c.innerHTML=`<table class="tabela"><thead><tr><th>Data</th><th>Acção</th><th>Detalhes</th></tr></thead><tbody>${data.map(a=>`<tr>
-      <td>${fmtData(a.criado_em)}</td><td><strong>${a.accao}</strong></td><td>${a.detalhes||'—'}</td>
+    c.innerHTML=`<table class="tabela"><thead><tr><th>Data</th><th>Quem</th><th>Acção</th><th>Detalhes</th></tr></thead><tbody>${data.map(a=>`<tr>
+      <td>${fmtData(a.criado_em)}</td><td>${escLog(a.admin_nome||'—')}</td><td><strong>${escLog(a.accao)}</strong></td><td>${escLog(a.detalhes||'—')}</td>
     </tr>`).join('')}</tbody></table>`;
   }
 

@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coleções | Royalty</title>
+<meta property="og:title" content="Coleções | ROYALTY">
+<meta property="og:description" content="Camisetas exclusivas com estilo premium em Moçambique">
+<meta property="og:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
@@ -464,6 +469,19 @@
   .favorita-card{
     text-align:left;
   }
+  .favorita-card a{
+    display:block;
+    color:inherit;
+    text-decoration:none;
+  }
+  .favorita-card-colecao{
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    color:var(--teal-muted);
+    margin-bottom:6px;
+  }
 
   .favorita-card-img{
     width:100%;
@@ -603,6 +621,76 @@
     letter-spacing:0.5px;
     text-transform:uppercase;
     color:var(--gold);
+  }
+
+  /* Cartões de coleção: imagem em cima, texto fora da imagem */
+  .colecao-cartao{
+    display:flex;
+    flex-direction:column;
+    background:none;
+    color:var(--green);
+    text-decoration:none;
+  }
+  .colecao-cartao-img{
+    aspect-ratio:3/4;
+    background:var(--placeholder-bg);
+  }
+  .colecao-cartao-media{ position:relative; }
+  .colecao-cartao-img.multi{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+  }
+  .colecao-cartao-img.multi::-webkit-scrollbar{ display:none; }
+  .colecao-cartao-img.multi img{ flex:0 0 100%; scroll-snap-align:center; }
+  .colecao-cartao-dots{
+    position:absolute;
+    left:0; right:0; bottom:10px;
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    pointer-events:none;
+  }
+  .colecao-cartao-dots span{ width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.5); box-shadow:0 0 2px rgba(0,0,0,0.4); }
+  .colecao-cartao-dots span.ativo{ background:#fff; }
+  .colecao-cartao-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .colecao-cartao-info{
+    padding:16px 0 0;
+    text-align:left;
+  }
+  .colecao-cartao-info h3{
+    font-family:var(--font-display);
+    font-size:19px;
+    font-weight:600;
+    line-height:1.3;
+    margin-bottom:8px;
+    color:var(--green);
+  }
+  .marcante-card-spoiler{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--teal-muted);
+    display:-webkit-box;
+    -webkit-line-clamp:9;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+  }
+  .marcante-card-btn{
+    display:inline-block;
+    margin-top:16px;
+    padding:10px 20px;
+    border:1px solid var(--green);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--green);
   }
 
   #lancamentos{ background:var(--off-white); }
@@ -787,9 +875,7 @@
 <!-- 2.5 COLEÇÕES DE PRODUTOS (páginas de lançamento com peças) -->
 <section id="colecoes-produtos" style="display:none;">
   <div class="sec-inner" style="text-align:center;">
-    <div class="eyebrow">Coleções</div>
-    <p class="sec-text" style="margin:0 auto;">Cada coleção conta uma história — descubra a inspiração e as peças por trás dela.</p>
-    <div class="marcantes-grid" id="colecoes-produtos-grid"></div>
+    <div class="marcantes-grid" id="colecoes-produtos-grid" style="margin-top:0;"></div>
   </div>
 </section>
 
@@ -807,11 +893,12 @@
 <section id="favorita" style="display:none;">
   <div class="sec-inner" style="text-align:center;">
     <div class="eyebrow">Coleções Mais Vendidas</div>
-    <p class="sec-text" style="margin:0 auto;">Esta selecção tornou-se uma das favoritas da ROYALTY. Descubra os modelos que estão a conquistar os nossos clientes.</p>
+    <p class="sec-text" style="margin:0 auto;">Esta coleção tornou-se uma das favoritas da ROYALTY. Descubra os modelos que estão a conquistar os nossos clientes.</p>
 
+    <h3 id="favorita-colecao-nome" style="display:none;font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--green);margin:28px 0 0;"></h3>
     <div class="favorita-produtos" id="grid-favorita"></div>
 
-    <a class="btn-outline" href="loja.html">Ver Coleção</a>
+    <a class="btn-outline" id="btn-ver-colecao" href="loja.html">Ver Coleção</a>
   </div>
 </section>
 
@@ -851,6 +938,13 @@
 
 
 <script>
+  // Texto livre: escapa HTML, converte **frase** em negrito (quebras de linha via CSS pre-line)
+  function formatarTexto(txt){
+    return String(txt == null ? '' : txt)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*([^*\n]+?)\*\*/g,'<strong>$1</strong>');
+  }
+
   const SB_URL = 'https://zrcnwkrvfkykqnhwoklh.supabase.co';
   const SB_KEY = 'sb_publishable_PX2HcOTmRmbHLDOT5YuKjg_KBNB6aZc';
 
@@ -930,14 +1024,29 @@
   }
 
   // ─── Coleções de Produtos (só as que têm peças) ───
+  // Spoiler: primeiras palavras da introdução, sem **, em texto simples
+  function resumoSpoiler(txt, max){
+    max = max || 300;
+    let t = String(txt || '').replace(/\*\*/g,'').replace(/\s+/g,' ').trim();
+    if(!t) return '';
+    if(t.length > max){
+      t = t.slice(0, max);
+      t = t.replace(/\s+\S*$/, '') + '…';
+    }
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
   function carregarColecoesProdutosPublico(){
     const secao = document.getElementById('colecoes-produtos');
     const grid = document.getElementById('colecoes-produtos-grid');
     if(!secao || !grid) return;
+    const hdr = {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY};
     Promise.all([
-      fetch(`${SB_URL}/rest/v1/colecoes?order=ordem.asc&select=id,nome,imagem_capa`, {
-        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
-      }).then(r => r.json()),
+      fetch(`${SB_URL}/rest/v1/colecoes?order=ordem.asc&select=id,nome,imagem_capa,descricao,imagens`, {headers:hdr})
+        .then(r => r.json()).catch(() => null)
+        .then(d => Array.isArray(d) ? d :
+          // coluna 'imagens' ainda não existe: tenta sem ela
+          fetch(`${SB_URL}/rest/v1/colecoes?order=ordem.asc&select=id,nome,imagem_capa,descricao`, {headers:hdr}).then(r => r.json())),
       fetch(`${SB_URL}/rest/v1/colecoes_pecas?select=colecao_id`, {
         headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
       }).then(r => r.json())
@@ -946,15 +1055,30 @@
       const comPecas = (colecoes||[]).filter(c => idsComPecas.has(c.id));
       if(!comPecas.length){ secao.style.display='none'; return; }
       secao.style.display='';
-      grid.innerHTML = comPecas.map(c => `
-        <a class="marcante-card" href="colecao.html?id=${c.id}" style="text-decoration:none;">
-          ${c.imagem_capa ? `<img src="${c.imagem_capa}" alt="${c.nome}" loading="lazy">` : ''}
-          <div class="marcante-card-info">
+      grid.innerHTML = comPecas.map(c => {
+        const extras = Array.isArray(c.imagens) ? c.imagens.filter(Boolean) : [];
+        const imgs = extras.length ? [c.imagem_capa, ...extras].filter(Boolean) : (c.imagem_capa ? [c.imagem_capa] : []);
+        const multi = imgs.length > 1;
+        return `
+        <a class="colecao-cartao" href="colecao.html?id=${c.id}">
+          <div class="colecao-cartao-media">
+            <div class="colecao-cartao-img${multi ? ' multi' : ''}">${imgs.map(u => `<img src="${u}" alt="${c.nome}" loading="lazy">`).join('')}</div>
+            ${multi ? `<div class="colecao-cartao-dots">${imgs.map((_,i) => `<span class="${i===0?'ativo':''}"></span>`).join('')}</div>` : ''}
+          </div>
+          <div class="colecao-cartao-info">
             <h3>${c.nome}</h3>
-            <span class="marcante-card-link">Ver Mais →</span>
+            ${resumoSpoiler(c.descricao) ? `<div class="marcante-card-spoiler">${resumoSpoiler(c.descricao)}</div>` : ''}
+            <span class="marcante-card-btn">Ver Mais →</span>
           </div>
         </a>
-      `).join('');
+      `;}).join('');
+      grid.querySelectorAll('.colecao-cartao-img.multi').forEach(track => {
+        const dots = track.parentElement.querySelectorAll('.colecao-cartao-dots span');
+        track.addEventListener('scroll', () => {
+          const i = Math.round(track.scrollLeft / track.clientWidth);
+          dots.forEach((d,k) => d.classList.toggle('ativo', k === i));
+        }, {passive:true});
+      });
     }).catch(() => { secao.style.display='none'; });
   }
 
@@ -977,7 +1101,7 @@
               ${m.imagem_url ? `<img src="${m.imagem_url}" alt="${m.nome}" loading="lazy">` : ''}
               <div class="marcante-card-info">
                 <h3>${m.nome}</h3>
-                <p>${m.descricao || ''}</p>
+                <p style="white-space:pre-line;">${formatarTexto(m.descricao)}</p>
               </div>
             </div>
           `).join('')}
@@ -991,20 +1115,43 @@
   function carregarFavorita(){
     const secao = document.getElementById('favorita');
     const grid = document.getElementById('grid-favorita');
+    const H = {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY};
+    const get = u => fetch(`${SB_URL}/rest/v1/${u}`, {headers:H}).then(r => r.json()).then(d => Array.isArray(d) ? d : []);
     Promise.all([
-      fetch(`${SB_URL}/rest/v1/estatisticas_produtos?order=total_vendas.desc&limit=4&select=produto_id,total_vendas`, {
-        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
-      }).then(r => r.json()),
-      fetch(`${SB_URL}/rest/v1/avaliacoes?aprovada=eq.true&select=produto_id,estrelas`, {
-        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
-      }).then(r => r.json()).catch(() => [])
+      get('estatisticas_produtos?order=total_vendas.desc&select=produto_id,total_vendas'),
+      get('avaliacoes?aprovada=eq.true&select=produto_id,estrelas').catch(() => []),
+      get('colecoes_pecas?select=colecao_id,produto_id')
     ])
-    .then(([stats, avaliacoes]) => {
-      const ids = (stats||[]).filter(s => s.total_vendas > 0).map(s => s.produto_id);
+    .then(([stats, avaliacoes, pecas]) => {
+      const comVendas = stats.filter(s => s.total_vendas > 0);
+      const ids = comVendas.slice(0,4).map(s => s.produto_id);
       if(!ids.length){ if(secao) secao.style.display='none'; return; }
 
+      // Coleção mais vendida = soma das vendas de todos os produtos das suas peças
+      const vendasProduto = {};
+      stats.forEach(s => { vendasProduto[s.produto_id] = (vendasProduto[s.produto_id] || 0) + (s.total_vendas || 0); });
+      const prodsPorColecao = {};
+      pecas.forEach(p => {
+        if(!p.produto_id) return;
+        (prodsPorColecao[p.colecao_id] = prodsPorColecao[p.colecao_id] || new Set()).add(p.produto_id);
+      });
+      let melhor = null;
+      Object.keys(prodsPorColecao).forEach(cid => {
+        let total = 0;
+        prodsPorColecao[cid].forEach(pid => { total += vendasProduto[pid] || 0; });
+        if(total > 0 && (!melhor || total > melhor.total)) melhor = { id: cid, total };
+      });
+      const btn = document.getElementById('btn-ver-colecao');
+      if(btn && melhor) btn.href = `colecao.html?id=${melhor.id}`;
+      if(melhor){
+        get(`colecoes?id=eq.${melhor.id}&select=nome`).then(r => {
+          const el = document.getElementById('favorita-colecao-nome');
+          if(el && r[0] && r[0].nome){ el.textContent = r[0].nome; el.style.display = ''; }
+        }).catch(() => {});
+      }
+
       const avalPorProduto = {};
-      (avaliacoes||[]).forEach(a => {
+      avaliacoes.forEach(a => {
         if(!avalPorProduto[a.produto_id]) avalPorProduto[a.produto_id] = { soma:0, total:0 };
         avalPorProduto[a.produto_id].soma += a.estrelas;
         avalPorProduto[a.produto_id].total++;
@@ -1013,11 +1160,7 @@
         avalPorProduto[id].media = avalPorProduto[id].soma / avalPorProduto[id].total;
       });
 
-      return fetch(`${SB_URL}/rest/v1/produtos?id=in.(${ids.join(',')})&select=id,nome,preco,imagens`, {
-        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
-      })
-      .then(r => r.json())
-      .then(produtos => {
+      return get(`produtos?id=in.(${ids.join(',')})&select=id,nome,preco,imagens`).then(produtos => {
         const ordenados = ids.map(id => produtos.find(p => p.id === id)).filter(Boolean);
         if(!ordenados.length){ if(secao) secao.style.display='none'; return; }
         if(secao) secao.style.display='';
@@ -1141,7 +1284,7 @@
         <div class="lancamento-box">
           ${l.imagem_url ? `<div class="lancamento-img"><img src="${l.imagem_url}" alt="${l.nome || 'Próximo lançamento'}" loading="lazy"></div>` : ''}
           ${l.nome ? `<div class="sec-title" style="margin:0;">${l.nome}</div>` : ''}
-          ${l.texto ? `<p class="sec-text" style="margin:0 auto;">${l.texto}</p>` : ''}
+          ${l.texto ? `<p class="sec-text" style="margin:0 auto;white-space:pre-line;">${formatarTexto(l.texto)}</p>` : ''}
           ${dataFmt ? `<div class="lancamento-data">${dataFmt}</div>` : ''}
         </div>
       `;
@@ -1168,7 +1311,7 @@
               ${m.imagem_url ? `<img src="${m.imagem_url}" alt="${m.nome}" loading="lazy">` : ''}
               <div class="marcante-card-info">
                 <h3>${m.nome}</h3>
-                <p>${m.descricao || ''}</p>
+                <p style="white-space:pre-line;">${formatarTexto(m.descricao)}</p>
               </div>
             </div>
           `).join('')}

@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coleção | Royalty</title>
+<meta property="og:title" content="Coleção | ROYALTY">
+<meta property="og:description" content="Camisetas exclusivas com estilo premium em Moçambique">
+<meta property="og:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root{
     --white:#FFFFFF;
@@ -143,6 +148,26 @@
     .icon-right-group{display:flex;align-items:center;gap:14px;order:2;}
   }
 
+  /* ===== GALERIA DA COLEÇÃO ===== */
+  .colecao-galeria{ display:none; max-width:560px; margin:0 auto; padding:24px 5% 0; }
+  .colecao-galeria-track{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+  }
+  .colecao-galeria-track::-webkit-scrollbar{ display:none; }
+  .colecao-galeria-slide{
+    flex:0 0 100%;
+    scroll-snap-align:center;
+    aspect-ratio:1/1;
+    background:var(--placeholder-bg);
+  }
+  .colecao-galeria-slide img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .colecao-galeria-dots{ display:flex; justify-content:center; gap:6px; margin-top:12px; }
+  .colecao-galeria-dots span{ width:6px; height:6px; border-radius:50%; background:var(--sage); }
+  .colecao-galeria-dots span.ativo{ background:var(--green); }
+
   /* ===== HERO DA COLEÇÃO ===== */
   .colecao-hero{
     text-align:center;
@@ -174,6 +199,12 @@
     margin:0 auto;
   }
 
+  .colecao-intro p{
+    line-height:1.65;
+    margin:0 auto 12px;
+  }
+  .colecao-intro p:last-child{ margin-bottom:0; }
+
   /* ===== PEÇAS ===== */
   .pecas-lista{
     max-width:560px;
@@ -181,7 +212,7 @@
     padding:36px 5% 70px;
     display:flex;
     flex-direction:column;
-    gap:48px;
+    gap:28px;
   }
 
   .peca-vazio, .peca-erro{
@@ -191,14 +222,60 @@
     padding:60px 0;
   }
 
-  .peca-bloco{ display:flex; flex-direction:column; }
+  .peca-bloco{
+    display:flex;
+    flex-direction:column;
+    padding:28px 22px 26px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:4px;
+    box-shadow:0 2px 14px rgba(20,45,41,0.06);
+  }
 
-  .peca-intro{
-    font-size:14px;
-    line-height:1.8;
+  /* ===== Texto da peça ===== */
+  .peca-texto{ margin-bottom:22px; }
+  .peca-titulo{
+    font-family:'Cinzel','Playfair Display',Georgia,serif;
+    font-size:26px;
+    font-weight:700;
+    letter-spacing:2px;
+    line-height:1.25;
     color:var(--green);
-    font-style:italic;
+    padding-bottom:14px;
     margin-bottom:16px;
+    position:relative;
+  }
+  .peca-titulo::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:44px; height:2px;
+    background:var(--gold);
+  }
+  .peca-lead{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:18px;
+    font-weight:500;
+    line-height:1.5;
+    color:var(--green-mid);
+    margin-bottom:20px;
+  }
+  .peca-corpo p{
+    font-size:15px;
+    line-height:1.85;
+    color:#3F514D;
+    margin:0 0 16px;
+    font-style:normal;
+  }
+  .peca-corpo strong, .peca-lead strong, .peca-fecho strong{ font-weight:700; color:var(--green); }
+  .peca-fecho{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:16px;
+    line-height:1.7;
+    color:var(--green);
+    border-left:2px solid var(--gold);
+    padding:2px 0 2px 16px;
+    margin:22px 0 4px;
   }
 
   .peca-media{
@@ -274,13 +351,35 @@
     background:var(--gold);
   }
 
+  .peca-desc strong{ font-weight:700; color:var(--green); }
   .peca-desc{
-    padding:16px 2px;
-    font-size:13px;
-    line-height:1.8;
-    color:var(--teal-muted);
     white-space:pre-line;
+    margin-top:6px;
+    padding:18px 2px 16px;
+    border-top:1px solid var(--border);
+    font-size:14px;
+    line-height:1.85;
+    color:var(--teal-muted);
   }
+
+  .btn-partilhar{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:14px;
+    padding:10px 18px;
+    background:none;
+    border:1px solid var(--border);
+    color:var(--green-mid);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .btn-partilhar:active{ background:var(--off-white); }
+  .colecao-hero .btn-partilhar{ margin-top:18px; }
 
   .peca-btn{
     display:inline-block;
@@ -344,6 +443,9 @@
   }
 
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body data-page="colecoes">
 
@@ -391,8 +493,11 @@
 <div class="colecao-hero" id="colecao-hero">
   <div class="eyebrow">Coleção</div>
   <h1 id="colecao-nome">A carregar...</h1>
-  <p id="colecao-intro"></p>
+  <div id="colecao-intro" class="colecao-intro"></div>
+  <button class="btn-partilhar" id="btn-partilhar-colecao" style="display:none;" onclick="partilharColecao()">↗ Partilhar coleção</button>
 </div>
+
+<div class="colecao-galeria" id="colecao-galeria"></div>
 
 <div class="pecas-lista" id="pecas-lista">
   <p class="peca-vazio">A carregar peças...</p>
@@ -425,10 +530,81 @@
 </footer>
 
 <script>
+  // Texto livre: escapa HTML, converte **frase** em negrito (quebras de linha via CSS pre-line)
+  function formatarTexto(txt){
+    return String(txt == null ? '' : txt)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*([^*\n]+?)\*\*/g,'<strong>$1</strong>');
+  }
+
+  // Estrutura o texto da peça: título, frase de abertura, corpo e frase final
+  function formatarIntroPeca(txt){
+    const paras = String(txt == null ? '' : txt).replace(/\r/g,'').trim().split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+    if(!paras.length) return '';
+    const plano = p => p.replace(/\*\*/g,'');
+    const fmt = p => formatarTexto(p).replace(/\n/g,'<br>');
+    let i = 0, html = '';
+    if(paras.length > 1 && plano(paras[0]).length <= 40){ html += `<div class="peca-titulo">${fmt(paras[0])}</div>`; i = 1; }
+    if(i === 1 && paras.length - i >= 2 && plano(paras[i]).length <= 90){ html += `<div class="peca-lead">${fmt(paras[i])}</div>`; i++; }
+    let corpo = paras.slice(i);
+    let fecho = '';
+    if(corpo.length >= 3){ fecho = corpo.pop(); }
+    html += `<div class="peca-corpo">${corpo.map(p => `<p>${fmt(p)}</p>`).join('')}</div>`;
+    if(fecho) html += `<div class="peca-fecho">${fmt(fecho)}</div>`;
+    return html;
+  }
+
+  // ─── Partilha (WhatsApp / menu de partilha do telemóvel) ───
+  const SITE_BASE = 'https://maculuve12.github.io/Royalty-Maculuve-Store-/';
+  let colecaoAtual = null;
+  function resumoCurto(txt, max){
+    let t = String(txt || '').replace(/\*\*/g,'').replace(/\s+/g,' ').trim();
+    if(t.length > max){ t = t.slice(0, max).replace(/\s+\S*$/, '') + '…'; }
+    return t;
+  }
+  function partilhar(titulo, texto, url){
+    if(navigator.share){
+      navigator.share({ title: titulo, text: texto, url: url }).catch(() => {});
+    }else{
+      window.open('https://wa.me/?text=' + encodeURIComponent(texto + '\n' + url), '_blank');
+    }
+  }
+  function partilharColecao(){
+    if(!colecaoAtual) return;
+    const nome = String(colecaoAtual.nome).replace(/\*\*/g,'');
+    partilhar(nome + ' | ROYALTY', nome + ' — ' + resumoCurto(colecaoAtual.descricao, 110), SITE_BASE + 'c/' + colecaoAtual.id + '.html');
+  }
+  function partilharPeca(titulo){
+    if(!colecaoAtual) return;
+    const nome = String(colecaoAtual.nome).replace(/\*\*/g,'');
+    partilhar(titulo + ' | ' + nome, titulo + ' — ' + nome + ', da ROYALTY. Descubra a história desta peça.', SITE_BASE + 'c/' + colecaoAtual.id + '.html');
+  }
+
   const SB_URL = 'https://zrcnwkrvfkykqnhwoklh.supabase.co';
   const SB_KEY = 'sb_publishable_PX2HcOTmRmbHLDOT5YuKjg_KBNB6aZc';
 
   const pecaImgs = {};
+
+  // Galeria da coleção: capa + imagens adicionais (só aparece se houver imagens adicionais)
+  function montarGaleriaColecao(colecao){
+    const extras = Array.isArray(colecao.imagens) ? colecao.imagens.filter(Boolean) : [];
+    if(!extras.length) return;
+    const imgs = [colecao.imagem_capa, ...extras].filter(Boolean);
+    if(imgs.length < 2 && !imgs.length) return;
+    const box = document.getElementById('colecao-galeria');
+    box.innerHTML = `
+      <div class="colecao-galeria-track" id="colecao-galeria-track">
+        ${imgs.map(u => `<div class="colecao-galeria-slide"><img src="${u}" alt="${colecao.nome}" loading="lazy"></div>`).join('')}
+      </div>
+      ${imgs.length > 1 ? `<div class="colecao-galeria-dots" id="colecao-galeria-dots">${imgs.map((_,i) => `<span class="${i===0?'ativo':''}"></span>`).join('')}</div>` : ''}`;
+    box.style.display = 'block';
+    const track = document.getElementById('colecao-galeria-track');
+    const dots = document.querySelectorAll('#colecao-galeria-dots span');
+    track.addEventListener('scroll', () => {
+      const i = Math.round(track.scrollLeft / track.clientWidth);
+      dots.forEach((d,k) => d.classList.toggle('ativo', k === i));
+    }, {passive:true});
+  }
 
   async function carregarColecao(){
     const id = new URLSearchParams(window.location.search).get('id');
@@ -440,9 +616,12 @@
     }
 
     try{
-      const colData = await fetch(`${SB_URL}/rest/v1/colecoes?id=eq.${id}&select=id,nome,descricao`, {
-        headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
-      }).then(r => r.json());
+      const hdr = {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY};
+      let colData = await fetch(`${SB_URL}/rest/v1/colecoes?id=eq.${id}&select=id,nome,descricao,imagem_capa,imagens`, {headers:hdr}).then(r => r.json()).catch(() => null);
+      if(!Array.isArray(colData)){
+        // coluna 'imagens' ainda não existe: tenta sem ela
+        colData = await fetch(`${SB_URL}/rest/v1/colecoes?id=eq.${id}&select=id,nome,descricao,imagem_capa`, {headers:hdr}).then(r => r.json());
+      }
 
       if(!colData || !colData.length){
         document.getElementById('colecao-nome').textContent = 'Coleção não encontrada';
@@ -450,9 +629,14 @@
         return;
       }
       const colecao = colData[0];
-      document.title = `${colecao.nome} | Royalty`;
-      document.getElementById('colecao-nome').textContent = colecao.nome;
-      document.getElementById('colecao-intro').textContent = colecao.descricao || '';
+      document.title = `${String(colecao.nome).replace(/\*\*/g,'')} | Royalty`;
+      document.getElementById('colecao-nome').textContent = String(colecao.nome).replace(/\*\*/g,'');
+      document.getElementById('colecao-intro').innerHTML = String(colecao.descricao || '').replace(/\r/g,'').trim()
+        .split(/\n\s*\n/).map(p => p.trim()).filter(Boolean)
+        .map(p => `<p>${formatarTexto(p).replace(/\n/g,'<br>')}</p>`).join('');
+      montarGaleriaColecao(colecao);
+      colecaoAtual = colecao;
+      document.getElementById('btn-partilhar-colecao').style.display = 'inline-flex';
 
       const pecas = await fetch(`${SB_URL}/rest/v1/colecoes_pecas?colecao_id=eq.${id}&order=ordem.asc&select=id,intro,imagens,descricao,produto_id`, {
         headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
@@ -478,9 +662,12 @@
         const produto = produtosPorId[peca.produto_id];
         const label = produto ? `Comprar — ${produto.nome}` : 'Comprar';
         const link = peca.produto_id ? `loja.html?produto=${peca.produto_id}` : 'loja.html';
+        const primeiraLinha = String(peca.intro || '').replace(/\*\*/g,'').split(/\n/)[0].trim();
+        const tituloPeca = (primeiraLinha && primeiraLinha.length <= 40) ? primeiraLinha : (produto ? produto.nome : 'Peça da coleção');
+        const tituloPecaAttr = tituloPeca.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
         return `
           <div class="peca-bloco">
-            ${peca.intro ? `<p class="peca-intro">${peca.intro}</p>` : ''}
+            ${peca.intro ? `<div class="peca-texto">${formatarIntroPeca(peca.intro)}</div>` : ''}
             <div class="peca-media" id="peca-media-${peca.id}">
               <div class="peca-track" id="peca-track-${peca.id}">
                 ${imgs.map(img => `<div class="peca-slide"><img src="${img}" alt="${produto ? produto.nome : 'Peça da coleção'}" loading="lazy"></div>`).join('')}
@@ -493,8 +680,9 @@
                 </div>
               ` : ''}
             </div>
-            ${peca.descricao ? `<div class="peca-desc">${peca.descricao}</div>` : ''}
+            ${peca.descricao ? `<div class="peca-desc">${formatarTexto(peca.descricao)}</div>` : ''}
             <a class="peca-btn" href="${link}">${label}</a>
+            <button class="btn-partilhar" data-titulo="${tituloPecaAttr}" onclick="partilharPeca(this.dataset.titulo)">↗ Partilhar esta peça</button>
           </div>
         `;
       }).join('');

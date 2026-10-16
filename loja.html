@@ -415,6 +415,10 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
     background:#8c8c8c;
   }
 
+  .product-tag.ultimas{
+    background:#B5651D;
+  }
+
   .product-card.esgotado .product-image{
     opacity:0.5;
   }
@@ -432,6 +436,7 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
   }
 
   .product-desc{
+    white-space:pre-line;
     font-size:10.5px;
     line-height:1.4;
     color:var(--teal-muted);
@@ -1614,6 +1619,15 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  function escHtml(t){ return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+  // Texto livre: escapa HTML, converte **frase** em negrito (quebras de linha via CSS pre-line)
+  function formatarTexto(txt){
+    return String(txt == null ? '' : txt)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*([^*\n]+?)\*\*/g,'<strong>$1</strong>');
+  }
+
   // ════════════════════════════════════════
   // [FUNÇÕES REAIS DA LOJA] — Adaptadas da loja.html
   // oficial para o layout deste mockup. Mesma base
@@ -1679,6 +1693,9 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
       if(!r.ok){
         const corpo = await r.text().catch(()=>'');
         console.error('Falha ao gravar o pedido:', r.status, corpo);
+        if(corpo.indexOf('SEM_STOCK') !== -1){
+          showToast('Atenção: alguma peça esgotou entretanto. Vamos confirmar a disponibilidade consigo pelo WhatsApp.');
+        }
       }
     }catch(e){
       console.error('Erro de rede ao gravar o pedido:', e);
@@ -1788,6 +1805,15 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
     return stockDados[key] !== undefined ? stockDados[key] : null;
   }
 
+  // Últimas unidades: stock total do produto entre 1 e 5
+  function ultimasUnidades(p){
+    let total = 0, rastreado = false;
+    Object.keys(stockDados).forEach(k => {
+      if(k.indexOf(p.id + '_') === 0){ rastreado = true; total += (stockDados[k] || 0); }
+    });
+    return rastreado && total > 0 && total <= 5;
+  }
+
   function produtoEsgotado(p){
     if(Object.keys(stockDados).length === 0) return false;
     if(!p.cores.length || !p.tamanhos.length) return false;
@@ -1870,11 +1896,11 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
           ${grupo.avaliacoes.map(a => `
             <div class="aval-item">
               <div class="aval-item-top">
-                <span class="aval-item-nome">${a.cliente_nome}</span>
+                <span class="aval-item-nome">${escHtml(a.cliente_nome)}</span>
                 <span class="aval-item-data">${new Date(a.criado_em).toLocaleDateString('pt-PT')}</span>
               </div>
               <div class="aval-item-estrelas">${renderEstrelas(a.estrelas)} ${a.estrelas}/5</div>
-              ${a.comentario ? `<div class="aval-item-comentario">"${a.comentario}"</div>` : ''}
+              ${a.comentario ? `<div class="aval-item-comentario">"${escHtml(a.comentario)}"</div>` : ''}
             </div>
           `).join('')}
         </div>
@@ -2027,6 +2053,8 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
       let tag = '';
       if(esgotado){
         tag = '<span class="product-tag esgotado">Esgotado</span>';
+      } else if(ultimasUnidades(p)){
+        tag = '<span class="product-tag ultimas">Últimas unidades</span>';
       } else if(maisCampradoId === p.id){
         tag = '<span class="product-tag mais-vendido">🔥 Mais Vendido</span>';
       } else if(p.badge === 'Novo'){
@@ -2082,7 +2110,7 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
           <button class="btn-add-cart" ${esgotado ? 'disabled' : ''} onclick="abrirOpcoes(${p.id})">Comprar</button>
         </div>
         <div class="product-options-panel" id="opcoes-${p.id}">
-          ${p.desc ? `<div class="product-desc" onclick="this.classList.toggle('expanded')">${p.desc}</div>` : ''}
+          ${p.desc ? `<div class="product-desc" onclick="this.classList.toggle('expanded')">${formatarTexto(p.desc)}</div>` : ''}
           ${(cores || tamanhos) ? `<div class="escolha-hint">Escolha a cor e tamanho para adicionar ao carrinho</div>` : ''}
           ${cores ? `<div class="color-row">${cores}</div>` : ''}
           ${tamanhos ? `<div class="size-row">${tamanhos}</div>` : ''}
@@ -2497,8 +2525,10 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
     if(!codigo) return;
     msg.className = 'cupao-msg'; msg.textContent = 'A verificar...';
 
-    fetch(`${SB_URL}/rest/v1/cupoes?codigo=eq.${codigo}&activo=eq.true&select=*`, {
-      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+    fetch(`${SB_URL}/rest/v1/rpc/validar_cupao`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
+      body:JSON.stringify({ p_codigo: codigo })
     })
     .then(r => r.json())
     .then(data => {
@@ -2695,13 +2725,7 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
       subtotal, desconto, total, cupaoAplicado && cupaoInfo ? cupaoInfo.codigo : null
     );
 
-    if(cupaoAplicado && cupaoInfo){
-      fetch(`${SB_URL}/rest/v1/cupoes?id=eq.${cupaoInfo.id}`, {
-        method:'PATCH',
-        headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},
-        body:JSON.stringify({ total_usos:(cupaoInfo.total_usos||0)+1 })
-      }).catch(function(){});
-    }
+    // o número de utilizações do cupão é contado pelo servidor ao gravar o pedido
 
     carrinho = [];
     cupaoAplicado = false;
@@ -2739,7 +2763,7 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
 
       const passaCategoria = !categoriaFiltro || p.categoria === categoriaFiltro;
 
-      const alvo = (p.nome + ' ' + (p.desc||'')).toLowerCase();
+      const alvo = (p.nome + ' ' + (p.desc||'').replace(/\*\*/g,'')).toLowerCase();
       const passaPesquisa = !termoPesquisa || alvo.includes(termoPesquisa);
 
       const visivel = passaAba && passaCategoria && passaPesquisa;

@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog | Royalty</title>
+<meta property="og:title" content="Blog | ROYALTY">
+<meta property="og:description" content="Camisetas exclusivas com estilo premium em Moçambique">
+<meta property="og:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root{
     --white:#FFFFFF;
@@ -306,6 +311,7 @@
   }
 
   .blog-post-desc{
+    white-space:pre-line;
     padding:12px 16px 16px;
     font-size:12px;
     line-height:1.6;
@@ -445,6 +451,13 @@
 </footer>
 
 <script>
+  // Texto livre: escapa HTML, converte **frase** em negrito (quebras de linha via CSS pre-line)
+  function formatarTexto(txt){
+    return String(txt == null ? '' : txt)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*([^*\n]+?)\*\*/g,'<strong>$1</strong>');
+  }
+
   // ════════════════════════════════════════
   // [FUNÇÕES REAIS DO BLOG] — Adaptadas da galeria.html
   // oficial para o layout deste mockup. Mesma base
@@ -520,7 +533,7 @@
               </div>
             ` : ''}
           </div>
-          ${p.descricao ? `<div class="blog-post-desc"><strong>royalty.maculuve</strong> ${p.descricao}</div>` : ''}
+          ${p.descricao ? `<div class="blog-post-desc"><strong>royalty.maculuve</strong> ${formatarTexto(p.descricao)}</div>` : ''}
         </div>`;
       }).join('');
 
