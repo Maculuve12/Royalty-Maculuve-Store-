@@ -1156,6 +1156,20 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
     max-width:380px;
   }
 
+  .aval-modal.larga{ max-width:440px; max-height:90vh; overflow-y:auto; }
+  .aval-item-peca{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:12px;
+  }
+  .aval-item-peca-nome{ font-weight:600; font-size:14px; color:var(--green); }
+  .aval-item-peca-var{ font-size:11px; color:var(--teal-muted); margin:2px 0 10px; }
+  .aval-item-peca-top{ display:flex; gap:12px; align-items:center; margin-bottom:6px; }
+  .aval-item-peca-top img{ width:52px; height:52px; object-fit:cover; border-radius:6px; background:var(--placeholder-bg); flex-shrink:0; }
+  .aval-item-peca .aval-estrelas-input{ justify-content:flex-start; margin-bottom:8px; }
+  .aval-item-peca textarea{ height:60px; resize:none; }
+  .aval-ja{ font-size:12px; color:var(--green-mid); margin-top:6px; }
   .aval-modal-eyebrow{
     text-align:center;
     font-size:10px;
@@ -1955,10 +1969,118 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
 
   // ─── Link de avaliação vindo do WhatsApp (?avaliar=ID) ───
   // Só quem recebe este link do admin (após confirmar a compra) consegue avaliar.
+  // ─── Avaliar cada peça de um pedido (?avaliar_pedido=ID) ───
+  let avalPedidoId = null;
+  const avalEstrelas = {};
+
+  function abrirAvaliacaoPedido(pedidoId){
+    avalPedidoId = pedidoId;
+    fetch(`${SB_URL}/rest/v1/rpc/avaliar_pedido_itens`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
+      body:JSON.stringify({ p_pedido: pedidoId })
+    })
+    .then(r => r.json())
+    .then(d => {
+      if(!d || d.erro === 'NAO_ENCONTRADO' || d.code){ showToast('Este link de avaliação não é válido.'); return; }
+      if(d.erro === 'NAO_ENTREGUE'){ showToast('Poderá avaliar assim que receber o seu pedido.'); return; }
+      desenharAvaliacaoPedido(d);
+    })
+    .catch(() => showToast('Não foi possível abrir a avaliação. Tente novamente.'));
+  }
+
+  function desenharAvaliacaoPedido(d){
+    const itens = d.itens || [];
+    const porAvaliar = itens.filter(i => !i.estrelas).length;
+    const overlay = document.createElement('div');
+    overlay.id = 'aval-overlay';
+    overlay.className = 'aval-overlay';
+    overlay.onclick = (e) => { if(e.target === overlay) fecharFormAvaliacao(); };
+    overlay.innerHTML = `
+      <div class="aval-modal larga">
+        <div class="aval-modal-eyebrow">ROYALTY</div>
+        <div class="aval-modal-title">Como foi a sua experiência?</div>
+        <div class="aval-modal-produto">${porAvaliar ? 'Avalie cada peça que recebeu' : 'Já avaliou todas as peças. Obrigado!'}</div>
+
+        <div class="form-group">
+          <label class="form-label">O seu nome *</label>
+          <input type="text" class="form-input" id="aval-nome" value="${escHtml(d.cliente_nome || '')}" placeholder="Ex: João Silva">
+        </div>
+
+        ${itens.map(i => `
+          <div class="aval-item-peca" id="aval-pi-${i.produto_id}">
+            <div class="aval-item-peca-top">
+              ${i.img ? `<img src="${escHtml(i.img)}" alt="" loading="lazy">` : ''}
+              <div>
+                <div class="aval-item-peca-nome">${escHtml(i.nome)}</div>
+                <div class="aval-item-peca-var">${escHtml([i.cor, i.tamanho].filter(Boolean).join(' · '))}</div>
+              </div>
+            </div>
+            ${i.estrelas ? `
+              <div class="aval-item-estrelas">${renderEstrelas(i.estrelas)} ${i.estrelas}/5</div>
+              ${i.comentario ? `<div class="aval-item-comentario">"${escHtml(i.comentario)}"</div>` : ''}
+              <div class="aval-ja">✅ Já avaliada</div>
+            ` : `
+              <div class="aval-estrelas-input" id="aval-est-${i.produto_id}">
+                ${[1,2,3,4,5].map(n => `<span onclick="selecionarEstrelaPeca(${i.produto_id}, ${n})">★</span>`).join('')}
+              </div>
+              <textarea class="form-input" id="aval-com-${i.produto_id}" placeholder="Comentário sobre esta peça (opcional)"></textarea>
+            `}
+          </div>
+        `).join('')}
+
+        ${porAvaliar ? `<button class="cart-checkout-btn" onclick="enviarAvaliacoesPedido()">Enviar avaliações</button>` : `<button class="cart-checkout-btn" onclick="fecharFormAvaliacao()">Fechar</button>`}
+        <div id="aval-msg" class="aval-msg"></div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+  }
+
+  function selecionarEstrelaPeca(produtoId, n){
+    avalEstrelas[produtoId] = n;
+    document.querySelectorAll('#aval-est-' + produtoId + ' span').forEach((sp, i) => sp.classList.toggle('active', i < n));
+  }
+
+  function enviarAvaliacoesPedido(){
+    const msg = document.getElementById('aval-msg');
+    const nome = document.getElementById('aval-nome').value.trim();
+    const lista = [];
+    document.querySelectorAll('[id^="aval-est-"]').forEach(el => {
+      const pid = parseInt(el.id.replace('aval-est-', ''));
+      const est = avalEstrelas[pid];
+      if(est){
+        const c = document.getElementById('aval-com-' + pid);
+        lista.push({ produto_id: pid, estrelas: est, comentario: c ? c.value.trim() : '' });
+      }
+    });
+    if(!nome){ msg.className = 'aval-msg err'; msg.textContent = 'Por favor introduza o seu nome.'; return; }
+    if(!lista.length){ msg.className = 'aval-msg err'; msg.textContent = 'Escolha as estrelas de pelo menos uma peça.'; return; }
+
+    msg.className = 'aval-msg'; msg.textContent = 'A enviar...';
+    fetch(`${SB_URL}/rest/v1/rpc/avaliar_pedido_enviar`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
+      body:JSON.stringify({ p_pedido: avalPedidoId, p_nome: nome, p_avaliacoes: lista })
+    })
+    .then(r => r.json())
+    .then(d => {
+      if(!d || d.erro || d.code){ throw new Error((d && (d.erro || d.message)) || 'erro'); }
+      msg.className = 'aval-msg ok';
+      msg.textContent = '✅ Obrigado pelas suas avaliações! Ficam visíveis assim que forem aprovadas.';
+      setTimeout(fecharFormAvaliacao, 2600);
+    })
+    .catch(e => { console.error('Falha ao enviar avaliações:', e); msg.className = 'aval-msg err'; msg.textContent = 'Não foi possível enviar. Tente novamente.'; });
+  }
+
   function verificarLinkAvaliacao(){
     const params = new URLSearchParams(window.location.search);
+    const pedidoId = params.get('avaliar_pedido');
+    if(pedidoId && /^[0-9a-fA-F-]{36}$/.test(pedidoId)){ abrirAvaliacaoPedido(pedidoId); return; }
     const produtoId = params.get('avaliar');
     if(!produtoId) return;
+    // link antigo (uma só peça): já não é aceite
+    setTimeout(() => showToast('Este link de avaliação mudou. Peça-nos um novo link pelo WhatsApp.'), 600);
+    return;
 
     fetch(`${SB_URL}/rest/v1/produtos?id=eq.${produtoId}&select=id,nome`, {
       headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
@@ -2015,7 +2137,10 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
         cliente_nome:nome, estrelas:estrelaSelecionada, comentario:comentario || null, aprovada:false
       })
     })
-    .then(() => {
+    .then(r => {
+      if(!r.ok){
+        return r.text().then(t => { console.error('Falha ao gravar a avaliação:', r.status, t); throw new Error(t); });
+      }
       msg.className = 'aval-msg ok';
       msg.textContent = '✅ Obrigado pela sua avaliação! Fica visível assim que for aprovada.';
       setTimeout(fecharFormAvaliacao, 2400);

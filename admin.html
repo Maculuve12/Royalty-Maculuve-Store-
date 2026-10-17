@@ -1133,9 +1133,9 @@
     const nome = pedido.cliente_nome || 'Cliente';
     const tel = (pedido.cliente_telefone || '').replace(/\s/g,'');
     const itens = (pedido.itens || []).map(i=>`• ${i.qtd}x ${i.nome} (${i.cor}, ${i.tamanho})`).join('\n');
-    const primeiroProdutoId = (pedido.itens || [])[0]?.id;
-    const linkAvaliacao = primeiroProdutoId
-      ? `https://maculuve12.github.io/Royalty-Maculuve-Store-/?avaliar=${primeiroProdutoId}`
+    // um único link por pedido: o cliente avalia cada peça comprada, uma a uma
+    const linkAvaliacao = pedido.id
+      ? `https://maculuve12.github.io/Royalty-Maculuve-Store-/loja.html?avaliar_pedido=${pedido.id}`
       : '';
 
     const dataCfg = await sbGet('configuracoes','chave=eq.msg_agradecimento');
@@ -2527,7 +2527,7 @@ O seu pedido foi entregue com sucesso:
 
 Esperamos que goste das suas peças.
 
-Deixe a sua avaliação:
+Avalie cada peça que recebeu:
 {{link_avaliacao}}
 
 A sua opinião é importante para nós e ajuda outros clientes.

@@ -574,10 +574,10 @@
     const nome = String(colecaoAtual.nome).replace(/\*\*/g,'');
     partilhar(nome + ' | ROYALTY', nome + ' — ' + resumoCurto(colecaoAtual.descricao, 110), SITE_BASE + 'c/' + colecaoAtual.id + '.html');
   }
-  function partilharPeca(titulo){
+  function partilharPeca(titulo, pecaId){
     if(!colecaoAtual) return;
     const nome = String(colecaoAtual.nome).replace(/\*\*/g,'');
-    partilhar(titulo + ' | ' + nome, titulo + ' — ' + nome + ', da ROYALTY. Descubra a história desta peça.', SITE_BASE + 'c/' + colecaoAtual.id + '.html');
+    partilhar(titulo + ' | ' + nome, titulo + ' — ' + nome + ', da ROYALTY. Descubra a história desta peça.', SITE_BASE + 'c/' + colecaoAtual.id + '-' + pecaId + '.html');
   }
 
   const SB_URL = 'https://zrcnwkrvfkykqnhwoklh.supabase.co';
@@ -666,7 +666,7 @@
         const tituloPeca = (primeiraLinha && primeiraLinha.length <= 40) ? primeiraLinha : (produto ? produto.nome : 'Peça da coleção');
         const tituloPecaAttr = tituloPeca.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
         return `
-          <div class="peca-bloco">
+          <div class="peca-bloco" id="peca-${peca.id}">
             ${peca.intro ? `<div class="peca-texto">${formatarIntroPeca(peca.intro)}</div>` : ''}
             <div class="peca-media" id="peca-media-${peca.id}">
               <div class="peca-track" id="peca-track-${peca.id}">
@@ -682,7 +682,7 @@
             </div>
             ${peca.descricao ? `<div class="peca-desc">${formatarTexto(peca.descricao)}</div>` : ''}
             <a class="peca-btn" href="${link}">${label}</a>
-            <button class="btn-partilhar" data-titulo="${tituloPecaAttr}" onclick="partilharPeca(this.dataset.titulo)">↗ Partilhar esta peça</button>
+            <button class="btn-partilhar" data-titulo="${tituloPecaAttr}" data-peca="${peca.id}" onclick="partilharPeca(this.dataset.titulo, this.dataset.peca)">↗ Partilhar esta peça</button>
           </div>
         `;
       }).join('');
@@ -697,6 +697,14 @@
           if(Math.abs(diff) > 40){ diff < 0 ? pecaNext(peca.id) : pecaPrev(peca.id); }
         }, { passive:true });
       });
+
+      // Link directo a uma peça (#peca-ID): desliza até ela
+      if(/^#peca-\d+$/.test(location.hash)){
+        setTimeout(() => {
+          const alvo = document.getElementById(location.hash.slice(1));
+          if(alvo) alvo.scrollIntoView({ behavior:'smooth', block:'start' });
+        }, 400);
+      }
     }catch(e){
       console.error('Erro ao carregar a coleção:', e);
       listaEl.innerHTML = '<p class="peca-erro">Não foi possível carregar esta coleção.</p>';

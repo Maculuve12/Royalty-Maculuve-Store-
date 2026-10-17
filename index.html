@@ -2,10 +2,11 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8"/>
-  <meta http-equiv="refresh" content="0; url=loja.html">
   <title>Royalty | Beyond Trends</title>
   <link rel="canonical" href="loja.html">
-  <script>window.location.replace('loja.html');</script>
+  <!-- Redireciona para a loja mantendo o que vem no link (?avaliar_pedido=…, ?produto=…) -->
+  <script>window.location.replace('loja.html' + window.location.search + window.location.hash);</script>
+  <noscript><meta http-equiv="refresh" content="0; url=loja.html"></noscript>
 </head>
 <body>
   <p>A redireccionar para <a href="loja.html">a loja</a>...</p>
