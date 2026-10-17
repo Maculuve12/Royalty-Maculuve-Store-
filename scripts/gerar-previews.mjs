@@ -51,6 +51,7 @@ function pagina({ titulo, descricao, imagem, urlPartilha, destino }) {
 async function main() {
   const colecoes = await get('colecoes?select=id,nome,descricao,imagem_capa,imagens');
   const produtos = await get('produtos?select=id,nome,preco,descricao,imagens,activo&activo=eq.true');
+  const pecas = await get('colecoes_pecas?select=id,colecao_id,intro,imagens,produto_id');
 
   await rm('c', { recursive: true, force: true });
   await rm('p', { recursive: true, force: true });
@@ -69,6 +70,26 @@ async function main() {
     }));
   }
 
+  // Uma página por peça: c/<coleção>-<peça>.html (abre direto nessa peça)
+  const porId = Object.fromEntries(colecoes.map(c => [c.id, c]));
+  for (const pc of pecas) {
+    const c = porId[pc.colecao_id];
+    if (!c) continue;
+    const linhas = String(pc.intro || '').replace(/\*\*/g, '').split(/\n\s*\n/).map(x => x.trim()).filter(Boolean);
+    const titulo = linhas[0] && linhas[0].length <= 40 ? linhas[0] : plano(c.nome);
+    const resto = linhas.length > 1 ? linhas.slice(1).join(' ') : (linhas[0] || '');
+    const imgs = Array.isArray(pc.imagens) ? pc.imagens : [];
+    const colExtras = Array.isArray(c.imagens) ? c.imagens : [];
+    const img = urlImg(imgs[0]) || urlImg(c.imagem_capa) || urlImg(colExtras[0]) || FALLBACK_IMG;
+    await writeFile(`c/${c.id}-${pc.id}.html`, pagina({
+      titulo: `${titulo} | ${plano(c.nome)}`,
+      descricao: resumo(resto) || 'Descubra a história desta peça.',
+      imagem: img,
+      urlPartilha: `${BASE}c/${c.id}-${pc.id}.html`,
+      destino: `${BASE}colecao.html?id=${c.id}#peca-${pc.id}`,
+    }));
+  }
+
   for (const p of produtos) {
     const imgs = Array.isArray(p.imagens) ? p.imagens : [];
     const img = urlImg(imgs[0]) || FALLBACK_IMG;
@@ -80,7 +101,7 @@ async function main() {
       destino: `${BASE}loja.html?produto=${p.id}`,
     }));
   }
-  console.log(`Geradas ${colecoes.length} coleções e ${produtos.length} produtos.`);
+  console.log(`Geradas ${colecoes.length} coleções, ${pecas.length} peças e ${produtos.length} produtos.`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
