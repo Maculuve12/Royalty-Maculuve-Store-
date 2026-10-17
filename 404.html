@@ -7,8 +7,10 @@
 <script>
   // Se uma página de partilha ainda não foi gerada, leva à página certa na mesma
   (function(){
-    var base = location.pathname.replace(/\/(c|p)\/\d+\.html$/, '/');
-    var m = location.pathname.match(/\/c\/(\d+)\.html$/);
+    var base = location.pathname.replace(/\/(c|p)\/[\d-]+\.html$/, '/');
+    var m = location.pathname.match(/\/c\/(\d+)-(\d+)\.html$/);
+    if(m){ location.replace(base + 'colecao.html?id=' + m[1] + '#peca-' + m[2]); return; }
+    m = location.pathname.match(/\/c\/(\d+)\.html$/);
     if(m){ location.replace(base + 'colecao.html?id=' + m[1]); return; }
     m = location.pathname.match(/\/p\/(\d+)\.html$/);
     if(m){ location.replace(base + 'loja.html?produto=' + m[1]); return; }
