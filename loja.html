@@ -1060,9 +1060,9 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
 
   .conta-logo-mark{
     width:64px;height:64px;
-    margin:0 auto 10px;
+    margin:0 auto 18px;
     border-radius:50%;
-    border:1px dashed var(--border);
+    border:1.5px solid var(--gold);
     background-color:var(--off-white);
     background-size:cover;
     background-position:center;
@@ -1111,6 +1111,11 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
     cursor:pointer;
     box-shadow:0 6px 16px rgba(20,45,41,0.25);
   }
+
+  .conta-btn-voltar{ width:100%; margin-top:14px; display:flex; align-items:center; justify-content:center; gap:8px; background:transparent; border:1px solid var(--gold); color:var(--green); padding:13px; font-size:12px; letter-spacing:1px; text-transform:uppercase; font-weight:700; border-radius:24px; cursor:pointer; font-family:inherit; }
+  .conta-btn-voltar:active{ background:rgba(200,160,96,0.12); }
+  .conta-ajuda{ font-size:12px; line-height:1.55; color:var(--teal-muted); margin:-8px 0 18px; text-align:center; }
+  .conta-codigo{ text-align:center; font-size:22px; font-weight:700; letter-spacing:8px; padding:12px; }
 
   /* ===== TOAST ===== */
   .toast{
@@ -1574,7 +1579,6 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
       <div id="conta-form-entrar">
         <div class="conta-card">
           <div class="conta-logo-mark"></div>
-          <div class="conta-marca">ROYALTY</div>
           <h4 class="conta-saudacao">Bem-vindo(a) de volta</h4>
 
           <div class="form-group">
@@ -1586,7 +1590,7 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
             <input type="password" class="form-input conta-input" id="entrar-senha" placeholder="••••••••">
           </div>
           <p style="text-align:right;margin:-4px 0 14px;">
-            <a href="#" onclick="recuperarPassword();return false;" style="font-size:11px;color:var(--teal-muted);">Esqueceste-te da password?</a>
+            <a href="#" onclick="abrirRecuperacao();return false;" style="font-size:11px;color:var(--teal-muted);">Esqueceste-te da password?</a>
           </p>
           <div class="cupao-msg" id="entrar-msg" style="margin-bottom:10px;"></div>
           <button class="conta-btn-principal" onclick="entrarConta()">Entrar</button>
@@ -1596,11 +1600,51 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
         </div>
       </div>
 
+      <!-- Recuperar palavra-passe -->
+      <div id="conta-form-recuperar" style="display:none;">
+        <div class="conta-card">
+          <div class="conta-logo-mark"></div>
+          <h4 class="conta-saudacao">Recuperar Palavra-passe</h4>
+
+          <div id="rec-passo1">
+            <p class="conta-ajuda">Escreve o email da tua conta. Vamos enviar-te um código para criares uma nova palavra-passe.</p>
+            <div class="form-group">
+              <label class="form-label">Endereço de Email</label>
+              <input type="email" class="form-input conta-input" id="rec-email" placeholder="teu@email.com" autocomplete="email">
+            </div>
+            <div class="cupao-msg" id="rec-msg1" style="margin-bottom:10px;"></div>
+            <button class="conta-btn-principal" id="rec-btn-enviar" onclick="enviarCodigoRecuperacao()">Enviar código</button>
+          </div>
+
+          <div id="rec-passo2" style="display:none;">
+            <p class="conta-ajuda">Enviámos um código para <strong id="rec-email-txt"></strong>. Escreve-o abaixo e escolhe a nova palavra-passe. Se não o vires, olha também no spam.</p>
+            <div class="form-group">
+              <label class="form-label">Código recebido</label>
+              <input type="text" class="form-input conta-input conta-codigo" id="rec-codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="••••••">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nova palavra-passe</label>
+              <input type="password" class="form-input conta-input" id="rec-senha" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Repete a palavra-passe</label>
+              <input type="password" class="form-input conta-input" id="rec-senha2" placeholder="Repete a nova palavra-passe" autocomplete="new-password">
+            </div>
+            <div class="cupao-msg" id="rec-msg2" style="margin-bottom:10px;"></div>
+            <button class="conta-btn-principal" id="rec-btn-confirmar" onclick="confirmarRecuperacao()">Guardar nova palavra-passe</button>
+            <p style="font-size:12px;text-align:center;margin-top:14px;color:var(--teal-muted);">
+              Não recebeste? <a href="#" id="rec-reenviar" onclick="enviarCodigoRecuperacao(true);return false;" style="color:var(--gold);font-weight:700;">Enviar outro código</a>
+            </p>
+          </div>
+
+          <button type="button" class="conta-btn-voltar" onclick="mostrarFormConta('entrar')"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Voltar a Entrar</button>
+        </div>
+      </div>
+
       <!-- Criar Conta -->
       <div id="conta-form-criar" style="display:none;">
         <div class="conta-card">
           <div class="conta-logo-mark"></div>
-          <div class="conta-marca">ROYALTY</div>
           <h4 class="conta-saudacao">Cria a Tua Conta</h4>
 
           <div class="form-group">
@@ -2333,18 +2377,114 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
   function mostrarFormConta(qual){
     document.getElementById('conta-form-entrar').style.display = qual==='entrar' ? 'block' : 'none';
     document.getElementById('conta-form-criar').style.display = qual==='criar' ? 'block' : 'none';
+    document.getElementById('conta-form-recuperar').style.display = qual==='recuperar' ? 'block' : 'none';
     document.getElementById('entrar-msg').textContent = '';
     document.getElementById('criar-msg').textContent = '';
   }
 
-  async function recuperarPassword(){
+  // ── Recuperar palavra-passe (código por email) ──
+  let recTimer = null;
+
+  function abrirRecuperacao(){
     const email = document.getElementById('entrar-email').value.trim();
-    const msgEl = document.getElementById('entrar-msg');
-    if(!email){ msgEl.className='msg-erro'; msgEl.textContent='Escreve o teu email no campo acima primeiro.'; return; }
-    msgEl.className=''; msgEl.textContent='A enviar...';
-    const { error } = await supa.auth.resetPasswordForEmail(email);
-    if(error){ msgEl.className='msg-erro'; msgEl.textContent='Não foi possível enviar o email de recuperação.'; return; }
-    msgEl.className='msg-ok'; msgEl.textContent='Email de recuperação enviado! Verifica a tua caixa de entrada.';
+    mostrarFormConta('recuperar');
+    document.getElementById('rec-passo1').style.display = 'block';
+    document.getElementById('rec-passo2').style.display = 'none';
+    document.getElementById('rec-email').value = email;
+    ['rec-msg1','rec-msg2'].forEach(id => { const el=document.getElementById(id); el.className='cupao-msg'; el.textContent=''; });
+    ['rec-codigo','rec-senha','rec-senha2'].forEach(id => document.getElementById(id).value='');
+  }
+
+  function recMsg(id, tipo, texto){
+    const el = document.getElementById(id);
+    el.className = tipo==='erro' ? 'msg-erro' : (tipo==='ok' ? 'msg-ok' : 'cupao-msg');
+    el.textContent = texto;
+  }
+
+  function recContagem(segundos){
+    const link = document.getElementById('rec-reenviar');
+    clearInterval(recTimer);
+    let resta = segundos;
+    link.style.pointerEvents = 'none'; link.style.opacity = '0.5';
+    link.textContent = 'Enviar outro código (' + resta + 's)';
+    recTimer = setInterval(() => {
+      resta--;
+      if(resta <= 0){
+        clearInterval(recTimer);
+        link.style.pointerEvents = ''; link.style.opacity = '';
+        link.textContent = 'Enviar outro código';
+      } else {
+        link.textContent = 'Enviar outro código (' + resta + 's)';
+      }
+    }, 1000);
+  }
+
+  async function enviarCodigoRecuperacao(reenvio){
+    const email = (document.getElementById('rec-email').value || '').trim();
+    const idMsg = reenvio ? 'rec-msg2' : 'rec-msg1';
+    if(!email || !email.includes('@')){ recMsg(idMsg,'erro','Escreve o teu email.'); return; }
+    const btn = document.getElementById('rec-btn-enviar');
+    btn.disabled = true;
+    recMsg(idMsg,'','A enviar...');
+    try{
+      const { error } = await supa.auth.resetPasswordForEmail(email);
+      if(error){
+        const m = (error.message || '').toLowerCase();
+        if(m.includes('rate') || m.includes('seconds') || error.status === 429){
+          recMsg(idMsg,'erro','Aguarda cerca de 1 minuto antes de pedir outro código.');
+        } else {
+          recMsg(idMsg,'erro','Não foi possível enviar o código. Tenta novamente.');
+        }
+        btn.disabled = false;
+        return;
+      }
+    }catch(e){
+      recMsg(idMsg,'erro','Sem ligação à internet. Verifica e tenta novamente.');
+      btn.disabled = false;
+      return;
+    }
+    btn.disabled = false;
+    document.getElementById('rec-email-txt').textContent = email;
+    document.getElementById('rec-passo1').style.display = 'none';
+    document.getElementById('rec-passo2').style.display = 'block';
+    recMsg('rec-msg2', reenvio ? 'ok' : '', reenvio ? 'Enviámos outro código.' : '');
+    recContagem(60);
+    setTimeout(() => document.getElementById('rec-codigo').focus(), 50);
+  }
+
+  async function confirmarRecuperacao(){
+    const email  = document.getElementById('rec-email').value.trim();
+    const codigo = document.getElementById('rec-codigo').value.replace(/\s+/g,'');
+    const s1 = document.getElementById('rec-senha').value;
+    const s2 = document.getElementById('rec-senha2').value;
+    if(!codigo){ recMsg('rec-msg2','erro','Escreve o código que recebeste por email.'); return; }
+    if(s1.length < 6){ recMsg('rec-msg2','erro','A palavra-passe precisa de pelo menos 6 caracteres.'); return; }
+    if(s1 !== s2){ recMsg('rec-msg2','erro','As palavras-passe não são iguais.'); return; }
+    const btn = document.getElementById('rec-btn-confirmar');
+    btn.disabled = true;
+    recMsg('rec-msg2','','A guardar...');
+    try{
+      const v = await supa.auth.verifyOtp({ email, token: codigo, type: 'recovery' });
+      if(v.error || !v.data || !v.data.session){
+        recMsg('rec-msg2','erro','Código inválido ou expirado. Pede outro código.');
+        btn.disabled = false;
+        return;
+      }
+      const u = await supa.auth.updateUser({ password: s1 });
+      if(u.error){
+        recMsg('rec-msg2','erro','Não foi possível guardar a nova palavra-passe. Tenta novamente.');
+        btn.disabled = false;
+        return;
+      }
+      clearInterval(recTimer);
+      btn.disabled = false;
+      await aplicarSessaoCliente(u.data.user);
+      toggleConta(false);
+      showToast('Palavra-passe alterada. Sessão iniciada!');
+    }catch(e){
+      recMsg('rec-msg2','erro','Sem ligação à internet. Verifica e tenta novamente.');
+      btn.disabled = false;
+    }
   }
 
   async function entrarConta(){
@@ -2408,6 +2548,7 @@ src="https://www.facebook.com/tr?id=2652622554947365&ev=PageView&noscript=1"
     document.getElementById('conta-logado').style.display = 'block';
     document.getElementById('conta-form-entrar').style.display = 'none';
     document.getElementById('conta-form-criar').style.display = 'none';
+    document.getElementById('conta-form-recuperar').style.display = 'none';
 
     document.getElementById('perfil-nome').value = (cliente && cliente.nome) || (user.user_metadata && user.user_metadata.nome) || '';
     document.getElementById('perfil-telefone').value = (cliente && cliente.telefone) || '';
