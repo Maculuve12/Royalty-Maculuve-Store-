@@ -1329,6 +1329,8 @@
         <div class="form-grid">
           <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fcp-nome" placeholder="Ex: Verão 2026"></div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fcp-ordem" type="number" placeholder="1"></div>
+          <div class="form-grupo"><label class="form-label">Estado</label><select class="form-input" id="fcp-estado" onchange="document.getElementById('fcp-data-wrap').style.display=this.value==='em_breve'?'block':'none'"><option value="disponivel">Disponível</option><option value="em_breve">Em breve</option></select></div>
+          <div class="form-grupo" id="fcp-data-wrap" style="display:none;"><label class="form-label">Data prevista</label><input class="form-input" id="fcp-data" type="date"></div>
           <div class="form-grupo full"><label class="form-label">Introdução da Coleção *</label><textarea class="form-input" id="fcp-desc" rows="5" style="resize:vertical;" placeholder="Motivo, inspiração, história desta coleção..."></textarea></div>
           <div class="form-grupo full"><label class="form-label">Imagem de capa</label><div class="dica">Ideal 1080×1080 px (quadrado)</div><input class="form-input" id="fcp-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fcp-preview')">
             <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fcp-img','fcp-img-status');atualizarPreviewSimples(document.getElementById('fcp-img').value,'fcp-preview');"></label><span class="upload-status" id="fcp-img-status"></span></div>
@@ -1381,99 +1383,6 @@
         <div class="produtos-lista" id="pecas-lista"></div>
       </div>
 
-      <div class="sec-titulo" style="margin-top:32px;">🏆 Coleções Mais Marcantes</div>
-      <div class="form-card" id="form-marcante" style="display:none;">
-        <div class="form-titulo" id="form-marcante-titulo">➕ Adicionar Coleção</div>
-        <div class="form-grid">
-          <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fm-nome" placeholder="Ex: Royalty Black"></div>
-          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fm-ordem" type="number" placeholder="1"></div>
-          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fm-desc" rows="5" style="resize:vertical;" placeholder="Ex: Uma coleção construída em torno do preto."></textarea></div>
-          <div class="form-grupo full"><label class="form-label">Imagem</label><div class="dica">Ideal 900×1200 px (proporção 3:4)</div><input class="form-input" id="fm-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fm-preview')">
-            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fm-img','fm-img-status');atualizarPreviewSimples(document.getElementById('fm-img').value,'fm-preview');"></label><span class="upload-status" id="fm-img-status"></span></div>
-            <div id="fm-preview-wrap" style="display:none;margin-top:8px;"><img id="fm-preview" src="" alt="Pré-visualização" style="width:105px;aspect-ratio:3/4;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
-          </div>
-        </div>
-        <div class="form-acoes">
-          <button class="btn-guardar" onclick="guardarMarcante()">Guardar</button>
-          <button class="btn-cancelar" onclick="fecharFormMarcante()">Cancelar</button>
-        </div>
-        <div class="form-msg" id="fm-msg"></div>
-      </div>
-      <div style="margin-bottom:14px;">
-        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormMarcante()">+ Adicionar Coleção</button>
-      </div>
-      <div class="produtos-lista" id="marcantes-lista"><div class="loading">A carregar...</div></div>
-
-      <div class="sec-titulo" style="margin-top:32px;">🆕 Novas Coleções</div>
-      <div class="form-card" id="form-nova-colecao" style="display:none;">
-        <div class="form-titulo" id="form-nova-colecao-titulo">➕ Adicionar Nova Coleção</div>
-        <div class="form-grid">
-          <div class="form-grupo"><label class="form-label">Nome *</label><input class="form-input" id="fn-nome" placeholder="Ex: Royalty Street 26"></div>
-          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fn-ordem" type="number" placeholder="1"></div>
-          <div class="form-grupo full"><label class="form-label">Descrição *</label><textarea class="form-input" id="fn-desc" rows="5" style="resize:vertical;" placeholder="Ex: Uma nova expressão da marca."></textarea></div>
-          <div class="form-grupo full"><label class="form-label">Imagem</label><div class="dica">Ideal 900×1200 px (proporção 3:4)</div><input class="form-input" id="fn-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fn-preview')">
-            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fn-img','fn-img-status');atualizarPreviewSimples(document.getElementById('fn-img').value,'fn-preview');"></label><span class="upload-status" id="fn-img-status"></span></div>
-            <div id="fn-preview-wrap" style="display:none;margin-top:8px;"><img id="fn-preview" src="" alt="Pré-visualização" style="width:105px;aspect-ratio:3/4;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
-          </div>
-        </div>
-        <div class="form-acoes">
-          <button class="btn-guardar" onclick="guardarNovaColecao()">Guardar</button>
-          <button class="btn-cancelar" onclick="fecharFormNovaColecao()">Cancelar</button>
-        </div>
-        <div class="form-msg" id="fn-msg"></div>
-      </div>
-      <div style="margin-bottom:14px;">
-        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormNovaColecao()">+ Adicionar Coleção</button>
-      </div>
-      <div class="produtos-lista" id="novas-colecoes-lista"><div class="loading">A carregar...</div></div>
-
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:32px 0 14px;">
-        <div class="sec-titulo" style="margin:0;border:none;padding:0;">🔮 Lançamento Futuro</div>
-        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormLancamento()">+ Adicionar</button>
-      </div>
-      <div class="form-card" id="form-lancamento" style="display:none;">
-        <div class="form-titulo" id="form-lanc-titulo">🔮 Adicionar Lançamento</div>
-        <div class="form-grid">
-          <div class="form-grupo"><label class="form-label">Nome do Lançamento</label><input class="form-input" id="fl-nome" placeholder="Ex: Royalty Winter 26"></div>
-          <div class="form-grupo"><label class="form-label">Data Prevista</label><input class="form-input" id="fl-data" type="date"></div>
-          <div class="form-grupo full"><label class="form-label">Texto</label><textarea class="form-input" id="fl-texto" rows="5" style="resize:vertical;" placeholder="Ex: Uma nova colecção está a chegar."></textarea></div>
-          <div class="form-grupo full"><label class="form-label">Imagem teaser</label><div class="dica">Ideal 800×1000 px (proporção 4:5)</div><input class="form-input" id="fl-img" placeholder="https://..." oninput="atualizarPreviewSimples(this.value,'fl-preview')">
-            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fl-img','fl-img-status');atualizarPreviewSimples(document.getElementById('fl-img').value,'fl-preview');"></label><span class="upload-status" id="fl-img-status"></span></div>
-            <div id="fl-preview-wrap" style="display:none;margin-top:8px;"><img id="fl-preview" src="" alt="Pré-visualização" style="width:100px;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
-          </div>
-        </div>
-        <div class="form-acoes">
-          <button class="btn-guardar" onclick="guardarLancamento()">Guardar</button>
-          <button class="btn-cancelar" onclick="fecharFormLancamento()">Cancelar</button>
-          <label style="display:flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:600;color:var(--muted);margin-left:auto;">
-            <input type="checkbox" id="fl-activo"> Activo (visível na loja)
-          </label>
-        </div>
-        <div class="form-msg" id="fl-msg"></div>
-      </div>
-      <div class="produtos-lista" id="lancamentos-lista"><div class="loading">A carregar...</div></div>
-
-      <div class="sec-titulo" style="margin-top:32px;">🖼️ Banners da Página Coleções</div>
-      <div class="form-card" id="form-banner-col" style="display:none;">
-        <div class="form-titulo" id="form-ban-col-titulo">🖼️ Adicionar Banner</div>
-        <div class="form-grid">
-          <div class="form-grupo full"><label class="form-label">Imagem *</label><div class="dica">Ideal 1080×1080 px (quadrado)</div><input class="form-input" id="fbc-url" placeholder="https://i.ibb.co/..." oninput="atualizarPreviewSimples(this.value,'fbc-preview')">
-            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fbc-url','fbc-url-status');atualizarPreviewSimples(document.getElementById('fbc-url').value,'fbc-preview');"></label><span class="upload-status" id="fbc-url-status"></span></div>
-            <div id="fbc-preview-wrap" style="display:none;margin-top:8px;"><img id="fbc-preview" src="" alt="Pré-visualização" style="width:140px;height:140px;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
-          </div>
-          <div class="form-grupo full"><label class="form-label">Link de Destino (opcional)</label><input class="form-input" id="fbc-link" placeholder="https://..."></div>
-          <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fbc-ordem" type="number" placeholder="1"></div>
-        </div>
-        <div class="form-acoes">
-          <button class="btn-guardar" onclick="guardarBannerColecoes()">Guardar</button>
-          <button class="btn-cancelar" onclick="fecharFormBannerColecoes()">Cancelar</button>
-        </div>
-        <div id="fbc-msg"></div>
-      </div>
-      <div style="display:flex;justify-content:flex-end;align-items:center;margin-bottom:14px;">
-        <button class="btn-topo cinza" style="background:var(--gold);color:var(--g1);border:none;" onclick="abrirFormBannerColecoes()">+ Adicionar</button>
-      </div>
-      <div class="banners-lista" id="banners-col-lista"><div class="loading">A carregar...</div></div>
     </div>
 
     <!-- SITE -->
@@ -1927,7 +1836,7 @@
     if(tab==='caixa') carregarCaixa();
     if(tab==='relatorios') carregarRelatorios(7);
     if(tab==='galeria'){ carregarGaleriaAdmin(); carregarLogoGaleriaConfig(); }
-    if(tab==='colecoes'){ carregarColecoesProdutos(); carregarMarcantes(); carregarNovasColecoes(); carregarLancamento(); carregarBannersColecoes(); }
+    if(tab==='colecoes'){ carregarColecoesProdutos(); }
     if(tab==='mensagens'){ carregarMensagens(); }
     if(tab==='administradores'){ carregarAdmins(); }
     if(tab==='loginloja'){ carregarLogoLogin(); }
@@ -3174,7 +3083,7 @@
         <img class="produto-img" style="border-radius:8px;object-fit:cover;width:60px;height:60px;" src="${col.imagem_capa||''}" alt="${col.nome}" onerror="this.style.display='none'">
         <div class="produto-info">
           <div class="produto-nome">${col.nome}</div>
-          <div class="produto-meta">${n} peça${n===1?'':'s'} &nbsp;·&nbsp; Ordem: ${col.ordem||''}</div>
+          <div class="produto-meta">${n} peça${n===1?'':'s'} &nbsp;·&nbsp; Ordem: ${col.ordem||''}${col.estado==='em_breve'?` &nbsp;·&nbsp; <b>Em breve</b>${col.data_prevista?' ('+col.data_prevista.split('-').reverse().join('/')+')':''}`:''}</div>
         </div>
         <div class="produto-acoes">
           <button class="btn-sm cinza" onclick="verPecasColecao(${col.id},'${col.nome}')">🧩 Peças</button>
@@ -3185,13 +3094,16 @@
     }).join('');
   }
 
-  function abrirFormColecaoProdutos(){colProdEditandoId=null;document.getElementById('form-colprod-titulo').textContent='➕ Adicionar Coleção';['fcp-nome','fcp-ordem','fcp-desc','fcp-img','fcp-imgs'].forEach(id=>document.getElementById(id).value='');colProdTemColunaImagens=false;atualizarPreviewMultipla('','fcp-imgs-preview-wrap');atualizarPreviewSimples('','fcp-preview');document.getElementById('fcp-msg').textContent='';document.getElementById('form-colprod').style.display='block';document.getElementById('form-colprod').scrollIntoView({behavior:'smooth'});}
+  function abrirFormColecaoProdutos(){colProdEditandoId=null;document.getElementById('form-colprod-titulo').textContent='➕ Adicionar Coleção';['fcp-nome','fcp-ordem','fcp-desc','fcp-img','fcp-imgs'].forEach(id=>document.getElementById(id).value='');document.getElementById('fcp-estado').value='disponivel';document.getElementById('fcp-data').value='';document.getElementById('fcp-data-wrap').style.display='none';colProdTemColunaImagens=false;atualizarPreviewMultipla('','fcp-imgs-preview-wrap');atualizarPreviewSimples('','fcp-preview');document.getElementById('fcp-msg').textContent='';document.getElementById('form-colprod').style.display='block';document.getElementById('form-colprod').scrollIntoView({behavior:'smooth'});}
 
   async function editarColecaoProdutos(id){
     const data=await sbGet('colecoes',`id=eq.${id}`);if(!data.length)return;const col=data[0];colProdEditandoId=id;
     document.getElementById('form-colprod-titulo').textContent='✏️ Editar Coleção';
     document.getElementById('fcp-nome').value=col.nome||'';
     document.getElementById('fcp-ordem').value=col.ordem||'';
+    document.getElementById('fcp-estado').value=col.estado||'disponivel';
+    document.getElementById('fcp-data').value=col.data_prevista||'';
+    document.getElementById('fcp-data-wrap').style.display=(col.estado==='em_breve')?'block':'none';
     document.getElementById('fcp-desc').value=col.descricao||'';
     document.getElementById('fcp-img').value=col.imagem_capa||'';
     atualizarPreviewSimples(col.imagem_capa||'','fcp-preview');
@@ -3212,7 +3124,9 @@
     const msgEl=document.getElementById('fcp-msg');
     if(!nome||!descricao){msgEl.className='msg-err';msgEl.textContent='Nome e introdução são obrigatórios.';return;}
     msgEl.className='';msgEl.textContent='A guardar...';
-    const dados={nome,ordem,descricao,imagem_capa:imagem_capa||null};
+    const estado=document.getElementById('fcp-estado').value;
+    const dataPrevista=document.getElementById('fcp-data').value;
+    const dados={nome,ordem,descricao,imagem_capa:imagem_capa||null,estado,data_prevista:(estado==='em_breve'&&dataPrevista)?dataPrevista:null};
     const imgsExtra=document.getElementById('fcp-imgs').value.split('\n').map(l=>l.trim()).filter(Boolean);
     // só envia 'imagens' se houver imagens ou se a coluna já existir (evita erro antes de criar a coluna)
     if(imgsExtra.length||colProdTemColunaImagens) dados.imagens=imgsExtra;

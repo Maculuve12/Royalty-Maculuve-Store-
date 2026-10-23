@@ -3,17 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sobre Nós | Royalty Maculuve – Marca de streetwear moçambicana</title>
-<meta property="og:title" content="Sobre Nós | ROYALTY">
-<meta property="og:description" content="Camisetas exclusivas com estilo premium em Moçambique">
-<meta property="og:image" content="https://i.ibb.co/ZzNYk6mt/20260625-082120.jpg">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="A Royalty Maculuve é uma marca moçambicana de streetwear e vestuário, criada por Odêncio Hermínio Maculuve. Conheça a nossa história.">
+<title>Sobre Nós | Royalty Maculuve – Marca de moda moçambicana</title>
+<meta name="description" content="A Royalty Maculuve é uma marca de moda moçambicana, criada em Inhambane em 2024 por Odêncio Maculuve. Beyond the Trends.">
 <link rel="canonical" href="https://maculuve12.github.io/Royalty-Maculuve-Store-/sobrenos.html">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Brand","name":"Royalty Maculuve",
-"alternateName":"ROYALTY","description":"Marca moçambicana de streetwear e vestuário.",
+"alternateName":"ROYALTY","description":"Marca de moda moçambicana, criada em Inhambane em 2024.",
 "founder":{"@type":"Person","name":"Odêncio Hermínio Maculuve"},
 "url":"https://maculuve12.github.io/Royalty-Maculuve-Store-/",
 "sameAs":["https://www.instagram.com/royalty.maculuve","https://www.tiktok.com/@royalty.maculuve","https://www.facebook.com/share/1JUc2ENeVd/"]}
@@ -45,118 +40,137 @@
 
   a{color:inherit;text-decoration:none;}
 
-  /* ===== HEADER (mesma identidade da loja) ===== */
+  /* ===== HEADER ===== */
   header{
-    display:flex;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
     align-items:center;
-    justify-content:space-between;
-    padding:22px 5%;
+    height:64px;
+    padding:0 3%;
     border-bottom:1px solid var(--border);
-    flex-wrap:wrap;
-    gap:16px;
+    background:var(--white);
   }
-
-  nav.main-nav ul{
-    display:flex;
-    list-style:none;
-    gap:28px;
-  }
-
-  nav.main-nav a{
-    font-size:12px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    font-weight:600;
-    color:var(--green);
-    padding-bottom:4px;
-    border-bottom:2px solid transparent;
-  }
-
-  nav.main-nav a.active{
-    border-bottom-color:var(--gold);
-  }
-
-  .header-row2{
-    display:flex;
-    align-items:center;
-    gap:24px;
-  }
-
-  .logo{
-    font-size:22px;
-    font-weight:700;
-    letter-spacing:6px;
-    text-transform:uppercase;
-    color:var(--green);
-  }
-
-  .header-icons{
-    display:flex;
-    align-items:center;
-    gap:20px;
-  }
-
-  .header-icons .icon{
-    width:20px;
-    height:20px;
+  .topo-esq{ display:flex; align-items:center; gap:2px; justify-self:start; }
+  .topo-dir{ display:flex; align-items:center; gap:2px; justify-self:end; }
+  .topo-btn{
+    position:relative;
+    width:42px;
+    height:42px;
     display:inline-flex;
     align-items:center;
     justify-content:center;
+    background:none;
+    border:0;
+    padding:0;
     cursor:pointer;
+    color:var(--green);
   }
-
-  .icon-right-group{
-    display:contents;
+  .topo-btn svg{
+    width:23px;
+    height:23px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.6;
+    stroke-linecap:round;
+    stroke-linejoin:round;
   }
-
-  .icon-search{order:1;}
-  .icon-account{order:2;}
-  .cart-count{order:3;}
-
-  .cart-count{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    font-size:12px;
+  .logo{
+    font-size:20px;
     font-weight:700;
-    cursor:pointer;
+    letter-spacing:5px;
+    padding-left:5px;
+    color:var(--green);
+    text-align:center;
+    white-space:nowrap;
   }
-
   .cart-count .badge{
+    position:absolute;
+    top:2px;
+    right:0;
+    min-width:17px;
+    height:17px;
+    padding:0 4px;
+    border-radius:9px;
     background:var(--gold);
     color:var(--white);
     font-size:10px;
-    width:16px;
-    height:16px;
-    border-radius:50%;
+    font-weight:700;
     display:flex;
     align-items:center;
     justify-content:center;
   }
-
   @media (max-width:600px){
-    header{padding:16px 4%;gap:10px;}
-    nav.main-nav{width:100%;}
-    nav.main-nav ul{gap:20px;width:100%;justify-content:center;}
-    nav.main-nav a{font-size:7px;letter-spacing:0.2px;padding-bottom:5px;}
-    .header-row2{
-      position:relative;
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .logo{
-      font-size:16px;
-      letter-spacing:2px;
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-    }
-    .header-icons{display:contents;}
-    .icon-account{order:1;}
-    .icon-right-group{display:flex;align-items:center;gap:14px;order:2;}
+    .logo{ font-size:17px; letter-spacing:3.5px; padding-left:3.5px; }
+  }
+
+  /* ===== MENU LATERAL ===== */
+  .menu-fundo{
+    position:fixed;
+    inset:0;
+    background:rgba(20,45,41,0.45);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+    z-index:690;
+  }
+  .menu-fundo.open{ opacity:1; pointer-events:auto; }
+  .menu-gaveta{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    width:min(84%, 340px);
+    background:var(--white);
+    transform:translateX(-100%);
+    transition:transform .28s ease;
+    z-index:700;
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+  }
+  .menu-gaveta.open{ transform:translateX(0); }
+  .menu-topo{ display:flex; justify-content:flex-end; padding:14px 14px 6px; }
+  .menu-fechar{
+    width:42px;
+    height:42px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:none;
+    border:0;
+    padding:0;
+    cursor:pointer;
+    color:var(--green);
+  }
+  .menu-fechar svg{ width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; }
+  .menu-lista{ display:flex; flex-direction:column; padding:8px 0 40px; }
+  .menu-lista > a, .menu-item-botao{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    padding:17px 30px;
+    background:none;
+    border:0;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--green);
+    text-align:left;
+    cursor:pointer;
+  }
+  .menu-lista > a.active{ box-shadow:inset 2px 0 0 var(--gold); }
+  .menu-item-botao svg{ width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; transition:transform .2s ease; }
+  .menu-grupo.aberto .menu-item-botao svg{ transform:rotate(180deg); }
+  .menu-sub{ display:none; flex-direction:column; padding-bottom:8px; }
+  .menu-grupo.aberto .menu-sub{ display:flex; }
+  .menu-sub a{
+    padding:12px 30px 12px 46px;
+    font-size:13px;
+    letter-spacing:1.5px;
+    color:var(--teal-muted);
   }
 
   /* ===== HERO "A Nossa História" ===== */
@@ -230,50 +244,30 @@
   }
 
   .sobre-quote{
-    background:var(--sage);
-    border-left:3px solid var(--gold);
-    padding:20px 24px;
-    border-radius:0 10px 10px 0;
+    margin:14px 0;
+    padding:44px 4px;
+    text-align:center;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
   }
 
   .sobre-quote blockquote{
-    font-size:17px;
+    font-size:21px;
     font-style:italic;
-    line-height:1.6;
+    font-weight:400;
+    line-height:1.55;
     color:var(--green);
-    margin-bottom:10px;
+    margin-bottom:22px;
   }
 
   .sobre-quote cite{
+    display:block;
     font-size:11px;
     font-weight:700;
-    letter-spacing:1.5px;
+    letter-spacing:2.5px;
     text-transform:uppercase;
-    color:var(--green-mid);
-    font-style:normal;
-  }
-
-  .sobre-cta{
-    text-align:center;
-    margin-top:48px;
-  }
-
-  .sobre-cta p{
-    font-size:13px;
     color:var(--teal-muted);
-    margin-bottom:16px;
-  }
-
-  .sobre-cta a.btn-comprar{
-    display:inline-block;
-    background:var(--green);
-    color:var(--white);
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    padding:14px 32px;
-    border-radius:4px;
+    font-style:normal;
   }
 
   /* ===== FOOTER (mesma identidade da loja) ===== */
@@ -324,50 +318,51 @@
     border-top:1px solid var(--border);
   }
 
+  .menu-etiqueta{
+    margin-left:10px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .menu-grupo.ativo > .menu-item-botao{ box-shadow:inset 2px 0 0 var(--gold); }
 </style>
 </head>
 <body data-page="sobrenos">
 
 <header>
-  <nav class="main-nav">
-    <ul>
-      <li><a href="index.html" data-page="inicio">Início</a></li>
-      <li><a href="loja.html" data-page="loja">Loja</a></li>
-      <li><a href="colecoes.html" data-page="colecoes">Coleções</a></li>
-      <li><a href="blog.html" data-page="blog">Blog</a></li>
-      <li><a href="sobrenos.html" data-page="sobrenos">Sobre Nós</a></li>
-    </ul>
-  </nav>
-
-  <div class="header-row2">
-  <div class="logo">ROYALTY</div>
-
-  <div class="header-icons">
-    <span class="icon icon-account" title="Conta" onclick="location.href='loja.html?conta=1'" style="cursor:pointer;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
-        <circle cx="12" cy="8" r="4"></circle>
-        <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
-      </svg>
-    </span>
-    <div class="icon-right-group">
-      <span class="icon icon-search" title="Buscar" onclick="window.location.href='loja.html'">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
-          <circle cx="11" cy="11" r="7"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </span>
-      <span class="cart-count" title="Carrinho" onclick="window.location.href='loja.html'">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#142D29" stroke-width="2">
-          <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"></path>
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="18" cy="21" r="1"></circle>
-        </svg>
-        <span class="badge" id="cart-badge">0</span>
-      </span>
-    </div>
+  <div class="topo-esq">
+    <button class="topo-btn" onclick="abrirMenu()" aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+    <button class="topo-btn" onclick="window.location.href='loja.html?pesquisa=1'" aria-label="Pesquisar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
   </div>
+  <a class="logo" href="loja.html">ROYALTY</a>
+  <div class="topo-dir">
+    <button class="topo-btn" onclick="window.location.href='loja.html?conta=1'" aria-label="Conta"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></button>
+    <button class="topo-btn cart-count" onclick="window.location.href='loja.html?carrinho=1'" aria-label="Carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h2l2.4 11h10.2L20 8H6.2"/><circle cx="9" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg><span class="badge" id="cart-badge">0</span></button>
   </div>
 </header>
+
+<div class="menu-fundo" id="menu-fundo" onclick="fecharMenu()"></div>
+<aside class="menu-gaveta" id="menu-gaveta" aria-label="Menu">
+  <div class="menu-topo">
+    <button class="menu-fechar" onclick="fecharMenu()" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav class="menu-lista">
+    <a href="loja.html" data-page="loja">Loja</a>
+    <div class="menu-grupo" id="menu-categorias" style="display:none;">
+      <button class="menu-item-botao" onclick="alternarCategoriasMenu()">Categorias<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="menu-sub" id="menu-sub"></div>
+    </div>
+    <div class="menu-grupo" id="menu-colecoes" style="display:none;">
+      <button class="menu-item-botao" onclick="alternarGrupoMenu('menu-colecoes')">Coleções<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="menu-sub" id="menu-sub-colecoes"></div>
+    </div>
+    <a href="blog.html" data-page="blog">Blog</a>
+    <a href="sobrenos.html" data-page="sobrenos">Sobre Nós</a>
+    <a href="contactos.html" data-page="contactos">Contactos</a>
+  </nav>
+</aside>
 
 <div class="sobre-hero">
   <div class="eyebrow">A Nossa História</div>
@@ -378,18 +373,13 @@
 <div class="sobre-body">
   <div class="sobre-lista" id="sobre-lista">
     <div class="sobre-blk">
-      <h3>Quem somos</h3>
-      <p>A Royalty Maculuve é uma marca moçambicana de streetwear e vestuário, focada em identidade, posicionamento e impacto, criada por Odêncio Hermínio Maculuve.</p>
+      <h3>O Começo</h3>
+      <p>A Royalty Maculuve é uma marca de moda criada em Inhambane, em 2024, por Odêncio Maculuve, a partir de uma paixão pelo design e da vontade de construir algo com identidade, propósito e uma visão diferente de moda.</p>
     </div>
     <div class="sobre-blk">
-      <h3>A primeira coleção</h3>
-      <p>The First Collection, lançada em setembro de 2026, com camisetas em 100% algodão premium de 250 GSM e designs limitados.</p>
+      <h3>A Visão</h3>
+      <p>A longo prazo, a Royalty Maculuve pretende tornar-se uma marca de moda de alcance internacional, com criações próprias, uma estrutura sólida e a capacidade de levar a sua identidade para além das fronteiras de Moçambique.</p>
     </div>
-  </div>
-
-  <div class="sobre-cta">
-    <p>Loja oficial da Royalty Maculuve</p>
-    <a class="btn-comprar" href="https://maculuve12.github.io/Royalty-Maculuve-Store-/loja.html">Comprar agora</a>
   </div>
 </div>
 
@@ -413,8 +403,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 6l10 7 10-7"></path></svg>
       </a>
     </div>
-    <a href="#" class="footer-link">Perguntas Frequentes</a>
-    <a href="blog.html" class="footer-link">Blog</a>
   </div>
   <p class="copyright">©2026 Royalty</p>
 </footer>
@@ -423,9 +411,100 @@
   // ─── Navegação: destaca sempre o link da página actual ───
   function marcarLinkActivo(){
     const pagina = document.body.dataset.page || '';
-    document.querySelectorAll('.main-nav a').forEach(a => {
+    document.querySelectorAll('.menu-lista > a[data-page]').forEach(a => {
       a.classList.toggle('active', a.dataset.page === pagina);
     });
+  }
+
+  // ─── Menu lateral ───
+  function abrirMenu(){
+    document.getElementById('menu-fundo').classList.add('open');
+    document.getElementById('menu-gaveta').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function fecharMenu(){
+    document.getElementById('menu-fundo').classList.remove('open');
+    document.getElementById('menu-gaveta').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function alternarCategoriasMenu(){
+    document.getElementById('menu-categorias').classList.toggle('aberto');
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') fecharMenu(); });
+
+  // Categorias no menu: só as que têm pelo menos uma peça
+  function alternarGrupoMenu(id){
+    document.getElementById(id).classList.toggle('aberto');
+  }
+
+  // Coleções no menu: todas as que têm peças, e as "em breve" no fim
+  async function carregarMenuColecoes(){
+    const grupo = document.getElementById('menu-colecoes');
+    if(!grupo) return;
+    const hdr = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
+    const esc = t => String(t).replace(/\*\*/g,'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    try{
+      const [cols, pecas, stats] = await Promise.all([
+        fetch(`${SB_URL}/rest/v1/colecoes?order=ordem.asc&select=id,nome,estado`, { headers: hdr }).then(r => r.json()),
+        fetch(`${SB_URL}/rest/v1/colecoes_pecas?select=colecao_id,produto_id`, { headers: hdr }).then(r => r.json()),
+        fetch(`${SB_URL}/rest/v1/estatisticas_produtos?select=produto_id,total_vendas`, { headers: hdr }).then(r => r.json()).catch(() => [])
+      ]);
+      if(!Array.isArray(cols) || !Array.isArray(pecas)) return;
+      const comPecas = new Set(pecas.map(p => p.colecao_id));
+
+      // coleção mais vendida = soma das vendas dos produtos das suas peças
+      const vendasProduto = {};
+      (Array.isArray(stats) ? stats : []).forEach(x => { vendasProduto[x.produto_id] = (vendasProduto[x.produto_id] || 0) + (x.total_vendas || 0); });
+      const produtosDaColecao = {};
+      pecas.forEach(p => { if(p.produto_id) (produtosDaColecao[p.colecao_id] = produtosDaColecao[p.colecao_id] || new Set()).add(p.produto_id); });
+      let melhorId = null, melhorTotal = 0;
+      Object.keys(produtosDaColecao).forEach(cid => {
+        let total = 0;
+        produtosDaColecao[cid].forEach(pid => { total += vendasProduto[pid] || 0; });
+        if(total > melhorTotal){ melhorTotal = total; melhorId = Number(cid); }
+      });
+
+      const disponiveis = cols.filter(c => c.estado !== 'em_breve' && comPecas.has(c.id));
+      const emBreve = cols.filter(c => c.estado === 'em_breve');
+      const lista = [...disponiveis, ...emBreve];
+      if(!lista.length) return;
+      document.getElementById('menu-sub-colecoes').innerHTML = lista.map(c =>
+        `<a href="colecao.html?id=${c.id}">${esc(c.nome)}${c.estado === 'em_breve' ? '<span class="menu-etiqueta">Em breve</span>' : (c.id === melhorId ? '<span class="menu-etiqueta">Mais vendida</span>' : '')}</a>`
+      ).join('');
+      grupo.style.display = 'block';
+      if(/colecao\.html$/i.test(location.pathname)) grupo.classList.add('ativo', 'aberto');
+    }catch(e){}
+  }
+
+  async function carregarMenuCategorias(){
+    const grupo = document.getElementById('menu-categorias');
+    if(!grupo) return;
+    const hdr = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
+    const esc = t => String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+    try{
+      const [cats, prods] = await Promise.all([
+        fetch(`${SB_URL}/rest/v1/categorias?order=ordem.asc&select=nome`, { headers: hdr }).then(r => r.json()),
+        fetch(`${SB_URL}/rest/v1/produtos?activo=eq.true&select=categoria`, { headers: hdr }).then(r => r.json())
+      ]);
+      if(!Array.isArray(cats) || !Array.isArray(prods)) return;
+      const comPecas = new Set(prods.map(p => p.categoria).filter(Boolean));
+      const lista = cats.filter(c => comPecas.has(c.nome));
+      if(!lista.length) return;
+      document.getElementById('menu-sub').innerHTML =
+        '<a href="loja.html">Todas as peças</a>' +
+        lista.map(c => `<a href="loja.html?categoria=${encodeURIComponent(c.nome)}">${esc(c.nome)}</a>`).join('');
+      grupo.style.display = 'block';
+    }catch(e){}
+  }
+
+  // Número de peças no carrinho (guardado pela loja)
+  function atualizarBadgeCarrinho(){
+    try{
+      const c = JSON.parse(localStorage.getItem('royalty_carrinho') || '[]');
+      const n = c.reduce((acc, i) => acc + (Number(i.qtd) || 0), 0);
+      const b = document.getElementById('cart-badge');
+      if(b) b.textContent = n;
+    }catch(e){}
   }
   marcarLinkActivo();
 
@@ -455,7 +534,7 @@
         if(b.tipo === 'citacao'){
           return `
             <div class="sobre-quote">
-              <blockquote>"${formatarNegrito(b.texto)}"</blockquote>
+              <blockquote>“${formatarNegrito(b.texto)}”</blockquote>
               ${b.autor ? `<cite>${escaparHtml(b.autor)}</cite>` : ''}
             </div>
           `;
@@ -471,6 +550,10 @@
     .catch(() => {});
   }
   carregarSobreNosPublico();
+
+  carregarMenuCategorias();
+  carregarMenuColecoes();
+  atualizarBadgeCarrinho();
 </script>
 
 </body>
