@@ -265,8 +265,6 @@
     justify-content:center;
     overflow:hidden;
   }
-  .colecao-galeria-multi .colecao-galeria-slide, .peca-multi .peca-slide{ flex-basis:90%; }
-  .colecao-galeria-multi .colecao-galeria-track, .peca-multi .peca-track{ padding-right:10%; box-sizing:border-box; }
 
   .colecao-galeria-slide img, .peca-slide img{
     width:100%;
@@ -696,8 +694,9 @@
   // Galeria da coleção: capa + imagens adicionais (só aparece se houver imagens adicionais)
   function montarGaleriaColecao(colecao){
     const extras = Array.isArray(colecao.imagens) ? colecao.imagens.filter(Boolean) : [];
-    if(!extras.length && colecao.estado !== 'em_breve') return;
+    // a capa é sempre o banner da coleção; as imagens adicionais vêm a seguir
     const imgs = [colecao.imagem_capa, ...extras].filter(Boolean);
+    if(!imgs.length) return;
     const multi = imgs.length > 1;
     const box = document.getElementById('colecao-galeria');
     box.innerHTML = `
