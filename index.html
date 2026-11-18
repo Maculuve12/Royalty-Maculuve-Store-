@@ -57,20 +57,20 @@ footer .footer_social{height:auto!important;justify-content:center!important;mar
 footer .cr{text-align:center!important;margin-right:0!important;margin-bottom:20px!important;font-size:13px!important}
 </style>
 <style id="oferta-full">
-/* Oferta da Semana (telemóvel/tablet): imagem a preencher o bloco todo + textos em branco */
+/* Oferta da Semana: imagem inteira (sem cortes e sem escurecer), botões originais do template, sem o traço vermelho */
+.deal_ofthe_week .section_title:after,.deal_ofthe_week .section_title:before{display:none!important}
 @media only screen and (max-width:991px){
   .deal_ofthe_week .container{max-width:100%!important;padding-left:0!important;padding-right:0!important}
   .deal_ofthe_week .row{margin-left:0!important;margin-right:0!important}
   .deal_ofthe_week .col-lg-6{padding-left:0!important;padding-right:0!important}
-  .deal_ofthe_week .deal_ofthe_week_img{height:min(100vw,640px)!important}
-  .deal_ofthe_week .deal_ofthe_week_img img{width:100%!important;max-width:none!important;height:100%!important;object-fit:cover!important;object-position:center!important;display:block}
-  .deal_ofthe_week:before{background:rgba(20,20,28,.50)!important}
-  .deal_ofthe_week .section_title h2{color:#fff!important;text-shadow:0 2px 14px rgba(0,0,0,.55)}
-  .deal_ofthe_week .timer li{background:rgba(255,255,255,.16)!important;border:1px solid rgba(255,255,255,.65);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-  .deal_ofthe_week .timer_num,.deal_ofthe_week .timer_unit{color:#fff!important;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .deal_ofthe_week:before{display:none!important}
+  .deal_ofthe_week .deal_ofthe_week_img{height:auto!important}
+  .deal_ofthe_week .deal_ofthe_week_img img{display:block;width:100%!important;max-width:none!important;height:auto!important;object-fit:contain!important}
+  .deal_ofthe_week .section_title h2{color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.65),0 2px 16px rgba(0,0,0,.45)}
+  .deal_ofthe_week .deal_ofthe_week_button{background:#1e1e27!important}
+  .deal_ofthe_week .deal_ofthe_week_button:hover{background:#2b2b34!important}
 }
 @media only screen and (max-width:479px){
-  .deal_ofthe_week .deal_ofthe_week_img{height:min(100vw,460px)!important}
   .deal_ofthe_week .timer li{width:58px!important;height:58px!important;margin-right:6px!important}
   .deal_ofthe_week .timer li:last-child{margin-right:0!important}
 }
