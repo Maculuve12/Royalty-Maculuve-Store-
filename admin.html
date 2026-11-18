@@ -1090,9 +1090,13 @@
       <div class="form-card" id="form-banner" style="display:none;">
         <div class="form-titulo" id="form-ban-titulo">🖼️ Adicionar Banner</div>
         <div class="form-grid">
-          <div class="form-grupo full"><label class="form-label">Imagem *</label><div class="dica">Ideal 1296×544 px</div><input class="form-input" id="fb-url" placeholder="https://i.ibb.co/..." oninput="atualizarPreviewSimples(this.value,'fb-preview')">
+          <div class="form-grupo full"><label class="form-label">Imagem PC / principal *</label><div class="dica">Horizontal, ideal 1296×544 px. Usada no computador (e no telemóvel, se não houver imagem de telemóvel).</div><input class="form-input" id="fb-url" placeholder="https://i.ibb.co/..." oninput="atualizarPreviewSimples(this.value,'fb-preview')">
             <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fb-url','fb-url-status');atualizarPreviewSimples(document.getElementById('fb-url').value,'fb-preview');"></label><span class="upload-status" id="fb-url-status"></span></div>
             <div id="fb-preview-wrap" style="display:none;margin-top:8px;"><img id="fb-preview" src="" alt="Pré-visualização" style="width:100%;max-width:280px;aspect-ratio:1296/544;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+          <div class="form-grupo full"><label class="form-label">Imagem Telemóvel (opcional)</label><div class="dica">Vertical, ideal 1080×2000 px. Se ficar vazia, o telemóvel usa a imagem principal.</div><input class="form-input" id="fb-mobile" placeholder="https://i.ibb.co/..." oninput="atualizarPreviewSimples(this.value,'fb-mobile-preview')">
+            <div class="upload-linha"><label class="btn-sm cinza" style="cursor:pointer;">📤 Enviar imagem<input type="file" accept="image/*" style="display:none;" onchange="uploadParaInput(this,'fb-mobile','fb-mobile-status');"></label><span class="upload-status" id="fb-mobile-status"></span></div>
+            <div id="fb-mobile-preview-wrap" style="display:none;margin-top:8px;"><img id="fb-mobile-preview" src="" alt="Pré-visualização telemóvel" style="width:100%;max-width:140px;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid #ddd;display:block;" onerror="this.parentElement.style.display='none'"></div>
           </div>
           <div class="form-grupo full"><label class="form-label">Link de Destino (opcional)</label><input class="form-input" id="fb-link" placeholder="https://..."></div>
           <div class="form-grupo"><label class="form-label">Ordem</label><input class="form-input" id="fb-ordem" type="number" placeholder="1"></div>
@@ -2629,7 +2633,7 @@
     c.innerHTML=data.map(b=>`<div class="banner-card ${!b.activo?'inactivo':''}">
       <img class="banner-prev" src="${b.imagem_url}" alt="Banner" onerror="this.style.display='none'">
       <div class="banner-info">
-        <div class="banner-ordem">Ordem: ${b.ordem} &nbsp; <span class="tag ${b.activo?'activo':'inactivo'}">${b.activo?'Activo':'Inactivo'}</span></div>
+        <div class="banner-ordem">Ordem: ${b.ordem} &nbsp; <span class="tag ${b.activo?'activo':'inactivo'}">${b.activo?'Activo':'Inactivo'}</span> &nbsp; <span style="color:var(--muted);font-size:11px;">${b.imagem_mobile?'📱 com imagem de telemóvel':'📱 usa a imagem principal'}</span></div>
         ${b.link_destino?`<div class="banner-link">🔗 ${b.link_destino}</div>`:'<div class="banner-link" style="color:var(--muted)">Sem link</div>'}
       </div>
       <div class="banner-acoes">
@@ -2640,13 +2644,13 @@
     </div>`).join('');
   }
 
-  function abrirFormBanner(){banEditandoId=null;document.getElementById('form-ban-titulo').textContent='🖼️ Adicionar Banner';['fb-url','fb-link','fb-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fb-msg').textContent='';atualizarPreviewSimples('','fb-preview');document.getElementById('form-banner').style.display='block';document.getElementById('form-banner').scrollIntoView({behavior:'smooth'});}
+  function abrirFormBanner(){banEditandoId=null;document.getElementById('form-ban-titulo').textContent='🖼️ Adicionar Banner';['fb-url','fb-mobile','fb-link','fb-ordem'].forEach(id=>document.getElementById(id).value='');document.getElementById('fb-msg').textContent='';atualizarPreviewSimples('','fb-preview');atualizarPreviewSimples('','fb-mobile-preview');document.getElementById('fb-mobile-status').textContent='';document.getElementById('form-banner').style.display='block';document.getElementById('form-banner').scrollIntoView({behavior:'smooth'});}
 
   async function editarBanner(id){
     const data=await sbGet('banners',`id=eq.${id}`);if(!data.length)return;const b=data[0];banEditandoId=id;
     document.getElementById('form-ban-titulo').textContent='✏️ Editar Banner';
     document.getElementById('fb-url').value=b.imagem_url||'';document.getElementById('fb-link').value=b.link_destino||'';document.getElementById('fb-ordem').value=b.ordem||'';
-    atualizarPreviewSimples(b.imagem_url||'','fb-preview');
+    atualizarPreviewSimples(b.imagem_url||'','fb-preview');document.getElementById('fb-mobile').value=b.imagem_mobile||'';atualizarPreviewSimples(b.imagem_mobile||'','fb-mobile-preview');document.getElementById('fb-mobile-status').textContent='';
     document.getElementById('fb-msg').textContent='';document.getElementById('form-banner').style.display='block';document.getElementById('form-banner').scrollIntoView({behavior:'smooth'});
   }
 
@@ -2656,7 +2660,7 @@
     const url=document.getElementById('fb-url').value.trim();const link=document.getElementById('fb-link').value.trim();const ordem=parseInt(document.getElementById('fb-ordem').value)||99;
     const msgEl=document.getElementById('fb-msg');
     if(!url){msgEl.className='msg-err';msgEl.textContent='Link da imagem é obrigatório.';return;}
-    const dados={imagem_url:url,link_destino:link||null,ordem,pagina:'loja'};
+    const dados={imagem_url:url,imagem_mobile:(document.getElementById('fb-mobile').value.trim())||null,link_destino:link||null,ordem,pagina:'loja'};
     msgEl.className='';msgEl.textContent='A guardar...';
     const ok=banEditandoId?await sbPatch('banners',`id=eq.${banEditandoId}`,dados):await sbPost('banners',{...dados,activo:true});
     if(ok){msgEl.className='msg-ok';msgEl.textContent=banEditandoId?'✅ Actualizado!':'✅ Adicionado!';registrarLog(banEditandoId?'Editar banner':'Criar banner',url);setTimeout(()=>{fecharFormBanner();carregarBanners();},1200);}
