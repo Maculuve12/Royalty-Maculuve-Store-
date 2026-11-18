@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coleção | Royalty</title>
+<link rel="canonical" href="https://maculuve12.github.io/Royalty-Maculuve-Store-/#colecoes">
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  var id=q.get('id'),m=/^#peca-(\d+)$/.exec(location.hash||''),h='#colecoes';
+  q.delete('id');
+  if(id&&/^\d+$/.test(id)){h='#colecao-'+id+(m?'-peca-'+m[1]:'');}
+  var qs=q.toString();
+  location.replace('./'+(qs?'?'+qs:'')+h);
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=./#colecoes"></noscript>
+</head>
+<body><p><a href="./#colecoes">A abrir a Royalty...</a></p></body>
+</html>
