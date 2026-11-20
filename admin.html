@@ -6161,6 +6161,13 @@ text{
           <div class="col-xl-6"><div class="card card-lg h-100"><div class="card-body"><h5 class="mb-4">Produtos mais vendidos <span class="small text-secondary fw-normal">no período</span></h5><div class="d-flex flex-column gap-3" id="produtos-barras"></div></div></div></div>
           <div class="col-xl-6"><div class="card card-lg h-100"><div class="card-body"><h5 class="mb-4">Receita por zona</h5><div class="d-flex flex-column gap-3" id="zonas-lista"></div></div></div></div>
         </div>
+        <div class="card card-lg mb-6" id="card-meta"><div class="card-body">
+          <div class="d-flex justify-content-between align-items-end flex-wrap gap-3">
+            <div class="flex-grow-1" style="min-width:220px;"><label class="form-label" for="meta-valor">Meta do mês (MT)</label><input class="form-control" id="meta-valor" type="number" placeholder="Ex: 1000000"><div class="form-text">Aparece no relatório em PDF. Deixa vazio para não ter meta.</div></div>
+            <button class="btn btn-primary" onclick="guardarMetaMensal()">Guardar meta</button>
+          </div>
+          <div class="mt-3 small" id="meta-msg"></div>
+        </div></div>
         <div class="d-flex justify-content-end mb-6"><button class="btn btn-white" onclick="exportarPDF()">Exportar PDF</button></div>
       </section>
 <section class="admin-tab d-none" id="tab-clientes">
@@ -8448,7 +8455,7 @@ Inhambane, Moçambique`;
 
   // ═════════ PARTE 5b: CAIXA E RELATÓRIOS ═════════
   carregadores.caixa=function(){ carregarCaixa(); };
-  carregadores.relatorios=function(){ setPeriodo('7',document.querySelector('#rel-pills [data-p="7"]')); };
+  carregadores.relatorios=function(){ setPeriodo('7',document.querySelector('#rel-pills [data-p="7"]')); carregarMetaMensal(); };
 
   // ── Caixa ──
   const origensEntrada=['manual','adiantamento','evento','outro'];
@@ -8553,8 +8560,8 @@ Inhambane, Moçambique`;
     let q='order=criado_em.asc';
     if(ini) q+=`&criado_em=gte.${ini}T00:00:00`;
     if(fim) q+=`&criado_em=lte.${fim}T23:59:59`;
-    let prevQ=null;
-    if(ini&&fim&&dias){ const pf=addDias(dataLoc(ini),-1), pi=addDias(pf,-(dias-1)); prevQ=`order=criado_em.asc&criado_em=gte.${ymd(pi)}T00:00:00&criado_em=lte.${ymd(pf)}T23:59:59`; }
+    let prevQ=null, prevIniD=null;
+    if(ini&&fim&&dias){ const pf=addDias(dataLoc(ini),-1), pi=addDias(pf,-(dias-1)); prevIniD=pi; prevQ=`order=criado_em.asc&criado_em=gte.${ymd(pi)}T00:00:00&criado_em=lte.${ymd(pf)}T23:59:59`; }
     const [pedidos,prev]=await Promise.all([sbGet('pedidos',q),prevQ?sbGet('pedidos',prevQ):Promise.resolve(null)]);
     const $=id=>document.getElementById(id);
     const fd=d=>d.getDate()+' '+MES_C[d.getMonth()];
@@ -8605,7 +8612,14 @@ Inhambane, Moçambique`;
     $('produtos-barras').innerHTML=listaBarras(top,l=>l.v+' un.');
     const zo=Object.keys(zonas).map(n=>({nome:n,v:zonas[n]})).sort((a,b)=>b.v-a.v), totZ=zo.reduce((a,z)=>a+z.v,0)||1;
     $('zonas-lista').innerHTML=listaBarras(zo.slice(0,10),l=>MT(l.v)+' <span class="text-secondary small">'+Math.round(l.v/totZ*100)+'%</span>');
-    window._rel={periodo:tp,rec,np,tk,top,zo,totZ};
+    const modo=(dias===null||dias>100)?'mes':(dias<=31?'dia':'semana');
+    let prevValores=null;
+    if(prev && prevIniD && modo!=='mes'){
+      prevValores=Array(valores.length).fill(0);
+      prev.forEach(q=>{ const d=new Date(q.criado_em), dd=new Date(d.getFullYear(),d.getMonth(),d.getDate()); let idx=Math.round((dd-prevIniD)/864e5); if(modo==='semana') idx=Math.floor((dd-prevIniD)/864e5/7); if(idx>=0&&idx<prevValores.length) prevValores[idx]+=(q.total||0); });
+      if(!prevValores.some(v=>v>0)) prevValores=null;
+    }
+    window._rel={pedidos,prev,valores,labels,tp,dias,stats:[],ini,fim,modo,prevValores};
   }
 
   // ═════════ PARTE 6a: MENSAGENS, LOGIN DA LOJA, SOBRE NÓS, CONTACTOS, NEWSLETTER E ACTIVIDADE ═════════
@@ -8956,37 +8970,278 @@ Subtotal: {{subtotal}} MT
   }
   async function exportarPDF(){
     const R=window._rel;
-    if(!R){ alert('Abre primeiro um período nos Relatórios.'); return; }
-    if(!window.jspdf){ alert('A biblioteca de PDF não carregou. Verifica a ligação à internet.'); return; }
-    const {jsPDF}=window.jspdf, doc=new jsPDF({unit:'mm',format:'a4'}), W=210, M=16; let y=18;
-    const nova=h=>{ if(y+h>285){ doc.addPage(); y=18; } };
-    const logo=await logoPDF(), x0=M+(logo?22:0);
-    if(logo) doc.addImage(logo,'PNG',M,y-6,18,18);
-    doc.setFont('helvetica','bold'); doc.setFontSize(18); doc.text('ROYALTY',x0,y+3);
-    doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.text('Relatório de vendas',x0,y+9);
-    doc.text(pdfTxt(R.periodo),W-M,y+3,{align:'right'}); doc.text('Gerado em '+new Date().toLocaleDateString('pt-PT'),W-M,y+9,{align:'right'});
-    y+=24;
-    // resumo
-    doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.text('Resumo',M,y); y+=7;
-    doc.setFont('helvetica','normal'); doc.setFontSize(11);
-    [['Receita',MT(R.rec)],['Pedidos',String(R.np)],['Ticket médio',MT(R.tk)]].forEach(l=>{ doc.text(l[0],M,y); doc.text(pdfTxt(l[1]),M+50,y); y+=6.5; });
-    y+=4;
-    // gráfico de vendas
-    try{
-      if(CH.relV){ const uri=await CH.relV.dataURI(); nova(72); doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.text('Vendas no período',M,y); y+=4; doc.addImage(uri.imgURI,'PNG',M,y,W-2*M,64); y+=70; }
-    }catch(e){}
-    // listas
-    const lista=(titulo,linhas)=>{
-      nova(14+linhas.length*6.5); doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.text(titulo,M,y); y+=7;
-      doc.setFont('helvetica','normal'); doc.setFontSize(10.5);
-      if(!linhas.length){ doc.text('Sem dados.',M,y); y+=6.5; }
-      linhas.forEach(l=>{ nova(7); doc.text(pdfTxt(l[0]).slice(0,60),M,y); doc.text(pdfTxt(l[1]),W-M,y,{align:'right'}); y+=6.5; });
-      y+=4;
-    };
-    lista('Produtos mais vendidos',R.top.map(t=>[t.nome,t.v+' un.']));
-    lista('Receita por zona',R.zo.slice(0,10).map(z=>[z.nome,MT(z.v)+'  ('+Math.round(z.v/R.totZ*100)+'%)']));
-    doc.save(`royalty-relatorio-${new Date().toISOString().slice(0,10)}.pdf`);
-    registrarLog('Exportar relatório PDF',R.periodo);
+    if(!R){ alert('Abra primeiro os relatórios e espere os dados carregarem.'); return; }
+    const pC=temPerm('caixa:ver'), pS=temPerm('stock:ver'), pA=temPerm('avaliacoes:ver'), pCl=temPerm('clientes:ver');
+    const vazio=Promise.resolve([]);
+    const [logo,caixaAll,avAll,stockAll,todosPed,cfg]=await Promise.all([
+      logoPDF(),
+      pC?sbGet('caixa','order=criado_em.asc'):vazio,
+      pA?sbGet('avaliacoes','order=criado_em.asc'):vazio,
+      pS?sbGet('stock'):vazio,
+      pCl?sbGet('pedidos','select=cliente_telefone,cliente_nome,criado_em,total&order=criado_em.asc'):vazio,
+      sbGet('configuracoes','chave=eq.meta_mensal')
+    ]);
+    const { jsPDF } = window.jspdf, doc=new jsPDF({unit:'mm',format:'a4'});
+    const W=210, M=14, CW=W-2*M, FOOT=279;
+    const C={g1:[20,45,41],g3:[42,80,73],gold:[200,160,96],mut:[90,117,112],lin:[226,236,233],branco:[255,255,255],verde:[46,125,50],verm:[181,57,43]};
+    const F=c=>doc.setFillColor(c[0],c[1],c[2]), S=c=>doc.setDrawColor(c[0],c[1],c[2]), T=c=>doc.setTextColor(c[0],c[1],c[2]);
+    const N=n=>String(Math.round(n||0)).replace(/\B(?=(\d{3})+(?!\d))/g,' '), MTf=n=>(n<0?'-':'')+N(Math.abs(n))+' MT';
+    const fit=(t,w)=>{ t=String(t||''); if(doc.getTextWidth(t)<=w) return t; while(t.length>1&&doc.getTextWidth(t+'...')>w) t=t.slice(0,-1); return t+'...'; };
+    const agora=new Date(), dataTxt=agora.toLocaleDateString('pt-PT')+', '+agora.toLocaleTimeString('pt-PT');
+    const p2=n=>String(n).padStart(2,'0');
+    const ref='REL-'+agora.getFullYear()+p2(agora.getMonth()+1)+p2(agora.getDate())+'-'+p2(agora.getHours())+p2(agora.getMinutes());
+    const autor=((document.getElementById('adminNome')||{}).textContent||'Administrador'), periodo=R.tp;
+    const inP=iso=>{ if(!R.ini) return true; const k=ymd(new Date(iso)); return k>=R.ini&&k<=R.fim; };
+    let y=0;
+
+    function cabecalhoGrande(){
+      const cx=M+10, cy=16;
+      S(C.lin); doc.setLineWidth(0.5); doc.circle(cx,cy,10.4,'S');
+      if(logo){ doc.addImage(logo,'PNG',cx-10,cy-10,20,20); }
+      else{ F(C.branco); S(C.g1); doc.setLineWidth(0.6); doc.circle(cx,cy,10,'FD'); T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(20); doc.text('R',cx,cy+3.2,{align:'center'}); }
+      const tx=M+26;
+      T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(18); doc.text('ROYALTY',tx,15.5,{charSpace:2.2});
+      T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(7.2); doc.text('RELATÓRIO DE VENDAS',tx,21.5,{charSpace:1.5});
+      doc.setFontSize(7.4); doc.text('Ref. '+ref,W-M,10,{align:'right'});
+      F(C.gold); doc.rect(M,30,CW,0.3,'F');
+      doc.setFontSize(7.8); T(C.g1); doc.setFont('helvetica','bold'); doc.text('Período:',M,38);
+      const wp=doc.getTextWidth('Período: '); doc.setFont('helvetica','normal'); doc.text(periodo,M+wp,38);
+      T(C.mut); doc.text('Gerado em '+dataTxt,W/2+8,38,{align:'center'}); doc.text('Preparado por: '+autor,W-M,38,{align:'right'});
+      y=46;
+    }
+    function cabecalhoMini(){
+      T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.text('ROYALTY',M,12,{charSpace:1.6});
+      T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.text('Relatório de vendas · '+periodo,W-M,12,{align:'right'});
+      F(C.gold); doc.rect(M,15,CW,0.3,'F');
+      y=28;
+    }
+    function pagina(){ doc.addPage(); cabecalhoMini(); }
+    function garantir(h){ if(y+h>FOOT) pagina(); }
+    function seccao(titulo,sub,min){
+      garantir(min||40);
+      T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(9.2); doc.text(titulo.toUpperCase(),M,y,{charSpace:0.8});
+      if(sub){ T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.text(sub,W-M,y,{align:'right'}); }
+      S(C.lin); doc.setLineWidth(0.25); doc.line(M,y+2.4,W-M,y+2.4);
+      y+=6.5;
+    }
+    function cartao(x,yy,w,h,r){ F(C.branco); S(C.lin); doc.setLineWidth(0.3); doc.roundedRect(x,yy,w,h,r||2,r||2,'FD'); }
+    function cartoes(itens){
+      const n=itens.length, kw=(CW-(n-1)*4)/n, kh=19;
+      itens.forEach((k,i)=>{
+        const x=M+i*(kw+4); cartao(x,y,kw,kh);
+        T(C.mut); doc.setFont('helvetica','bold'); doc.setFontSize(6.3); doc.text(k[0],x+3.5,y+5.6,{charSpace:0.5});
+        T(k[4]||C.g1); doc.setFontSize(11); doc.text(fit(k[1],kw-6),x+3.5,y+11.6);
+        T(k[3]||C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(6.3); doc.text(fit(k[2]||'',kw-6),x+3.5,y+16.2);
+      });
+      y+=kh+6;
+    }
+    function tabela(titulo,sub,cab,linhas,larguraNome,fmtVal,op){
+      op=op||{}; const rank=op.rank!==false, hi=op.hi===undefined?0:op.hi, rh=op.linha||7.5;
+      garantir(22+linhas.length*rh); seccao(titulo,sub,0);
+      T(C.mut); doc.setFont('helvetica','bold'); doc.setFontSize(6.3);
+      const nx=rank?M+10:M+2;
+      doc.text(cab[0],nx,y+4.3,{charSpace:0.4}); doc.text(cab[1],W-M-2,y+4.3,{align:'right',charSpace:0.4});
+      S(C.lin); doc.setLineWidth(0.25); doc.line(M,y+6.5,W-M,y+6.5); y+=6.5;
+      const mx=Math.max(...linhas.map(l=>l[1]),1);
+      linhas.forEach((l,i)=>{
+        if(rank){ T(i===0?C.g1:C.mut); doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.text(String(i+1),M+3,y+rh*0.62); }
+        T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(8.4); doc.text(fit(l[0],larguraNome),nx,y+rh*0.62);
+        const bx=nx+larguraNome+4, bw=CW-(bx-M)-(op.larguraVal||34);
+        F([234,241,239]); doc.roundedRect(bx,y+rh/2-1.3,bw,2.6,1.3,1.3,'F'); F(i===hi?C.gold:C.g3); doc.roundedRect(bx,y+rh/2-1.3,Math.max(2.6,bw*l[1]/mx),2.6,1.3,1.3,'F');
+        T(C.g1); doc.setFontSize(8.4); doc.text(fmtVal(l),W-M-2,y+rh*0.62,{align:'right'});
+        y+=rh; S(C.lin); doc.setLineWidth(0.2); doc.line(M,y,W-M,y);
+      });
+      y+=7;
+    }
+    function lista(titulo,sub,linhas,vazioTxt){
+      garantir(24+linhas.length*7); seccao(titulo,sub,0);
+      if(!linhas.length){ T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(8.4); doc.text(vazioTxt,M,y+2); y+=12; return; }
+      linhas.forEach(l=>{ T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(8.4); doc.text(fit(l[0],CW-40),M+2,y+4.6);
+        T(l[2]||C.mut); doc.text(l[1],W-M-2,y+4.6,{align:'right'}); y+=7; S(C.lin); doc.setLineWidth(0.2); doc.line(M,y,W-M,y); });
+      y+=7;
+    }
+    function suave(pts){ if(pts.length<3) return pts; const o=[]; for(let i=0;i<pts.length-1;i++){ const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2; for(let t=0;t<1;t+=0.125){ const t2=t*t,t3=t2*t; const f=k=>0.5*((2*p1[k])+(-p0[k]+p2[k])*t+(2*p0[k]-5*p1[k]+4*p2[k]-p3[k])*t2+(-p0[k]+3*p1[k]-3*p2[k]+p3[k])*t3); o.push([f(0),f(1)]); } } o.push(pts[pts.length-1]); return o; }
+    function percurso(c,x0,y0){ const rl=[]; for(let i=1;i<c.length;i++) rl.push([c[i][0]-c[i-1][0],c[i][1]-c[i-1][1]]); return rl; }
+
+    // ---- dados ----
+    const ped=R.pedidos, prev=R.prev, np=ped.length;
+    const rec=ped.reduce((a,q)=>a+(q.total||0),0), desc=ped.reduce((a,q)=>a+(q.desconto||0),0), cupPed=ped.filter(q=>q.cupao_usado), cup=cupPed.length, tk=np?rec/np:0;
+    const dlt=(c,pv)=>pv>0?Math.round((c-pv)/pv*100):null;
+    const dR=prev?dlt(rec,prev.reduce((a,q)=>a+(q.total||0),0)):null, dP=prev?dlt(np,prev.length):null;
+    const dTxt=d=>d===null?'':(d===0?'Igual ao período anterior':(d>0?'+':'-')+Math.abs(d)+'% vs período anterior');
+    const dCor=d=>d>0?C.verde:d<0?C.verm:C.mut;
+    const itens={}, itensRec={}; let temPreco=false;
+    ped.forEach(q=>(q.itens||[]).forEach(i=>{ const k=i.nome||'Produto'; itens[k]=(itens[k]||0)+(+i.qtd||0); if(+i.preco>0){ temPreco=true; itensRec[k]=(itensRec[k]||0)+(+i.preco)*(+i.qtd||0); } }));
+    let tops=Object.entries(itens).sort((a,b)=>b[1]-a[1]).slice(0,6).map(e=>[e[0],e[1],temPreco?(itensRec[e[0]]||0):null]), topsSub='unidades e receita no período';
+    if(!tops.length && R.stats){ tops=R.stats.filter(t=>(t.total_vendas||0)>0).slice(0,6).map(t=>[t.produto_nome,t.total_vendas,null]); topsSub='acumulado'; }
+    const zmap={}; ped.forEach(q=>{ const z=(q.cliente_localizacao||'Desconhecida').split(',')[0].trim(); zmap[z]=(zmap[z]||0)+(q.total||0); });
+    const zonas=Object.entries(zmap).sort((a,b)=>b[1]-a[1]).slice(0,8), totZ=Object.values(zmap).reduce((a,v)=>a+v,0)||1;
+
+    // ===== PÁGINA 1 =====
+    cabecalhoGrande();
+    seccao('Resumo');
+    cartoes([
+      ['RECEITA',MTf(rec),dTxt(dR),dCor(dR)],
+      ['PEDIDOS',String(np),dTxt(dP),dCor(dP)],
+      ['TICKET MÉDIO',MTf(tk),'por pedido'],
+      ['DESCONTOS',MTf(desc),cup+(cup===1?' cupão usado':' cupões usados')]
+    ]);
+    y-=0;
+    const vals=R.valores, pv=R.prevValores, mxv=Math.max(...vals,0), pk=mxv>0?vals.indexOf(mxv):-1;
+    const dw=(CW-8)/3, dh=15.5;
+    const dest=[
+      [R.dias===null||R.dias>100?'MELHOR MÊS':(R.dias<=31?'MELHOR DIA':'MELHOR SEMANA'),pk>=0?R.labels[pk]:'—',pk>=0?MTf(mxv):'sem vendas'],
+      ['PRODUTO LÍDER',tops.length?tops[0][0]:'—',tops.length?tops[0][1]+' unidades':'sem vendas'],
+      ['ZONA LÍDER',zonas.length?zonas[0][0]:'—',zonas.length?Math.round(zonas[0][1]/totZ*100)+'% da receita':'sem vendas']
+    ];
+    dest.forEach((d,i)=>{
+      const x=M+i*(dw+4); cartao(x,y,dw,dh);
+      T(C.mut); doc.setFont('helvetica','bold'); doc.setFontSize(6); doc.text(d[0],x+4,y+5,{charSpace:0.5});
+      T(C.g1); doc.setFontSize(9); doc.text(fit(d[1],dw-7),x+4,y+9.6);
+      T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(6.8); doc.text(fit(d[2],dw-7),x+4,y+13.2);
+    });
+    y+=dh+7;
+
+    // gráfico de vendas (com período anterior tracejado)
+    const tg=(R.dias===null||R.dias>100)?'Vendas por mês':(R.dias<=31?'Vendas por dia':'Vendas por semana');
+    seccao(tg,periodo);
+    const gh=46; cartao(M,y,CW,gh);
+    const px0=M+13, px1=M+CW-7, py0=y+7, py1=y+gh-9;
+    if(mxv<=0){ T(C.mut); doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.text('Sem vendas neste período',M+CW/2,y+gh/2+1,{align:'center'}); }
+    else{
+      const topM=Math.max(mxv,...(pv||[0])); const mag=Math.pow(10,Math.floor(Math.log10(topM/4))); let step=mag; [1,2,2.5,5,10].some(f=>{ step=f*mag; return step*4>=topM; });
+      const topV=step*4, YV=v=>py1-(py1-py0)*v/topV, n=vals.length, XV=i=>n===1?(px0+px1)/2:px0+i*(px1-px0)/(n-1);
+      const kfmt=v=>v>=1000?(v/1000).toFixed(v%1000===0?0:1)+'k':String(Math.round(v));
+      S(C.lin); doc.setLineWidth(0.2); T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(6.5);
+      for(let t=0;t<=4;t++){ const yy=YV(step*t); doc.line(px0,yy,px1,yy); doc.text(kfmt(step*t),px0-2,yy+1.2,{align:'right'}); }
+      const clamp=c=>c.map(q=>[q[0],Math.min(py1,Math.max(py0-4,q[1]))]);
+      if(pv){ const cp=clamp(suave(pv.map((v,i)=>[XV(i),YV(v)]))); if(cp.length>1){ S([143,184,175]); doc.setLineWidth(0.4); doc.setLineDashPattern([1.2,1.2],0); doc.lines(percurso(cp),cp[0][0],cp[0][1],[1,1],'S',false); doc.setLineDashPattern([],0); } }
+      const curva=clamp(suave(vals.map((v,i)=>[XV(i),YV(v)])));
+      if(curva.length>1){
+        const rel=percurso(curva); rel.push([0,py1-curva[curva.length-1][1]]); rel.push([curva[0][0]-curva[curva.length-1][0],0]);
+        F([248,250,249]); doc.lines(rel,curva[0][0],curva[0][1],[1,1],'F',true);
+        S(C.g1); doc.setLineWidth(0.75); doc.lines(percurso(curva),curva[0][0],curva[0][1],[1,1],'S',false);
+      }
+      if(n<=14){ vals.forEach((v,i)=>{ if(i!==pk){ F(C.branco); S(C.g1); doc.setLineWidth(0.4); doc.circle(XV(i),YV(v),0.9,'FD'); } }); }
+      F(C.branco); doc.circle(XV(pk),YV(mxv),2.5,'F'); F(C.gold); doc.circle(XV(pk),YV(mxv),1.7,'F');
+      const lx=Math.min(px1-8,Math.max(px0+8,XV(pk)));
+      T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(7.4); doc.text(MTf(mxv),lx,YV(mxv)<py0+4?YV(mxv)+6.5:YV(mxv)-3.6,{align:'center'});
+      T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(6.5);
+      const passo=Math.max(1,Math.ceil(n/7)); for(let i=0;i<n;i+=passo) doc.text(String(R.labels[i]),XV(i),py1+5.5,{align:'center'});
+      if(pv){ doc.setFontSize(6.3); const lx0=M+CW-66; S(C.g1); doc.setLineWidth(0.6); doc.line(lx0,y+5,lx0+6,y+5); doc.text('Período atual',lx0+8,y+6); S([143,184,175]); doc.setLineWidth(0.4); doc.setLineDashPattern([1,1],0); doc.line(lx0+32,y+5,lx0+38,y+5); doc.setLineDashPattern([],0); doc.text('Período anterior',lx0+40,y+6); }
+    }
+    y+=gh+7;
+
+    // estado dos pedidos
+    garantir(30); seccao('Estado dos pedidos');
+    const est={}; ped.forEach(q=>{ const e=q.estado||'Outro'; est[e]=(est[e]||0)+1; });
+    const ordem=['Pendente','Enviado','Entregue'], cores={Pendente:[204,221,217],Enviado:[61,112,104],Entregue:C.g1}, plural={Pendente:'Pendentes',Enviado:'Enviados',Entregue:'Entregues'};
+    const lst=ordem.filter(e=>est[e]).map(e=>[e,est[e],cores[e],plural[e]]); Object.keys(est).filter(e=>ordem.indexOf(e)<0).forEach(e=>lst.push([e,est[e],C.mut,e]));
+    if(!np){ T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.text('Sem pedidos neste período.',M,y+3); y+=10; }
+    else{
+      F([234,241,239]); doc.roundedRect(M,y,CW,5,2.5,2.5,'F');
+      let xx=M; lst.forEach(l=>{ const w=CW*l[1]/np; F(l[2]); if(lst.length===1) doc.roundedRect(xx,y,w,5,2.5,2.5,'F'); else doc.rect(xx,y,w,5,'F'); xx+=w; });
+      y+=11; let lx=M;
+      lst.forEach(l=>{ F(l[2]); doc.roundedRect(lx,y-2.6,3,3,0.6,0.6,'F'); T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(7.8); const tx=l[3]+' '+l[1]+' ('+Math.round(l[1]/np*100)+'%)'; doc.text(tx,lx+4.6,y); lx+=doc.getTextWidth(tx)+12; });
+      y+=9;
+    }
+
+    // ===== dinheiro, meta, cupões, avaliações =====
+    if(pC){
+      const cx=caixaAll.filter(m=>inP(m.criado_em));
+      const ent=cx.filter(m=>m.tipo==='entrada').reduce((a,m)=>a+(m.valor||0),0), sai=cx.filter(m=>m.tipo==='saida').reduce((a,m)=>a+(m.valor||0),0), luc=rec+ent-sai;
+      seccao('Caixa do período',periodo);
+      cartoes([['VENDAS',MTf(rec),np+(np===1?' pedido':' pedidos')],['ENTRADAS MANUAIS',MTf(ent)],['SAÍDAS',MTf(sai)],['LUCRO',MTf(luc),'vendas + entradas - saídas',C.mut,luc<0?C.verm:C.g1]]);
+      const om={}; cx.filter(m=>m.tipo==='saida').forEach(m=>{ const k=m.origem||'Outros'; om[k]=(om[k]||0)+(m.valor||0); });
+      const os=Object.entries(om).sort((a,b)=>b[1]-a[1]).slice(0,5);
+      if(os.length) tabela('Saídas por origem','',['ORIGEM','VALOR'],os,70,l=>MTf(l[1])+'  ·  '+Math.round(l[1]/(sai||1)*100)+'%',{rank:false,linha:7.5});
+    }
+    const meta=parseInt(cfg[0]&&cfg[0].valor)||0;
+    if(meta>0){
+      const mesesN=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+      const base=(todosPed.length?todosPed:ped), recMes=base.filter(q=>{const d=new Date(q.criado_em);return d.getFullYear()===agora.getFullYear()&&d.getMonth()===agora.getMonth();}).reduce((a,q)=>a+(q.total||0),0);
+      const pc=Math.round(recMes/meta*100);
+      garantir(34); seccao('Meta do mês',mesesN[agora.getMonth()]+' '+agora.getFullYear());
+      cartao(M,y,CW,24);
+      T(C.mut); doc.setFont('helvetica','bold'); doc.setFontSize(6.3); doc.text('META',M+4,y+7,{charSpace:0.5}); doc.text('ALCANÇADO',W-M-4,y+7,{align:'right',charSpace:0.5});
+      T(C.g1); doc.setFontSize(12); doc.text(MTf(meta),M+4,y+14); doc.text(MTf(recMes)+'  ('+pc+'%)',W-M-4,y+14,{align:'right'});
+      F([234,241,239]); doc.roundedRect(M+4,y+17.5,CW-8,2.6,1.3,1.3,'F'); F(pc>=100?C.verde:C.g3); doc.roundedRect(M+4,y+17.5,Math.max(2.6,(CW-8)*Math.min(1,pc/100)),2.6,1.3,1.3,'F');
+      y+=33;
+    }
+    // cupões
+    const recCup=cupPed.reduce((a,q)=>a+(q.total||0),0), semCup=np-cup;
+    seccao('Cupões e descontos',periodo);
+    cartoes([['CUPÕES USADOS',String(cup),(np?Math.round(cup/np*100):0)+'% dos pedidos'],['DESCONTO TOTAL',MTf(desc)],['RECEITA COM CUPÃO',MTf(recCup),cup+(cup===1?' pedido':' pedidos')],['RECEITA SEM CUPÃO',MTf(rec-recCup),semCup+(semCup===1?' pedido':' pedidos')]]);
+    // avaliações
+    if(pA){
+      const av=avAll.filter(a=>inP(a.criado_em)), nA=av.length;
+      seccao('Avaliações',periodo);
+      if(!nA){ T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(8.4); doc.text('Sem avaliações neste período.',M,y+2); y+=12; }
+      else{
+        const med=av.reduce((a,x)=>a+(+x.estrelas||0),0)/nA, apr=av.filter(x=>x.aprovada).length;
+        cartoes([['NOTA MÉDIA',med.toFixed(1).replace('.',',')+' / 5'],['AVALIAÇÕES',String(nA)],['APROVADAS',String(apr),(nA-apr)+' por aprovar']]);
+        const dist=[5,4,3,2,1].map(e=>[e+(e===1?' estrela':' estrelas'),av.filter(x=>Math.round(+x.estrelas)===e).length]);
+        tabela('Distribuição das notas','',['NOTA','AVALIAÇÕES'],dist,40,l=>String(l[1]),{rank:false,linha:7,hi:dist.reduce((b,l,i)=>l[1]>dist[b][1]?i:b,0),larguraVal:20});
+      }
+    }
+
+    // ===== análise de vendas =====
+    if(tops.length) tabela('Produtos mais vendidos',topsSub,['PRODUTO','UNIDADES / RECEITA'],tops,66,l=>l[1]+' un.'+(l[2]!==null?'  ·  '+MTf(l[2]):''),{larguraVal:46});
+    if(zonas.length) tabela('Receita por zona','por localização do cliente',['ZONA','RECEITA'],zonas,60,l=>MTf(l[1])+'  ·  '+Math.round(l[1]/totZ*100)+'%');
+    if(np){
+      const nomesD=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'], dsem=nomesD.map(n=>[n,0,0]);
+      const turnos=[['Madrugada (00h-06h)',0,0],['Manhã (06h-12h)',0,0],['Tarde (12h-18h)',0,0],['Noite (18h-24h)',0,0]];
+      ped.forEach(q=>{ const d=new Date(q.criado_em), i=(d.getDay()+6)%7; dsem[i][1]+=(q.total||0); dsem[i][2]++; const t=turnos[Math.floor(d.getHours()/6)]; t[1]+=(q.total||0); t[2]++; });
+      const hiD=dsem.reduce((b,l,i)=>l[1]>dsem[b][1]?i:b,0), hiT=turnos.reduce((b,l,i)=>l[1]>turnos[b][1]?i:b,0);
+      tabela('Vendas por dia da semana',periodo,['DIA','RECEITA'],dsem,36,l=>MTf(l[1])+'  ·  '+l[2]+(l[2]===1?' pedido':' pedidos'),{rank:false,linha:7.5,hi:hiD,larguraVal:46});
+      tabela('Vendas por período do dia',periodo,['PERÍODO','RECEITA'],turnos,44,l=>MTf(l[1])+'  ·  '+l[2]+(l[2]===1?' pedido':' pedidos'),{rank:false,linha:7.5,hi:hiT,larguraVal:46});
+    }
+
+    // ===== clientes, stock, observações, validação =====
+    if(pCl){
+      const chave=q=>(q.cliente_telefone||q.cliente_nome||'').toString().trim();
+      const primeiro={}; todosPed.forEach(q=>{ const k=chave(q); if(k&&(!primeiro[k]||q.criado_em<primeiro[k])) primeiro[k]=q.criado_em; });
+      const cm={}; ped.forEach(q=>{ const k=chave(q); if(!k) return; (cm[k]=cm[k]||{nome:q.cliente_nome||'Cliente',v:0,n:0}); cm[k].v+=(q.total||0); cm[k].n++; });
+      const ks=Object.keys(cm), novos=ks.filter(k=>primeiro[k]&&inP(primeiro[k])).length, recor=ks.length-novos;
+      seccao('Clientes',periodo);
+      cartoes([['CLIENTES NO PERÍODO',String(ks.length),'por número de telefone'],['NOVOS CLIENTES',String(novos),ks.length?Math.round(novos/ks.length*100)+'% do total':''],['CLIENTES RECORRENTES',String(recor),'já tinham comprado antes']]);
+      const topC=Object.values(cm).sort((a,b)=>b.v-a.v).slice(0,5).map(c=>[c.nome,c.v,c.n]);
+      if(topC.length) tabela('Clientes que mais compraram','',['CLIENTE','VALOR'],topC,60,l=>MTf(l[1])+'  ·  '+l[2]+(l[2]===1?' pedido':' pedidos'),{larguraVal:46,linha:8});
+    }
+    if(pS){
+      const baixo=stockAll.filter(x=>(x.quantidade||0)<=(x.quantidade_minima==null?3:x.quantidade_minima)).sort((a,b)=>(a.quantidade||0)-(b.quantidade||0));
+      const linhas=baixo.slice(0,8).map(x=>[[x.produto_nome,x.cor,x.tamanho].filter(Boolean).join(' · '),(x.quantidade||0)<=0?'Esgotado':(x.quantidade+' un.'),(x.quantidade||0)<=0?C.verm:C.mut]);
+      lista('Stock a acompanhar',baixo.length>8?'8 de '+baixo.length+' variações':'esgotados e a acabar',linhas,'Nenhum produto esgotado ou a acabar.');
+    }
+    garantir(50); seccao('Observações');
+    S(C.lin); doc.setLineWidth(0.25); for(let i=0;i<4;i++){ doc.line(M,y+8+i*9,W-M,y+8+i*9); }
+    y+=42;
+
+    // ===== validação =====
+    garantir(62); seccao('Validação');
+    T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(7.4); doc.text('Declaro que revi o presente relatório e confirmo a sua conformidade.',M,y);
+    const o=y+4, vw=(CW-12)/3;
+    ['Gerente','CEO / Proprietário','Outro responsável'].forEach((cargo,i)=>{
+      const x=M+i*(vw+6);
+      T(C.g1); doc.setFont('helvetica','bold'); doc.setFontSize(8.4); doc.text(cargo,x,o+5);
+      S(C.mut); doc.setLineWidth(0.25);
+      doc.line(x,o+17,x+vw,o+17); doc.line(x,o+33,x+vw,o+33); doc.line(x,o+44,x+vw,o+44);
+      T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(6.3);
+      doc.text('Nome',x,o+20.5); doc.text('Assinatura',x,o+36.5); doc.text('Data   ____ / ____ / ________',x,o+47.5);
+    });
+    y+=56;
+
+    // ===== rodapé em todas as páginas =====
+    const tot=doc.getNumberOfPages();
+    for(let i=1;i<=tot;i++){
+      doc.setPage(i); S(C.lin); doc.setLineWidth(0.3); doc.line(M,284,W-M,284);
+      T(C.mut); doc.setFont('helvetica','normal'); doc.setFontSize(6.8);
+      doc.text('ROYALTY  ·  Relatório de vendas  ·  Documento interno e confidencial',M,289);
+      doc.text('Página '+i+' de '+tot,W-M,289,{align:'right'});
+      doc.setFontSize(6.2); doc.text('royaltyoficialstore@gmail.com',M,293); doc.text('Ref. '+ref,W-M,293,{align:'right'});
+    }
+    doc.save('ROYALTY-Relatorio-'+agora.getFullYear()+'-'+p2(agora.getMonth()+1)+'-'+p2(agora.getDate())+'.pdf');
+    registrarLog('Exportar relatório PDF', `Período: ${periodo}`);
   }
 
   // ═════════ OFERTA SEMANAL (configuracoes: oferta_produto_id e oferta_fim) ═════════
@@ -9049,6 +9304,25 @@ Subtotal: {{subtotal}} MT
       atualizarPreviewOferta(); estadoOferta('',null);
       msgForm('of-msg','ok','Oferta terminada.'); registrarLog('Oferta semanal terminada','Configurações');
     }catch(e){ msgForm('of-msg','erro','Erro ao terminar a oferta.'); }
+  }
+
+  // ── Meta do mês (usada no relatório em PDF) ──
+  async function carregarMetaMensal(){
+    const card=document.getElementById('card-meta');
+    if(card) card.style.display=temPerm('configuracoes:editar')?'':'none';
+    try{ const d=await sbGet('configuracoes','chave=eq.meta_mensal'); document.getElementById('meta-valor').value=(d[0]&&d[0].valor&&d[0].valor!=='0')?d[0].valor:''; }catch(e){}
+    document.getElementById('meta-msg').textContent='';
+  }
+  async function guardarMetaMensal(){
+    if(!temPerm('configuracoes:editar')) return;
+    const v=parseInt(document.getElementById('meta-valor').value)||0;
+    msgForm('meta-msg','','A guardar...');
+    try{
+      const ok=await guardarConfiguracao('meta_mensal',String(v));
+      if(!ok){ msgForm('meta-msg','erro','Não foi possível guardar.'); return; }
+      msgForm('meta-msg','ok',v?'Meta guardada!':'Meta removida.');
+      registrarLog('Meta do mês',v?('Definiu a meta em '+v+' MT'):'Removeu a meta');
+    }catch(e){ msgForm('meta-msg','erro','Erro ao guardar.'); }
   }
   </script>
 </body>
