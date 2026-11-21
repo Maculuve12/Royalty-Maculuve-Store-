@@ -5577,6 +5577,9 @@ text{
 [data-bs-theme=dark] .progress{background-color:#0E221F;}
 [data-bs-theme=dark] .apexcharts-gridline{stroke:#3D7068 !important;}
 [data-bs-theme=dark] .apexcharts-xaxis-tick,[data-bs-theme=dark] .apexcharts-xaxis line{stroke:#3D7068 !important;}
+.nav-badge{margin-left:auto;background:#C8A060;color:#142D29;font-size:.7rem;font-weight:700;line-height:1;padding:.25rem .5rem;border-radius:999px;}
+.nav-badge.perigo{background:var(--ds-danger);color:#FFFFFF;}
+html.collapsed #miniSidebar .nav-badge{display:none !important;}
 </style>
 <style id="login-css">
   #login-screen{background:linear-gradient(180deg,color-mix(in srgb,var(--ds-primary) 22%,var(--ds-body-bg)) 0%,var(--ds-body-bg) 100%);}
@@ -5658,7 +5661,7 @@ text{
       <ul class="navbar-nav flex-column">
       <li class="nav-item"><a class="nav-link active" href="#dashboard" data-tab="dashboard"><span class="nav-icon"><i class="ti ti-layout-dashboard fs-5"></i></span> <span class="text">Painel</span></a></li>
       <li class="nav-item"><div class="nav-heading">Vendas</div><hr class="mx-5 nav-line mb-1" /></li>
-      <li class="nav-item"><a class="nav-link" href="#pedidos" data-tab="pedidos"><span class="nav-icon"><i class="ti ti-shopping-cart fs-5"></i></span> <span class="text">Pedidos</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#pedidos" data-tab="pedidos"><span class="nav-icon"><i class="ti ti-shopping-cart fs-5"></i></span> <span class="text">Pedidos</span><span class="nav-badge" data-aviso="pedidos" style="display:none;"></span></a></li>
       <li class="nav-item"><a class="nav-link" href="#caixa" data-tab="caixa"><span class="nav-icon"><i class="ti ti-cash fs-5"></i></span> <span class="text">Caixa</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#relatorios" data-tab="relatorios"><span class="nav-icon"><i class="ti ti-chart-bar fs-5"></i></span> <span class="text">Relatórios</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#clientes" data-tab="clientes"><span class="nav-icon"><i class="ti ti-users fs-5"></i></span> <span class="text">Clientes</span></a></li>
@@ -5666,7 +5669,7 @@ text{
       <li class="nav-item"><a class="nav-link" href="#avaliacoes" data-tab="avaliacoes"><span class="nav-icon"><i class="ti ti-star fs-5"></i></span> <span class="text">Avaliações</span></a></li>
       <li class="nav-item"><div class="nav-heading">Catálogo</div><hr class="mx-5 nav-line mb-1" /></li>
       <li class="nav-item"><a class="nav-link" href="#produtos" data-tab="produtos"><span class="nav-icon"><i class="ti ti-shirt fs-5"></i></span> <span class="text">Produtos</span></a></li>
-      <li class="nav-item"><a class="nav-link" href="#stock" data-tab="stock"><span class="nav-icon"><i class="ti ti-packages fs-5"></i></span> <span class="text">Stock</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#stock" data-tab="stock"><span class="nav-icon"><i class="ti ti-packages fs-5"></i></span> <span class="text">Stock</span><span class="nav-badge perigo" data-aviso="stock" style="display:none;"></span></a></li>
       <li class="nav-item"><a class="nav-link" href="#colecoes" data-tab="colecoes"><span class="nav-icon"><i class="ti ti-category fs-5"></i></span> <span class="text">Coleções</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#categorias" data-tab="categorias"><span class="nav-icon"><i class="ti ti-tags fs-5"></i></span> <span class="text">Categorias</span></a></li>
       <li class="nav-item"><div class="nav-heading">Site</div><hr class="mx-5 nav-line mb-1" /></li>
@@ -5697,7 +5700,7 @@ text{
         <ul class="navbar-nav flex-column">
       <li class="nav-item"><a class="nav-link active" href="#dashboard" data-tab="dashboard"><span class="nav-icon"><i class="ti ti-layout-dashboard fs-5"></i></span> <span class="text">Painel</span></a></li>
       <li class="nav-item"><div class="nav-heading">Vendas</div><hr class="mx-5 nav-line mb-1" /></li>
-      <li class="nav-item"><a class="nav-link" href="#pedidos" data-tab="pedidos"><span class="nav-icon"><i class="ti ti-shopping-cart fs-5"></i></span> <span class="text">Pedidos</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#pedidos" data-tab="pedidos"><span class="nav-icon"><i class="ti ti-shopping-cart fs-5"></i></span> <span class="text">Pedidos</span><span class="nav-badge" data-aviso="pedidos" style="display:none;"></span></a></li>
       <li class="nav-item"><a class="nav-link" href="#caixa" data-tab="caixa"><span class="nav-icon"><i class="ti ti-cash fs-5"></i></span> <span class="text">Caixa</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#relatorios" data-tab="relatorios"><span class="nav-icon"><i class="ti ti-chart-bar fs-5"></i></span> <span class="text">Relatórios</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#clientes" data-tab="clientes"><span class="nav-icon"><i class="ti ti-users fs-5"></i></span> <span class="text">Clientes</span></a></li>
@@ -5705,7 +5708,7 @@ text{
       <li class="nav-item"><a class="nav-link" href="#avaliacoes" data-tab="avaliacoes"><span class="nav-icon"><i class="ti ti-star fs-5"></i></span> <span class="text">Avaliações</span></a></li>
       <li class="nav-item"><div class="nav-heading">Catálogo</div><hr class="mx-5 nav-line mb-1" /></li>
       <li class="nav-item"><a class="nav-link" href="#produtos" data-tab="produtos"><span class="nav-icon"><i class="ti ti-shirt fs-5"></i></span> <span class="text">Produtos</span></a></li>
-      <li class="nav-item"><a class="nav-link" href="#stock" data-tab="stock"><span class="nav-icon"><i class="ti ti-packages fs-5"></i></span> <span class="text">Stock</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#stock" data-tab="stock"><span class="nav-icon"><i class="ti ti-packages fs-5"></i></span> <span class="text">Stock</span><span class="nav-badge perigo" data-aviso="stock" style="display:none;"></span></a></li>
       <li class="nav-item"><a class="nav-link" href="#colecoes" data-tab="colecoes"><span class="nav-icon"><i class="ti ti-category fs-5"></i></span> <span class="text">Coleções</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#categorias" data-tab="categorias"><span class="nav-icon"><i class="ti ti-tags fs-5"></i></span> <span class="text">Categorias</span></a></li>
       <li class="nav-item"><div class="nav-heading">Site</div><hr class="mx-5 nav-line mb-1" /></li>
@@ -6044,6 +6047,7 @@ text{
             </div>
           </div>
         </div>
+        <div class="mb-4"><input class="form-control" type="search" id="busca-pedidos" placeholder="Pesquisar nos pedidos (cliente, telefone, produto, estado...)" autocomplete="off"></div>
         <div class="card card-lg mb-6"><div class="table-responsive" id="pedidos-conteudo"><div class="text-secondary p-4">A carregar...</div></div></div>
       </section>
 <section class="admin-tab d-none" id="tab-caixa">
@@ -6171,8 +6175,10 @@ text{
         <div class="d-flex justify-content-end mb-6"><button class="btn btn-white" onclick="exportarPDF()">Exportar PDF</button></div>
       </section>
 <section class="admin-tab d-none" id="tab-clientes">
+        <div class="mb-4"><input class="form-control" type="search" id="busca-clientes" placeholder="Pesquisar clientes (nome ou telefone)" autocomplete="off"></div>
         <div class="card card-lg mb-6">
-          <div class="card-header border-bottom-0"><h5 class="mb-0">Base de clientes</h5></div>
+          <div class="card-header border-bottom-0 d-flex justify-content-between align-items-center gap-3"><h5 class="mb-0">Base de clientes</h5><button class="btn btn-primary btn-sm" onclick="backupClientesExcel()">Backup em Excel</button></div>
+          <div class="px-4 small" id="backup-clientes-msg"></div>
           <div class="table-responsive" id="clientes-lista"><div class="text-secondary p-4">A carregar...</div></div>
         </div>
       </section>
@@ -6192,6 +6198,7 @@ text{
             <div class="mt-3 small" id="fc-msg"></div>
           </div>
         </div>
+        <div class="mb-4"><input class="form-control" type="search" id="busca-cupoes" placeholder="Pesquisar cupões (código ou nome)" autocomplete="off"></div>
         <div class="card card-lg mb-6">
           <div class="card-header border-bottom-0 d-flex justify-content-between align-items-center gap-3">
             <h5 class="mb-0">Cupões</h5>
@@ -6287,6 +6294,7 @@ text{
           </div>
         </div>
 
+        <div class="mb-4"><input class="form-control" type="search" id="busca-produtos" placeholder="Pesquisar produtos (nome, cor, tamanho...)" autocomplete="off"></div>
         <div class="card card-lg mb-6">
           <div class="card-header border-bottom-0 d-flex justify-content-between align-items-center gap-3">
             <h5 class="mb-0">Produtos</h5>
@@ -6663,7 +6671,8 @@ text{
       </section>
 <section class="admin-tab d-none" id="tab-newsletter">
         <div class="card card-lg mb-6">
-          <div class="card-header border-bottom-0"><h5 class="mb-0">Inscrições na newsletter</h5></div>
+          <div class="card-header border-bottom-0 d-flex justify-content-between align-items-center gap-3"><h5 class="mb-0">Inscrições na newsletter</h5><button class="btn btn-primary btn-sm" onclick="backupNewsletterExcel()">Backup em Excel</button></div>
+          <div class="px-4 small" id="backup-newsletter-msg"></div>
           <div class="table-responsive" id="newsletter-lista"><div class="text-secondary p-4">A carregar...</div></div>
         </div>
       </section>
@@ -6700,6 +6709,7 @@ text{
         </div>
       </section>
 <section class="admin-tab d-none" id="tab-actividade">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4"><div class="small" id="backup-actividade-msg"></div><button class="btn btn-primary btn-sm" onclick="backupActividadeExcel()">Backup em Excel</button></div>
         <div class="card card-lg mb-4"><div class="card-body">
           <label class="form-label" for="actividade-filtro">Filtrar</label>
           <select class="form-select" id="actividade-filtro" onchange="carregarActividade()"><option value="">Toda a actividade</option><option value="admin">Equipa (admin)</option><option value="cliente">Clientes com conta</option><option value="visitante">Visitantes</option></select>
@@ -6771,6 +6781,7 @@ text{
     </div></div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.52.0/dist/apexcharts.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -7006,7 +7017,7 @@ observer.observe(document.getElementById('content'), { childList: true, subtree:
     aprovarAvaliacao:'avaliacoes:editar',rejeitarAvaliacao:'avaliacoes:editar',eliminarAvaliacao:'avaliacoes:eliminar',
     enviarAgradecimento:'pedidos:editar',gerarGrelhaStock:'stock:criar',
     guardarContactos:'configuracoes:editar',guardarMensagem:'configuracoes:editar',guardarOferta:'configuracoes:editar',terminarOferta:'configuracoes:editar',guardarLogoLogin:'configuracoes:editar',abrirEditarLogin:'configuracoes:editar',guardarLogoGaleria:'configuracoes:editar',abrirEditarPerfil:'configuracoes:editar',
-    fazerBackup:'*proprietario',notificarClientes:'*proprietario'
+    fazerBackup:'*proprietario',backupClientesExcel:'*proprietario',backupActividadeExcel:'*proprietario',backupNewsletterExcel:'*proprietario',notificarClientes:'*proprietario'
   };
   let PERMS={proprietario:true,set:new Set(TODAS_PERM)};
   function temPerm(chave){
@@ -7220,7 +7231,7 @@ observer.observe(document.getElementById('content'), { childList: true, subtree:
     await detectarLogServidor();
     if(explicito) registrarLog('Login','Entrou no painel');
     await aplicarNivelAcesso();
-    carregarPerfilTopo();
+    carregarPerfilTopo(); atualizarAvisosMenu();
     mudarTab(tabVisivel('dashboard') ? 'dashboard' : (function(){
       var a=Array.from(document.querySelectorAll('#miniSidebar [data-tab]')).find(function(x){ return x.closest('li') && x.closest('li').style.display!=='none'; });
       return a ? a.getAttribute('data-tab') : 'dashboard';
@@ -7842,6 +7853,7 @@ ROYALTY — Beyond Trends`;
     inputEl.classList.add('is-valid');
     setTimeout(()=>{ inputEl.classList.remove('is-valid'); },600);
     registrarLog('Stock actualizado',`${produtoNome} — ${cor}/${tamanho}: ${quantidade}`);
+    atualizarAvisosMenu();
   }
   async function notificarClientes(produto) {
     registrarLog('Clientes notificados', (produto&&produto.nome)||'—');
@@ -8328,6 +8340,7 @@ Inhambane, Moçambique`;
     const data=await sbGet('pedidos',q);
     const fil=cli?data.filter(p=>(p.cliente_nome||'').toLowerCase().includes(cli.toLowerCase())||(p.cliente_telefone||'').includes(cli)):data;
     document.getElementById('pedidos-conteudo').innerHTML=tabelaPedidos(fil,true);
+    atualizarAvisosMenu();
   }
   async function mudarEstado(id,estado,pedido){
     const estadoAnterior=pedido?pedido.estado:null;
@@ -9324,6 +9337,149 @@ Subtotal: {{subtotal}} MT
       registrarLog('Meta do mês',v?('Definiu a meta em '+v+' MT'):'Removeu a meta');
     }catch(e){ msgForm('meta-msg','erro','Erro ao guardar.'); }
   }
+
+  // ═════════ BACKUP EM EXCEL (cada página tem o seu) ═════════
+  async function sbGetTodos(tab,q){
+    let todos=[],off=0;
+    for(;;){
+      const r=await sbGet(tab,(q?q+'&':'')+'limit=1000&offset='+off);
+      todos=todos.concat(r); if(r.length<1000) break; off+=1000;
+    }
+    return todos;
+  }
+  function xlsxFolha(wb,nome,cab,linhas,larguras,colunasData){
+    const aoa=[cab].concat(linhas);
+    const ws=XLSX.utils.aoa_to_sheet(aoa,{cellDates:true});
+    cab.forEach(function(_,c){
+      const ref=XLSX.utils.encode_cell({r:0,c:c});
+      ws[ref].s={font:{bold:true,color:{rgb:'FFFFFF'}},fill:{patternType:'solid',fgColor:{rgb:'142D29'}},alignment:{vertical:'center'}};
+    });
+    (colunasData||[]).forEach(function(c){
+      for(let r=1;r<aoa.length;r++){ const ref=XLSX.utils.encode_cell({r:r,c:c}); if(ws[ref]&&ws[ref].v instanceof Date) ws[ref].z='dd/mm/yyyy hh:mm'; }
+    });
+    ws['!cols']=larguras.map(function(w){return {wch:w};});
+    ws['!autofilter']={ref:XLSX.utils.encode_range({s:{r:0,c:0},e:{r:Math.max(aoa.length-1,0),c:cab.length-1}})};
+    XLSX.utils.book_append_sheet(wb,ws,nome);
+  }
+  function xlsxPronto(){
+    if(typeof XLSX==='undefined'){ alert('A biblioteca do Excel não carregou. Verifica a ligação à internet.'); return false; }
+    return true;
+  }
+
+  async function backupClientesExcel(){
+    if(!xlsxPronto()) return;
+    if(!confirm('Gerar o backup em Excel dos clientes?')) return;
+    msgForm('backup-clientes-msg','','A gerar o ficheiro...');
+    try{
+      const pedidos=await sbGetTodos('pedidos','order=criado_em.asc');
+      // clientes (agrupados pelo telefone, ou pelo nome quando não há telefone)
+      const mapa={};
+      pedidos.forEach(function(p){
+        const k=(p.cliente_telefone||p.cliente_nome||'').toString().trim(); if(!k) return;
+        const c=mapa[k]||(mapa[k]={nome:'',tel:p.cliente_telefone||'',pais:'',prov:'',dist:'',bairro:'',loc:'',n:0,total:0,primeiro:null,ultimo:null});
+        if(p.cliente_nome) c.nome=p.cliente_nome;
+        if(p.cliente_pais) c.pais=p.cliente_pais; if(p.cliente_provincia) c.prov=p.cliente_provincia;
+        if(p.cliente_distrito) c.dist=p.cliente_distrito; if(p.cliente_bairro) c.bairro=p.cliente_bairro; if(p.cliente_localizacao) c.loc=p.cliente_localizacao;
+        c.n++; c.total+=(p.total||0);
+        const d=new Date(p.criado_em); if(!c.primeiro||d<c.primeiro) c.primeiro=d; if(!c.ultimo||d>c.ultimo) c.ultimo=d;
+      });
+      const clientes=Object.values(mapa).sort(function(a,b){return b.total-a.total;})
+        .map(function(c){return [c.nome,c.tel,c.pais,c.prov,c.dist,c.bairro,c.loc,c.n,c.total,c.primeiro,c.ultimo];});
+      // todos os pedidos, do mais recente para o mais antigo
+      const linhas=pedidos.slice().reverse().map(function(p){
+        const prod=(p.itens||[]).map(function(i){return i.qtd+'x '+i.nome+' ('+(i.cor||'-')+', '+(i.tamanho||'-')+')';}).join('; ');
+        return [new Date(p.criado_em),p.cliente_nome||'',p.cliente_telefone||'',p.cliente_pais||'',p.cliente_provincia||'',p.cliente_distrito||'',p.cliente_bairro||'',prod,p.subtotal||0,p.desconto||0,p.total||0,p.cupao_usado||'',p.estado||''];
+      });
+      const wb=XLSX.utils.book_new();
+      xlsxFolha(wb,'Clientes',['Nome','Telefone','País','Província','Distrito','Bairro','Localização','Pedidos','Total gasto (MT)','Primeiro pedido','Último pedido'],clientes,[26,16,14,16,16,16,30,10,16,18,18],[9,10]);
+      xlsxFolha(wb,'Pedidos dos clientes',['Data','Cliente','Telefone','País','Província','Distrito','Bairro','Produtos','Subtotal (MT)','Desconto (MT)','Total (MT)','Cupão','Estado'],linhas,[18,26,16,14,16,16,16,60,14,14,14,14,12],[0]);
+      XLSX.writeFile(wb,'royalty-clientes-'+ymd(new Date())+'.xlsx',{cellDates:true});
+      msgForm('backup-clientes-msg','ok','Ficheiro descarregado: '+clientes.length+' clientes e '+linhas.length+' pedidos.');
+      registrarLog('Backup em Excel','Clientes');
+    }catch(e){ console.error(e); msgForm('backup-clientes-msg','erro','Não foi possível gerar o ficheiro.'); }
+  }
+
+  async function backupNewsletterExcel(){
+    if(!xlsxPronto()) return;
+    if(!confirm('Gerar o backup em Excel da newsletter?')) return;
+    msgForm('backup-newsletter-msg','','A gerar o ficheiro...');
+    try{
+      const dados=await sbGetTodos('newsletter_inscricoes','order=criado_em.desc');
+      const wb=XLSX.utils.book_new();
+      xlsxFolha(wb,'Newsletter',['Email','Inscrito em'],dados.map(function(n){return [n.email||'',new Date(n.criado_em)];}),[40,18],[1]);
+      XLSX.writeFile(wb,'royalty-newsletter-'+ymd(new Date())+'.xlsx',{cellDates:true});
+      msgForm('backup-newsletter-msg','ok','Ficheiro descarregado: '+dados.length+' inscritos.');
+      registrarLog('Backup em Excel','Newsletter');
+    }catch(e){ console.error(e); msgForm('backup-newsletter-msg','erro','Não foi possível gerar o ficheiro.'); }
+  }
+
+  async function backupActividadeExcel(){
+    if(!xlsxPronto()) return;
+    if(!confirm('Gerar o backup em Excel de toda a actividade?')) return;
+    msgForm('backup-actividade-msg','','A gerar o ficheiro...');
+    try{
+      const dados=await sbGetTodos('actividade','order=criado_em.desc');
+      const linhas=dados.map(function(a){return [new Date(a.criado_em),a.admin_nome||'',a.tipo||'',a.accao||'',a.detalhes||'',a.tabela||'',a.registo_id==null?'':String(a.registo_id)];});
+      const wb=XLSX.utils.book_new();
+      xlsxFolha(wb,'Actividade',['Data','Quem','Tipo','Acção','Detalhes','Tabela','Registo'],linhas,[18,26,12,28,60,16,12],[0]);
+      XLSX.writeFile(wb,'royalty-actividade-'+ymd(new Date())+'.xlsx',{cellDates:true});
+      msgForm('backup-actividade-msg','ok','Ficheiro descarregado: '+dados.length+' registos.');
+      registrarLog('Backup em Excel','Actividade');
+    }catch(e){ console.error(e); msgForm('backup-actividade-msg','erro','Não foi possível gerar o ficheiro.'); }
+  }
+
+  // ═════════ PESQUISA NAS LISTAS E AVISOS NO MENU ═════════
+  const semAcentos=function(s){ return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); };
+  function textoLinha(tr){
+    const c=tr.cloneNode(true);
+    c.querySelectorAll('select').forEach(function(s){ const o=s.options[s.selectedIndex]; s.replaceWith(document.createTextNode(o?o.text:'')); });
+    return c.textContent;
+  }
+  function ligarPesquisa(inputId,contId){
+    const inp=document.getElementById(inputId), cont=document.getElementById(contId); if(!inp||!cont) return;
+    const sem=document.createElement('div'); sem.className='text-secondary p-4'; sem.style.display='none'; sem.textContent='Nenhum resultado.';
+    cont.parentNode.insertBefore(sem,cont.nextSibling);
+    function aplicar(){
+      const q=semAcentos(inp.value).trim(); let vis=0,total=0;
+      cont.querySelectorAll('tbody tr').forEach(function(tr){
+        total++; const ok=!q||semAcentos(textoLinha(tr)).indexOf(q)>-1;
+        tr.style.display=ok?'':'none'; if(ok) vis++;
+      });
+      sem.style.display=(q&&total&&!vis)?'':'none';
+    }
+    inp.addEventListener('input',aplicar);
+    new MutationObserver(aplicar).observe(cont,{childList:true,subtree:true});
+  }
+  ligarPesquisa('busca-pedidos','pedidos-conteudo');
+  ligarPesquisa('busca-clientes','clientes-lista');
+  ligarPesquisa('busca-produtos','produtos-lista');
+  ligarPesquisa('busca-cupoes','cupoes-lista');
+
+  async function contarRegistos(tab,q){
+    try{
+      const tok=await authHeader();
+      const r=await fetch(`${SB_URL}/rest/v1/${tab}?${q}&select=id`,{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'count=exact','Range':'0-0'}});
+      const n=parseInt((r.headers.get('content-range')||'').split('/')[1]);
+      return isNaN(n)?0:n;
+    }catch(e){ return 0; }
+  }
+  function mostrarAviso(tab,n){
+    document.querySelectorAll('[data-aviso="'+tab+'"]').forEach(function(b){ b.textContent=n>99?'99+':String(n); b.style.display=n>0?'':'none'; });
+  }
+  async function atualizarAvisosMenu(){
+    const painel=document.getElementById('painel');
+    if(!painel||painel.style.display==='none') return;
+    let pend=0;
+    if(temAlgumaPerm('pedidos')){ pend=await contarRegistos('pedidos','estado=eq.Pendente'); }
+    mostrarAviso('pedidos',pend);
+    document.title=(pend>0?'('+pend+') ':'')+'ROYALTY - Admin';
+    if(temAlgumaPerm('stock')){
+      const st=await sbGet('stock');
+      const baixos=new Set(st.filter(function(s){return (s.quantidade||0)<=(s.quantidade_minima==null?3:s.quantidade_minima);}).map(function(s){return s.produto_id;}));
+      mostrarAviso('stock',baixos.size);
+    }else{ mostrarAviso('stock',0); }
+  }
+  setInterval(atualizarAvisosMenu,180000);
   </script>
 </body>
 </html>
